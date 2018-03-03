@@ -2,5 +2,58 @@
 @import "./theme/bootstrap-ext";
 @import "./theme/quick.scss";
 @import "./theme/main.scss";
-@import url('https://fonts.googleapis.com/css?family=Coiny');
-$coiny: 'Coiny'
+//@import url('https://fonts.googleapis.com/css?family=Coiny');
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url("assets/font/Ubuntu-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  } 
+  @font-face {
+    font-family: 'Ubuntu';
+    src: url("assets/font/Ubuntu-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Ubuntu';
+    src: url("assets/font/Ubuntu-Bold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+
+.dm-logo {
+    background: url("/assets/images/logo.png");
+    background-size: 130px 100px;
+    width: 130px;
+    height: 100px;
+    background-repeat: no-repeat; 
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+button {
+    &:hover {
+        cursor: pointer;        
+    }
+}
+
+.white-btn {
+    width: 120px;
+    border: 1px solid $border-gray;
+    color: $border-gray;
+    padding: 10px;
+    height: 35px;
+    background: #ffffff;
+}
+
+.gray-btn {
+    width: 90px;
+    border: 1px solid $border-gray;
+    color: #ffffff;
+    padding: 10px;
+    height: 35px;
+    background: $border-gray;
+}

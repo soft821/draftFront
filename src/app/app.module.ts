@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app.routing';
 
 import {AppComponent} from './app.component';
-import {NavComponent} from './shared/navbar.component';
+import {NavComponent} from './shared/navbar/navbar.component';
 import {HomeComponent} from './home/home.component';
 import {ErrorComponent} from './error/error.component';
 import {LoginComponent} from './authentication/login/login.component';

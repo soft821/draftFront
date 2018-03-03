@@ -1,7 +1,7 @@
 /*
   Contains styles for 'quick adjustment''
 */
-.cursor-pointer {
+  .cursor-pointer {
     cursor: pointer;
   }
   
@@ -23,30 +23,17 @@
     float: right;
   }
   
-  .border-orange {
-    border: 1px solid #ff8808;
-    border-radius: 4px;
+  .border-bottom-red {
+    border-bottom: red solid 2px;
+    border-radius: 5px;
   }
   
   .font-weight-normal {
     font-weight: normal;
   }
   
-  .equal-col-height-center {
-    display: flex;
-    display: -webkit-flex;
-    align-items: center;
-  }
-  
   .align-items-center {
     align-items: center;
-  }
-  
-  .row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display:         flex;
   }
   
   .margin-auto {
@@ -59,9 +46,11 @@
     align-items: center;
     justify-content: center
   }
+
   .flex {
     display: flex;
   }
+
   .flex-column {
     display: flex;
     flex-flow: column;
@@ -87,8 +76,7 @@
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
-    hyphens: auto;
-  
+    hyphens: auto;  
   }
   
   .ellipses {
