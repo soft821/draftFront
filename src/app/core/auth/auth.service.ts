@@ -33,23 +33,18 @@ export class AuthService {
     return this.localStorageService.get('draftmatch.auth_token');
   }
 
-  setDataAfterLogin(authData) {
+  setDataAfterLogin(authData, remember?) {
     this.isAuthenticated = true;
     this.authenticatedUser = authData.response;
     this.localStorageService.set('auth_token', authData.response.token);
   };
 
   checkIsAuthenticated() {
-    console.log('checkIsAuthenticated auth service')
     return new Promise((resolve, reject) => {
     this.httpClient.get(`${this.helperService.resolveAPI()}/user`)
     .toPromise()
       .then((response: any) => {
-        let data = response;
-        this.authenticatedUser = data.response;
-        this.isAuthenticated = true;
-        console.log('checkIsAuthenticated auth service response data', data)
-        resolve(data);
+        resolve(response);
       }, (error) => {
         reject(error);
       })
@@ -62,6 +57,16 @@ export class AuthService {
       password: form.value.password
     }
     return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/login`, body)
+    .pipe(
+      catchError(this.handleError)
+    );  
+  }
+
+  resetPassword(form) {
+    let body = {
+      email: form.value.email
+    }
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/resetPassword`, body)
     .pipe(
       catchError(this.handleError)
     );  

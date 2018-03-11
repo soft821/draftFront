@@ -1,3 +1,29 @@
-<p>
-  reset works!
-</p>
+<div class="row expanded stadium-image">
+  <div class="auth-container">
+      <div class="dm-logo-icons logo-section"></div>
+      <div class="reset input-section">
+        <div class="title">Reset Password</div>
+        <form [formGroup]="resetForm" novalidate>
+          <div class="input-section-row">
+            <div class="auth-label">
+              <span>Email Address</span>
+            </div>            
+            <div>
+              <input class="auth-input" type="text" formControlName="email">
+            </div>
+            <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.required" class="error-msg"><span>Email address is required</span></div>  
+          </div>
+          <div class="auth-agree reset">
+            <span>Enter the email address you used to create your account 
+              and we’ll send you a reset link.  Please check your spam 
+              folder in the event it doesn’t show up in your inbox.</span>
+          </div>
+          <div class="login-button">
+            <button class="btn login-btn" 
+                (click)="resetPassword(resetForm)"
+                [disabled]="isClickedOnce">Send Reset Link</button>
+          </div>
+        </form>
+      </div>
+    </div>      
+</div>

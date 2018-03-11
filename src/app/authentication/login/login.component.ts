@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     if(form.valid) {
       this.authService.login(form)
       .subscribe(response => {
-        this.authService.setDataAfterLogin(response);
+        this.authService.setDataAfterLogin(response, this.remember);
         this.isClickedOnce = false;
         this.router.navigate(['/main/home'])
       },

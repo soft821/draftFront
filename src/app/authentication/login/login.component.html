@@ -6,19 +6,21 @@
             <form [formGroup]="loginForm" novalidate>
                 <div class="input-section-row">
                     <div class="auth-label">
-                        <span>Username</span>
+                        <span>Email Address</span>
                     </div>            
                     <div>
                         <input class="auth-input" type="text" formControlName="email">
                     </div>
+                    <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.required" class="error-msg"><span>Email address is required</span></div>
                 </div>
                 <div class="input-section-row">
                     <div class="auth-label">
                         <span>Password</span>
                     </div>            
                     <div>
-                        <input class="auth-input" type="text" formControlName="password">
+                        <input class="auth-input" type="password" formControlName="password">
                     </div>
+                    <div *ngIf="loginFormSubmitted && loginForm.get('password').errors?.required" class="error-msg"><span>Password is required</span></div>
                 </div>
                 <div class="forgot-section">
                     <div class="remember-section label">
@@ -31,7 +33,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="label cursor-pointer">Forgot your password?</div>
+                    <div class="label cursor-pointer" routerLink="/reset-password">Forgot your password?</div>
                 </div>
                 <div class="login-button">
                     <button class="btn login-btn" 
