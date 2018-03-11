@@ -1,18 +1,19 @@
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import {HomeComponent} from '../app/home/home.component';
-import {ErrorComponent} from '../app/error/error.component';
+export const APP_ROUTES: Routes = [
+    // Default page
+    {path: '', redirectTo: 'blog', pathMatch: 'full'},
+    {path: '**', redirectTo: 'error'}
+  ];
 
+/**
+ * Main module routing
+ *
+ * Link to about module with lazy-loading, and instead to home component
+ */
 @NgModule({
-    imports: [
-        RouterModule.forRoot([
-            {path: '', component: HomeComponent},
-            {path: '**', component: ErrorComponent}
-        ])
-    ],
-    exports: [
-        RouterModule
-    ]
-})
+    imports: [RouterModule.forRoot(APP_ROUTES, {useHash: true})],
+    exports: [RouterModule]
+  })
 export class AppRoutingModule {}

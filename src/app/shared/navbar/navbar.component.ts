@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'navi-bar',
@@ -6,4 +7,17 @@ import {Component} from '@angular/core';
     styleUrls: ['./navbar.component.scss']
 })
 
-export class NavComponent {}
+export class NavComponent {
+    
+    constructor(private router: Router) {
+}
+    goToLogin() {
+        this.router.navigate(['/login']);
+        console.log('login')
+    }
+
+    goToSignup() {
+        this.router.navigate(['/signup']);
+        console.log('signup')
+    }
+}

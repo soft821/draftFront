@@ -1,3 +1,65 @@
-<p>
-  signup works!
-</p>
+<div class="row expanded stadium-image">
+  <div class="auth-container">
+    <div class="dm-text-logo logo-section"></div>
+    <div class="signup input-section">
+      <form [formGroup]="signupForm" novalidate>
+        <div class="input-section-row">
+          <div class="auth-label">
+            <span>Your full name</span>
+          </div>            
+          <div>
+            <input class="auth-input" type="text" formControlName="name">
+          </div>
+        </div>
+        <div class="input-section-row">
+          <div class="auth-label">
+            <span>Email</span>
+          </div>            
+          <div>
+            <input class="auth-input" type="text" formControlName="email">
+          </div>
+        </div>
+        <div class="input-section-row">
+          <div class="auth-label">
+            <span>Pick a screen name</span>
+          </div>            
+          <div>
+            <input class="auth-input" type="text" formControlName="username">
+          </div>
+        </div>
+        <div class="input-section-row">
+          <div class="auth-label">
+            <span>Choose password min 8 characters</span>
+          </div>            
+          <div>
+            <input class="auth-input" type="text" formControlName="password">
+          </div>
+        </div>
+        <div class="input-section-row">
+          <div class="auth-label">
+            <span>Got a Promocode or referral username? Optional</span>
+          </div>            
+          <div>
+            <input class="auth-input" type="text"  formControlName="promoCode">
+          </div>
+        </div>
+        <div class="auth-agree">
+          <span>Tapping “Play Now” confirms you’re age 18+ (21+in state of MA)
+              and agree to our Privacy Policy & Terms. You’ll also get offers
+              and messages from DraftMatch companies.
+              Learn more in Trust and Safety.</span>
+        </div>
+        <div class="play-button">
+          <button class="btn play-now-btn" 
+                  (click)="signUp(signupForm)"
+                  [disabled]="isClickedOnce">Play Now</button>
+        </div>
+        <div class="input-section-row">
+          <div class="auth-label">
+            <span>Already have an account? <span class="cursor-pointer" routerLink="/login"><b>Log in instead</b></span> </span>
+          </div> 
+        </div>
+      </form>
+    </div>
+  </div>      
+</div>

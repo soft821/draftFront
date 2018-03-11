@@ -1,30 +1,44 @@
+import './rxjs-extensions';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {LocalStorageModule} from 'angular-2-local-storage';
+import {JwtModule} from '@auth0/angular-jwt';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AppRoutingModule} from './app.routing';
-
+import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';
-import {NavComponent} from './shared/navbar/navbar.component';
-import {HomeComponent} from './home/home.component';
-import {ErrorComponent} from './error/error.component';
-import {LoginComponent} from './authentication/login/login.component';
-import {ResetComponent} from './authentication/reset/reset.component';
-import {SignupComponent} from './authentication/signup/signup.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    CoreModule,
+    // Angular 2 LocalStorage wrapper
+    // https://www.npmjs.com/package/angular-2-local-storage
+    LocalStorageModule.withConfig({
+      prefix: 'draftmatch',
+      storageType: 'localStorage'
+    }),
+    //https://github.com/auth0/angular2-jwt
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    })
   ],
   declarations: [
-    AppComponent,
-    NavComponent,
-    HomeComponent,
-    ErrorComponent,
-    LoginComponent,
-    ResetComponent,
-    SignupComponent
+    AppComponent
   ],  
-  providers: [],
+  providers: [
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
