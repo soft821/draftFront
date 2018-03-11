@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginFormSubmitted: boolean;
   loginFormSubmitInProgress: boolean;
   isClickedOnce = false;
-
+  remember: boolean;
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
