@@ -1,0 +1,61 @@
+@import "./theme/theme-variables";
+
+.auth-container {
+    text-align: center;    
+    margin: auto;
+    padding-top: 50px;
+    @media screen and (min-width: $break-xsmall) {
+        width: 400px;
+    }
+    .input-section {
+        background: white;
+        font-size: 13px;
+        margin-top: 20px;
+        padding: 15px 10px;
+    }
+}
+
+.logo-section {
+    margin: auto;
+}
+
+.auth-input {
+    height: 30px;
+    width: 76%;
+    border: 1px solid;
+    padding: 1px 8px;
+}
+
+.auth-label {
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    height: 21px;
+    padding-top: 15px;
+}
+
+.play-now-btn, .login-btn {
+    background: #ed2f2f;
+    font-weight: bold;
+    border: none;
+    color: white;
+    width: 100%;
+    height: 40px;
+}
+
+.play-button, .login-button {
+    width: 80%;
+    margin: auto;
+}
+
+.auth-agree {   
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 77%;
+    margin: auto;
+    font-size: 10px;
+    &.reset {
+        width: 85%;
+    }
+}
+
