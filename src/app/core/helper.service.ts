@@ -6,15 +6,11 @@ import {Router, NavigationEnd} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 //import {TranslateService} from '@ngx-translate/core';
 
-class DataBetweenRoutes {
-  routeFrom: string;
-  routeTo: string;
-  data: any;
-}
-
 @Injectable()
 export class HelperService {
- 
+  
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  
   constructor(private localStorageService: LocalStorageService,
               private router: Router,
               private sanitization: DomSanitizer) {}

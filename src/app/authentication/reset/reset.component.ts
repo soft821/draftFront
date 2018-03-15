@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 import {AuthService} from '../../core/auth/auth.service';
 import {Router} from '@angular/router';
 import {LocalStorageService} from 'angular-2-local-storage';
+import {HelperService} from '../../core/helper.service';
 
 @Component({
   selector: 'dm-reset',
@@ -18,12 +19,13 @@ export class ResetComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
+              private helperService: HelperService,
               private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.localStorageService.remove('auth_token');
     this.resetForm = this.fb.group({
-      email: ['', [Validators.required]]
+      email: ['', [Validators.required, Validators.pattern(this.helperService.emailPattern)]]
     });
   }
 

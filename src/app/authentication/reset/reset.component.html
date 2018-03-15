@@ -11,7 +11,12 @@
             <div>
               <input class="auth-input" type="text" formControlName="email">
             </div>
-            <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.required" class="error-msg"><span>Email address is required</span></div>  
+            <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.required" class="error-msg">
+              <span>Email address is required</span>
+            </div>        
+            <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.pattern" class="error-msg">
+              <span>Email address is not valid</span>
+            </div>
           </div>
           <div class="auth-agree reset">
             <span>Enter the email address you used to create your account 
@@ -22,6 +27,11 @@
             <button class="btn login-btn" 
                 (click)="resetPassword(resetForm)"
                 [disabled]="isClickedOnce">Send Reset Link</button>
+          </div>
+          <div class="input-section-row">
+            <div class="auth-label">
+              <span>Go back to <span class="cursor-pointer" routerLink="/login"><b>Login</b></span> </span>
+            </div> 
           </div>
         </form>
       </div>

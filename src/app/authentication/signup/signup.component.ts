@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 import {AuthService} from '../../core/auth/auth.service';
 import {LocalStorageService} from 'angular-2-local-storage';
 import {Router} from '@angular/router';
+import {HelperService} from '../../core/helper.service';
 
 @Component({
   selector: 'dm-signup',
@@ -18,13 +19,14 @@ export class SignupComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
+              private helperService: HelperService,
               private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.localStorageService.remove('auth_token');
     this.signupForm = this.fb.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.helperService.emailPattern)]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       promoCode: ['']

@@ -19,7 +19,12 @@
           <div>
             <input class="auth-input" type="text" formControlName="email">
           </div>
-          <div *ngIf="signupFormSubmitted && signupForm.get('email').errors?.required" class="error-msg"><span>Email address is required</span></div>
+          <div *ngIf="signupFormSubmitted && signupForm.get('email').errors?.required" class="error-msg">
+            <span>Email address is required</span>
+          </div>          
+          <div *ngIf="signupFormSubmitted && signupForm.get('email').errors?.pattern" class="error-msg">
+            <span>Email address is not valid</span>
+          </div>
         </div>
         <div class="input-section-row">
           <div class="auth-label">
@@ -28,7 +33,9 @@
           <div>
             <input class="auth-input" type="text" formControlName="username">
           </div>
-          <div *ngIf="signupFormSubmitted && signupForm.get('username').errors?.required" class="error-msg"><span>Username is required</span></div>
+          <div *ngIf="signupFormSubmitted && signupForm.get('username').errors?.required" class="error-msg">
+            <span>Username is required</span>
+          </div>
         </div>
         <div class="input-section-row">
           <div class="auth-label">
@@ -37,8 +44,12 @@
           <div>
             <input class="auth-input" type="password" formControlName="password">
           </div>
-          <div *ngIf="signupFormSubmitted && signupForm.get('password').errors?.required" class="error-msg"><span>Password is required</span></div>
-          <div *ngIf="signupFormSubmitted && signupForm.get('password').errors?.minlength" class="error-msg"><span>Password is min 8 characters</span></div>
+          <div *ngIf="signupFormSubmitted && signupForm.get('password').errors?.required" class="error-msg">
+            <span>Password is required</span>
+          </div>
+          <div *ngIf="signupFormSubmitted && signupForm.get('password').errors?.minlength" class="error-msg">
+            <span>Password is min 8 characters</span>
+          </div>
         </div>
         <div class="input-section-row">
           <div class="auth-label">

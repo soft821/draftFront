@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 import {AuthService} from '../../core/auth/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {LocalStorageService} from 'angular-2-local-storage';
+import {HelperService} from '../../core/helper.service';
 
 @Component({
   selector: 'dm-login',
@@ -16,17 +17,20 @@ export class LoginComponent implements OnInit {
   isClickedOnce = false;
   remember: boolean;
   isAdmin = false;
+  showErrorInvalidCredentials = false;
+
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
               private route: ActivatedRoute,
+              private helperService: HelperService,
               private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.localStorageService.remove('auth_token');
     this.isAdmin = this.checkIsAdmin();
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.helperService.emailPattern)]],
       password: ['', [Validators.required]]
     });
   }
@@ -53,9 +57,11 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         this.authService.setDataAfterLogin(response, this.remember);
         this.isClickedOnce = false;
+        this.showErrorInvalidCredentials = false;
         this.router.navigate(['/main/home'])
       },
       error => {
+        this.showErrorInvalidCredentials = true;
         this.isClickedOnce = false;
       })  
     }

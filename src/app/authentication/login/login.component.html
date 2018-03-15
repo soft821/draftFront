@@ -10,9 +10,14 @@
                         <span>Email Address</span>
                     </div>            
                     <div>
-                        <input class="auth-input" type="text" formControlName="email">
+                        <input class="auth-input" type="email" formControlName="email">
                     </div>
-                    <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.required" class="error-msg"><span>Email address is required</span></div>
+                    <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.required" class="error-msg">
+                        <span>Email address is required</span>
+                    </div>
+                    <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.pattern" class="error-msg">
+                        <span>Email address is not valid</span>
+                    </div>
                 </div>
                 <div class="input-section-row">
                     <div class="auth-label">
@@ -21,7 +26,18 @@
                     <div>
                         <input class="auth-input" type="password" formControlName="password">
                     </div>
-                    <div *ngIf="loginFormSubmitted && loginForm.get('password').errors?.required" class="error-msg"><span>Password is required</span></div>
+                    <div *ngIf="loginFormSubmitted && loginForm.get('password').errors?.required" class="error-msg">
+                        <span>Password is required</span>
+                    </div>
+                    
+                    <div class="error-msg"
+                        [translate]="'LOGIN_COMP.ERRORS.INVALID_USER_PASS'"
+                        *ngIf="showErrorInvalidCredentials && 
+                               (!loginForm.get('email').errors?.required) && 
+                               (!loginForm.get('password').errors?.required) && 
+                               (!loginForm.get('email').errors?.pattern)">
+                        Invalid credentials
+                    </div>
                 </div>
                 <div class="forgot-section">
                     <div class="remember-section label">
