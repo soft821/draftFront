@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href https://Nlghtmare.github.io/DraftMatch/ && angular-cli-ghpages --branch master"
+    "deploy": "ng build --prod --base-href 'https://nlghtmare.github.io/DraftMatch/'",
+    "publish": "ngh --message='Script deploy'"
   },
   "private": true,
   "dependencies": {
