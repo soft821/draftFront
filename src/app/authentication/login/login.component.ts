@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 import {AuthService} from '../../core/auth/auth.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {LocalStorageService} from 'angular-2-local-storage';
 
 @Component({
@@ -15,17 +15,34 @@ export class LoginComponent implements OnInit {
   loginFormSubmitInProgress: boolean;
   isClickedOnce = false;
   remember: boolean;
+  isAdmin = false;
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
+              private route: ActivatedRoute,
               private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.localStorageService.remove('auth_token');
+    this.isAdmin = this.checkIsAdmin();
     this.loginForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
+  }
+
+  checkIsAdmin() {
+    let temp = false;
+    if(this.route) {
+      this.route.url.subscribe(element => {
+        if(element && element.length&& element.length>1 && element[1]) {
+          if(element[1].path === 'admin') {
+            temp = true;
+          }
+        }
+      });
+    }
+    return temp;
   }
 
   login(form) {

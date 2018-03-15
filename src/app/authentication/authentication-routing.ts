@@ -11,6 +11,10 @@ const AUTHENTICATION_ROUTES: Routes = [
     component: LoginComponent
   },
   {
+    path: 'login/admin',
+    component: LoginComponent
+  },
+  {
     path: 'signup',
     component: SignupComponent
   },

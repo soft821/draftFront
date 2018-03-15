@@ -83,6 +83,17 @@
     }
 }
 
+.dm-logo-game {
+    background: url("/assets/images/dm-logo-game.png");
+    background-size: 245px 155px;
+    width: 245px;
+    height: 160px;
+    background-repeat: no-repeat; 
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 
 button {
     &:hover {
