@@ -1,0 +1,25 @@
+<div class="navbar-header">
+    <div class="nav-container">
+        <div class="logo-container column">
+            <div class="dm-logo"></div>
+        </div>  
+        <div class="nav-list-container column">
+            <ul class="list-inline">
+                <li class="list-inline-item item">Lobby</li>
+                <li class="list-inline-item item">Matchups</li>
+                <li class="list-inline-item item">Live</li>
+                <li class="list-inline-item item">History</li>
+                <li class="list-inline-item item">Friends</li>
+            </ul>
+        </div>
+        <div class="buttons-container" *ngIf="isBlog">
+            <button class="white-btn" (click)="goToLogin()">Login</button>
+            <button class="gray-btn" (click)="goToSignup()">Join</button>
+        </div>
+        <div class="user-profile-container" *ngIf="!isBlog">
+            <span>Welcome Home, </span>
+            <span>{{auth.authenticatedUser.name}}</span>
+            <button class="white-btn" (click)="goToLogin()">Log out</button>
+        </div>
+    </div>
+</div>

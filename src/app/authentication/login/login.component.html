@@ -1,0 +1,51 @@
+<div class="row expanded stadium-image">
+  <div class="auth-container">
+        <div class="dm-logo-icons logo-section"></div>
+        <div class="login input-section">
+            <div class="title">Login</div>
+            <form [formGroup]="loginForm" novalidate>
+                <div class="input-section-row">
+                    <div class="auth-label">
+                        <span>Email Address</span>
+                    </div>            
+                    <div>
+                        <input class="auth-input" type="text" formControlName="email">
+                    </div>
+                    <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.required" class="error-msg"><span>Email address is required</span></div>
+                </div>
+                <div class="input-section-row">
+                    <div class="auth-label">
+                        <span>Password</span>
+                    </div>            
+                    <div>
+                        <input class="auth-input" type="password" formControlName="password">
+                    </div>
+                    <div *ngIf="loginFormSubmitted && loginForm.get('password').errors?.required" class="error-msg"><span>Password is required</span></div>
+                </div>
+                <div class="forgot-section">
+                    <div class="remember-section label">
+                        <div class="checkbox dm-checkbox-red">
+                            <label>
+                                <input type="checkbox" 
+                                    [checked]="remember" 
+                                    (change)="remember = !remember">
+                                <span>Remember me</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="label cursor-pointer" routerLink="/reset-password">Forgot your password?</div>
+                </div>
+                <div class="login-button">
+                    <button class="btn login-btn" 
+                        (click)="login(loginForm)"
+                        [disabled]="isClickedOnce">Log In</button>
+                </div>
+                <div class="input-section-row">
+                  <div class="auth-label">
+                    <span>Don't have an account? <span class="cursor-pointer" routerLink="/signup"><b>Join us</b></span> </span>
+                  </div> 
+                </div>
+            </form>
+        </div>
+    </div>      
+</div>
