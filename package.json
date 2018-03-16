@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href 'https://nlghtmare.github.io/DraftMatch/'",
-    "publish": "ngh --message='hulk-publish'",
+    "build-prod": "ng build --prod --base-href 'https://nlghtmare.github.io/DraftMatch/'",
+    "deploy": "ngh --message='Auto-Deploy'",
     "agent-hulk": "ssh-add ~/.ssh/hulk-DM" 
   },
   "private": true,
