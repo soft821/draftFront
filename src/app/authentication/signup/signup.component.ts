@@ -40,10 +40,12 @@ export class SignupComponent implements OnInit {
       this.authService.signUp(form)
       .subscribe(response => {
         this.authService.setDataAfterLogin(response);
-        console.log('subscribed', response)
         this.isClickedOnce = false;
         this.router.navigate(['/main/home'])
-      }) 
+      },
+      error => {
+        this.isClickedOnce = false;
+      })
     }
   };
 }
