@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {Router} from '@angular/router';
+import {ResponsiveService} from './core/responsive/responsive.service';
 
 @Component({
   selector: 'dm-root',
@@ -7,12 +8,24 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dm';
-
-  constructor(private router: Router) 
+  timeout: any;
+  constructor(private router: Router,
+              private responsiveService: ResponsiveService) 
   {}
+
+  ngOnInit() {
+   this.responsiveService.setMedia(window.innerWidth);
+  }
 
   goToLogin() {
     this.router.navigate(['/login'])
+  }
+
+  @HostListener('window:resize', ['$event'])
+  resize(e) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.responsiveService.setMedia(e.target.innerWidth);
+    }, 5);
   }
 }

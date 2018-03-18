@@ -1,0 +1,36 @@
+<div class="side-menu-container" id="side-menu">
+  <div class="stadium-image-menu">    
+    <div class="dm-logo-w"></div>
+  </div>
+  <div class="side-menu">
+    <ul class="menu-list">
+      <div class="clearfix" id="jqueryslimscroll">
+        <div class="clearfix" id="slimscrollcontent">
+          <div [@menuListItemsAnimation]='menuListItemsAnimationState'>
+            <div class="sidebar_menu_1" *ngFor="let item of menu_items_1">             
+              <li [routerLink]="item.path"                   
+                  (click)="closeSidebar()"
+                  class="item">
+                <a>
+                  <i class="{{item.icon}}"></i>
+                  {{ item.name }}
+                </a>
+              </li>
+            </div>              
+            <div class="sidebar_profile">
+              <li [routerLink]="'/login'"
+                  (click)="closeSidebar()"
+                  class="item" style="margin-bottom: 100px">
+                <a>
+                  <span class="fa fa-sign-out"></span>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>
+  

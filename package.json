@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "build-prod": "ng build --prod --base-href 'https://nlghtmare.github.io/DraftMatch/'",
     "deploy": "ngh --message='Auto-Deploy'",
-    "agent-hulk": "ssh-add ~/.ssh/hulk-DM" 
+    "agent-hulk": "ssh-add ~/.ssh/hulk-DM"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +31,7 @@
     "angular-2-local-storage": "^1.0.1",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
+    "font-awesome": "4.7.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

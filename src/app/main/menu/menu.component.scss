@@ -1,0 +1,129 @@
+@import "../../../theme/theme-variables";
+
+.dm-logo-w {
+    margin: auto;
+    background-size: 150px 90px;
+    width: 150px;
+    height: 90px;
+    position: absolute;
+    top: 15px;
+    left: 30%;
+}
+.stadium-image-menu {
+    min-height: 130px;
+    width: 100%;
+    position: relative;
+    background: url('../../../assets/images/stadium_grayout_menu.png') no-repeat; //fixed center center
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.side-menu-container {
+    background: white;
+    position: fixed;
+    z-index: 100000;
+    height: 100%;
+    width: 85%;
+    top: 0px;
+    left: 0px;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;    
+    @media (max-width: $break-xxsmall) {
+        width: 100%;
+    }
+    .side-menu {
+        height: 100%;
+        overflow-y: hidden;
+        position: relative;
+        ul.menu-list {
+            width: 85%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 866px;
+            min-height: 100%;
+            padding-left: 0px;
+            list-style: none;
+            margin-bottom: 0px;
+            height: 866px;
+            @media (max-width: $break-xxsmall) {
+                width: 100%;
+            }
+            li.item {
+                width: 100%;
+                margin-top: 0px;
+                padding: 10px 30px;
+                line-height: 35px;
+                cursor: pointer;
+                -webkit-opacity: 1;
+                -moz-opacity: 1;
+                -ms-opacity: 1;
+                -o-opacity: 1;
+                opacity: 1;
+                -webkit-transition: all 0.3s ease-in-out 150ms;
+                -moz-transition: all 0.3s ease-in-out 150ms;
+                -ms-transition: all 0.3s ease-in-out 150ms;
+                -o-transition: all 0.3s ease-in-out 150ms;
+                transition: all 0.3s ease-in-out 150ms;
+                a {
+                    font-weight: 600;
+                    font-size: 14px;
+                    text-decoration: none;
+                    -webkit-transition: color 0.1s ease-in-out;
+                    -moz-transition: color 0.1s ease-in-out;
+                    -ms-transition: color 0.1s ease-in-out;
+                    -o-transition: color 0.1s ease-in-out;
+                    transition: color 0.1s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+.side-menu-container.hidden {
+    -webkit-opacity: 0.2;
+    -moz-opacity: 0.2;
+    -ms-opacity: 0.2;
+    -o-opacity: 0.2;
+    opacity: 0.2;
+    .side-menu {
+        left: -3900px;
+        width: 0px;
+        height: 0%;
+        .menu-list {
+            width: 0px;
+        }
+        .item {
+            width: 0%;
+            height: 0%;
+            margin-top: 60px;
+            -webkit-opacity: 0;
+            -moz-opacity: 0;
+            -ms-opacity: 0;
+            -o-opacity: 0;
+            opacity: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .side-menu-container .side-menu .item {
+        padding-left: 35px;
+    }
+}
+
+.appVersion {
+    padding-left: 28px;
+    font-size: 10px;
+    color: #ffffff;
+    padding-top: 10px;
+}

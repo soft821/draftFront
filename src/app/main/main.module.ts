@@ -5,6 +5,8 @@ import {MainRoutingModule} from './main.routing';
 import {HomeComponent} from './home/home.component';
 import {NavComponent} from './../shared/navbar/navbar.component';
 import {BlogComponent} from './blog/blog.component';
+import {MenuComponent} from './menu/menu.component';
+
 
 @NgModule({
   imports: [
@@ -15,7 +17,8 @@ import {BlogComponent} from './blog/blog.component';
     MainComponent,
     HomeComponent,
     NavComponent,
-    BlogComponent
+    BlogComponent,
+    MenuComponent
   ],
   exports: [
     NavComponent,

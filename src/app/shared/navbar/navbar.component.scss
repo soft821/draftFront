@@ -5,10 +5,20 @@
     background: #ffffff;
     height: 100px;
     padding: 15px 0px;
+    @media screen and (max-width: $break-xsmall) {
+        padding: 5px 0px 0px 0px;
+        height: 95px;
+    }
     .nav-container {
         display: flex;
         position: relative;
         padding: 0px 2vw 0px 4vw;
+        @media screen and (max-width: $break-large - 1) {
+            padding: 0px 2vw 0px 3vw;
+        }
+        @media screen and (max-width: $break-small) {
+            padding: 0px 2vw 0px 0px;
+        }
         .column {
             display: flex;
         }
@@ -18,6 +28,9 @@
                 text-align: center;
                 vertical-align: top;
                 margin: 0px;
+                @media screen and (max-width: $break-small) {
+                    padding-left: 0px;
+                }
             }
             li {
                 cursor: pointer;
@@ -34,9 +47,15 @@
         .nav-list-container {
             padding: 20px 0px;
             width: 57%;
+            @media screen and (max-width: $break-small) {
+                width: 67%;
+            }
         }
         .logo-container {
             width: 13%;
+            @media screen and (max-width: $break-xsmall) {
+                width: unset;
+            }
         }
         .buttons-container, .user-profile-container {
             float: right;
@@ -45,6 +64,12 @@
             align-self: center;
             text-align: right;
             width: 30%;
+            @media screen and (max-width: $break-small) {
+                width: 20%;
+            }
+            @media screen and (max-width: $break-xsmall) {
+                width: unset;
+            }
             button:first-child {
                 margin-right: 10px;
             }
@@ -53,9 +78,32 @@
             }
         }
         .user-profile-container {
+            @media screen and (max-width: $break-small) {
+                display: flex;
+                flex-flow: column;
+                button {
+                    position: absolute;
+                    bottom: -43px;
+                    right: -5px;
+                }
+            }
             span {
                 font-size: 16px;
+                @media screen and (max-width: $break-small) {
+                    font-size: 15px;
+                }
             }
         }
+    }
+}
+
+.hamburger-menu-container {
+    color: black;
+    position: absolute;
+    right: 12px;
+    top: 5px;
+    font-size: 35px;
+    &:hover {
+        cursor: pointer;
     }
 }

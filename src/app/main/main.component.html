@@ -3,10 +3,10 @@
 <!-- <div class="row expanded stadium-image"></div> -->
 
 <div class="dm-main">
-    <!-- <fp-navbar [title]="navbarTitle" [currentRoute]="currentRoute" ></fp-navbar>
-       <fp-sidebar *ngIf="isSidebarOpen"></fp-sidebar> -->
-    <navi-bar></navi-bar>
-    <div class="dm-content">
-      <router-outlet></router-outlet>
-    </div>
+  <dm-menu *ngIf="isSidebarOpen && responsiveService.media.visibleXs"></dm-menu> 
+  <div class="dark-background" id="dark-background" *ngIf="isSidebarOpen && responsiveService.media.visibleXs"></div>
+  <navi-bar></navi-bar>
+  <div class="dm-content">
+    <router-outlet></router-outlet>
+  </div>
 </div>

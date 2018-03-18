@@ -10,7 +10,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from '../core/auth/auth-interceptors';
 //import {FooterComponent} from './footer/footer.component';
 import {HelperService} from './helper.service';
-//import {ResponsiveService} from './responsive/responsive.service';
+import {ResponsiveService} from './responsive/responsive.service';
 //import {RoleGuardService} from './auth/role-guard.service';
 /*
  * CoreModule
@@ -40,9 +40,9 @@ import {HelperService} from './helper.service';
     AuthService,
     HelperService,
     AuthGuard,
-    TokenInterceptor
-   /* ResponsiveService,
-    RoleGuardService */
+    TokenInterceptor,
+   ResponsiveService
+   /*  RoleGuardService */
   ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
