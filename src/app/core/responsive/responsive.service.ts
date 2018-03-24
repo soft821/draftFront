@@ -34,7 +34,7 @@ export class ResponsiveService {
   }
 
   clearUnselected(selected) {
-    for (let prop in this.media) {
+    for (const prop in this.media) {
       if (this.media.hasOwnProperty(prop) && prop !== selected) {
         this.media[prop] = false;
       }

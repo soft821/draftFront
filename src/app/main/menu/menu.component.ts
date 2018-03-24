@@ -3,10 +3,10 @@ import {GlobalStateService} from '../../core/global-state/global-state.service';
 import {SIDEBAR_MENU_1} from './menu-items';
 import {AuthService} from '../../core/auth/auth.service';
 import {trigger, state, style, transition, animate, keyframes} from '@angular/animations';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import {HelperService} from '../../core/helper.service';
 
-//declare var $;
+// declare var $;
 
 @Component({
   selector: 'dm-menu',

@@ -32,15 +32,15 @@ export class ResetComponent implements OnInit {
   resetPassword(form) {
     this.resetFormSubmitted = true;
     this.isClickedOnce = !!form.valid;
-    if(form.valid) {
+    if (form.valid) {
       this.authService.resetPassword(form)
       .subscribe(response => {
         this.isClickedOnce = false;
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
       },
       error => {
         this.isClickedOnce = false;
-      })  
+      });
     }
-  };
+  }
 }

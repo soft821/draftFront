@@ -6,15 +6,15 @@ import {HomeComponent} from './home/home.component';
 import {BlogComponent} from './blog/blog.component';
 
 const MAIN_ROUTES: Routes = [
-    { path: 'blog', component: BlogComponent }, 
-    {
+    { path: 'blog', component: BlogComponent },
+        {
         path: 'main', component: MainComponent,
         canActivate: [AuthGuard],
-        children: [   
-            { path: '', redirectTo: 'home', pathMatch: 'full' },         
+        children: [
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent }
         ]
-    }    
+    }
 ];
 
 @NgModule({

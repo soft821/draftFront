@@ -37,7 +37,7 @@ export class AuthService {
     this.isAuthenticated = true;
     this.authenticatedUser = authData.response;
     this.localStorageService.set('auth_token', authData.response.token);
-  };
+  }
 
   checkIsAuthenticated() {
     return new Promise((resolve, reject) => {
@@ -47,38 +47,38 @@ export class AuthService {
         resolve(response);
       }, (error) => {
         reject(error);
-      })
+      });
     });
   }
 
   login(form) {
-    let body = {
+    const body = {
       email: form.value.email,
       password: form.value.password
-    }
+    };
     return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/login`, body)
     .pipe(
       catchError(this.handleError)
-    );  
+    );
   }
 
   resetPassword(form) {
-    let body = {
+    const body = {
       email: form.value.email
-    }
+    };
     return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/resetPassword`, body)
     .pipe(
       catchError(this.handleError)
-    );  
+    );
   }
 
   signUp(form) {
-    let body = {
+    const body = {
       name: form.value.name,
       username: form.value.username,
       email: form.value.email,
       password: form.value.password
-    }
+    };
     return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/register`, body);
   }
 
@@ -96,5 +96,5 @@ export class AuthService {
     // return an ErrorObservable with a user-facing error message
     return new ErrorObservable(
       'Something bad happened; please try again later.');
-  };
+  }
 }

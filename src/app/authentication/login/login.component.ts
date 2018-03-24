@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
 
   checkIsAdmin() {
     let temp = false;
-    if(this.route) {
+    if (this.route) {
       this.route.url.subscribe(element => {
-        if(element && element.length&& element.length>1 && element[1]) {
-          if(element[1].path === 'admin') {
+        if (element && element.length && element.length > 1 && element[1]) {
+          if (element[1].path === 'admin') {
             temp = true;
           }
         }
@@ -52,18 +52,18 @@ export class LoginComponent implements OnInit {
   login(form) {
     this.loginFormSubmitted = true;
     this.isClickedOnce = !!form.valid;
-    if(form.valid) {
+    if (form.valid) {
       this.authService.login(form)
       .subscribe(response => {
         this.authService.setDataAfterLogin(response, this.remember);
         this.isClickedOnce = false;
         this.showErrorInvalidCredentials = false;
-        this.router.navigate(['/main/home'])
+        this.router.navigate(['/main/home']);
       },
       error => {
         this.showErrorInvalidCredentials = true;
         this.isClickedOnce = false;
-      })  
+      });
     }
-  };
+  }
 }

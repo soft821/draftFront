@@ -36,16 +36,16 @@ export class SignupComponent implements OnInit {
   signUp(form) {
     this.signupFormSubmitted = true;
     this.isClickedOnce = !!form.valid;
-    if(form.valid) {
+    if (form.valid) {
       this.authService.signUp(form)
       .subscribe(response => {
         this.authService.setDataAfterLogin(response);
         this.isClickedOnce = false;
-        this.router.navigate(['/main/home'])
+        this.router.navigate(['/main/home']);
       },
       error => {
         this.isClickedOnce = false;
-      })
+      });
     }
-  };
+  }
 }

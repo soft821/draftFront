@@ -26,7 +26,7 @@ export function tokenGetter() {
       prefix: 'draftmatch',
       storageType: 'localStorage'
     }),
-    //https://github.com/auth0/angular2-jwt
+    // https://github.com/auth0/angular2-jwt
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -36,7 +36,7 @@ export function tokenGetter() {
   ],
   declarations: [
     AppComponent
-  ],  
+  ],
   providers: [
     HttpClient
   ],

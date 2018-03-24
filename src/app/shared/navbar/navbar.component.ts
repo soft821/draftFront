@@ -6,7 +6,7 @@ import { ResponsiveService } from '../../core/responsive/responsive.service';
 import {GlobalStateService} from '../../core/global-state/global-state.service';
 
 @Component({
-    selector: 'navi-bar',
+    selector: 'dm-navi-bar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
@@ -26,9 +26,9 @@ export class NavComponent implements OnInit {
                 }
 
     ngOnInit() {
-      if(this.route) {
+      if (this.route) {
         this.route.url.subscribe(url => {
-          if(url[0].path === 'blog') {
+          if (url[0].path === 'blog') {
             this.isBlog = true;
           } else {
             this.isBlog = false;

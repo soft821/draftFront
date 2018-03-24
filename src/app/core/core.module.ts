@@ -8,10 +8,10 @@ import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from '../core/auth/auth-interceptors';
-//import {FooterComponent} from './footer/footer.component';
+// import {FooterComponent} from './footer/footer.component';
 import {HelperService} from './helper.service';
 import {ResponsiveService} from './responsive/responsive.service';
-//import {RoleGuardService} from './auth/role-guard.service';
+// import {RoleGuardService} from './auth/role-guard.service';
 /*
  * CoreModule
  * CoreModule is used to gather components, services that we only want to initialize once at the start.

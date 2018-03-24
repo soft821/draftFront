@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject}    from 'rxjs/Subject';
+import {Subject} from 'rxjs/Subject';
 
 
 /*
@@ -22,7 +22,7 @@ export class GlobalStateService {
   }
 
   notifyDataChanged(event, value: { value: any }) {
-    let current = this._data[event];
+    const current = this._data[event];
     if (current !== value) {
       this._data[event] = value;
       this._data.next({
@@ -33,14 +33,14 @@ export class GlobalStateService {
   }
 
   subscribe(event: string, callback: Function) {
-    let subscribers = this._subscriptions.get(event) || [];
+    const subscribers = this._subscriptions.get(event) || [];
     subscribers.push(callback);
 
     this._subscriptions.set(event, subscribers);
   }
 
   _onEvent(data: any) {
-    let subscribers = this._subscriptions.get(data['event']) || [];
+    const subscribers = this._subscriptions.get(data['event']) || [];
 
     subscribers.forEach((callback) => {
       callback.call(null, data['data']);

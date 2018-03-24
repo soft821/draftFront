@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ResponsiveService} from './core/responsive/responsive.service';
 
@@ -7,18 +7,17 @@ import {ResponsiveService} from './core/responsive/responsive.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   timeout: any;
   constructor(private router: Router,
-              private responsiveService: ResponsiveService) 
-  {}
+              private responsiveService: ResponsiveService) {}
 
   ngOnInit() {
    this.responsiveService.setMedia(window.innerWidth);
   }
 
   goToLogin() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   @HostListener('window:resize', ['$event'])
