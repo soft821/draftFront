@@ -6,7 +6,10 @@ import {HomeComponent} from './home/home.component';
 import {NavComponent} from './../shared/navbar/navbar.component';
 import {BlogComponent} from './blog/blog.component';
 import {MenuComponent} from './menu/menu.component';
-
+import {TermsOfUseComponent} from './terms-of-use/terms-of-use.component';
+import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
+import {ResponsiblePlayComponent} from './responsible-play/responsible-play.component';
+import {TrustAndSafetyComponent} from './trust-and-safety/trust-and-safety.component';
 
 @NgModule({
   imports: [
@@ -18,7 +21,11 @@ import {MenuComponent} from './menu/menu.component';
     HomeComponent,
     NavComponent,
     BlogComponent,
-    MenuComponent
+    MenuComponent,
+    TermsOfUseComponent,
+    PrivacyPolicyComponent,
+    ResponsiblePlayComponent,
+    TrustAndSafetyComponent
   ],
   exports: [
     NavComponent,

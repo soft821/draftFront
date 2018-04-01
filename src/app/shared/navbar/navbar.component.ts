@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
     ngOnInit() {
       if (this.route) {
         this.route.url.subscribe(url => {
-          if (url[0].path === 'blog') {
+          if (url[0].path !== 'main') {
             this.isBlog = true;
           } else {
             this.isBlog = false;

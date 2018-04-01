@@ -1,0 +1,67 @@
+@import "../../../theme/theme-variables";
+
+.footer {
+  display: block;
+  height: 310px;
+  background-color: black;
+  padding: 30px 0 18px;
+  @media screen and (max-width: $break-small - 1) {
+    font-size: smaller;
+    height: 315px;
+  }
+  .footer-container {
+    font-weight: bold;
+    color: #5c5c5c;
+    padding: 5px 35px;
+    .item {      
+      &:hover {
+        cursor: pointer;
+        color: #ed1e1e;
+        transition: all 0.5s ease;
+      }
+    }
+    h5 {
+      color: white;
+      line-height: 2.7;
+    }
+  }  
+}
+
+.section-text {
+  line-height: 1.52;
+  p {
+    margin-bottom: 0px;
+    line-height: 1.29;
+  }
+}
+
+.social-networks {
+  display: flex;
+}
+
+.social-icon {
+  &.fb {    
+    background: url("../../../assets/images/facebook.png");
+  }
+  &.tw {    
+    background: url("../../../assets/images/twitter.png");
+  }
+  &.ig {    
+    background: url("../../../assets/images/instagram.png");
+  }
+  background-size: 80px 80px !important;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat !important; 
+  &:hover {
+      cursor: pointer;
+  }
+}
+
+.footer-logo {
+  background: url("../../../assets/images/dm-white-logo.png");
+  background-size: 150px 115px;
+  width: 150px;
+  height: 115px;
+  background-repeat: no-repeat; 
+}

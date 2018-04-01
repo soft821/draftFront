@@ -20,4 +20,14 @@ export class HelperService {
   isArray(obj: any ) {
     return Array.isArray(obj);
   }
+
+  scrollToTop() {
+    this.router.events.filter(event => event instanceof NavigationEnd).subscribe(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
+  scrollToTopSamePage() {
+    window.scrollTo(0, 0);
+  }
 }

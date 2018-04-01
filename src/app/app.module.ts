@@ -9,6 +9,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AppRoutingModule} from './app.routing';
 import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';
+import {FooterComponent} from './core/footer/footer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -35,7 +36,8 @@ export function tokenGetter() {
     })
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent
   ],
   providers: [
     HttpClient
