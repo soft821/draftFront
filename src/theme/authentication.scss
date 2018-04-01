@@ -21,7 +21,7 @@
 
 .auth-input {
     height: 30px;
-    width: 76%;
+    width: 80%;
     border: 1px solid;
     padding: 1px 8px;
 }
@@ -32,7 +32,7 @@
     margin: auto;
     min-height: 21px;
     padding-top: 15px;
-    line-height: 15px;
+    line-height: 20px;
 }
 
 .play-now-btn, .login-btn {
@@ -52,7 +52,7 @@
 .auth-agree {   
     padding-top: 20px;
     padding-bottom: 10px;
-    width: 77%;
+    width: 78%;
     margin: auto;
     font-size: 10px;
     &.reset {
