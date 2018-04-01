@@ -3,7 +3,7 @@
         <div class="logo-container column">
             <div class="dm-logo"></div>
         </div>  
-        <div class="nav-list-container column" *ngIf="!responsiveService.media.visibleXs">
+        <div class="nav-list-container column" *ngIf="!responsiveService.media.visibleXs && !responsiveService.media.visibleXxs">
             <ul class="list-inline">
                 <li class="list-inline-item item">Lobby</li>
                 <li class="list-inline-item item">Matchups</li>
@@ -12,16 +12,16 @@
                 <li class="list-inline-item item">Friends</li>
             </ul>
         </div>
-        <div class="buttons-container" *ngIf="isBlog">
-            <button class="white-btn" (click)="goToLogin()">Login</button>
+        <div class="buttons-container" *ngIf="isBlog && !responsiveService.media.visibleXs && !responsiveService.media.visibleXxs">
+            <button class="white-btn" (click)="goToLogin()">Login</button>{{responsiveService.media.visibleXxs}}
             <button class="gray-btn" (click)="goToSignup()">Join</button>
         </div>
-        <div class="user-profile-container" *ngIf="!isBlog && !responsiveService.media.visibleXs">
+        <div class="user-profile-container" *ngIf="!isBlog && !responsiveService.media.visibleXs && !responsiveService.media.visibleXxs">
             <span>Welcome Home, </span>
             <span>{{auth.authenticatedUser.name}}</span>
             <button class="white-btn" (click)="goToLogin()">Log out</button>
         </div>
-        <div class="hamburger-menu-container" *ngIf="responsiveService.media.visibleXs">
+        <div class="hamburger-menu-container" *ngIf="responsiveService.media.visibleXs || responsiveService.media.visibleXxs">
             <a id="sidebar-bars" class="navbar-brand fp-navbar-brand cursor-pointer" (click)="toggleSidebar()">
                 <i id="sidebar-bars-icon" class="fa fa-bars"></i>
             </a>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../core/auth/auth.service';
 import {HelperService} from '../../core/helper.service';
-import { ResponsiveService } from '../../core/responsive/responsive.service';
+import {ResponsiveService} from '../../core/responsive/responsive.service';
 import {GlobalStateService} from '../../core/global-state/global-state.service';
 
 @Component({

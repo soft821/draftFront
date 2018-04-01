@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from '../../../environments/environment';
+import {ResponsiveService} from '../responsive/responsive.service';
 
 declare function require(moduleName: string): any;
 // const { version: appVersion } = require('../../../../package.json')
@@ -13,7 +14,7 @@ export class FooterComponent implements OnInit {
 
  appVersion;
 
-  constructor() {
+  constructor(public responsiveService: ResponsiveService) {
    // this.appVersion = appVersion;
    }
 

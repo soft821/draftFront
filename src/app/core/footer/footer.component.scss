@@ -2,17 +2,22 @@
 
 .footer {
   display: block;
-  height: 310px;
+  height: 340px;
   background-color: black;
   padding: 30px 0 18px;
-  @media screen and (max-width: $break-small - 1) {
-    font-size: smaller;
-    height: 315px;
+  @media screen and (max-width: $break-small) {
+    height: 888px;
+  }
+  @media screen and (max-width: 420px) {
+    height: 930px;
   }
   .footer-container {
     font-weight: bold;
     color: #5c5c5c;
     padding: 5px 35px;
+    @media screen and (max-width: $break-small) {
+      padding-left: 20px;
+    }
     .item {      
       &:hover {
         cursor: pointer;
@@ -63,5 +68,27 @@
   background-size: 150px 115px;
   width: 150px;
   height: 115px;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
+  @media screen and (max-width: $break-large - 1) {
+    background-size: 110px 90px;
+    width: 110px;
+    height: 90px;
+  }
+  @media screen and (max-width: $break-small) {
+    background-size: 208px 161px;
+    width: 208px;
+    height: 161px;
+  }
+}
+
+.copyrights {
+  text-align: center;
+  font-size: 18px;
+  @media screen and (max-width: $break-small) {
+    text-align: left;
+    font-size: 17px;
+  }
+  @media screen and (max-width: $break-xxsmall) {
+    font-size: 12px;
+  }
 }

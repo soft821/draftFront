@@ -1,11 +1,11 @@
 <div class="footer">
   <div class="footer-container">
-    <div class="content flex">
-      <div class="col-md-4">
+    <div class="content flex" [ngClass]="{'flex-column': responsiveService.media.visibleSm || responsiveService.media.visibleXs || responsiveService.media.visibleXxs}">
+      <div class="col-md-4 col-sm-12">
         <div class="section">
           <h5 class="uppercase"><b>Company</b></h5>
-          <div class="section-text flex">
-            <div class="col-md-6 flex-column p-0">
+          <div class="section-text flex" [ngClass]="{'flex-column': responsiveService.media.visibleSm || responsiveService.media.visibleXs || responsiveService.media.visibleXxs}">
+            <div class="col-md-6 col-sm-12 flex-column p-0">
               <div class="item">About DraftMatch</div>
               <div class="item">Careers</div>
               <div class="item">Mobile Apps</div>
@@ -13,7 +13,7 @@
               <div class="item">Refer a Friend</div>
               <div class="item">Contact Us</div>
             </div>
-            <div class="col-md-6 flex-column p-0">
+            <div class="col-md-6 col-sm-12 flex-column p-0">
               <div class="item" routerLink="/terms-of-use">Terms of Use</div>
               <div class="item" routerLink="/privacy-policy">Privacy Policy</div>
               <div class="item" routerLink="/responsible-play">Responsible Play</div>
@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">        
+      <div class="col-md-4 col-sm-12">        
         <div class="section">
           <h5 class="uppercase"><b>#Draftmatch</b></h5>
           <div class="section-text">
@@ -32,10 +32,10 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-sm-12 p-0">
         <div class="section flex-column">
-          <div class="first-row flex">
-            <div class="col-md-7 flex-column">
+          <div class="first-row flex" [ngClass]="{'flex-column': responsiveService.media.visibleSm || responsiveService.media.visibleXs || responsiveService.media.visibleXxs}">
+            <div class="col-md-7 col-sm-12 flex-column">
               <h5 class="uppercase"><b>Sports</b></h5>
               <div class="section-text flex-column">
                 <div>NFL</div>
@@ -47,7 +47,7 @@
                 <div>94010</div>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 col-sm-12" [ngClass]="{'p-t-10': responsiveService.media.visibleSm || responsiveService.media.visibleXs || responsiveService.media.visibleXxs}">
               <div class="footer-logo"></div>
             </div>
           </div>
@@ -60,6 +60,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="copyrights">
+        DraftMatch LLC © 2017. All Rights Reserved
     </div>
   </div>
 </div>
