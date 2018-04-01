@@ -6,8 +6,7 @@ export class ResponsiveService {
     visibleLg: false,
     visibleMd: false,
     visibleSm: false,
-    visibleXs: false,
-    visibleXxs: false
+    visibleXs: false
   };
 
   constructor() {
@@ -31,10 +30,6 @@ export class ResponsiveService {
       this.media.visibleXs = true;
       selected = 'visibleXs';
     }
-    if (width <= 320) {
-      this.media.visibleXxs = true;
-      selected = 'visibleXxs';
-    }
     this.clearUnselected(selected);
   }
 
@@ -43,6 +38,21 @@ export class ResponsiveService {
       if (this.media.hasOwnProperty(prop) && prop !== selected) {
         this.media[prop] = false;
       }
+    }
+  }
+
+  checkXxs() {
+    if (window.innerWidth <= 320) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  checkXs() {
+    if (window.innerWidth <= 540) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

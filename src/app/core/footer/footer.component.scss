@@ -32,8 +32,17 @@
   }  
 }
 
+.flex-to-sm-column {
+  display: flex;
+  flex-flow: row;
+  @media screen and (max-width: $break-small) {
+    flex-flow: column;
+  }
+}
+
 .section-text {
   line-height: 1.52;
+ 
   p {
     margin-bottom: 0px;
     line-height: 1.29;
