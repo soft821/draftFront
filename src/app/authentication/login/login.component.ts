@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.localStorageService.remove('auth_token');
+    this.authService.isAuthenticated = false;
     this.isAdmin = this.checkIsAdmin();
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.helperService.emailPattern)]],

@@ -12,11 +12,9 @@ import {GlobalStateService} from '../../core/global-state/global-state.service';
 })
 
 export class NavComponent implements OnInit {
-    isBlog = false;
     sidebarOpen = false;
     constructor(private router: Router,
                 private globalState: GlobalStateService,
-                private route: ActivatedRoute,
                 public auth: AuthService,
                 private helperService: HelperService,
                 public responsiveService: ResponsiveService) {
@@ -26,15 +24,8 @@ export class NavComponent implements OnInit {
                 }
 
     ngOnInit() {
-      if (this.route) {
-        this.route.url.subscribe(url => {
-          if (url[0].path !== 'main') {
-            this.isBlog = true;
-          } else {
-            this.isBlog = false;
-          }
-        });
-      }
+      console.log(this.auth.authenticatedUser)
+      this.auth.authenticatedUser.balance = 254.23654
     }
 
     goToLogin() {

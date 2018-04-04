@@ -119,6 +119,20 @@ button {
     background: #ffffff;
 }
 
+.green-btn {
+    width: 100px;
+    border: 1px solid white;
+    color: white;
+    padding: 5px;
+    height: 35px;
+    background: green;
+    &:hover {
+        background: white;
+        color: green;
+        border: 1px solid green;  
+    }
+}
+
 .gray-btn {
     width: 90px;
     border: 1px solid $border-gray;

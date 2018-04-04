@@ -63,7 +63,7 @@
             right: 25px;
             align-self: center;
             text-align: right;
-            width: 30%;
+            width: 370px;
             @media screen and (max-width: $break-small) {
                 width: 20%;
             }
@@ -78,20 +78,25 @@
             }
         }
         .user-profile-container {
+            display: flex;
+            flex-flow: row nowrap;
             @media screen and (max-width: $break-small) {
-                display: flex;
-                flex-flow: column;
                 button {
                     position: absolute;
                     bottom: -43px;
                     right: -5px;
                 }
             }
-            span {
-                font-size: 16px;
-                @media screen and (max-width: $break-small) {
-                    font-size: 15px;
-                }
+            div {
+               flex: 1; 
+            }
+            div:nth-child(3) {
+                flex: 1.5;
+            }
+            .balance {
+                display: flex;
+                flex-flow: column;
+                padding: 15px;
             }
         }
     }
@@ -105,5 +110,17 @@
     font-size: 35px;
     &:hover {
         cursor: pointer;
+    }
+}
+
+.nav-icon {
+    font-size: 45px;
+    color: gray;
+    .user {
+        font-size: 40px;
+    }
+    &:hover {
+        cursor: pointer;
+        color: darkslategray;
     }
 }

@@ -12,14 +12,19 @@
                 <li class="list-inline-item item">Friends</li>
             </ul>
         </div>
-        <div class="buttons-container" *ngIf="isBlog && !responsiveService.media.visibleXs">
+        <div class="buttons-container" *ngIf="!auth.isAuthenticated && !responsiveService.media.visibleXs">
             <button class="white-btn" (click)="goToLogin()">Login</button>
             <button class="gray-btn" (click)="goToSignup()">Join</button>
         </div>
-        <div class="user-profile-container" *ngIf="!isBlog && !responsiveService.media.visibleXs">
-            <span>Welcome Home, </span>
-            <span>{{auth.authenticatedUser.name}}</span>
-            <button class="white-btn" (click)="goToLogin()">Log out</button>
+        <div class="user-profile-container" *ngIf="auth.isAuthenticated && !responsiveService.media.visibleXs">
+            <div class="help"><span class="nav-icon"><i class="fa fa-question-circle-o"></i></span></div>
+            <div class="user-profile"><span class="nav-icon"><i class="user fa fa-user-circle-o"></i></span></div>
+            <div class="balance">
+                <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
+                <span>Balance</span>
+            </div><!-- (click)="goToLogin()" -->
+            <div class="p-t-20"><button class="green-btn btn" >Add Funds</button></div>
+            
         </div>
         <div class="hamburger-menu-container" *ngIf="responsiveService.media.visibleXs">
             <a id="sidebar-bars" class="navbar-brand fp-navbar-brand cursor-pointer" (click)="toggleSidebar()">
