@@ -21,7 +21,7 @@
     .item {      
       &:hover {
         cursor: pointer;
-        color: #ed1e1e;
+        color: $dm-red;
         transition: all 0.5s ease;
       }
     }

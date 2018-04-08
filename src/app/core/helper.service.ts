@@ -30,4 +30,18 @@ export class HelperService {
   scrollToTopSamePage() {
     window.scrollTo(0, 0);
   }
+  
+  disableBodyScroll(stopScrollFix?) {
+    let scrollTopPosition = stopScrollFix ? 0 : document.documentElement.scrollTop;
+    document.body.style.overflowY = 'scroll';
+    document.body.style.position = 'fixed';
+    document.body.style.top = - + scrollTopPosition.toString() + 'px';
+  }
+
+  enableBodyScroll(stopScrollFix?) {
+    let scrollTopPosition = stopScrollFix === true ? '0' : document.body.style.top.replace('px', '').replace('-', '');
+    document.body.style.overflowY = 'auto';
+    document.body.style.position = 'static';
+    document.documentElement.scrollTop = parseInt(scrollTopPosition);
+  }
 }

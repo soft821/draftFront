@@ -16,7 +16,19 @@
                   {{ item.name }}
                 </a>
               </li>
-            </div>              
+            </div>
+            <div class="menu-border"></div>   
+            <div *ngFor="let item of menu_items_2">             
+              <li [routerLink]="item.path"                   
+                  (click)="closeSidebar()"
+                  class="item">
+                <a>
+                  <i class="{{item.icon}}"></i>
+                  {{ item.name }}
+                </a>
+              </li>
+            </div>  
+            <div class="menu-border"></div>         
             <div class="sidebar_profile">
               <li [routerLink]="'/login'"
                   (click)="closeSidebar()"

@@ -12,32 +12,60 @@ import {GlobalStateService} from '../../core/global-state/global-state.service';
 })
 
 export class NavComponent implements OnInit {
-    sidebarOpen = false;
-    constructor(private router: Router,
-                private globalState: GlobalStateService,
-                public auth: AuthService,
-                private helperService: HelperService,
-                public responsiveService: ResponsiveService) {
-                  this.globalState.subscribe('menu.closed', (data) => {
-                    this.sidebarOpen = data.value;
-                  });
-                }
+  sidebarOpen = false;
+  sidebarBalanceOpen = false;
+  options = [
+    {id: 0, text: 'Contact Support', path: '/main/home'},
+    {id: 1, text: 'How to Play', path: '/main/home'},
+    {id: 2, text: 'Rules & Score', path: '/main/home'},
+    {id: 3, text: 'Training Guide', path: '/main/home'},
+    {id: 4, text: 'Responsible Play', path: '/responsible-play'},
+    {id: 5, text: 'Trust & Safety', path: '/trust-and-safety'},
+    {id: 6, text: 'Terms of Use', path: '/terms-of-use'},
+    {id: 7, text: 'Privacy Policy', path: '/privacy-policy'}
+  ];
 
-    ngOnInit() {
-      console.log(this.auth.authenticatedUser)
-      this.auth.authenticatedUser.balance = 254.23654
-    }
+  userOptions = [
+    {id: 0, text: 'Log Out', path: '/login'}
+  ]
+  constructor(private router: Router,
+              private globalState: GlobalStateService,
+              public auth: AuthService,
+              private helperService: HelperService,
+              public responsiveService: ResponsiveService) {
+                this.globalState.subscribe('menu.closed', (data) => {
+                  this.sidebarOpen = data.value;
+                });
+                this.globalState.subscribe('menu.balanceClosed', (data) => {
+                  this.sidebarBalanceOpen = data.value;
+                });
+              }
 
-    goToLogin() {
-      this.router.navigate(['/login']);
-    }
+  ngOnInit() {
+    console.log(this.auth.authenticatedUser)
+   // this.auth.authenticatedUser.balance = 254.23654
+  }
 
-    goToSignup() {
-      this.router.navigate(['/signup']);
-    }
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
 
-    toggleSidebar() {
-      this.sidebarOpen = !this.sidebarOpen;
-      this.globalState.notifyDataChanged('menu.toggleSidebar', {value: this.sidebarOpen});
-    }
+  goToSignup() {
+    this.router.navigate(['/signup']);
+  }
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+    this.globalState.notifyDataChanged('menu.toggleSidebar', {value: this.sidebarOpen});
+  }
+
+  toggleBalanceMenu() {
+    this.sidebarBalanceOpen = !this.sidebarBalanceOpen;
+    this.globalState.notifyDataChanged('menu.toggleBalanceMenu', {value: this.sidebarBalanceOpen});
+  }
+
+  goToRoute(option) {
+    console.log(option)
+    this.router.navigate([option.path]);
+  }
 }

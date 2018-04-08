@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit} from '@angular/core';
 import {GlobalStateService} from '../../core/global-state/global-state.service';
-import {SIDEBAR_MENU_1} from './menu-items';
+import {SIDEBAR_MENU_1, SIDEBAR_MENU_2} from './menu-items';
 import {AuthService} from '../../core/auth/auth.service';
 import {trigger, state, style, transition, animate, keyframes} from '@angular/animations';
 import {Router} from '@angular/router';
@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit {
   isOpen: boolean;
   sidebarHeight;
   menu_items_1: any[];
+  menu_items_2: any[];
   menuListItemsAnimationState: string;
 
   constructor(private globalState: GlobalStateService,
@@ -42,7 +43,9 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.menu_items_1 = SIDEBAR_MENU_1;
+    this.menu_items_2 = SIDEBAR_MENU_2;
     this.triggerAnimation();
+    this.helperService.disableBodyScroll();
   }
 
   private triggerAnimation() {
@@ -56,6 +59,7 @@ export class MenuComponent implements OnInit {
   closeSidebar() {
     this.isOpen = false;
     this.globalState.notifyDataChanged('menu.closed', {value: this.isOpen});
+    this.helperService.enableBodyScroll();
   }
 
   @HostListener('document:click', ['$event.target'])
@@ -65,6 +69,7 @@ export class MenuComponent implements OnInit {
     const menuBarsIcon = document.getElementById('sidebar-bars-icon');
     if (!clickedInside && ((targetElement !== menuBars) && (targetElement !== menuBarsIcon))) {
       this.globalState.notifyDataChanged('menu.closed', {value: false});
+      this.helperService.enableBodyScroll();
     }
   }
 }

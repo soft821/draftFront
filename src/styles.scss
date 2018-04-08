@@ -103,7 +103,6 @@
     }
 }
 
-
 button {
     &:hover {
         cursor: pointer;        
@@ -125,11 +124,11 @@ button {
     color: white;
     padding: 5px;
     height: 35px;
-    background: green;
+    background: $dm-green;
     &:hover {
         background: white;
-        color: green;
-        border: 1px solid green;  
+        color: $dm-green;
+        border: 1px solid $dm-green;  
     }
 }
 

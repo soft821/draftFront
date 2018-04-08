@@ -6,6 +6,7 @@ import {GlobalStateService} from './global-state/global-state.service';
 import {MainModule} from '../main/main.module';
 import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
+import {AuthorizedCheck} from './auth/authorized-check.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from '../core/auth/auth-interceptors';
 // import {FooterComponent} from './footer/footer.component';
@@ -40,8 +41,9 @@ import {ResponsiveService} from './responsive/responsive.service';
     AuthService,
     HelperService,
     AuthGuard,
+    AuthorizedCheck,
     TokenInterceptor,
-   ResponsiveService
+    ResponsiveService
    /*  RoleGuardService */
   ]
 })

@@ -9,7 +9,6 @@
                 <li class="list-inline-item item">Matchups</li>
                 <li class="list-inline-item item">Live</li>
                 <li class="list-inline-item item">History</li>
-                <li class="list-inline-item item">Friends</li>
             </ul>
         </div>
         <div class="buttons-container" *ngIf="!auth.isAuthenticated && !responsiveService.media.visibleXs">
@@ -17,17 +16,45 @@
             <button class="gray-btn" (click)="goToSignup()">Join</button>
         </div>
         <div class="user-profile-container" *ngIf="auth.isAuthenticated && !responsiveService.media.visibleXs">
-            <div class="help"><span class="nav-icon"><i class="fa fa-question-circle-o"></i></span></div>
-            <div class="user-profile"><span class="nav-icon"><i class="user fa fa-user-circle-o"></i></span></div>
+            <div class="help">
+                <span class="nav-icon">
+                    <dm-select [options]="options"
+                               [keys]="{id: 'id', text: 'text', path: 'path'}"
+                               class="select-component"
+                               [icon]="'fa fa-question-circle-o'"
+                               (optionSelected)="goToRoute($event)">
+                    </dm-select>
+                </span>
+            </div>
+            <div class="user-profile">
+                <span class="nav-icon user">
+                    <dm-select [options]="userOptions"
+                               [keys]="{id: 'id', text: 'text', path: 'path'}"
+                               class="select-component"
+                               [icon]="'fa fa-user-circle-o'"
+                               [xsmall]="true"
+                               (optionSelected)="goToLogin($event)">
+                    </dm-select>
+                </span>
+            </div>
+            <div class="balance">
+                <div class="flex-column" [ngClass]="{'p-r-20': !responsiveService.media.visibleSm}" >
+                    <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
+                    <span>Balance</span>
+                </div>
+                <div><button class="green-btn btn" >Add Funds</button></div>
+            </div>
+            
+        </div>
+        <div class="balance-container" *ngIf="responsiveService.media.visibleXs">
             <div class="balance">
                 <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
                 <span>Balance</span>
-            </div><!-- (click)="goToLogin()" -->
-            <div class="p-t-20"><button class="green-btn btn" >Add Funds</button></div>
-            
+            </div>
+            <button class="green-btn btn" >Add Funds</button>
         </div>
         <div class="hamburger-menu-container" *ngIf="responsiveService.media.visibleXs">
-            <a id="sidebar-bars" class="navbar-brand fp-navbar-brand cursor-pointer" (click)="toggleSidebar()">
+            <a id="sidebar-bars" class="navbar-balance" (click)="toggleSidebar()">
                 <i id="sidebar-bars-icon" class="fa fa-bars"></i>
             </a>
         </div>

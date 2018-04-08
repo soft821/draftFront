@@ -10,6 +10,7 @@ import {ResponsiveService} from '../core/responsive/responsive.service';
 })
 export class MainComponent implements OnInit {
   isSidebarOpen: boolean;
+
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private globalState: GlobalStateService,

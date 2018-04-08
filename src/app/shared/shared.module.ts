@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DmSelectComponent} from './components/dm-select/dm-select.component';
+import {ScrollbarModule} from 'ngx-scrollbar';
 /*
  * SharedModule
  * SharedModule is used to hold common components, directives, and pipes and share them with modules that need them.
@@ -14,14 +16,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollbarModule
   ],
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DmSelectComponent
   ],
   declarations: [
+    DmSelectComponent
   ],
   entryComponents: [
   ],

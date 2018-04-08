@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule, CanActivate} from '@angular/router';
 import {AuthGuard} from '../core/auth/auth-guard.service';
+import {AuthorizedCheck} from '../core/auth/authorized-check.service';
 import {MainComponent} from './main.component';
 import {HomeComponent} from './home/home.component';
 import {BlogComponent} from './blog/blog.component';
@@ -18,11 +19,18 @@ const MAIN_ROUTES: Routes = [
             { path: 'home', component: HomeComponent }
         ]
     },
-    { path: 'blog', component: BlogComponent },
-    { path: 'terms-of-use', component: TermsOfUseComponent },
-    { path: 'privacy-policy', component: PrivacyPolicyComponent },
-    { path: 'responsible-play', component: ResponsiblePlayComponent },
-    { path: 'trust-and-safety', component: TrustAndSafetyComponent },
+    {   
+        path: '',
+        canActivate: [AuthorizedCheck],
+        children: [
+            { path: 'blog', component: BlogComponent },
+            { path: 'terms-of-use', component: TermsOfUseComponent },
+            { path: 'privacy-policy', component: PrivacyPolicyComponent },
+            { path: 'responsible-play', component: ResponsiblePlayComponent },
+            { path: 'trust-and-safety', component: TrustAndSafetyComponent },
+        ]
+    }
+    
 ];
 
 @NgModule({
