@@ -11,7 +11,7 @@ export class ResponsiblePlayComponent implements OnInit {
   constructor(private helperService: HelperService) { }
 
   ngOnInit() {
-    this.helperService.scrollToTop();
+    this.helperService.scrollToTopSamePage();
   }
 
 }

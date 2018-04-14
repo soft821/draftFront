@@ -11,7 +11,7 @@ export class TrustAndSafetyComponent implements OnInit {
   constructor(private helperService: HelperService) { }
 
   ngOnInit() {
-    this.helperService.scrollToTop();
+    this.helperService.scrollToTopSamePage();
   }
 
 }

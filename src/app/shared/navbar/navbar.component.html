@@ -15,6 +15,10 @@
             <button class="white-btn" (click)="goToLogin()">Login</button>
             <button class="gray-btn" (click)="goToSignup()">Join</button>
         </div>
+        <div class="buttons-container flex-column" *ngIf="!auth.isAuthenticated && responsiveService.media.visibleXs">
+            <button class="white-btn" (click)="goToLogin()">Login</button>
+            <button class="gray-btn" (click)="goToSignup()">Join</button>
+        </div>
         <div class="user-profile-container" *ngIf="auth.isAuthenticated && !responsiveService.media.visibleXs">
             <div class="help">
                 <span class="nav-icon">
@@ -46,7 +50,7 @@
             </div>
             
         </div>
-        <div class="balance-container" *ngIf="responsiveService.media.visibleXs">
+        <div class="balance-container" *ngIf="auth.isAuthenticated && responsiveService.media.visibleXs">
             <div class="balance">
                 <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
                 <span>Balance</span>

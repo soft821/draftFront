@@ -48,31 +48,31 @@ export const SIDEBAR_MENU_2 = [
   {
     name: 'Training Guide',
     path: '/main/home',
-    icon: 'fa fa-history',
+    icon: '',
     order: 4
   },
   {
     name: 'Responsible Play',
     path: '/responsible-play',
-    icon: 'fa fa-history',
+    icon: '',
     order: 5
   },
   {
     name: 'Trust & Safety',
     path: '/trust-and-safety',
-    icon: 'fa fa-history',
+    icon: '',
     order: 6
   },
   {
     name: 'Terms of Use',
     path: '/terms-of-use',
-    icon: 'fa fa-history',
+    icon: '',
     order: 7
   },
   {
     name: 'Privacy Policy',
     path: '/privacy-policy',
-    icon: 'fa fa-history',
-    order: 4
+    icon: '',
+    order: 8
   }
 ];

@@ -11,6 +11,7 @@
     "e2e": "ng e2e",
     "build-prod": "ng build --prod --base-href 'https://nlghtmare.github.io/DraftMatch/'",
     "deploy": "ngh --message='Auto-Deploy'",
+    "start-agent": "eval `ssh-agent -s`",
     "agent-hulk": "ssh-add ~/.ssh/hulk-DM"
   },
   "private": true,

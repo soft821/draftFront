@@ -116,6 +116,10 @@ button {
     padding: 5px;
     height: 35px;
     background: #ffffff;
+    @media screen and (max-width: $break-xsmall) {
+        width: 80px;
+        margin-right: 0 !important;
+    }
 }
 
 .green-btn {
@@ -139,4 +143,9 @@ button {
     padding: 5px;
     height: 35px;
     background: $border-gray;
+    @media screen and (max-width: $break-xsmall) {
+        width: 80px;
+        margin-top: 5px;
+        margin-left: 0 !important;
+    }
 }

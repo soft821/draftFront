@@ -20,7 +20,7 @@ const MAIN_ROUTES: Routes = [
         ]
     },
     {   
-        path: '',
+        path: '',  component: MainComponent,
         canActivate: [AuthorizedCheck],
         children: [
             { path: 'blog', component: BlogComponent },
