@@ -1,0 +1,52 @@
+
+<div class="dm-matchup">
+    <dm-banner> </dm-banner>
+    <div class="game-content">
+        <div><span class="title">Create contest</span></div>
+        <div class="steps">
+            <div *ngFor="let step of steps" class="step">
+                <dm-contest-icon [isChecked]="step.isChecked"
+                                 [isLastOne]="step.isLastOne"
+                                 [id]="step.id"
+                                 [title]="step.title"
+                                 (selectedIcon)="goToScreen($event)"> 
+                </dm-contest-icon>
+            </div>
+        </div>
+        <div class="form">
+            <div *ngFor="let step of steps">
+                <div *ngIf="step.key === 'gameTime' && step.current">
+                    <dm-game-time [matches]="matches"
+                                    [gameTimes]="gameTimes"
+                                    (getGameTime)="getGameTime($event)">
+                    </dm-game-time>                    
+                </div>
+                <div *ngIf="step.key === 'entryFee' && step.current">
+                    <dm-entry-fee (getEntryFee)="getEntryFee($event)"
+                                  [feeSelected]="contestData[1].data[0].id"></dm-entry-fee>                    
+                </div>
+                <div *ngIf="step.key === 'matchupType' && step.current">
+                    <dm-matchup-type (getMatchupType)="getMatchupType($event)"
+                                     [matchType]="contestData[2].data[0].type"></dm-matchup-type>
+                </div>
+                <div *ngIf="step.key === 'playerPosition' && step.current">
+                    <dm-player-position (getPlayerPosition)="getPlayerPosition($event)"
+                                        [positionSelected]="contestData[3].data[0].data"></dm-player-position>
+                </div>
+                <div *ngIf="step.key === 'selectPlayer' && step.current">
+                    <dm-select-player [players]="players"
+                                      (getPlayer)="getPlayer($event)">
+                    </dm-select-player>
+                </div>
+                <div *ngIf="step.key === 'createContest' && step.current">
+                    <dm-create-contest [contestData]="contestData"
+                                       (selectedRow)="selectRow($event)"></dm-create-contest>
+                </div>
+            </div>
+            <div class="submit-button">
+                <button *ngIf="steps[activeFormIndex].key !== 'createContest' || !steps[activeFormIndex].current" class="dm-red-btn" (click)="next($event)">Next</button>
+                <button *ngIf="steps[activeFormIndex].key === 'createContest' && steps[activeFormIndex].current" class="dm-red-btn" (click)="createMatchup($event)">Create Matchup</button>
+            </div>
+        </div>
+    </div>
+</div>

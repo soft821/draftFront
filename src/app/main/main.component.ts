@@ -37,7 +37,7 @@ export class MainComponent implements OnInit {
         return route;
       })
       .filter(route => route.outlet === 'primary')
-      .mergeMap(route => route.data)
+      .map(route => route.data) //mergeMap
       .subscribe((data) => {
       //  this.navbarTitle = data.translate_key;
       });

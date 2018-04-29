@@ -1,0 +1,31 @@
+<div class="matches">
+    <div class="match" 
+        *ngFor="let match of matches; let last = last" 
+        [ngClass]="{'last-item': last}">
+        <dm-match [match]="match"></dm-match>
+    </div>
+</div>
+<div class="game-times">
+    <div class="game-row" 
+        *ngFor="let gameTime of gameTimes; let last = last; let i = index"
+        [ngClass]="{'last-item': last}" (click)="timeSelected(gameTime)">
+        <div class="flex-column">
+            <div class="flex date">
+                <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                <span class="p-l-10">{{gameTime.date}}</span>
+            </div>
+            <div class="day">                            
+                <span class="c-gray">{{gameTime.day}}</span>
+            </div>
+        </div>
+        <div class="radio-button">
+            <div class="radio dm-radio-red">
+                <label>
+                    <input id="radioLow" type="radio" 
+                        value="{{i}}" [checked]="gameTime.selected">
+                    <span></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

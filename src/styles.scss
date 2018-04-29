@@ -103,6 +103,46 @@
     }
 }
 
+.dm-prize {
+    background: url("./assets/images/prize.png");
+    background-size: 23px 35px;
+    width: 30px;
+    height: 35px;
+    background-repeat: no-repeat; 
+}
+
+.dm-note {
+    background: url("./assets/images/note.png");
+    background-size: 35px 40px;
+    width: 45px;
+    height: 40px;
+    background-repeat: no-repeat; 
+}
+
+.dm-plus-icon {
+    background: url("./assets/images/dm-plus.png");
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat; 
+}
+
+.dm-lines {
+    background: url("./assets/images/lines.png");
+    background-size: 23px 23px;
+    width: 23px;
+    height: 23px;
+    background-repeat: no-repeat; 
+}
+
+.dm-pencil-icon {
+    background: url("./assets/images/pencil.png");
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat; 
+}
+
 button {
     &:hover {
         cursor: pointer;        
@@ -129,12 +169,21 @@ button {
     padding: 5px;
     height: 35px;
     background: $dm-green;
-    &:hover {
-        background: white;
-        color: $dm-green;
-        border: 1px solid $dm-green;  
+    &:hover, &:active {
+        background: #2ae32a; 
     }
 }
+
+
+.dm-red-btn {
+    background: $dm-red-1;
+    font-weight: bold;
+    border: none;
+    color: white;
+    width: 100%;
+    height: 40px;
+}
+
 
 .gray-btn {
     width: 90px;

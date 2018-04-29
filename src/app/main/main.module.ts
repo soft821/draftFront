@@ -10,6 +10,15 @@ import {TermsOfUseComponent} from './terms-of-use/terms-of-use.component';
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
 import {ResponsiblePlayComponent} from './responsible-play/responsible-play.component';
 import {TrustAndSafetyComponent} from './trust-and-safety/trust-and-safety.component';
+import {MatchupsComponent} from './matchups/matchups.component';
+import {MatchComponent} from './matchups/match/match.component';
+import {GameTimeComponent} from './matchups/game-time/game-time.component';
+import {EntryFeeComponent} from './matchups/entry-fee/entry-fee.component';
+import {MatchupTypeComponent} from './matchups/matchup-type/matchup-type.component';
+import {PlayerPositionComponent} from './matchups/player-position/player-position.component';
+import {SelectPlayerComponent} from './matchups/select-player/select-player.component';
+import {CreateContestComponent} from './matchups/create-contest/create-contest.component';
+import {MatchupsService} from './matchups/matchups.service';
 
 @NgModule({
   imports: [
@@ -25,13 +34,22 @@ import {TrustAndSafetyComponent} from './trust-and-safety/trust-and-safety.compo
     TermsOfUseComponent,
     PrivacyPolicyComponent,
     ResponsiblePlayComponent,
-    TrustAndSafetyComponent
+    TrustAndSafetyComponent,
+    MatchupsComponent,
+    MatchComponent,
+    GameTimeComponent,
+    EntryFeeComponent,
+    MatchupTypeComponent,
+    PlayerPositionComponent,
+    SelectPlayerComponent,
+    CreateContestComponent
   ],
   exports: [
     NavComponent,
     BlogComponent
   ],
   providers: [
+    MatchupsService
   ],
   entryComponents: [
   ]

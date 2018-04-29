@@ -1,0 +1,11 @@
+<div class="player-position">
+    <div class="position-buttons">
+        <button *ngFor="let option of options" 
+                class="position-btn" 
+                [ngClass]="{'active-btn': option.id === selectedPositionId}" 
+                (click)="position(option)">
+                <span class="title">{{option.title}}</span>
+                <span>{{option.description}}</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+@import "../../../../theme/theme-variables";
+
+.matches {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid;
+    .match {
+        border-right: 1px solid $dm-light-gray;
+        padding: 10px 0 10px 10px;
+        width: 12%;
+    }
+}
+.game-times {
+    padding: 15px 10px;
+}
+.game-row {
+    display: flex;
+    position: relative;
+    height: 100px;
+    border-bottom: 1px solid gray;
+    padding-top: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+    .date {
+        font-size: 27px;
+    }
+    .day {
+        font-size: 16px;
+        padding-left: 30px;
+        padding-top: 5px;
+    }
+    .radio-button {
+        position: absolute;
+        right: 0;
+        top: 40px;
+    }
+}
+
+.last-item {
+    border: none !important;
+}

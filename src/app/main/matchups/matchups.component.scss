@@ -1,0 +1,38 @@
+@import "../../../theme/theme-variables";
+
+.dm-matchup {
+    background: white;
+}
+.game-content {
+    background: white;
+    padding: 30px 10% 80px 10%;    
+    max-width: 1300px;
+    margin: auto;
+    .title {
+        color: black;
+        font-size: 30px;
+    }
+    .steps {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        margin: auto;
+        padding: 30px 0 20px 0;
+        .step {
+            width: 130px;
+        }
+    }
+}
+
+.submit-button {
+    max-width: 100%;
+    margin: auto;
+}
+.dm-red-btn {
+    height: 65px;
+    font-size: 25px;
+    &:hover {
+        cursor: pointer;
+        background: $dm-red-btn-hover;
+    }
+}

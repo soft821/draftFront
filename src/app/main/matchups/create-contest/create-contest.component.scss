@@ -1,0 +1,54 @@
+@import "../../../../theme/theme-variables";
+
+.player-image {
+    width: 80px;
+    height: 60px;
+    img {
+        height: 100%;
+    }
+}
+
+.contest-data-table {
+    width: 100%;
+    td:first-child {
+        width: 20%;
+    }
+    td:last-child {
+        width: 12%;
+    }
+    td {
+        font-size: 17px;
+        padding: 20px 0;
+    }
+}
+
+.edit {
+    font-size: 15px;
+    color: $dm-light-gray;
+    align-items: flex-end;
+    &:hover, &:active, &:focus {
+        cursor: pointer;
+        color: #b30f0f;
+        .dm-pencil-icon {
+            filter: drop-shadow(0 0 0 red);
+        }
+    }   
+}
+
+.border-left {
+    border-left: 2px solid #b7b7b7;
+}
+
+.l-h-20 {
+    line-height: 20px;
+}
+
+.helper {
+    height: 35px;
+    align-self: center;
+    width: 20px;
+}
+
+.clock {
+    font-size: 19px;
+}

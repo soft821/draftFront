@@ -53,12 +53,12 @@
                     <div class="label cursor-pointer" routerLink="/reset-password">Forgot your password?</div>
                 </div>
                 <div class="login-button">
-                    <button class="btn login-btn" 
+                    <button class="btn dm-red-btn" 
                         (click)="login(loginForm)"
                         *ngIf="isAdmin"
                         [disabled]="isClickedOnce">Log In
                     </button>
-                    <button class="btn login-btn" 
+                    <button class="btn dm-red-btn" 
                         (click)="login(loginForm)"
                         *ngIf="!isAdmin"
                         [disabled]="isClickedOnce">Log in to your Account

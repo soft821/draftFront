@@ -9,6 +9,7 @@ import {TermsOfUseComponent} from './terms-of-use/terms-of-use.component';
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
 import {ResponsiblePlayComponent} from './responsible-play/responsible-play.component';
 import {TrustAndSafetyComponent} from './trust-and-safety/trust-and-safety.component';
+import {MatchupsComponent} from './matchups/matchups.component';
 
 const MAIN_ROUTES: Routes = [
     {
@@ -16,7 +17,8 @@ const MAIN_ROUTES: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent }
+            { path: 'home', component: HomeComponent },
+            { path: 'matchups', component: MatchupsComponent }
         ]
     },
     {   

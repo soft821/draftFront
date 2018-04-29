@@ -1,0 +1,12 @@
+<div class="matchup-type">
+    <div class="matchup-buttons">
+        <button *ngFor="let option of options" 
+                class="matchup-btn" 
+                [ngClass]="{'active-btn': option.id === selectedTypeId}" 
+                (click)="matchupType(option)">{{option.title}}
+        </button>
+    </div>
+    <div class="description">
+        <div class="dm-note"></div>Description of game type
+    </div>
+</div>

@@ -1,0 +1,42 @@
+@import "../../../../theme/theme-variables";
+
+.matchup-btn {
+    height: 70px;
+    width: 32%;
+    margin: 0 5px;
+    border: 1px solid black;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    &:hover {
+        cursor: pointer;
+        border: none;
+        background: $dm-red-btn-hover;
+        color: white;
+    }
+    &.active-btn {
+        border: none;
+        background: #9a0909;
+        color: white;
+    }
+}
+.matchup-type {
+    max-width: 790px;
+    margin: auto;
+    padding: 25px 0;
+    .matchup-buttons {
+        display: flex;
+        padding: 50px 0;
+    }
+}
+
+.description {
+    max-width: 780px;
+    margin: auto;
+    display: flex;
+    border: 1px solid black;
+    height: 200px;
+    padding: 5px;
+}

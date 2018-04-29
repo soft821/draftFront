@@ -33,7 +33,7 @@
     margin-top: -2px;
     // Use shadow to make border
     box-shadow: 0 0 0px 1px #303139;
-    transition: background-color 0.4s;
+    transition: background-color 0.5s;
   }
 
   input[type=checkbox]:disabled + span {
@@ -45,14 +45,14 @@
   input[type=checkbox]:checked + span::before {
     display: inline-block;
     border: 2px solid white;
-    height: 7px;
-    width: 9px;
-    background-color: #ed2f2f;
+    height: 11px;
+    width: 13px;
+    background-color: $dm-red-1;
   }
 }
 
 .error-msg {
-  color: #ed2f2f;
+  color: $dm-red-1;
   font-size: 13px;
   text-align: left;
   padding-top: 5px;
@@ -128,5 +128,58 @@
   @media screen and (max-width: $break-small) {
     flex: 0 0 100%;
     max-width: 100% !important;
+  }
+}
+
+.dm-radio-red {
+  // Hide existing HTML button
+  input[type=radio] {
+    display: none;
+  }
+  label {
+    padding: 0;
+  }
+
+  input[type=radio] + span {
+    position: relative;
+    z-index: 11;
+    display: inline-block;
+    margin: 0;
+    line-height: 20px;
+    min-height: 23px;
+    min-width: 23px;
+    font-weight: normal;
+  }
+
+  input[type=radio] + span::before {
+    content: "";
+    border-radius: 50%;
+    border: 1px solid #24262a;
+    background: white;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    height: 13px;
+    line-height: 23px;
+    min-width: 23px;
+    min-height: 23px;
+    margin-right: 10px;
+    margin-top: -5px;
+    // Use shadow to make border
+    box-shadow: 0 0 0px 1px #303139;
+    transition: background-color 0.4s;
+  }
+
+  input[type=radio]:disabled + span {
+    cursor: not-allowed;
+  }
+}
+
+.dm-radio-red {
+  input[type=radio]:checked + span::before {
+    display: inline-block;
+    border: 5px solid white;
+    background-color: $dm-red;
   }
 }

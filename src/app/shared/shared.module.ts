@@ -3,6 +3,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DmSelectComponent} from './components/dm-select/dm-select.component';
+import {BannerComponent} from './components/banner/banner.component';
+import {ContestIconComponent} from './components/contest-icon/contest-icon.component';
 import {ScrollbarModule} from 'ngx-scrollbar';
 /*
  * SharedModule
@@ -23,10 +25,14 @@ import {ScrollbarModule} from 'ngx-scrollbar';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DmSelectComponent
+    DmSelectComponent,
+    BannerComponent,
+    ContestIconComponent
   ],
   declarations: [
-    DmSelectComponent
+    DmSelectComponent,
+    BannerComponent,
+    ContestIconComponent
   ],
   entryComponents: [
   ],

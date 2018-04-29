@@ -5,8 +5,15 @@
         </div>  
         <div class="nav-list-container column" *ngIf="!responsiveService.media.visibleXs">
             <ul class="list-inline">
-                <li class="list-inline-item item">Lobby</li>
-                <li class="list-inline-item item">Matchups</li>
+                <li class="list-inline-item item" 
+                    routerLink="/main/home"
+                    [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{exact: true}">Lobby
+                </li>
+                <li class="list-inline-item item"
+                    routerLink="/main/matchups"
+                    [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{exact: true}">Matchups</li>
                 <li class="list-inline-item item">Live</li>
                 <li class="list-inline-item item">History</li>
             </ul>
@@ -46,7 +53,7 @@
                     <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
                     <span>Balance</span>
                 </div>
-                <div><button class="green-btn btn" >Add Funds</button></div>
+                <div><button class="green-btn" >Add Funds</button></div>
             </div>
             
         </div>
@@ -55,7 +62,7 @@
                 <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
                 <span>Balance</span>
             </div>
-            <button class="green-btn btn" >Add Funds</button>
+            <button class="green-btn" >Add Funds</button>
         </div>
         <div class="hamburger-menu-container" *ngIf="responsiveService.media.visibleXs">
             <a id="sidebar-bars" class="navbar-balance" (click)="toggleSidebar()">

@@ -1,0 +1,26 @@
+
+<div class="fee-prize">
+    <div class="flex-column item">
+        <span class="value">${{selectedFee | number}}</span>
+        <span class="title">Entry</span>
+    </div>
+    <div class="flex-column item">
+        <span class="value">${{selectedPrize | number}}</span>
+        <span class="title">Prize</span>
+    </div>
+</div>
+<div class="entry-fee">
+    <div class="fee" *ngFor="let fee of fees; let first = first">
+        <div>
+            <div class="checkbox dm-checkbox-red">
+                <label >
+                    <input type="checkbox" 
+                        [checked]="fee.selected"
+                        (change)="entryFee(fee, $event)">
+                    <span *ngIf="!first">${{fee.value | number}} for {{fee.prize | number}} prize</span>
+                    <span *ngIf="first">{{fee.value}}</span>
+                </label>
+            </div>               
+        </div>
+    </div>
+</div>

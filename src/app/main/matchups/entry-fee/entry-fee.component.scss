@@ -1,0 +1,49 @@
+@import "../../../../theme/theme-variables";
+
+.fee-btn {
+    width: 150px;
+    height: 35px;
+    background: white;
+    border: #9a0909 solid 1px;
+    color: #9a0909;
+    border-radius: 0;
+    &:hover, &:focus, &:active, &.active-btn {
+        background: #9a0909;
+        color: white;
+    }
+}
+
+.entry-fee {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    max-width: 800px;
+    margin: auto;
+    padding: 25px 15px;
+}
+.fee {
+    margin: 5px 0;
+    width: 33%;
+}
+
+.fee-prize {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    border: 1px solid black;
+    padding: 20px 0;
+    .item {
+        width: 50%;
+        text-align: center;
+        padding: 10px 0;
+        .value {
+            font-size: 40px;
+        }
+        .title {
+            font-size: 25px;
+        }
+    }
+    .item:first-child {
+        border-right: 2px solid $dm-light-gray;
+    }
+}
