@@ -1,4 +1,5 @@
 
+@import "../../../../theme/theme-variables";
 
 .match-details {
     width: 100px;
@@ -7,6 +8,9 @@
     font-size: 19px;
     line-height: 12px;
     text-transform: uppercase;
+    @media screen and (max-width: $break-xsmall) {
+        font-size: 17px;
+    }
 }
 .dm-row {
     width: 100%;
@@ -14,9 +18,16 @@
 .date-details {
     font-size: 15px;
     line-height: 0;
+    @media screen and (max-width: $break-xsmall) {
+       font-size: 12px;
+    }
 }
 .dm-row-cut {
     width: 65%;    
     padding-top: 7px;
     padding-right: 5px;
+    @media screen and (max-width: $break-xsmall) {
+        width: 54%;
+        padding-top: 3px;
+    }
 }

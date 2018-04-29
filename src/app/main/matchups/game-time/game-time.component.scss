@@ -6,10 +6,27 @@
     padding-top: 30px;
     padding-bottom: 30px;
     border-bottom: 1px solid;
-    .match {
-        border-right: 1px solid $dm-light-gray;
+    @media screen and (max-width: $break-xsmall) {
+        flex-flow: row wrap;
+        margin: auto;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    .match {        
         padding: 10px 0 10px 10px;
         width: 12%;
+        @media screen and (max-width: $break-small) {
+            padding: 10px 0 10px 6px;
+        }
+        @media screen and (max-width: $break-xsmall) {
+            width: 90px;
+        }
+        .item-border {
+            border-right: 1px solid $dm-light-gray;
+            @media screen and (max-width: $break-xsmall) {
+                border-bottom: 1px solid $dm-light-gray;
+            }
+        }
     }
 }
 .game-times {
@@ -21,16 +38,26 @@
     height: 100px;
     border-bottom: 1px solid gray;
     padding-top: 10px;
+    @media screen and (max-width: $break-xsmall) {
+        height: 85px;
+    }
     &:hover {
         cursor: pointer;
     }
     .date {
         font-size: 27px;
+        @media screen and (max-width: $break-xsmall) {
+            font-size: 25px;
+        }
     }
     .day {
         font-size: 16px;
         padding-left: 30px;
         padding-top: 5px;
+        @media screen and (max-width: $break-xsmall) {
+            font-size: 14px;
+            padding-top: 3px;
+        }
     }
     .radio-button {
         position: absolute;
@@ -39,6 +66,9 @@
     }
 }
 
+.last-item-right {
+    border-right: none !important;
+}
 .last-item {
     border: none !important;
 }

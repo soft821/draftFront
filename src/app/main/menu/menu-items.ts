@@ -9,7 +9,7 @@ export const SIDEBAR_MENU_1 = [
   },
   {
     name: 'Matchups',
-    path: '/main/home',
+    path: '/main/matchups',
     icon: 'fa fa-trophy',
     order: 2
   },

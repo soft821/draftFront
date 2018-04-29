@@ -57,6 +57,9 @@
         .nav-list-container {
             padding: 20px 0px;
             width: 57%;
+            @media screen and (max-width: $break-small) {
+                padding: 15px 0px;
+            }
         }
         .logo-container {
             width: 13%;
@@ -73,6 +76,7 @@
             width: 370px;
             @media screen and (max-width: $break-small) {
                 width: 30%;
+                display: flex;
             }
             @media screen and (max-width: $break-xsmall) {
                 width: unset;
@@ -83,6 +87,9 @@
             }
             button:nth-child(2) {
                 margin-left: 10px;
+                @media screen and (max-width: $break-small) {
+                    margin-left: 0;
+                }
             }
         }
         .user-profile-container {

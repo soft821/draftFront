@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatchupsService} from './matchups.service';
-import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
-import { environment } from '../../../environments/environment.prod';
+import { HelperService } from '../../core/helper.service';
 
 @Component({
   selector: 'dm-matchups',
@@ -326,9 +325,10 @@ export class MatchupsComponent implements OnInit {
   machups: any;
   isEdit = false;
 
-  constructor(private matchupsService: MatchupsService) { }
+  constructor(private matchupsService: MatchupsService, private helperService: HelperService) { }
 
   ngOnInit() {
+    
     this.getMatchups();
   //  this.getUsers();
 
@@ -388,7 +388,7 @@ export class MatchupsComponent implements OnInit {
   }
 
   next(event) {
-    
+    this.helperService.scrollToTopSamePage();
     if(this.validForm()) {  
       if(this.isEdit) {
         this.steps.map(x => x.current = false);

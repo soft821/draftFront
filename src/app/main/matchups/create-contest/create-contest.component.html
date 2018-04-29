@@ -28,7 +28,7 @@
         </td>
         <td>
           <div class="flex edit" (click)="editRow(row)">
-              <span class="p-r-10">Edit</span>
+              <span *ngIf="!responsiveService.media.visibleXs" class="p-r-10">Edit</span>
               <div class="dm-pencil-icon"></div>
           </div>
         </td>

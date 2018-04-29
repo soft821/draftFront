@@ -29,6 +29,9 @@
     .matchup-buttons {
         display: flex;
         padding: 50px 0;
+        @media screen and (max-width: $break-xsmall) {
+            padding: 0 0 50px 0;
+        }
     }
 }
 

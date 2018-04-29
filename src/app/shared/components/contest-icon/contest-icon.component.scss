@@ -11,6 +11,10 @@
         flex-flow: column;
         justify-content: space-between;
         min-width: 120px;
+        @media screen and (max-width: $break-xsmall) {
+            align-items: flex-start;
+            min-width: unset;
+        }
     }
     .checkmark {
         background: url("../../../../assets/images/checkmark.png");
@@ -18,6 +22,11 @@
         width: 50px;
         height: 50px;
         background-repeat: no-repeat; 
+        @media screen and (max-width: $break-xsmall) {
+            background-size: 30px 30px;
+            width: 30px;
+            height: 30px;
+        }
     }
     .chevron {
         background: url("../../../../assets/images/chevron.png");
@@ -25,6 +34,11 @@
         width: 50px;
         height: 50px;
         background-repeat: no-repeat; 
+        @media screen and (max-width: $break-xsmall) {
+            background-size: 30px 30px;
+            width: 30px;
+            height: 30px;
+        }
     }
 }
 .c-red {
@@ -33,6 +47,11 @@
 .title {
     font-size: 12px;
     padding-top: 5px;
+    @media screen and (max-width: $break-xsmall) {
+        font-size: 10px;
+        word-wrap: break-word;
+        width: 50px;
+    }
 }
 
 .dots {
@@ -47,12 +66,25 @@
     @media screen and (max-width: 1555px) {
        
     }
+    @media screen and (max-width: $break-small) {
+        right: -32px;
+    }
+    @media screen and (max-width: $break-xsmall) {
+        right: 11px;
+        top: 0px;
+    }
+    @media screen and (max-width: 400px) {
+        right: 5px;
+        top: -2px;
+    }
 }
 .dots::before {
     display: block;
     white-space: nowrap;
     overflow: hidden;  
     text-overflow: clip;
-    content:
-    ". . . . . . .";    
+    content: ". . . . . . .";  
+    @media screen and (max-width: $break-small) {
+        content: ". . .";
+    }  
 }

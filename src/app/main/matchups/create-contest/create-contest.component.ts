@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {ResponsiveService} from '../../../core/responsive/responsive.service';
 
 @Component({
   selector: 'dm-create-contest',
@@ -7,7 +8,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class CreateContestComponent implements OnInit {
  
-  constructor() { }
+  constructor(public responsiveService: ResponsiveService) { }
 
   @Input() contestData;
   @Output() selectedRow: EventEmitter<any> = new EventEmitter;

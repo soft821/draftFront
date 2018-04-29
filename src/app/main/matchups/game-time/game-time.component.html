@@ -1,8 +1,9 @@
 <div class="matches">
-    <div class="match" 
-        *ngFor="let match of matches; let last = last" 
-        [ngClass]="{'last-item': last}">
-        <dm-match [match]="match"></dm-match>
+    <div class="match"
+        *ngFor="let match of matches; let last = last; let i = index" >
+        <div class="item-border" [ngClass]="{'last-item-right': last || (responsiveService.media.visibleXs && (i+1)%4===0)}">
+            <dm-match [match]="match"></dm-match>
+        </div>
     </div>
 </div>
 <div class="game-times">

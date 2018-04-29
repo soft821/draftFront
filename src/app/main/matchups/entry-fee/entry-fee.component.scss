@@ -24,6 +24,9 @@
 .fee {
     margin: 5px 0;
     width: 33%;
+    @media screen and (max-width: $break-xsmall) {
+        width: 50%;
+    }
 }
 
 .fee-prize {
@@ -32,15 +35,24 @@
     margin: auto;
     border: 1px solid black;
     padding: 20px 0;
+    @media screen and (max-width: $break-xsmall) {
+        width: 95%;
+    }
     .item {
         width: 50%;
         text-align: center;
         padding: 10px 0;
         .value {
             font-size: 40px;
+            @media screen and (max-width: $break-xsmall) {
+               font-size: 35px;
+            }
         }
         .title {
             font-size: 25px;
+            @media screen and (max-width: $break-xsmall) {
+                font-size: 20px;
+             }
         }
     }
     .item:first-child {
