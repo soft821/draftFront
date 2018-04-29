@@ -14,7 +14,7 @@ import {MatchupsComponent} from './matchups/matchups.component';
 const MAIN_ROUTES: Routes = [
     {
         path: 'main', component: MainComponent,
-        canActivate: [AuthGuard],
+      //  canActivate: [AuthGuard],
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },

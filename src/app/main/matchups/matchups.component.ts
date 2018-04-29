@@ -15,14 +15,14 @@ export class MatchupsComponent implements OnInit {
       id: 0,
       isChecked: true,
       title: 'Game Slate',
-      current: false,
+      current: true,
       key: 'gameTime'
     },
     {
       id: 1,
       isChecked: false,
       title: 'Entry Fee',
-      current: true,
+      current: false,
       key: 'entryFee'
     },
     {
