@@ -42,7 +42,6 @@ export class NavComponent implements OnInit {
               }
 
   ngOnInit() {
-    console.log(this.auth.authenticatedUser)
    // this.auth.authenticatedUser.balance = 254.23654
   }
 

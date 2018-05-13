@@ -40,6 +40,11 @@
     margin: auto;
     display: flex;
     border: 1px solid black;
-    height: 200px;
+    min-height: 55px;
     padding: 5px;
+    margin-bottom: 20px;
+}
+
+.info {
+    padding: 10px;
 }

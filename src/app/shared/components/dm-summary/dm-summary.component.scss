@@ -1,0 +1,27 @@
+@import "../../../../theme/theme-variables";
+.summary-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 18px;
+    background: white;
+    border-bottom: 1px solid black;
+    padding: 20px;
+    div {
+        flex-grow: 1;
+    }
+    div:first-child {
+        flex-grow: 2;
+        text-align: left;
+    }
+    .value {
+        align-self: center;
+        font-size: 45px;
+        font-weight: bold;
+    }
+    .username {
+        font-size: 30px;
+        font-weight: bolder;
+    }
+}

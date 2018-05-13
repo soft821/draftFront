@@ -3,7 +3,7 @@
 export const SIDEBAR_MENU_1 = [
   {
     name: 'Lobby',
-    path: '/main/home',
+    path: '/main/lobby',
     icon: 'fa fa-th-large',
     order: 1
   },
@@ -15,13 +15,13 @@ export const SIDEBAR_MENU_1 = [
   },
   {
     name: 'Live',
-    path: '/main/home',
+    path: '/main/live',
     icon: 'fa fa-tv',
     order: 3
   },
   {
     name: 'History',
-    path: '/main/home',
+    path: '/main/history',
     icon: 'fa fa-history',
     order: 4
   }

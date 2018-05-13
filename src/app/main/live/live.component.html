@@ -1,0 +1,20 @@
+
+<div class="dm-live">
+    <dm-banner> </dm-banner>
+    <div class="live-container w-90">
+        <div class="summary">
+            <dm-summary [username]="user.username"
+                      [record]="user.record"
+                      [matchups]="user.matchups"
+                      [totalEntries]="user.totalEntries"
+                      [totalWinnings]="user.totalWinnings">
+            </dm-summary>
+        </div>
+        <div class="table">
+            <dm-table [theads]="titles"
+                      [values]="tableValues">
+
+            </dm-table>
+        </div>
+    </div>
+</div>

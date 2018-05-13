@@ -10,6 +10,9 @@ import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
 import {ResponsiblePlayComponent} from './responsible-play/responsible-play.component';
 import {TrustAndSafetyComponent} from './trust-and-safety/trust-and-safety.component';
 import {MatchupsComponent} from './matchups/matchups.component';
+import {LobbyComponent} from './lobby/lobby.component';
+import {LiveComponent} from './live/live.component';
+import {HistoryComponent} from './history/history.component';
 
 const MAIN_ROUTES: Routes = [
     {
@@ -18,7 +21,10 @@ const MAIN_ROUTES: Routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'matchups', component: MatchupsComponent }
+            { path: 'matchups', component: MatchupsComponent },
+            { path: 'live', component: LiveComponent },
+            { path: 'history', component: HistoryComponent },
+            { path: 'lobby', component: LobbyComponent }
         ]
     },
     {   

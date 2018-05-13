@@ -1,0 +1,72 @@
+<div class="dm-filter-column">
+    <div class="flex create-contest">
+        <button class="green-btn">Create contest</button>
+        <div class="flex-column p-l-10">
+            <span><b>01:11:55</b></span>
+            <span class="f-12">CONTEST START</span>
+        </div>
+    </div>
+    <div class="slate flex-column section">
+        <div class="p-10">
+            <span><b>Slate</b></span>
+            <div class="flex">
+                <div></div>
+                <div class="flex-column">
+                    <span>1:00pm ET</span>
+                    <span class="f-12">MAIN</span>
+                </div>
+            </div>
+        </div>
+        <div class="schedule">
+            <span>1:00pm ET schedule <i class="fa fa-chevron-down"></i></span>
+        </div>
+    </div>
+    
+    <div class="game-type flex-column section">
+        <div class="p-10">
+            <div *ngFor="let gameType of gameTypes; let i = index" class="flex">                
+                <div class="radio-button type">
+                    <div class="radio dm-radio-red">
+                        <label>
+                            <input id="radioLow" type="radio" 
+                                   value="{{i}}" [checked]="gameType.selected">
+                            <span>{{gameType.name}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="info"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry-fee flex-column section">
+        <div class="p-10">
+            <span class="f-18"><b>Entry Fee</b></span>
+            <div class="scale">
+                <nouislider [connect]="true" 
+                            [min]="0" 
+                            [max]="50000"
+                            [step]="1" 
+                            [(ngModel)]="scaleEntryFee"
+                            (ngModelChange)="entryFeeChange()"
+                            > <!-- [tooltips]="[ true, true ]" -->
+                </nouislider>
+            </div>
+        </div>
+    </div>
+
+    <div class="player-position flex-column section">
+            <div class="p-10">
+                <div *ngFor="let position of positions; let i = index">
+                    <div class="checkbox dm-checkbox-red">
+                        <label>
+                            <input type="checkbox" 
+                                [checked]="position.selected"
+                                (change)="entryFee(position, $event)">
+                            <span>{{position.name}}</span>
+                        </label>
+                    </div> 
+                </div>
+            </div>
+        </div>
+</div>

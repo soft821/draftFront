@@ -1,0 +1,26 @@
+<div class="matchup-table">
+    <table>
+        <thead>
+            <tr>
+                <th><div>Ranking</div></th>
+                <th><div>Position</div></th>
+                <th><div>Player</div></th>
+                <th><div>Game</div></th>
+                <th><div>Opponent</div></th>
+                <th><div>FPPG</div></th>
+                <th><div class="entry-prize"><div class="half">Entry</div><div class="half">Prize</div></div></th>
+            </tr>
+        </thead>
+        <tbody class="" *ngFor="let player of players">
+            <tr>
+                <td><div>{{player.ranking}}</div></td>
+                <td><div>{{player.position}}</div></td>
+                <td><div>{{player.name}}</div></td>
+                <td><div>{{player.team1}}@{{player.team2}}</div></td>
+                <td><div>{{player.opponent}}</div></td>
+                <td><div>{{player.fppg}}</div></td>
+                <td><div class="entry-prize"><div class="half">${{player.entry}}</div><div class="half">${{player.prize}}</div></div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

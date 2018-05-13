@@ -1,0 +1,19 @@
+<div class="headline-matchup flex-column">
+    <div class="headline">NFL HEADLINE MATCHUP - WEEK 1</div>
+    <div class="info flex">
+        <span class="time">9/17 Thu 8:00PM ET 12:24:85</span>
+        <span class="fee">Entry Fee $5</span>
+    </div>
+    <div class="draft-data flex-column" *ngFor="let player of players; let last = last">
+        <div class="draft-row flex" [ngClass]="{'last-item': last}">
+            <div class="half">                
+                <span>{{player.position}}</span>
+                <span class="name">{{player.name}}</span>
+            </div>
+            <div class="half">
+                <span>{{player.team1}}@{{player.team2}}</span>
+                <button class="green-btn uppercase">Draft</button>
+            </div>
+        </div>
+    </div>
+</div>

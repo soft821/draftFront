@@ -1,3 +1,4 @@
+@import "~nouislider/distribute/nouislider.min.css";
 @import "./theme/theme-variables";
 @import "./theme/authentication.scss";
 @import "./theme/bootstrap-ext";
@@ -32,6 +33,19 @@
     min-height: calc(100%);
     position: relative;
     background: url('./assets/images/stadium_grayout.png') no-repeat; //fixed center center
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.lobby-bck {
+    width: 100%;
+    min-height: -webkit-calc(100%);
+    min-height: -moz-calc(100%);
+    min-height: calc(100%);
+    position: relative;
+    background: url('./assets/images/lobby-bck.png') no-repeat; //fixed center center
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -145,6 +159,14 @@
     background-size: 30px 30px;
     width: 30px;
     height: 30px;
+    background-repeat: no-repeat; 
+}
+
+.dm-nfl-icon {
+    background: url("./assets/images/nfl.png");
+    background-size: 125px 47px;
+    width: 125px;
+    height: 47px;
     background-repeat: no-repeat; 
 }
 

@@ -1,0 +1,87 @@
+@import "../../../../theme/theme-variables";
+
+.dm-filter-column {
+    display: flex;
+    flex-flow: column;
+}
+
+.green-btn {
+    width: 50%;
+    background: #33c062;
+    font-size: 12px;
+}
+
+.f-12 {
+    font-size: 12px;
+}
+
+.create-contest {
+    width: 90%;
+    margin: auto;
+}
+
+.section {
+    padding-top: 10px;
+    background: white;
+    margin: 10px auto;
+    width: 90%;
+    box-shadow: 0 0 10px $dm-light-gray;
+}
+
+.slate {
+    .schedule {
+        background: #f7f7f7;
+        height: 35px;
+        border-top: 1px solid $dm-light-gray;
+        padding: 6px;
+        text-align: center;
+        color: gray;
+    }
+}
+
+.game-type {
+    .type {
+        width: 90%;
+    }
+    .info {
+        color: $dm-red;
+        font-size: 15px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.f-18 {
+    font-size: 18px;
+}
+.scale {
+    width: 90%;
+    margin: auto;
+}
+
+.dm-filter-column {
+    /deep/ nouislider {
+        .noUi-connect {
+            background: $dm-red;
+        }
+        .noUi-horizontal {
+            height: 12px;
+        }
+        .noUi-horizontal .noUi-handle {
+            width: 21px;
+            height: 17px;
+            top: -4px;
+        }
+        .noUi-handle:after, .noUi-handle:before {
+            height: 9px;
+            left: 9px;
+            top: 3px;
+        }
+    }
+}
+
+.dm-radio-red input[type=radio] + span::before {
+    min-width: 20px;
+    min-height: 20px;
+ }

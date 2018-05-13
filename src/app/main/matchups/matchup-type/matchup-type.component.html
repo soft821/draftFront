@@ -6,7 +6,12 @@
                 (click)="matchupType(option)">{{option.title}}
         </button>
     </div>
-    <div class="description">
-        <div class="dm-note"></div>Description of game type
+    <div class="description" *ngIf="selectedTypeId !== -1">
+        <div class="dm-note"></div>
+        <span>{{selectedOptionDescription}}</span>
+    </div>
+    <div class="info flex-column">
+        <span>Matchup rules</span> 
+        <span>In any of the available matchup types, your opponent cannot select a player from the same real-world event.</span> 
     </div>
 </div>

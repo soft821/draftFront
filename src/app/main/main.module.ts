@@ -1,4 +1,6 @@
 import {NgModule} from '@angular/core';
+import {DragScrollModule} from 'ngx-drag-scroll';
+import {NouisliderModule} from 'ng2-nouislider';
 import {SharedModule} from '../shared/shared.module';
 import {MainComponent} from './main.component';
 import {MainRoutingModule} from './main.routing';
@@ -19,11 +21,24 @@ import {PlayerPositionComponent} from './matchups/player-position/player-positio
 import {SelectPlayerComponent} from './matchups/select-player/select-player.component';
 import {CreateContestComponent} from './matchups/create-contest/create-contest.component';
 import {MatchupsService} from './matchups/matchups.service';
+import {LobbyComponent} from './lobby/lobby.component';
+import {LobbyService} from './lobby/lobby.service';
+import {DmCarouselComponent} from './lobby/dm-carousel/dm-carousel.component';
+import {DmFilterColumn} from './lobby/filter-column/filter-column.component';
+import {HeadlineMatchup} from './lobby/headline-matchup/headline-matchup.component';
+import {MatchupTable} from './lobby/matchup-table/matchup-table.component';
+import {LiveComponent} from './live/live.component';
+import {HistoryComponent} from './history/history.component';
+import {DmTable} from '../shared/components/dm-table/dm-table.component';
+import {DmSummary} from '../shared/components/dm-summary/dm-summary.component';
+
 
 @NgModule({
   imports: [
     MainRoutingModule,
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    DragScrollModule,
+    NouisliderModule
   ],
   declarations: [
     MainComponent,
@@ -42,14 +57,24 @@ import {MatchupsService} from './matchups/matchups.service';
     MatchupTypeComponent,
     PlayerPositionComponent,
     SelectPlayerComponent,
-    CreateContestComponent
+    CreateContestComponent,
+    LobbyComponent,
+    DmCarouselComponent,
+    DmFilterColumn,
+    HeadlineMatchup,
+    MatchupTable,
+    LiveComponent,
+    HistoryComponent,
+    DmTable,
+    DmSummary
   ],
   exports: [
     NavComponent,
     BlogComponent
   ],
   providers: [
-    MatchupsService
+    MatchupsService,
+    LobbyService
   ],
   entryComponents: [
   ]

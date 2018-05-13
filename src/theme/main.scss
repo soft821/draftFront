@@ -183,3 +183,18 @@
     background-color: $dm-red;
   }
 }
+
+.last-item-right {
+  border-right: none !important;
+}
+.last-item {
+  border: none !important;
+}
+
+.w-90 {
+  width: 90%;
+  margin: auto;
+  @media screen and (max-width: $break-large - 1) {
+    width: 100%;
+  }
+}

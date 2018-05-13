@@ -9,7 +9,7 @@ import {HelperService} from '../../core/helper.service';
 import {TokenInterceptor} from './../../core/auth/auth-interceptors';
 
 @Injectable()
-export class MatchupsService {
+export class LobbyService {
 
   constructor(private httpClient: HttpClient,
               private helperService: HelperService) {

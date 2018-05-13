@@ -1,0 +1,61 @@
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let thead of theads">
+                <div>{{thead.title}}</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let value of values">
+            <td *ngIf="historyTable">
+                <div>{{value.date}}</div>
+            </td>
+            <td>
+                <div class="flex-column">
+                    <div class="flex">                        
+                        <span class="position">{{value.position}}</span>
+                        <span class="p-r-10">{{value.p}}</span>
+                        <span class="team">{{value.team}}</span>
+                    </div>
+                    <div class="flex">
+                        <span>{{value.slate}}</span>
+                    </div>
+                    <div class="flex">
+                        <span class="gray-label">{{value.match}}</span>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="score">{{value.score}}</div>
+            </td>
+            <td>
+                <div class="flex-column">
+                    <div class="flex">                        
+                        <span class="position">{{value.position}}</span>
+                        <span class="p-r-10">{{value.p}}</span>
+                        <span class="team">{{value.team}}</span>
+                    </div>
+                    <div class="flex">
+                        <span>{{value.slate}}</span>
+                    </div>
+                    <div class="flex">
+                        <span class="gray-label">{{value.match1}}</span>
+                    </div>
+                    <div class="flex">
+                        <span class="gray-label">{{value.opponent}}</span>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="score">{{value.opponentScore}}</div>
+            </td>
+            <td>
+                <div class="entry-value">${{value.entry}}</div>
+            </td>
+            <td>
+                <div class="winning-value" [class.green-label]="value.winning > 0">${{value.winning}}</div>
+            </td>
+        </tr>
+    </tbody>
+</table>

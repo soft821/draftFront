@@ -1,0 +1,30 @@
+<div class="dm-carousel">
+    <div class="p-relative flex">
+        <div class="arrow left" [ngClass]="{'disabled': leftNavDisabled}" (click)="moveLeft()"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></div>
+        <div class="arrow right" [ngClass]="{'disabled': rightNavDisabled}" (click)="moveRight()"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+        <div class="item-list"             
+            dragScroll
+            [scrollbar-hidden]="true" 
+            (reachesLeftBound)="leftBoundStat($event)"
+            (reachesRightBound)="rightBoundStat($event)"
+            #nav>
+            <div class="item" *ngFor="let item of items; let last = last" [ngClass]="{'last-item-right': last}">
+                <div class="p-b-5">{{item.time}}</div>
+                <span class="flex">
+                    <div class="w-75">
+                        <img class="item-img" [src]="item.img" alt="item.team1">
+                        <span class=""> {{item.team1}}</span>  
+                    </div>
+                    <span class=""> {{item.points1}}</span>       
+                </span>
+                <span class="flex">
+                    <div class="w-75">
+                        <img class="item-img" [src]="item.img" alt="item.team2">
+                        <span class=""> {{item.team2}}</span> 
+                    </div>                  
+                    <span class=""> {{item.points2}}</span>                   
+                </span>
+            </div>
+        </div>
+     </div>
+</div>

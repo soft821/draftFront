@@ -6,7 +6,7 @@
         <div class="nav-list-container column" *ngIf="!responsiveService.media.visibleXs">
             <ul class="list-inline">
                 <li class="list-inline-item item" 
-                    routerLink="/main/home"
+                    routerLink="/main/lobby"
                     [routerLinkActive]="'active'"
                     [routerLinkActiveOptions]="{exact: true}">Lobby
                 </li>
@@ -14,8 +14,14 @@
                     routerLink="/main/matchups"
                     [routerLinkActive]="'active'"
                     [routerLinkActiveOptions]="{exact: true}">Matchups</li>
-                <li class="list-inline-item item">Live</li>
-                <li class="list-inline-item item">History</li>
+                <li class="list-inline-item item"
+                    routerLink="/main/live"
+                    [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{exact: true}">Live</li>
+                <li class="list-inline-item item"
+                    routerLink="/main/history"
+                    [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{exact: true}">History</li>
             </ul>
         </div>
         <div class="buttons-container" *ngIf="!auth.isAuthenticated && !responsiveService.media.visibleXs">

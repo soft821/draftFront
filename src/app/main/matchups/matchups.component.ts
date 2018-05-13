@@ -389,19 +389,14 @@ export class MatchupsComponent implements OnInit {
 
   next(event) {
     this.helperService.scrollToTopSamePage();
-    if(this.validForm()) {  
-      if(this.isEdit) {
-        this.steps.map(x => x.current = false);
-        this.steps[this.steps.length - 1].current = true;
-      } else {        
-        let index = this.steps.findIndex(x => x.current === true);
-        if(index !== -1) {
-          this.steps[index+1].current = true;
-          this.steps[index+1].isChecked = true;
-          this.steps[index].current = false;
-          this.activeFormIndex = index+1;
-        } 
-      }      
+    if(this.validForm()) {                
+      let index = this.steps.findIndex(x => x.current === true);
+      if(index !== -1) {
+        this.steps[index+1].current = true;
+        this.steps[index+1].isChecked = true;
+        this.steps[index].current = false;
+        this.activeFormIndex = index+1;
+      }    
     }
   }
 
@@ -413,8 +408,13 @@ export class MatchupsComponent implements OnInit {
   }
 
   selectRow(row) {
-    this.isEdit = true;
+    console.log(row)
     this.activeFormIndex = row.id;
+    this.steps.forEach(element => {
+      if(element.id > row.id) {
+        element.isChecked = false;
+      }
+    });
     this.goToScreen(row.id);
   }
 

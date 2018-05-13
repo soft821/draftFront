@@ -1,0 +1,55 @@
+@import "../../../../theme/theme-variables";
+
+.dm-carousel {
+    width: 100%;
+    height: 150px;
+    background: transparent;
+    .arrow {
+        font-size: 70px;
+        position: absolute;
+        top: 20px;
+        &:hover {
+            cursor: pointer;
+            color: $dm-red;
+        }
+        &.left {
+            left: 10px;
+        }
+        &.right {
+            right: 10px;
+        }
+        &.disabled {
+            color: $dm-light-gray !important;
+            cursor: default;
+        }
+    }
+}
+
+.item-list {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    width: 92%;
+    margin: auto;
+    padding: 15px;
+    overflow: hidden !important;
+    background: white;
+}
+
+.item {
+    width: 160px;
+    border-right: 1px solid gray;
+    padding-left: 10px;
+    font-size: 16px;
+    &:hover {
+        cursor: -webkit-grab;
+    }
+}
+.item-img {
+    width: 30px;
+    height: 30px;
+}
+
+.w-75 {
+    width: 75%;
+}
+

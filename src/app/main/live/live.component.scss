@@ -1,0 +1,10 @@
+@import "../../../theme/theme-variables";
+
+.dm-live {
+    background: #f5f5f5;
+    /deep/ dm-banner {
+       .dm-banner {
+            background: $dm-banner;
+       } 
+    }
+}

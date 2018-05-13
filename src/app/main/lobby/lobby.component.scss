@@ -1,0 +1,55 @@
+@import "../../../theme/theme-variables";
+//npm i ngx-carousel
+
+.dm-lobby {
+    /deep/ dm-banner {
+       .dm-banner {
+            background: $dm-banner;
+       } 
+    }
+}
+
+.dm-lobby {
+    background: #f1f2f3;
+}
+
+.nfl-tab-container {
+    height: 80px;
+    background: $dm-banner;
+    padding-top: 20px;
+    .nfl-tab {
+        background: white;
+        width: 350px;
+        height: 60px;
+        margin-left: 4%;
+        padding-top: 10px;
+        div {
+            margin: auto;
+        }
+    }
+}
+
+.lower-part {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.filter-column {
+    width: 20%;
+    padding: 10px 0;
+}
+
+.main-column {
+    width: 78%;
+    .headlines {
+        padding: 10px;
+        justify-content: space-between;
+        .headline {
+            width: 32.8%;
+        }
+    }
+}
+.matchup-table {
+    width: 100%;
+}
