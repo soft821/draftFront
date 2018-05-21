@@ -96,7 +96,7 @@ export class MatchupsComponent implements OnInit {
     });
   }
 
-  showConfirmModal() {
+  showConfirmModal(event) {
     this.modalOpened = true;
     let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Confirm Matchup',
