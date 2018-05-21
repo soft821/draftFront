@@ -11,6 +11,7 @@ export class DmSummary implements OnInit {
   @Input() matchups;
   @Input() totalEntries;
   @Input() totalWinnings;
+  @Input() matchup;
 
   constructor() { }
 

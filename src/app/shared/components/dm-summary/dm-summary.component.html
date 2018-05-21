@@ -13,8 +13,8 @@
             <span>Total entries</span>
         </div>
         <div class="flex-column">
-            <span class="value">${{totalWinnings}}</span>
-            <span>Total Winnings</span>
+            <span *ngIf="!matchup" class="value">${{totalWinnings}}</span>
+            <span *ngIf="!matchup">Total Winnings</span>
         </div>
     </div>
 </div>

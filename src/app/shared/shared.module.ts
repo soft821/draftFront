@@ -6,6 +6,7 @@ import {DmSelectComponent} from './components/dm-select/dm-select.component';
 import {BannerComponent} from './components/banner/banner.component';
 import {ContestIconComponent} from './components/contest-icon/contest-icon.component';
 import {ScrollbarModule} from 'ngx-scrollbar';
+import {ConfirmationModalComponent} from './alert-modals/confirmation-modal/confirmation-modal.component';
 /*
  * SharedModule
  * SharedModule is used to hold common components, directives, and pipes and share them with modules that need them.
@@ -27,14 +28,17 @@ import {ScrollbarModule} from 'ngx-scrollbar';
     ReactiveFormsModule,
     DmSelectComponent,
     BannerComponent,
-    ContestIconComponent
+    ContestIconComponent,
+    ConfirmationModalComponent
   ],
   declarations: [
     DmSelectComponent,
     BannerComponent,
-    ContestIconComponent
+    ContestIconComponent,
+    ConfirmationModalComponent
   ],
   entryComponents: [
+    ConfirmationModalComponent
   ],
   providers: [
   ]

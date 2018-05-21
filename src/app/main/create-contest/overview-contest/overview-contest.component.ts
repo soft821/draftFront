@@ -2,11 +2,11 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ResponsiveService} from '../../../core/responsive/responsive.service';
 
 @Component({
-  selector: 'dm-create-contest',
-  templateUrl: './create-contest.component.html',
-  styleUrls: ['./create-contest.component.scss']
+  selector: 'dm-overview-contest',
+  templateUrl: './overview-contest.component.html',
+  styleUrls: ['./overview-contest.component.scss']
 })
-export class CreateContestComponent implements OnInit {
+export class OverviewContestComponent implements OnInit {
  
   constructor(public responsiveService: ResponsiveService) { }
 

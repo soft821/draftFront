@@ -12,49 +12,68 @@
                 <div>{{value.date}}</div>
             </td>
             <td>
-                <div class="flex-column">
-                    <div class="flex">                        
-                        <span class="position">{{value.position}}</span>
-                        <span class="p-r-10">{{value.p}}</span>
-                        <span class="team">{{value.team}}</span>
-                    </div>
-                    <div class="flex">
-                        <span>{{value.slate}}</span>
-                    </div>
-                    <div class="flex">
-                        <span class="gray-label">{{value.match}}</span>
+                <div class="flex" >
+                    <div class="dm-player"></div>
+                    <div class="flex-column p-l-5">
+                        <div class="flex">                        
+                            <span class="position">{{value.position}}</span>
+                            <span class="p-r-10">{{value.p}}</span>
+                            <span class="team">{{value.team}}</span>
+                        </div>
+                        <div class="flex">
+                            <span>{{value.slate}}</span>
+                        </div>
+                        <div class="flex">
+                            <span class="gray-label">{{value.match}}</span>
+                        </div>
                     </div>
                 </div>
             </td>
-            <td>
+            <td *ngIf="!matchups">
                 <div class="score">{{value.score}}</div>
             </td>
             <td>
-                <div class="flex-column">
-                    <div class="flex">                        
-                        <span class="position">{{value.position}}</span>
-                        <span class="p-r-10">{{value.p}}</span>
-                        <span class="team">{{value.team}}</span>
-                    </div>
-                    <div class="flex">
-                        <span>{{value.slate}}</span>
-                    </div>
-                    <div class="flex">
-                        <span class="gray-label">{{value.match1}}</span>
-                    </div>
-                    <div class="flex">
-                        <span class="gray-label">{{value.opponent}}</span>
+                <div class="flex" *ngIf="!matchups || (matchups && value.hasOpponent)">                
+                    <div class="dm-player"></div>
+                    <div class="flex-column p-l-5">
+                        <div class="flex">                        
+                            <span class="position">{{value.position}}</span>
+                            <span class="p-r-10">{{value.p}}</span>
+                            <span class="team">{{value.team}}</span>
+                        </div>
+                        <div class="flex">
+                            <span>{{value.slate}}</span>
+                        </div>
+                        <div class="flex">
+                            <span class="gray-label">{{value.match1}}</span>
+                        </div>
+                        <div class="flex">
+                            <span class="gray-label">{{value.opponent}}</span>
+                        </div>
                     </div>
                 </div>
+                <div class="dm-question-mark" *ngIf="matchups && !value.hasOpponent"></div>
             </td>
-            <td>
+            <td *ngIf="!matchups">
                 <div class="score">{{value.opponentScore}}</div>
+            </td>
+            <td *ngIf="matchups">
+                <div class="matchup-type">{{value.matchupType}}</div>
             </td>
             <td>
                 <div class="entry-value">${{value.entry}}</div>
             </td>
-            <td>
+            <td *ngIf="!matchups">
                 <div class="winning-value" [class.green-label]="value.winning > 0">${{value.winning}}</div>
+            </td>
+            <td *ngIf="matchups">
+                <div class="winning-value">
+                    <div *ngIf="value.editable" class="dm-lock"></div>
+                    <div *ngIf="!value.editable" class="edit-icons">
+                        <span class="fa fa-pencil-square-o"></span>
+                        <span class="close-sign" (click)="showConfirmModal()">X</span>
+                    </div>
+                </div>
             </td>
         </tr>
     </tbody>

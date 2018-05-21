@@ -20,7 +20,8 @@
       "prefix": "dm",
       "styles": [        
         "../node_modules/font-awesome/css/font-awesome.css",
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/ngx-simple-modal/styles/simple-modal.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

@@ -5,9 +5,20 @@ table {
     font-size: 17px;
     thead {
         background: #f5f5f5;
+        th {
+            &:last-child {
+                text-align: center;
+            }
+        }
     }
     tbody {
         background: white;
+        td {
+            vertical-align: middle;
+            &:last-child {
+                width: 10%;
+            }
+        }
     }
 }
 
@@ -20,6 +31,7 @@ table {
 .winning-value {
     font-size: 25px;
     font-weight: bolder;
+    text-align: center;
 }
 
 .green-label {
@@ -46,3 +58,30 @@ table {
     color: #8d8d8d;
 }
 
+.edit-icons {
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .fa-pencil-square-o {
+        padding-top: 3px;
+        &:hover {
+            color: $dm-light-gray;
+        }
+    }
+    .close-sign {
+        color: $dm-red;
+        font-size: 29px;
+        padding-left: 10px;
+        &:hover {
+            color: $dm-light-gray;
+        }
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.dm-lock {    
+    margin: auto;
+}

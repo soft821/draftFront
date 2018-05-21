@@ -3,13 +3,13 @@
     <table class="contest-data-table">
       <tr *ngFor="let row of contestData; let i = index">
         <td>
-          <div><b>{{row.title}}</b></div>
+          <div class="capitalize"><b>{{row.title}}</b></div>
         </td>
         <td>
           <div class="flex p-l-10">
             <div class="border-left helper"></div>
             <div class="player-image" *ngIf="row.img">
-              <img [src]="row.img" alt="">
+              <div class="dm-player"></div>
             </div>
             <div *ngIf="row.clock" class="p-r-10 clock">
               <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
@@ -19,7 +19,9 @@
                 <span [style.color]="details.color?details.color:black"
                       [style.font-weight]="details.bold?'bold':'normal'"
                       [style.font-size.px]="details.fontSize?details.fontSize:18">
-                      <span *ngIf="i === 1 && details.value !== 0">${{details.data | number}}</span>
+                      <span *ngIf="i === 1 && details.value !== 0">
+                        <span class="p-r-10">${{details.data | number}} Entry</span> | 
+                        <span class="p-l-10">${{details.value | number}} Prize</span></span>
                       <span *ngIf="i !== 1 || (i === 1 && details.value === 0)">{{details.data}}</span>
                 </span>
               </div>

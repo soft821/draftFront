@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'dm-filter-column',
@@ -7,7 +8,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 })
 export class DmFilterColumn implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   gameTypes = [
     {
@@ -77,6 +78,10 @@ export class DmFilterColumn implements OnInit {
   scaleEntryFee = [ 0, 50000 ];;
 
   ngOnInit() {}
+
+  goToCreateContest() {
+    this.router.navigate(['main/create-contest']);
+  }
   
   entryFeeChange() {
 console.log(this.scaleEntryFee)  }

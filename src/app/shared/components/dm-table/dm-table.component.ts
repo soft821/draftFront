@@ -9,9 +9,13 @@ export class DmTable implements OnInit {
   @Input() theads;
   @Input() values;
   @Input() historyTable;
-
+  @Input() matchups;
+  @Output() showModal: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {}
   
+  showConfirmModal() {
+      this.showModal.emit();
+  }
 }

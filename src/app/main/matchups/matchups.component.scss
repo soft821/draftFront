@@ -1,47 +1,10 @@
 @import "../../../theme/theme-variables";
 
-.dm-matchup {
-    background: white;
-}
-.game-content {
-    background: white;
-    padding: 30px 10% 80px 10%;    
-    max-width: 1300px;
-    margin: auto;
-    @media screen and (max-width: $break-small) {
-        padding: 30px 1px 80px 1px;
-    }
-    .title {
-        color: black;
-        font-size: 30px;
-    }
-    .steps {
-        display: flex;
-        flex-flow: row;
-        justify-content: center;
-        margin: auto;
-        padding: 30px 0 20px 0;
-        @media screen and (max-width: $break-xsmall) {
-            padding: 30px 0 20px 15px;
-        }
-        .step {
-            width: 130px;
-            @media screen and (max-width: $break-xsmall) {
-                width: 70px;
-            }
-        }
-    }
-}
-
-.submit-button {
-    max-width: 100%;
-    margin: auto;
-}
-.dm-red-btn {
-    height: 65px;
-    font-size: 25px;
-    &:hover {
-        cursor: pointer;
-        background: $dm-red-btn-hover;
+.dm-matchups {
+    background: #f5f5f5;
+    /deep/ dm-banner {
+       .dm-banner {
+            background: $dm-banner;
+       } 
     }
 }

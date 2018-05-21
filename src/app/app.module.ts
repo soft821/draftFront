@@ -10,6 +10,7 @@ import {AppRoutingModule} from './app.routing';
 import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';
 import {FooterComponent} from './core/footer/footer.component';
+import {SimpleModalModule} from 'ngx-simple-modal';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -21,6 +22,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
+    SimpleModalModule,
     // Angular 2 LocalStorage wrapper
     // https://www.npmjs.com/package/angular-2-local-storage
     LocalStorageModule.withConfig({

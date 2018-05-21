@@ -5,3 +5,12 @@
     height: 100%;
     position: relative;
 }
+:host /deep/ .fade:not(.show) {
+    opacity: 1 !important;
+}
+:host /deep/ .modal-content {
+    margin: 20px auto;
+    max-width: 580px;
+    position: relative;
+    width: 100%;
+}

@@ -55,7 +55,7 @@ export class HistoryComponent implements OnInit {
       opponentScore: 22.58,
       entry: 2,
       winning: 5,
-      date: '2017/05/05'
+      date: '05/05'
     },
     {
       id: 1,
@@ -71,7 +71,7 @@ export class HistoryComponent implements OnInit {
       opponentScore: 22.58,
       entry: 3,
       winning: 9,
-      date: '2017/05/05'
+      date: '05/05'
     },
     {
       id: 2,
@@ -87,7 +87,7 @@ export class HistoryComponent implements OnInit {
       opponentScore: 27.58,
       entry: 10,
       winning: 0,
-      date: '2017/05/04'
+      date: '05/04'
     }
   ];
 

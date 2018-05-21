@@ -2,11 +2,11 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ResponsiveService} from '../../../core/responsive/responsive.service';
 
 @Component({
-  selector: 'dm-game-time',
-  templateUrl: './game-time.component.html',
-  styleUrls: ['./game-time.component.scss']
+  selector: 'dm-slate',
+  templateUrl: './slate.component.html',
+  styleUrls: ['./slate.component.scss']
 })
-export class GameTimeComponent implements OnInit {
+export class SlateComponent implements OnInit {
   @Input() gameTimes;
   @Input() matches;
   @Output() getGameTime: EventEmitter<any> = new EventEmitter();

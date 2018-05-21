@@ -1,0 +1,73 @@
+<div class="players">
+  <div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <div>Rank</div>
+          </th>
+          <th>
+            <div>Position</div>
+          </th>
+          <th>
+            <div>Player</div>
+          </th>
+          <th>
+            <div>Game</div>
+          </th>
+          <th>
+            <div>FPPG</div>
+          </th>
+          <th>
+            <div></div>
+          </th>
+         <!--  <th class="ta-c">
+            <div class="sort-by" (click)="orderBy(!sortDesc)">
+              <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="sortDesc"></i>
+              <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="!sortDesc"></i>
+              <span class="p-l-10">Salary</span>              
+            </div>
+          </th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr [ngClass]="{'highlighted':player.selected, 'border-unset': !player.selected}" 
+            *ngFor="let player of players" 
+            class="player-row" 
+            (click)="selectPlayer(player)">
+          <td class="p-l-5">
+            <div class="flex jc-c">
+             {{player.rank}}
+            </div>
+          </td>
+          <td>
+            <div class="flex jc-c p-relative">                            
+              {{player.position}}
+            </div>
+          </td>
+          <td>
+            <div class="flex ai-c">
+              <div class="dm-player"></div>
+              <div class="p-l-10">{{player.name}}</div>
+            </div>
+          </td>
+          <td>
+            <div class="flex jc-c">
+              <div>{{player.game}}</div>
+            </div>
+          </td>
+          <td>
+            <div class="flex jc-c">
+              {{player.points}}
+            </div>
+          </td>
+          <td>
+            <div class="flex">
+              <button class="green-btn">Draft</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
