@@ -12,9 +12,15 @@
         <div class="main-column">
             <div class="lobby-bck">
                 <div class="flex headlines">
-                    <dm-headline-matchup class="headline"></dm-headline-matchup>
-                    <dm-headline-matchup class="headline"></dm-headline-matchup>
-                    <dm-headline-matchup class="headline"></dm-headline-matchup>
+                    <dm-headline-matchup (confirmMatchupEvent)="showConfirmModal($event)" 
+                                        class="headline">
+                    </dm-headline-matchup>
+                    <dm-headline-matchup (confirmMatchupEvent)="showConfirmModal($event)" 
+                                        class="headline">
+                    </dm-headline-matchup>
+                    <dm-headline-matchup (confirmMatchupEvent)="showConfirmModal($event)" 
+                                        class="headline">
+                    </dm-headline-matchup>
                 </div>
                 <div class="matchup-table">
                     <dm-matchup-table></dm-matchup-table>
@@ -23,3 +29,4 @@
         </div>
     </div>
 </div>
+<div class="modal-background" *ngIf="modalOpened"></div>

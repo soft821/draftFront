@@ -1,0 +1,23 @@
+@import "../../../../theme/theme-variables";
+
+.container {
+    text-align: left;
+    position: relative;
+    padding: 10px 20px;
+}
+
+.username {
+    color: #b80c0c;
+}
+
+.score {
+    position: absolute;
+    right: 10px;
+    align-self: center;
+}
+
+.dm-player {
+    background-size: 80px 80px;
+    width: 80px;
+    height: 80px;
+}

@@ -7,6 +7,7 @@ import {BannerComponent} from './components/banner/banner.component';
 import {ContestIconComponent} from './components/contest-icon/contest-icon.component';
 import {ScrollbarModule} from 'ngx-scrollbar';
 import {ConfirmationModalComponent} from './alert-modals/confirmation-modal/confirmation-modal.component';
+import {PlayerTicketComponent} from './components/player-ticket/player-ticket.component';
 /*
  * SharedModule
  * SharedModule is used to hold common components, directives, and pipes and share them with modules that need them.
@@ -35,7 +36,8 @@ import {ConfirmationModalComponent} from './alert-modals/confirmation-modal/conf
     DmSelectComponent,
     BannerComponent,
     ContestIconComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    PlayerTicketComponent
   ],
   entryComponents: [
     ConfirmationModalComponent

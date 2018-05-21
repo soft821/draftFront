@@ -100,7 +100,9 @@ export class MatchupsComponent implements OnInit {
     this.modalOpened = true;
     let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Confirm Matchup',
-        message: 'Are you sure you want to cancel this matchup?'
+        message: 'Are you sure you want to cancel this matchup?',
+        buttonText: 'Yes',
+        setOpponent: false
     })
     .subscribe((isConfirmed)=>{
       this.modalOpened = false;

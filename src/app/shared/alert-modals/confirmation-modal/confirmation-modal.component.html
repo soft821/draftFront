@@ -6,9 +6,25 @@
     <span class="close-sign" (click)="close()">X</span>
   </div>
   <div class="modal-body">
-    <p>{{message}}</p>
+    <p *ngIf="message">{{message}}</p>
+    <div *ngIf="setOpponent">
+      <div class="flex match-time">
+        <span class="p-10">9/7/2017</span>
+        <span class="p-10">Thursday - Sunday 5:30pm ET</span>
+        <span class="p-10">12:27:41</span>
+      </div>
+      <dm-player-ticket>        
+      </dm-player-ticket>
+      <div class="border-between"></div>
+      <dm-player-ticket>        
+      </dm-player-ticket>
+      <br>
+      <div class="flex entry-fee">
+        <span class="p-10">Entry $5</span> <span class="p-10">|</span><span class="p-10">Prize $9</span>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn green-btn" (click)="confirm()">Yes</button>
+    <button type="button" class="btn green-btn confirm-btn" (click)="confirm()">{{buttonText}}</button>
   </div>
 </div>

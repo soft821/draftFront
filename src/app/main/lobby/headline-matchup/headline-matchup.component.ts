@@ -8,7 +8,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 export class HeadlineMatchup implements OnInit {
 
   constructor() { }
-
+  @Output() confirmMatchupEvent: EventEmitter<any> = new EventEmitter;
   players = [
     {
       id: 0,
@@ -29,6 +29,9 @@ export class HeadlineMatchup implements OnInit {
 
   ngOnInit() {}
   
+  confirmMatchup() {
+    this.confirmMatchupEvent.emit();
+  }
   entryFeeChange() {
 console.log(this.scaleEntryFee)  }
 }

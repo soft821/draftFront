@@ -5,6 +5,8 @@ import {ResponsiveService} from '../../../core/responsive/responsive.service';
 export interface ConfirmModel {
   title:string;
   message:string;
+  setOpponent: boolean;
+  buttonText: string;
 }
 
 @Component({
@@ -15,6 +17,8 @@ export interface ConfirmModel {
 export class ConfirmationModalComponent extends SimpleModalComponent<ConfirmModel, any> implements OnInit, ConfirmModel {
   title: string;
   message:string;
+  setOpponent: boolean;
+  buttonText = 'Yes';
   
   constructor(public responsiveService: ResponsiveService) {
     super();

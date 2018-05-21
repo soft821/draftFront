@@ -10,7 +10,8 @@
 }
 :host /deep/ .modal-content {
     margin: 20px auto;
-    max-width: 580px;
+    max-width: 768px;
     position: relative;
     width: 100%;
+    //add responsive for modal
 }
