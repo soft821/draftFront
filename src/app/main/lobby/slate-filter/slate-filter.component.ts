@@ -16,7 +16,7 @@ export class SlateFilterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  showGames: boolean;
   selectSlateFromList(slate) {
     this.selectSlate.emit(slate);
   }
