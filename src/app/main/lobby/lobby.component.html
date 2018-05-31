@@ -1,29 +1,33 @@
 
-<div class="dm-lobby">
+<div class="dm-lobby"> <!--  *ngIf="pageLoaded" -->
     <dm-banner> </dm-banner>
     <div class="nfl-tab-container">
         <div class="nfl-tab">
             <div class="dm-nfl-icon"></div>
         </div>
     </div>
-    <dm-carousel></dm-carousel>
+    <dm-carousel [list]="games"></dm-carousel>
     <div class="lower-part">
-        <dm-filter-column class="filter-column"></dm-filter-column>
+        <dm-filter-column class="filter-column"
+                          [slates]="slates"
+                          [slateSelected]="slateSelected"
+                          [gameSelected]="gameSelected"
+                          (selectSlateOption)="selectSlate($event)"
+                          (selectGameOption)="selectGame($event)">
+        </dm-filter-column>
         <div class="main-column">
             <div class="lobby-bck">
                 <div class="flex headlines">
-                    <dm-headline-matchup (confirmMatchupEvent)="showConfirmModal($event)" 
-                                        class="headline">
-                    </dm-headline-matchup>
-                    <dm-headline-matchup (confirmMatchupEvent)="showConfirmModal($event)" 
-                                        class="headline">
-                    </dm-headline-matchup>
-                    <dm-headline-matchup (confirmMatchupEvent)="showConfirmModal($event)" 
-                                        class="headline">
+                    <dm-headline-matchup [players]="headline.players"
+                                         [match]="headline"
+                                         (confirmMatchupEvent)="showConfirmModal($event)"
+                                         class="headline"
+                                         *ngFor="let headline of headlines">
                     </dm-headline-matchup>
                 </div>
-                <div class="matchup-table">
-                    <dm-matchup-table></dm-matchup-table>
+                <!-- here are data from enter matchup contest, filtered locally from left side filters -->
+                <div class="matchup-table" *ngIf="gameSelected">
+                    <dm-matchup-table [tableData]="gameSelected"></dm-matchup-table>
                 </div>
             </div>
         </div>

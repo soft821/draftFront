@@ -8,6 +8,12 @@ import {Router} from '@angular/router';
 })
 export class DmFilterColumn implements OnInit {
 
+  @Input() slates;
+  @Input() slateSelected;
+  @Input() gameSelected;
+  @Output() selectSlateOption: EventEmitter<any> = new EventEmitter;
+  @Output() selectGameOption: EventEmitter<any> = new EventEmitter;
+
   constructor(private router: Router) { }
 
   gameTypes = [
@@ -22,22 +28,22 @@ export class DmFilterColumn implements OnInit {
       name: 'Tier Rank A'
     },    
     {
-      id: 1,
+      id: 2,
       selected: false,
       name: 'Tier Rank B'
     },    
     {
-      id: 1,
+      id: 3,
       selected: false,
       name: 'Tier Rank C'
     },    
     {
-      id: 1,
+      id: 4,
       selected: false,
       name: 'Tier Rank D'
     },    
     {
-      id: 1,
+      id:5,
       selected: false,
       name: 'Set Opponent'
     }
@@ -75,14 +81,39 @@ export class DmFilterColumn implements OnInit {
       name: 'DST'
     }
   ]
-  scaleEntryFee = [ 0, 50000 ];;
-
+  scaleEntryFee = [ 0, 10600 ];;
+  descriptionVisible: boolean;
   ngOnInit() {}
 
   goToCreateContest() {
     this.router.navigate(['main/create-contest']);
   }
+
+  showDescription() {
+    this.descriptionVisible = !this.descriptionVisible;
+  }
   
-  entryFeeChange() {
-console.log(this.scaleEntryFee)  }
+  selectSlate(slate) {
+    this.selectSlateOption.emit(slate);
+  }
+
+  selectGame(game) {
+    this.selectGameOption.emit(game);
+  }
+
+  entryFeeChange() {}
+
+  selectPosition(position) {
+    console.log(position)
+  }
+  selectGameType(gameType) {
+    console.log(gameType)
+    this.gameTypes.forEach(element => {
+      if(element.id !== gameType.id) {
+        element.selected = false;
+      } else {
+        element.selected = true;
+      }
+    });
+  }
 }

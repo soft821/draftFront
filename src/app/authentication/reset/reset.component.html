@@ -1,6 +1,6 @@
 <div class="expanded stadium-image">
   <div class="auth-container">
-      <div class="dm-logo-icons logo-section"></div>
+      <div class="dm-logo-icons logo-section" routerLink="/main/home"></div>
       <div class="reset input-section">
         <div class="title">Reset Password</div>
         <form [formGroup]="resetForm" novalidate>
@@ -30,7 +30,7 @@
           </div>
           <div class="input-section-row">
             <div class="auth-label">
-              <span>Go back to <span class="cursor-pointer" routerLink="/login"><b>Login</b></span> </span>
+              <span>Go back to <span class="cursor-pointer label" routerLink="/login"><b>Login</b></span> </span>
             </div> 
           </div>
         </form>

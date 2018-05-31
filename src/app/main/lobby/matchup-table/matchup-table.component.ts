@@ -8,7 +8,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 export class MatchupTable implements OnInit {
 
   constructor() { }
-
+  @Input() tableData;
   players = [
     {
       id: 0,
@@ -47,10 +47,13 @@ export class MatchupTable implements OnInit {
       ranking: 'A'
     }
   ]
+
   scaleEntryFee = [ 0, 50000 ];;
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('tableData', this.tableData)
+  }
   
   entryFeeChange() {
-console.log(this.scaleEntryFee)  }
+  }
 }

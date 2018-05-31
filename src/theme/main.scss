@@ -149,6 +149,9 @@
     min-height: 23px;
     min-width: 23px;
     font-weight: normal;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   input[type=radio] + span::before {
@@ -186,6 +189,9 @@
 
 .last-item-right {
   border-right: none !important;
+}
+.last-item-bottom {
+  border-bottom: none !important;
 }
 .last-item {
   border: none !important;

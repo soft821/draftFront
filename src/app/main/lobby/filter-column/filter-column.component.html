@@ -1,32 +1,25 @@
 <div class="dm-filter-column">
     <div class="flex create-contest">
-        <button class="green-btn" (click)="goToCreateContest()">Create contest</button>
+        <button class="green-btn" (click)="goToCreateContest()">Create Contest</button>
         <div class="flex-column p-l-10">
             <span><b>01:11:55</b></span>
             <span class="f-12">CONTEST START</span>
         </div>
     </div>
     <div class="slate flex-column section">
-        <div class="p-10">
-            <span><b>Slate</b></span>
-            <div class="flex">
-                <div></div>
-                <div class="flex-column">
-                    <span>1:00pm ET</span>
-                    <span class="f-12">MAIN</span>
-                </div>
-            </div>
-        </div>
-        <div class="schedule">
-            <span>1:00pm ET schedule <i class="fa fa-chevron-down"></i></span>
-        </div>
+       <dm-slate-filter [slates]="slates"
+                        [slateSelected]="slateSelected"
+                        [gameSelected]="gameSelected"
+                        (selectSlate)="selectSlate($event)"
+                        (selectGame)="selectGame($event)">
+       </dm-slate-filter>
     </div>
     
     <div class="game-type flex-column section">
-        <div class="p-10">
+        <div class="p-10 p-relative">
             <div *ngFor="let gameType of gameTypes; let i = index" class="flex">                
                 <div class="radio-button type">
-                    <div class="radio dm-radio-red">
+                    <div class="radio dm-radio-red" (change)="selectGameType(gameType)">
                         <label>
                             <input id="radioLow" type="radio" 
                                    value="{{i}}" [checked]="gameType.selected">
@@ -34,7 +27,15 @@
                         </label>
                     </div>
                 </div>
-                <div class="info"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+            </div>
+            <div class="info" (mouseenter)="showDescription()" (click)="showDescription()"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+            <div class="description" *ngIf="descriptionVisible">
+                <div class="p-relative">
+                    <p>Any Challenger - Opponent may select any player of the same position, except the player you selected to compete in this matchup.</p>
+                    <p>Tier Rank A-D - Opponent may select any player of the same position within Tier A, B, C, D</p>
+                    <p>Set Opponent - You select a player for your opponent, it will be up to other users to pick up this matchup based off our selection</p>
+                    <span class="close-sign" (click)="showDescription()">X</span>
+                </div>
             </div>
         </div>
     </div>
@@ -42,10 +43,20 @@
     <div class="entry-fee flex-column section">
         <div class="p-10">
             <span class="f-18"><b>Entry Fee</b></span>
+            <div class="flex">
+                <div class="fee min flex-column">
+                    <span>${{scaleEntryFee[0] | number}}</span>
+                    <span>Min</span>
+                </div>
+                <div class="fee max flex-column">
+                    <span>${{scaleEntryFee[1] | number}}</span>
+                    <span>Max</span>
+                </div>
+            </div>
             <div class="scale">
                 <nouislider [connect]="true" 
                             [min]="0" 
-                            [max]="50000"
+                            [max]="10600"
                             [step]="1" 
                             [(ngModel)]="scaleEntryFee"
                             (ngModelChange)="entryFeeChange()"
@@ -62,7 +73,7 @@
                         <label>
                             <input type="checkbox" 
                                 [checked]="position.selected"
-                                (change)="entryFee(position, $event)">
+                                (change)="selectPosition(position)">
                             <span>{{position.name}}</span>
                         </label>
                     </div> 

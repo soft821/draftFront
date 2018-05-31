@@ -8,30 +8,15 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 export class HeadlineMatchup implements OnInit {
 
   constructor() { }
+  @Input() players;
+  @Input() match;
   @Output() confirmMatchupEvent: EventEmitter<any> = new EventEmitter;
-  players = [
-    {
-      id: 0,
-      position: 'RB',
-      name: 'David Johnson',
-      team1: 'Ari',
-      team2: 'Dal'
-    },
-    {
-      id: 1,
-      position: 'RB',
-      name: 'Ezekiel Elliot',
-      team1: 'Ari',
-      team2: 'Dal'
-    }
-  ]
-  scaleEntryFee = [ 0, 50000 ];;
 
-  ngOnInit() {}
-  
-  confirmMatchup() {
-    this.confirmMatchupEvent.emit();
+  ngOnInit() {
+    console.log(this.match)
   }
-  entryFeeChange() {
-console.log(this.scaleEntryFee)  }
+  
+  confirmMatchup(row) {
+    this.confirmMatchupEvent.emit(row);
+  }
 }

@@ -1,6 +1,6 @@
 <div class="expanded stadium-image">
   <div class="auth-container">
-    <div class="dm-text-logo logo-section"></div>
+    <div class="dm-text-logo logo-section" routerLink="/main/home"></div>
     <div class="signup input-section">
       <form [formGroup]="signupForm" novalidate>
         <div class="input-section-row">
@@ -72,7 +72,7 @@
         </div>
         <div class="input-section-row">
           <div class="auth-label">
-            <span>Already have an account? <span class="cursor-pointer" routerLink="/login"><b>Log in instead</b></span> </span>
+            <span>Already have an account? <span class="cursor-pointer label" routerLink="/login"><b>Log in instead</b></span> </span>
           </div> 
         </div>
       </form>

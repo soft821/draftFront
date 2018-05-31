@@ -1,0 +1,37 @@
+<div class="slate-filter flex-column">
+    <div class="p-relative">
+        <div class="p-10"><b>Slates</b></div>
+        <div class="flex-column slates-container p-10 p-t-0">
+            <div class="radio-button type" *ngFor="let slate of slates; let i = index">
+                <div class="radio dm-radio-red" (change)="selectSlateFromList(slate)">
+                    <label>
+                        <input id="radioLow" type="radio" 
+                                value="{{i}}" [checked]="slate.selected">
+                        <span>{{slate.firstGame | date: 'shortTime'}}</span><span class="p-l-10">ET</span>
+                        <div class="slate-name p-l-30">{{slate.name}}</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="schedule flex" (click)="showGames = !showGames" [ngClass]="{'bottom-border': showGames}">
+            <span>{{slateSelected.firstGame | date: 'shortTime'}}</span>
+            <span class="p-l-10">ET schedule 
+                <i class="fa fa-chevron-down" *ngIf="!showGames"></i>
+                <i class="fa fa-chevron-up" *ngIf="showGames"></i>
+            </span>
+        </div>
+        <div *ngIf="showGames" class="games-container">
+            <div [ngClass]="{'selected-game': game.selected}" 
+                class="slate-column" 
+                *ngFor="let game of slateSelected.games; let i = index; let last = last" 
+                (click)="selectGameFromList(game)">  
+                <div class="flex">
+                    <span>{{game.homeTeam}} @ {{game.awayTeam}}</span>
+                </div>     
+                <div>
+                    <span>{{game.time | date: 'shortTime'}} ET</span>
+                </div>   
+            </div>
+        </div>
+    </div>
+</div>

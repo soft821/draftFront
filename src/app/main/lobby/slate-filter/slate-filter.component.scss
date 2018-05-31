@@ -1,0 +1,70 @@
+@import "../../../../theme/theme-variables";
+.schedule {
+    justify-content: center;
+    border-top: 1px solid #b5b5b5;
+    box-shadow: 0px 5px 70px  #f7f7f7 inset;
+    padding: 10px;
+    color: gray;
+    &:hover {
+        cursor: pointer;
+        color: darkgray;
+    }
+    &.bottom-border {
+        border-bottom: 1px solid #b5b5b5;
+    }
+}
+
+.dm-radio-red input[type=radio] + span::before {
+    min-width: 20px;
+    min-height: 20px;
+    box-shadow: none;
+    padding: 0;
+ }
+
+ .slate-column {
+    .dm-radio-red input[type=radio] + span::before {
+        min-width: 16px;
+        min-height: 16px;
+     }
+ }
+
+.dm-radio-red input[type=radio]:checked + span::before {
+    border: 6px solid $dm-red;
+    background-color: white;
+  }
+
+.games-container {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 12px;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    .slate-column {
+        width: 50%;
+        padding: 10px;
+        border-bottom: 1px solid darkgray;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .slate-column:nth-child(odd) {
+        border-right: 1px solid darkgray;
+    }
+}
+
+.slate-name {
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.slates-container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.selected-game {
+    background: #f7f7f7;
+}

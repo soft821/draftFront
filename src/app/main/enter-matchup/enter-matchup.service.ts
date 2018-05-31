@@ -9,14 +9,14 @@ import {HelperService} from '../../core/helper.service';
 import {TokenInterceptor} from './../../core/auth/auth-interceptors';
 
 @Injectable()
-export class LobbyService {
+export class EnterMatchupService {
 
   constructor(private httpClient: HttpClient,
               private helperService: HelperService) {
   }
 
   // Returning list of available gameTimes with all games for each gameTime
-  getUSers() {    
+  getUsers() {    
    /*  let body = {
       slate_name: "Early_Sun",
       games: ["game_id_1", "game_id_2"]
@@ -26,16 +26,12 @@ export class LobbyService {
       catchError(this.handleError)
     ); */
     
-    return this.httpClient.get(`${this.helperService.resolveAPI()}/slates`)
+    return this.httpClient.get(`${this.helperService.resolveAPI()}/info/games`)
   }
 
-  getSlates() {    
-    return this.httpClient.get(`${this.helperService.resolveAPI()}/slates`);
-  }
-
-  getMatchups(status) {
+  getMatchups(param) {
     let params: HttpParams = new HttpParams();
-    params = params.append('status', status);
+    params = params.append('status', param.status);
     return this.httpClient.get(`${this.helperService.resolveAPI()}/contests`, { params: params });
   }
 

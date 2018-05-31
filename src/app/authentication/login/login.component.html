@@ -1,7 +1,7 @@
 <div class="expanded stadium-image">
   <div class="auth-container">
-    <div *ngIf="isAdmin" class="dm-logo-icons logo-section"></div>
-    <div *ngIf="!isAdmin" class="dm-logo-game logo-section"></div>
+    <div *ngIf="isAdmin" class="dm-logo-icons logo-section" routerLink="/main/home"></div>
+    <div *ngIf="!isAdmin" class="dm-logo-game logo-section" routerLink="/main/home"></div>
         <div class="login input-section">
             <div class="title">Login</div>
             <form [formGroup]="loginForm" novalidate>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="input-section-row" *ngIf="!isAdmin">
                   <div class="auth-label">
-                    <span>Don't have an account? <span class="cursor-pointer" routerLink="/signup"><b>Join us</b></span> </span>
+                    <span>Don't have an account? <span class="cursor-pointer label" routerLink="/signup"><b>Join us</b></span> </span>
                   </div> 
                 </div>
             </form>

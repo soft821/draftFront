@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
         this.authService.setDataAfterLogin(response, this.remember);
         this.isClickedOnce = false;
         this.showErrorInvalidCredentials = false;
-        this.router.navigate(['/main/home']);
+        this.router.navigate(['/main/lobby']);
       },
       error => {
         this.showErrorInvalidCredentials = true;

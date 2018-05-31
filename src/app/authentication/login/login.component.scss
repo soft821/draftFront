@@ -1,3 +1,4 @@
+@import "../../../theme/theme-variables";
 
 .forgot-section {   
     padding-top: 20px;
@@ -7,6 +8,9 @@
     display: flex;
     .label {
         width: 50%;
+        &:hover {
+            color: $dm-light-gray;
+        }
     }
     .label:first-child {
         text-align: left;

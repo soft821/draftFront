@@ -1,7 +1,9 @@
 <div class="headline-matchup flex-column">
     <div class="headline">NFL HEADLINE MATCHUP - WEEK 1</div>
     <div class="info flex">
-        <span class="time">9/17 Thu 8:00PM ET 12:24:85</span>
+        <span class="time">9/17 Thu 8:00PM ET 12:24:85
+            {{match.time | date: ''}}
+        </span>
         <span class="fee">Entry Fee $5</span>
     </div>
     <div class="draft-data flex-column" *ngFor="let player of players; let last = last">
@@ -12,7 +14,7 @@
             </div>
             <div class="half">
                 <span>{{player.team1}}@{{player.team2}}</span>
-                <button class="green-btn uppercase" (click)="confirmMatchup()">Draft</button>
+                <button class="green-btn uppercase" (click)="confirmMatchup(player)">Draft</button>
             </div>
         </div>
     </div>

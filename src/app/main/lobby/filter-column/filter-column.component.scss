@@ -44,20 +44,52 @@
         width: 90%;
     }
     .info {
-        color: $dm-red;
+        color: $dm-light-gray;
         font-size: 15px;
+        position: absolute;
+        right: 10px;
+        top: 5px;
         &:hover {
             cursor: pointer;
         }
     }
+    .description {
+        position: absolute;
+        z-index: 100;
+        top: 25px;
+        width: 350px;
+        font-size: 11px;
+        background: #f7f7f7;
+        padding: 10px;
+        left: 90%;
+        box-shadow: 0px 0px 15px $dm-light-gray inset;
+        .close-sign {
+            position: absolute;
+            right: 0px;
+            top: -5px;
+            font-size: 15px;
+            &:hover {
+                cursor: pointer;
+                color: $dm-light-gray;
+            }
+        }
+     }
 }
 
 .f-18 {
     font-size: 18px;
 }
 .scale {
-    width: 90%;
-    margin: auto;
+    width: 94%;
+}
+
+.fee {
+    text-transform: uppercase;
+    font-size: 10px;
+    width: 50%;
+    &.max {
+        text-align: right;
+    }
 }
 
 .dm-filter-column {
