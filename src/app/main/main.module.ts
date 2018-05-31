@@ -34,6 +34,7 @@ import {HistoryComponent} from './history/history.component';
 import {DmTable} from '../shared/components/dm-table/dm-table.component';
 import {DmSummary} from '../shared/components/dm-summary/dm-summary.component';
 import {SlateFilterComponent} from './lobby/slate-filter/slate-filter.component';
+import { EnterMatchupComponent } from './enter-matchup/enter-matchup.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import {SlateFilterComponent} from './lobby/slate-filter/slate-filter.component'
     HistoryComponent,
     DmTable,
     DmSummary,
-    SlateFilterComponent
+    SlateFilterComponent,
+    EnterMatchupComponent
   ],
   exports: [
     NavComponent,
