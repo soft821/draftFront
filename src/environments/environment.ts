@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiBase: 'https://draftmatch-api/api/v1'
+  apiBase: 'https://draftmatch-api.com/api/v1'
 };
 
 // 'http://162.243.21.233/api/v1'

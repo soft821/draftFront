@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiBase: 'https://draftmatch-api/api/v1'
+  apiBase: 'https://draftmatch-api.com/api/v1'
 };
 
 // 159.89.229.129
