@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 export const APP_ROUTES: Routes = [
     // Default page
-    {path: '', redirectTo: 'main/home', pathMatch: 'full'},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: '**', redirectTo: 'error'}
   ];
 

@@ -15,10 +15,10 @@ export class NavComponent implements OnInit {
   sidebarOpen = false;
   sidebarBalanceOpen = false;
   options = [
-    {id: 0, text: 'Contact Support', path: '/main/home'},
-    {id: 1, text: 'How to Play', path: '/main/home'},
-    {id: 2, text: 'Rules & Score', path: '/main/home'},
-    {id: 3, text: 'Training Guide', path: '/main/home'},
+    {id: 0, text: 'Contact Support', path: '/home'},
+    {id: 1, text: 'How to Play', path: '/home'},
+    {id: 2, text: 'Rules & Score', path: '/home'},
+    {id: 3, text: 'Training Guide', path: '/home'},
     {id: 4, text: 'Responsible Play', path: '/responsible-play'},
     {id: 5, text: 'Trust & Safety', path: '/trust-and-safety'},
     {id: 6, text: 'Terms of Use', path: '/terms-of-use'},

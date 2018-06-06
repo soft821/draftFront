@@ -31,6 +31,10 @@ export class HelperService {
     window.scrollTo(0, 0);
   }
   
+  scrollToTarget(el) {
+    el.scrollIntoView();
+  }
+
   disableBodyScroll(stopScrollFix?) {
     let scrollTopPosition = stopScrollFix ? 0 : document.documentElement.scrollTop;
     document.body.style.overflowY = 'scroll';

@@ -15,35 +15,50 @@ export class CreateContestComponent implements OnInit {
       isChecked: true,
       title: 'Game Slate',
       current: true,
-      key: 'gameTime'
+      stepSubmitted: false,
+      valid: true,
+      key: 'gameTime',
+      errorMsg: ''
     },
     {
       id: 1,
       isChecked: false,
       title: 'Entry Fee',
       current: false,
-      key: 'entryFee'
+      stepSubmitted: false,
+      valid: false,
+      key: 'entryFee',
+      errorMsg: 'Please select an option'
     },
     {
       id: 2,
       isChecked: false,
       title: 'Matchup Type',
       current: false,
-      key: 'matchupType'
+      stepSubmitted: false,
+      valid: false,
+      key: 'matchupType',
+      errorMsg: 'Please select a matchup type'
     },
     {
       id: 3,
       isChecked: false,
       title: 'Player Position',
       current: false,
-      key: 'playerPosition'
+      stepSubmitted: false,
+      valid: false,
+      key: 'playerPosition',
+      errorMsg: 'Please select a position'
     },
     {
       id: 4,
       isChecked: false,
       title: 'Select Player', 
       current: false,
-      key: 'selectPlayer'
+      stepSubmitted: false,
+      valid: false,
+      key: 'selectPlayer',
+      errorMsg: 'Please select a player'
     },
     {
       id: 5,
@@ -51,7 +66,10 @@ export class CreateContestComponent implements OnInit {
       isLastOne: true,
       title: 'Create Contest', 
       current: false,
-      key: 'createContest'
+      stepSubmitted: false,
+      valid: true,
+      key: 'createContest',
+      errorMsg: ''
     }
   ];
 
@@ -335,7 +353,7 @@ export class CreateContestComponent implements OnInit {
 
   ngOnInit() {
     
-    this.getMatchups();
+   // this.getMatchups();
   //  this.getUsers();
 
   }
@@ -353,9 +371,9 @@ export class CreateContestComponent implements OnInit {
 
   validateForm(value, id) {
     if(value) {
-      this.contestData[id].valid = true;
+      this.steps[id].valid = true;
     } else {
-      this.contestData[id].valid = false;
+      this.steps[id].valid = false;
     }
   }
 
@@ -367,13 +385,14 @@ export class CreateContestComponent implements OnInit {
   }
 
   getEntryFee(event) {
+    console.log('aaaa')
     this.contestData[1].data[0].data = event.value;  
     this.contestData[1].data[0].value = event.prize?event.prize:0;   
     this.contestData[1].data[0].id = event.id;
     this.validateForm(event.selected, 1);
   }
 
-  getMatchupType(event) {
+  getMatchupType(event) {    
     this.contestData[2].data[0].data = event.title;    
     this.contestData[2].data[0].type = event.match_type;    
     this.validateForm(event.selected, 2);
@@ -391,9 +410,10 @@ export class CreateContestComponent implements OnInit {
     this.validateForm(event.selected, 4);   
   }
 
-  next(event) {
-    this.helperService.scrollToTopSamePage();
-    if(this.validForm()) {                
+  next(eventm, target) {
+    this.helperService.scrollToTarget(target);
+    this.steps[this.activeFormIndex].stepSubmitted = true;
+    if(this.isFormValid()) {               
       let index = this.steps.findIndex(x => x.current === true);
       if(index !== -1) {
         this.steps[index+1].current = true;
@@ -401,21 +421,23 @@ export class CreateContestComponent implements OnInit {
         this.steps[index].current = false;
         this.activeFormIndex = index+1;
       }    
-    }
+    } 
   }
 
-  validForm() {
-    if(this.contestData[this.activeFormIndex].valid) {
+  isFormValid() {
+    if(this.steps[this.activeFormIndex].valid) {
       return true;
     }
     return false;
   }
 
-  selectRow(row) {
+  selectRow(row, target) {
+    this.helperService.scrollToTarget(target);
     this.activeFormIndex = row.id;
     this.steps.forEach(element => {
       if(element.id > row.id) {
         element.isChecked = false;
+        element.stepSubmitted = false;
       }
     });
     this.goToScreen(row.id);
@@ -424,6 +446,19 @@ export class CreateContestComponent implements OnInit {
   goToScreen(id) {
     this.steps.filter(x => x.id === id).map(x => x.current = true);
     this.steps.filter(x => x.id !== id).map(x => x.current = false);
+    this.resetData(id);
+  }
+
+  resetData(id) {
+    this.contestData.filter(x => x.id > id).forEach(element => {
+      element.valid = false;
+      element.data.forEach(data => {
+        data.data = '';
+        data.id = -1;
+        data.value = 0;
+        data.type = '';
+      });
+    });
   }
 
   createMatchup(event) {

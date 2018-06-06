@@ -29,25 +29,25 @@ export const SIDEBAR_MENU_1 = [
 export const SIDEBAR_MENU_2 = [
   {
     name: 'Contact Support',
-    path: '/main/home',
+    path: '/home',
     icon: 'fa fa-th-large',
     order: 1
   },
   {
     name: 'How to Play',
-    path: '/main/home',
+    path: '/home',
     icon: 'fa fa-trophy',
     order: 2
   },
   {
     name: 'Rules & Score',
-    path: '/main/home',
+    path: '/home',
     icon: 'fa fa-tv',
     order: 3
   },
   {
     name: 'Training Guide',
-    path: '/main/home',
+    path: '/home',
     icon: '',
     order: 4
   },

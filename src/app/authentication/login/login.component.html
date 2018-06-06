@@ -1,7 +1,7 @@
 <div class="expanded stadium-image">
   <div class="auth-container">
-    <div *ngIf="isAdmin" class="dm-logo-icons logo-section" routerLink="/main/home"></div>
-    <div *ngIf="!isAdmin" class="dm-logo-game logo-section" routerLink="/main/home"></div>
+    <div *ngIf="isAdmin" class="dm-logo-icons logo-section" routerLink="/home"></div>
+    <div *ngIf="!isAdmin" class="dm-logo-game logo-section" routerLink="/home"></div>
         <div class="login input-section">
             <div class="title">Login</div>
             <form [formGroup]="loginForm" novalidate>
