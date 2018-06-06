@@ -235,7 +235,6 @@ export class CreateContestComponent implements OnInit {
       title: 'Game Slate',
       img: '',
       clock: true,
-      valid: true,
       data: [
         { 
           id: -1,
@@ -260,7 +259,6 @@ export class CreateContestComponent implements OnInit {
       title: 'Entry Fee',
       img: '',
       clock: false,
-      valid: false,
       data: [
         {
           id: -1,
@@ -277,7 +275,6 @@ export class CreateContestComponent implements OnInit {
       title: 'Matchup Type',
       img: '',
       clock: false,
-      valid: false,
       data: [
         { 
           id: -1,
@@ -294,7 +291,6 @@ export class CreateContestComponent implements OnInit {
       title: 'Player Position',
       img: '',
       clock: false,
-      valid: false,
       data: [
         { 
           id: -1,
@@ -311,7 +307,6 @@ export class CreateContestComponent implements OnInit {
       title: 'Select Player',
       img: true,
       clock: false,
-      valid: false,
       data: [       
         { 
           id: -1,
@@ -450,8 +445,11 @@ export class CreateContestComponent implements OnInit {
   }
 
   resetData(id) {
+    this.steps.filter(x => x.id > id).map(x => x.valid = false, x => x.stepSubmitted = false);
+    if(id < 4) {
+      this.players.filter(x => x.selected = false);
+    }
     this.contestData.filter(x => x.id > id).forEach(element => {
-      element.valid = false;
       element.data.forEach(data => {
         data.data = '';
         data.id = -1;
