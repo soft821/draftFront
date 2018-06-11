@@ -11,6 +11,11 @@ export class OverviewContestComponent implements OnInit {
   constructor(public responsiveService: ResponsiveService) { }
 
   @Input() contestData;
+  @Input() slateSelected: any;
+  @Input() entryFeeSelected: any;
+  @Input() positionSelected: any;
+  @Input() matchupSelected: any;
+  @Input() playerSelected: any;
   @Output() selectedRow: EventEmitter<any> = new EventEmitter;
 
   ngOnInit() {

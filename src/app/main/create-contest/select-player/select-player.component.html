@@ -4,19 +4,19 @@
       <thead>
         <tr>
           <th>
-            <div>Rank</div>
+            <div class="cursor-pointer" (click)="filterRanks('tier')">Rank <i class="fa fa-caret-down"></i></div>
           </th>
           <th>
             <div>Position</div>
           </th>
           <th>
-            <div>Player</div>
+            <div class="cursor-pointer" (click)="orderBy(!sortDesc, 'name')">Player <i class="fa fa-caret-down"></i></div>
           </th>
           <th>
             <div>Game</div>
           </th>
           <th>
-            <div>FPPG</div>
+            <div class="cursor-pointer" (click)="orderBy(!sortDesc, 'fps')">FPPG <i class="fa fa-caret-down"></i></div>
           </th>
           <th>
             <div></div>
@@ -37,7 +37,7 @@
             (click)="selectPlayer(player)">
           <td class="p-l-5">
             <div class="flex jc-c">
-             {{player.rank}}
+             {{player.tier}}
             </div>
           </td>
           <td>
@@ -53,12 +53,12 @@
           </td>
           <td>
             <div class="flex jc-c">
-              <div>{{player.game}}</div>
+              <div>{{player.game.homeTeam}} @ {{player.game.awayTeam}}</div>
             </div>
           </td>
           <td>
             <div class="flex jc-c">
-              {{player.points}}
+              {{player.fps}}
             </div>
           </td>
           <td>

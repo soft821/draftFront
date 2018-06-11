@@ -5,9 +5,6 @@ import {SharedModule} from '../shared/shared.module';
 import {MainComponent} from './main.component';
 import {MainRoutingModule} from './main.routing';
 import {HomeComponent} from './home/home.component';
-import {NavComponent} from './../shared/navbar/navbar.component';
-import {BlogComponent} from './blog/blog.component';
-import {MenuComponent} from './menu/menu.component';
 import {TermsOfUseComponent} from './terms-of-use/terms-of-use.component';
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
 import {ResponsiblePlayComponent} from './responsible-play/responsible-play.component';
@@ -36,7 +33,6 @@ import {DmSummary} from '../shared/components/dm-summary/dm-summary.component';
 import {SlateFilterComponent} from './lobby/slate-filter/slate-filter.component';
 import {EnterMatchupComponent} from './enter-matchup/enter-matchup.component';
 
-
 @NgModule({
   imports: [
     MainRoutingModule,
@@ -47,9 +43,6 @@ import {EnterMatchupComponent} from './enter-matchup/enter-matchup.component';
   declarations: [
     MainComponent,
     HomeComponent,
-    NavComponent,
-    BlogComponent,
-    MenuComponent,
     TermsOfUseComponent,
     PrivacyPolicyComponent,
     ResponsiblePlayComponent,
@@ -76,8 +69,6 @@ import {EnterMatchupComponent} from './enter-matchup/enter-matchup.component';
     EnterMatchupComponent
   ],
   exports: [
-    NavComponent,
-    BlogComponent
   ],
   providers: [
     MatchupsService,

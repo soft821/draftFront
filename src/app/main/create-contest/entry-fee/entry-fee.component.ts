@@ -15,12 +15,11 @@ export class EntryFeeComponent implements OnInit {
     {id: 4, value: 10, prize: 18, selected: false},
     {id: 5, value: 25, prize: 45, selected: false},
     {id: 6, value: 50, prize: 90, selected: false},
-    {id: 7, value: 109, prize: 200, selected: false},
-    {id: 8, value: 270, prize: 500, selected: false},
-    {id: 9, value: 535, prize: 1000, selected: false},
-    {id: 10, value: 1065, prize: 2000, selected: false},
-    {id: 11, value: 5300, prize: 10000, selected: false},
-    {id: 12, value: 10600, prize: 20000, selected: false}
+    {id: 7, value: 100, prize: 180, selected: false},
+    {id: 8, value: 250, prize: 450, selected: false},
+    {id: 9, value: 500, prize: 900, selected: false},
+    {id: 10, value: 1000, prize: 1800, selected: false},
+    {id: 11, value: 10000, prize: 18000, selected: false}
   ];
 
   selectedFee = 0;
@@ -32,8 +31,8 @@ export class EntryFeeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if(this.feeSelected !== -1) {
-      let temp = this.fees.find(x => x.id === this.feeSelected);
+    if(this.feeSelected && this.feeSelected.id && this.feeSelected.id !== -1) {
+      let temp = this.fees.find(x => x.id === this.feeSelected.id);
       if(temp)
         this.selectFee(temp);
     }

@@ -12,6 +12,7 @@ import {TokenInterceptor} from '../core/auth/auth-interceptors';
 // import {FooterComponent} from './footer/footer.component';
 import {HelperService} from './helper.service';
 import {ResponsiveService} from './responsive/responsive.service';
+import { BlogModule } from '../blog/blog.module';
 // import {RoleGuardService} from './auth/role-guard.service';
 /*
  * CoreModule
@@ -26,25 +27,23 @@ import {ResponsiveService} from './responsive/responsive.service';
     // Modules
     AuthenticationModule,
     MainModule,
+    BlogModule
     // Components
-    // [FooterComponent]
   ],
   declarations: [
-    // FooterComponent
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
   },
-     GlobalStateService,
+    GlobalStateService,
     AuthService,
     HelperService,
     AuthGuard,
     AuthorizedCheck,
     TokenInterceptor,
     ResponsiveService
-   /*  RoleGuardService */
   ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {

@@ -1,0 +1,27 @@
+<div class="wrapper-dropdown cursor-pointer">
+  <div class="selection" (click)="toggleSelect()"
+        [ngClass]="{'dropdown-open active-selection': selectOpen}"
+        (mouseover)="isHovered = true"
+        (mouseout)="isHovered = false">    
+      <div *ngIf="icon" [ngClass]="icon"></div>
+  </div>  
+  <div class="dropdown"
+        [ngClass]="{'dropdown-open': selectOpen, 'xsmall-list': xsmall, 'small-list': small}"
+        [hidden]="!selectOpen">
+    <div class="triangle arrow-up" *ngIf="icon"></div>
+    <ng-scrollbar #scrollRef>
+      <div class="ul">
+        <span class="li" *ngFor="let option of options" 
+            (click)="selectItem(option)">
+          <a [style.color]="getColorActive(option[keys.id] === selected[keys.id], option.hovered)"
+            (mouseover)="option.hovered = true"
+            (mouseout)="option.hovered = false">            
+            <span [ngClass]="option[keys.icon]"></span>
+            <span>{{ option[keys.text]}}</span>
+          </a>
+        </span>
+      </div>
+    </ng-scrollbar>
+  </div>
+</div>
+  

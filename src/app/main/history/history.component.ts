@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LobbyService } from '../lobby/lobby.service';
 
 @Component({
   selector: 'dm-history',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lobbyService: LobbyService) { }
 
   titles = [
     {
@@ -100,6 +101,10 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.lobbyService.getMatchups('HISTORY')
+    .subscribe(response => {
+console.log(response)
+    })
     this.setValuesForUser();
   }
 

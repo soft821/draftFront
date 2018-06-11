@@ -1,28 +1,23 @@
 
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {BlogListComponent} from './blog-list/blog-list.component';
+import {BlogComponent} from './blog.component';
+import {CreateBlogComponent} from './create-blog/create-blog.component';
 
-const AUTHENTICATION_ROUTES: Routes = [
-/*   {
-    path: 'login',
-    component: LoginComponent
-  },
+const BLOG_ROUTES: Routes = [
   {
-    path: 'login/admin',
-    component: LoginComponent
-  },
-  {
-    path: 'signup',
-    component: SignupComponent
-  },
-  {
-    path: 'reset-password',
-    component: ResetComponent
-  }, */
+    path: 'blog',
+    component: BlogComponent,
+    children: [
+      {path: '', component: BlogListComponent},
+      {path: 'create', component: CreateBlogComponent}
+    ]
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(AUTHENTICATION_ROUTES)],
+  imports: [RouterModule.forChild(BLOG_ROUTES)],
   exports: [RouterModule]
 })
 export class BlogRoutingModule {

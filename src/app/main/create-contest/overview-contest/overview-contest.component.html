@@ -1,39 +1,123 @@
 <div class="contest-details">
   <div class="table">
     <table class="contest-data-table">
-      <tr *ngFor="let row of contestData; let i = index">
+      <tr>
         <td>
-          <div class="capitalize"><b>{{row.title}}</b></div>
+          <div class="capitalize"><b>Game Slate</b></div>
         </td>
         <td>
           <div class="flex p-l-10">
             <div class="border-left helper"></div>
-            <div class="player-image" *ngIf="row.img">
-              <div class="dm-player"></div>
-            </div>
-            <div *ngIf="row.clock" class="p-r-10 clock">
+            <div class="p-r-10 clock">
               <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
             </div>
             <div class="flex-column">
-              <div *ngFor="let details of row.data" class="l-h-20">
-                <span [style.color]="details.color?details.color:black"
-                      [style.font-weight]="details.bold?'bold':'normal'"
-                      [style.font-size.px]="details.fontSize?details.fontSize:18">
-                      <span *ngIf="i === 1 && details.value !== 0">
-                        <span class="p-r-10">${{details.data | number}} Entry</span> | 
-                        <span class="p-l-10">${{details.value | number}} Prize</span></span>
-                      <span *ngIf="i !== 1 || (i === 1 && details.value === 0)">{{details.data}}</span>
-                </span>
+              <div class="l-h-20">
+                <span class="f-18"><b>{{slateSelected.firstGame | date: 'shortDate'}} {{slateSelected.firstGame | date: 'shortTime'}} ET</b></span>
+              </div>
+              <div class="l-h-20">
+                <span class="f-13">{{slateSelected.name}}</span>
               </div>
             </div>
           </div>
         </td>
         <td>
-          <div class="flex edit" (click)="editRow(row)">
-              <span *ngIf="!responsiveService.media.visibleXs" class="p-r-10">Edit</span>
-              <div class="dm-pencil-icon"></div>
+          <div class="flex edit" (click)="editRow(0)">
+            <span *ngIf="!responsiveService.media.visibleXs" class="p-r-10">Edit</span>
+            <div class="dm-pencil-icon"></div>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="capitalize"><b>Entry Fee</b></div>
+        </td>
+        <td>
+          <div class="flex p-l-10">
+            <div class="border-left helper"></div>
+            <div class="flex-column">
+              <div class="l-h-20 dm-red">
+                  <span class="p-r-10 f-18"><b>${{entryFeeSelected.value | number}} Entry</b></span> | 
+                  <span class="p-l-10 f-18"><b>${{entryFeeSelected.prize | number}} Prize</b></span>
+              </div>
+            </div>
+          </div>
+        </td>      
+        <td>
+          <div class="flex edit" (click)="editRow(1)">
+            <span *ngIf="!responsiveService.media.visibleXs" class="p-r-10">Edit</span>
+            <div class="dm-pencil-icon"></div>
+          </div>
+        </td>  
+      </tr>
+      <tr>
+        <td>
+          <div class="capitalize"><b>Matchup Type</b></div>
+        </td>  
+        <td>
+          <div class="flex p-l-10">
+            <div class="border-left helper"></div>
+            <div class="flex-column">
+              <div class="l-h-20">
+                <span class="f-18 dm-red"><b>{{matchupSelected.title}}</b></span>
+              </div>
+            </div>
+          </div>
+        </td>      
+        <td>
+          <div class="flex edit" (click)="editRow(2)">
+            <span *ngIf="!responsiveService.media.visibleXs" class="p-r-10">Edit</span>
+            <div class="dm-pencil-icon"></div>
           </div>
         </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="capitalize"><b>Player Position</b></div>
+        </td>       
+        <td>
+          <div class="flex p-l-10">
+            <div class="border-left helper"></div>
+            <div class="flex-column">
+              <div class="l-h-20">
+                <span class="f-18 dm-red"><b>{{positionSelected.title}}</b></span>
+              </div>
+            </div>
+          </div>
+        </td>   
+        <td>
+          <div class="flex edit" (click)="editRow(3)">
+            <span *ngIf="!responsiveService.media.visibleXs" class="p-r-10">Edit</span>
+            <div class="dm-pencil-icon"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="capitalize"><b>Select Player</b></div>
+        </td>   
+        <td>
+          <div class="flex p-l-10">
+            <div class="border-left helper"></div>
+            <div class="player-image">
+              <div class="dm-player"></div>
+            </div>
+            <div class="flex-column">
+              <div class="l-h-20">
+                <span><b>{{playerSelected.name}}</b></span>
+              </div>
+              <div class="l-h-20">
+                <span>{{playerSelected.time}}</span>
+              </div>
+            </div>
+          </div>
+        </td>      
+        <td>
+          <div class="flex edit" (click)="editRow(4)">
+            <span *ngIf="!responsiveService.media.visibleXs" class="p-r-10">Edit</span>
+            <div class="dm-pencil-icon"></div>
+          </div>
+        </td> 
       </tr>
     </table>
   </div>

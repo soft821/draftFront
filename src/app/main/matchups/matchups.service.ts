@@ -29,12 +29,6 @@ export class MatchupsService {
     return this.httpClient.get(`${this.helperService.resolveAPI()}/info/games`)
   }
 
-  getMatchups(param) {
-    let params: HttpParams = new HttpParams();
-    params = params.append('status', param.status);
-    return this.httpClient.get(`${this.helperService.resolveAPI()}/contests`, { params: params });
-  }
-
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.

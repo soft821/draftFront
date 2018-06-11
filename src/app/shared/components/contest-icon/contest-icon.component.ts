@@ -16,7 +16,7 @@ export class ContestIconComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectIcon(id) {
+  /* selectIcon(id) {
     this.selectedIcon.emit(id);
-  }
+  } */
 }

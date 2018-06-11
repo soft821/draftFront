@@ -1,0 +1,27 @@
+<div class="article">
+  <div class="article-image">
+    <div class="image" [ngStyle]="{'background-image': getUrl()}"></div>
+  </div>
+  <div class="content flex-column">
+    <div class="subtitle" [ngStyle]="{'color': subtitleColor}">{{subtitle}}</div>
+    <div class="title">{{title}}</div>
+    <div class="description-section">
+      <div class="description">{{description}}</div>
+      <a class="cursor-pointer read-more">Read more</a> 
+    </div>
+    <div class="info flex">
+      By
+      <span class="author p-l-5"><b>{{author}}</b></span>
+      <span class="time p-l-5">{{time}}</span>
+    </div>
+  </div>
+  <div class="dot-options">
+    <dm-icon-select [icon]="'fa fa-ellipsis-v'"
+                    [options]="dotOptions"
+                    [keys]="{id: 'id', text: 'name', icon: 'icon'}"
+                    class="select-component"
+                    [small]="true"
+                    (optionSelected)="optionSelected($event)">
+    </dm-icon-select>
+  </div>
+</div>

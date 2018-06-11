@@ -1,4 +1,4 @@
-@import "../../../theme/theme-variables";
+@import "../../../../theme/theme-variables";
 
 .dm-logo-w {
     margin: auto;
@@ -13,7 +13,7 @@
     min-height: 130px;
     width: 100%;
     position: relative;
-    background: url('../../../assets/images/stadium_grayout_menu.png') no-repeat; //fixed center center
+    background: url('../../../../assets/images/stadium_grayout_menu.png') no-repeat; //fixed center center
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

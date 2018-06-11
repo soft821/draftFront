@@ -20,7 +20,7 @@ export class MatchupTypeComponent implements OnInit {
       id: 1,
       title: 'Tier Ranked',
       selected: false,
-      match_type: 'tier_ranked',
+      match_type: 'tier_ranking',
       description: "Opponent may select a player within the same Tier Rank based off DraftMatch's ranking system."
     },
     {
@@ -33,17 +33,16 @@ export class MatchupTypeComponent implements OnInit {
   ]
   selectedOptionDescription: string;
 
-  @Input() matchType: string;
+  @Input() matchType: any;  ;
   @Output() getMatchupType: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
-    if(this.matchType) {
-      let temp = this.options.find(x => x.match_type === this.matchType);
+    if(this.matchType && this.matchType.type) {
+      let temp = this.options.find(x => x.match_type === this.matchType.type);
       if(temp)
         this.matchupType(temp);
     }
-    console.log(this.selectedTypeId)
   }
 
   selectMatchupType(option) {

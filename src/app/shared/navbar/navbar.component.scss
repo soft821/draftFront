@@ -4,6 +4,8 @@
 .navbar-header {
     background: #ffffff;
     height: 127px;
+    border-bottom: 1px solid $dm-light-gray;
+    border-radius: 5px;
     padding: 15px 0px 0px 0px;
     @media screen and (max-width: $break-xsmall) {
         padding: 5px 0px 0px 0px;

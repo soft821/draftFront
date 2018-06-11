@@ -35,6 +35,32 @@ export class CreateContestService {
     return this.httpClient.get(`${this.helperService.resolveAPI()}/contests`, { params: params });
   }
 
+  createContest(data) {
+    let body = {
+      slate_id: data.slate_id,
+      match_type: data.match_type,
+      entry_fee: data.entry_fee,
+      user_player_id: data.user_player_id
+    }   
+    if(data.match_type === 'tier_ranking') {
+      body['tier'] = data.tier;
+    } else if(data.match_type === 'set_opponent') {
+      body['opp_player_id'] = data.opp_player_id;
+    }
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/contests`, body);
+  }
+
+  getFantasyPlayers(param) {
+    let params: HttpParams = new HttpParams();
+    params = params.append('slate_id', param.slateId?param.slateId:'Sun-Mon_2017_1_REG');
+    params = params.append('position', param.position?param.position:'K');
+  //  params = params.append('tier', param.tier);
+    return this.httpClient.get(`${this.helperService.resolveAPI()}/fantasyPlayers`, { params: params });
+  }
+
+
+  // handle error
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.

@@ -52,7 +52,7 @@ export class PlayerPositionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if(this.positionSelected) {
+    if(this.positionSelected && this.positionSelected.title) {
       let temp = this.options.find(x => x.title === this.positionSelected);
       if(temp)
         this.selectPosition(temp);

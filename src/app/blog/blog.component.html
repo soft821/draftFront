@@ -1,0 +1,8 @@
+<div class="dm-blog">
+  <dm-menu *ngIf="isSidebarOpen && responsiveService.media.visibleXs"></dm-menu> 
+  <div class="dark-background" id="dark-background" *ngIf="isSidebarOpen && responsiveService.media.visibleXs"></div>
+  <dm-navi-bar></dm-navi-bar> 
+  <div class="dm-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

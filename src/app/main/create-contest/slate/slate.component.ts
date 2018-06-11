@@ -9,6 +9,7 @@ import {ResponsiveService} from '../../../core/responsive/responsive.service';
 export class SlateComponent implements OnInit {
   @Input() gameTimes;
   @Input() matches;
+  @Input() pageLoaded;
   @Output() getGameTime: EventEmitter<any> = new EventEmitter();
   constructor(public responsiveService: ResponsiveService) { }
 
@@ -16,6 +17,7 @@ export class SlateComponent implements OnInit {
   }
 
   timeSelected(event) {
+    console.log(event)
     this.getGameTime.emit(event);
   }
 }

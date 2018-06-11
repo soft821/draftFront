@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ImageUploadModule} from 'ng2-imageupload';
+import {FileUploadModule} from 'ng2-file-upload';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DmSelectComponent} from './components/dm-select/dm-select.component';
@@ -8,6 +10,13 @@ import {ContestIconComponent} from './components/contest-icon/contest-icon.compo
 import {ScrollbarModule} from 'ngx-scrollbar';
 import {ConfirmationModalComponent} from './alert-modals/confirmation-modal/confirmation-modal.component';
 import {PlayerTicketComponent} from './components/player-ticket/player-ticket.component';
+import {NavComponent} from './navbar/navbar.component';
+import {RouterModule} from '@angular/router';
+import {MenuComponent} from './components/menu/menu.component';
+import {SelectImageComponent} from './select-image/select-image.component';
+import {ColorPickerComponent} from './components/color-picker/color-picker.component';
+import {ColorPickerService} from './components/color-picker/color-picker.service';
+import { DmIconSelectComponent } from './components/dm-icon-select/dm-icon-select.component';
 /*
  * SharedModule
  * SharedModule is used to hold common components, directives, and pipes and share them with modules that need them.
@@ -21,28 +30,44 @@ import {PlayerTicketComponent} from './components/player-ticket/player-ticket.co
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ScrollbarModule
+    ScrollbarModule,
+    RouterModule,
+    ImageUploadModule,
+    FileUploadModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    ImageUploadModule,
     DmSelectComponent,
+    DmIconSelectComponent,
     BannerComponent,
     ContestIconComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    NavComponent,
+    MenuComponent,
+    SelectImageComponent,
+    FileUploadModule,
+    ColorPickerComponent
   ],
   declarations: [
     DmSelectComponent,
     BannerComponent,
     ContestIconComponent,
     ConfirmationModalComponent,
-    PlayerTicketComponent
+    PlayerTicketComponent,
+    NavComponent,
+    MenuComponent,
+    SelectImageComponent,
+    ColorPickerComponent,
+    DmIconSelectComponent
   ],
   entryComponents: [
     ConfirmationModalComponent
   ],
   providers: [
+    ColorPickerService
   ]
 })
 export class SharedModule {

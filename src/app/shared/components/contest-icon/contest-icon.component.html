@@ -1,7 +1,7 @@
 
 <div class="dm-contest-icon">
   <div class="flex-icons">
-    <div class="icon-circle" [ngClass]="{'checkmark': isChecked, 'chevron': !isChecked}" (click)="isChecked?selectIcon(id):''"></div>
+    <div class="icon-circle" [ngClass]="{'checkmark': isChecked, 'chevron': !isChecked}"></div><!--  (click)="isChecked?selectIcon(id):''" -->
     <div class="title c-gray" [ngClass]="{'c-red': isChecked}">{{title}}</div>
   </div>  
   <div class="dots" [ngClass]="{'last-item': isLastOne}"></div>

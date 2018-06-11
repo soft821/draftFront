@@ -1,0 +1,35 @@
+<div class="wrapper-dropdown cursor-pointer" [ngClass]="{'active-color': selectOpen}"
+    (mouseover)="isHovered = true"
+    (mouseout)="isHovered = false">
+  <div class="selection" (click)="toggleSelect()"
+      [style.color]="isHovered? 'black': ''"
+      [ngClass]="{'dropdown-open active-selection': selectOpen }">
+    <div class="text">
+      <span class="p-r-10" *ngIf="!_.isEmpty(selected)">
+        <span>{{ selected[keys.text]}}</span>
+      </span>
+      <span class="p-r-10" *ngIf="_.isEmpty(selected)">Choose a color</span>
+    </div>
+    <div class="arrow"
+        [ngClass]="{'dropdown-open active-arrow': selectOpen}"
+        [style.color]="getColorActive(true)">
+      <i class="fa fa-arrow-down"></i>
+    </div>
+  </div>
+
+  <div class="dropdown"
+    [ngClass]="{'dropdown-open active-menu': selectOpen}"
+    [style.border-color]="getColorActive(true)"
+    [hidden]="!selectOpen">
+    <ng-scrollbar #scrollRef>
+      <ul>
+        <li *ngFor="let option of options" (click)="selectItem(option)">
+          <a [style.color]="getColorActive(option[keys.id] === selected[keys.id])">
+            <div class="square"></div>
+            <span>{{ option[keys.text]}}</span>
+          </a>
+        </li>
+      </ul>
+    </ng-scrollbar>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit} from '@angular/core';
-import {GlobalStateService} from '../../core/global-state/global-state.service';
+import {GlobalStateService} from '../../../core/global-state/global-state.service';
 import {SIDEBAR_MENU_1, SIDEBAR_MENU_2} from './menu-items';
-import {AuthService} from '../../core/auth/auth.service';
+import {AuthService} from '../../../core/auth/auth.service';
 import {trigger, state, style, transition, animate, keyframes} from '@angular/animations';
 import {Router} from '@angular/router';
-import {HelperService} from '../../core/helper.service';
+import {HelperService} from '../../../core/helper.service';
 
 // declare var $;
 

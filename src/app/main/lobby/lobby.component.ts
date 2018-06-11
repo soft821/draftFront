@@ -15,9 +15,10 @@ export class LobbyComponent implements OnInit {
   modalOpened: boolean;
   slates = [];
   temp: any;
+  live: any;
   slateSelected = {};
   gameSelected = {};
-  games = [];
+  liveGames = [];
   headlines = [
     {
       id: 0,
@@ -86,36 +87,33 @@ export class LobbyComponent implements OnInit {
               private simpleModalService: SimpleModalService) { }
 
   ngOnInit() {
-    this.getSlates();
-    this.getMatchups();
+    this.getData();
   };
 
-  getSlates() {
-    this.lobbyService.getSlates()
+  getData() {
+    Observable.forkJoin([this.lobbyService.getSlates(),
+                        this.lobbyService.getMatchups('LIVE'),
+                        this.lobbyService.getMatchups('HISTORY'), 
+                        this.lobbyService.getMatchups('MATCHUPS'), 
+                        this.lobbyService.getMatchups('ENTER_MATCHUP'),
+                        ])
     .subscribe(data => {
-      this.temp = data;
+      this.temp = data[0];
       this.slates = this.temp?this.temp.response:[];
       if(this.slates && this.slates[0]) {
         this.selectSlate(this.slates[0]);
       }
+      this.live = data[1];
+      this.liveGames = this.live?this.live.response:[];
+      console.log(this.liveGames, 'liveGames')
       this.pageLoaded = true;
+    }, (error) => {
     });
   };
-
-  getMatchups() {
-    Observable.forkJoin([this.lobbyService.getMatchups('LIVE'), 
-                         this.lobbyService.getMatchups('ENTER_MATCHUP')])
-    .subscribe(response => {
-      console.log(response)
-    }, (error) => {
-    })
-  }
   
   selectSlate(slate) {
-    console.log('slateSelected', slate)
     slate.selected = true;
     this.slateSelected = slate;
-    this.games = slate.games;
     this.slates.forEach(element => {
       if(element.id !== slate.id) {
         element.selected = false;
@@ -129,11 +127,11 @@ export class LobbyComponent implements OnInit {
   selectGame(game) {
     game.selected = true;
     this.gameSelected = game;
-    this.games.forEach(element => {
+ /*    this.games.forEach(element => {
       if(element.id !== game.id) {
         element.selected = false;
       }
-    });
+    }); */
   }
 
   showConfirmModal(event) {

@@ -1,0 +1,157 @@
+@import "../../../../theme/theme-variables";
+@import "../dm-select-main.scss";
+
+.wrapper-dropdown {
+  /* Styles */
+  background: whitesmoke;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  .selection {
+    padding: 5px 15px;
+    border-radius: 5px;
+  }
+
+  .dropdown {
+    left: 0;
+    max-height: 250px;
+    min-height: 100px;
+    ul {
+        padding: 0px 0px 0px 5px;
+      li {
+        list-style: none;
+        a {
+          display: inline-flex;
+          display: -webkit-inline-flex;
+          color: gray;
+          padding: 7px 0 0 0;
+          span {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.option-active a {
+  color: orange !important;
+}
+
+.square {
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;  
+    background: red;
+}
+
+li:nth-child(1) {
+    a {
+        color: black !important;
+    }
+    .square {        
+        background: black;
+    }
+}
+li:nth-child(2) {
+    a {
+        color: #b1abab !important;
+    }
+    .square {
+        background: #b1abab;
+    }
+}
+li:nth-child(3) {
+    a {
+        color: #d98282 !important;
+    }
+    .square {
+        background: #d98282;
+    }
+}
+li:nth-child(4) {
+    a {
+        color: #e30f32 !important;
+    }
+    .square {        
+        background: #e30f32;
+    }
+}
+li:nth-child(5) {
+    a {
+        color: #a3001b !important;
+    }
+    .square {
+        background: #a3001b;
+    }
+}
+li:nth-child(6) {
+    a {
+        color: #ff6600 !important;
+    }
+    .square {        
+        background: #ff6600;
+    }
+}
+li:nth-child(7) {
+    a {
+        color: #ffa163 !important;
+    }
+    .square {
+        background: #ffa163;
+    }
+}
+li:nth-child(8) {
+    a {
+        color: #ffde00 !important;
+    }
+    .square {
+        background: #ffde00;
+    }
+}
+li:nth-child(9) {
+    a {
+        color: #a3f792 !important;
+    }
+    .square {
+        background: #a3f792;
+    }
+}
+li:nth-child(10) {
+    a {
+        color: #2aff00 !important;
+    }
+    .square {        
+        background: #2aff00;
+    }
+}
+li:nth-child(11) {
+    a {
+        color: #1a7f06 !important;
+    }
+    .square {
+        background: #1a7f06;
+    }
+}
+li:nth-child(12) {
+    a {
+        color: #00e4ff !important;
+    }
+    .square {
+        background: #00e4ff;
+    }
+}
+li:nth-child(13) {
+    a {
+        color: #0072ff !important;
+    }
+    .square {
+        background: #0072ff;
+    }
+}
+li:nth-child(14) {
+    a {
+        color: #8322bb !important;
+    }
+    .square {
+        background: #8322bb;
+    }
+}

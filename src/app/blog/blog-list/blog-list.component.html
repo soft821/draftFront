@@ -1,0 +1,26 @@
+<div class="dm-blog container">    
+    <div class="blog-page-title col-md-10">
+        <h1>The Fastest Way To Play Daily Fantasy Sports</h1>
+    </div>    
+    <div class="col-md-10 button-section">
+        <button class="create-blog-btn" routerLink="/blog/create" >Create new</button>
+    </div>
+    <div class="main-section flex">
+        <div class="left-section">            
+            <div class="list">
+                <div class="item" *ngFor="let article of articles">
+                    <dm-blog-item [subtitle]="article.subtitle"
+                                    [title]="article.title"
+                                    [description]="article.description"
+                                    [author]="article.author"
+                                    [time]="article.time"
+                                    [image]="article.image"
+                                    [subtitleColor]="article.subtitleColor"
+                                    class="article">
+                    </dm-blog-item>
+                </div>
+            </div>
+        </div>
+        <div class="right-section"></div>
+    </div>
+</div>

@@ -35,23 +35,23 @@
         <div class="user-profile-container" *ngIf="auth.isAuthenticated && !responsiveService.media.visibleXs">
             <div class="help">
                 <span class="nav-icon">
-                    <dm-select [options]="options"
+                    <dm-icon-select [options]="options"
                                [keys]="{id: 'id', text: 'text', path: 'path'}"
                                class="select-component"
                                [icon]="'fa fa-question-circle-o'"
                                (optionSelected)="goToRoute($event)">
-                    </dm-select>
+                    </dm-icon-select>
                 </span>
             </div>
             <div class="user-profile">
                 <span class="nav-icon user">
-                    <dm-select [options]="userOptions"
+                    <dm-icon-select [options]="userOptions"
                                [keys]="{id: 'id', text: 'text', path: 'path'}"
                                class="select-component"
                                [icon]="'fa fa-user-circle-o'"
                                [xsmall]="true"
                                (optionSelected)="goToLogin($event)">
-                    </dm-select>
+                    </dm-icon-select>
                 </span>
             </div>
             <div class="balance">

@@ -30,13 +30,13 @@ export function tokenGetter() {
       storageType: 'localStorage'
     }),
     // https://github.com/auth0/angular2-jwt
-    //https://github.com/auth0/angular-jwt
+    // https://github.com/auth0/angular-jwt
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:4300']
       }
-    })
+    }),
   ],
   declarations: [
     AppComponent,

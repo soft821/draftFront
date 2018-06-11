@@ -1,0 +1,41 @@
+@import "../../../theme/theme-variables";
+
+.blog-page-title {
+    color: #3C4858;
+    text-align: center;
+    margin: 10px auto 30px auto;
+    padding-top: 30px;
+    h1 {
+        font-size: 56.8px;
+        font-weight: 700;
+    }
+}
+
+.button-section {
+    padding-top: 50px;
+    padding-left: 0;
+}
+
+.left-section {
+    width: 80%;
+    .item {
+        margin: 30px 0px 90px 0px;
+    }
+}
+
+.right-section {
+    width: 20%;
+}
+
+.create-blog-btn {
+    width: 150px;
+    height: 50px;
+    background: $dm-red;
+    color: #ffffff;
+    border: $dm-red 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    &:hover {
+        background: #fc4141;
+    }
+}

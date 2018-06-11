@@ -1,14 +1,24 @@
-<div class="wrapper-dropdown cursor-pointer">
+ <div class="wrapper-dropdown cursor-pointer" [ngClass]="{'active-color': selectOpen}">
   <div class="selection" (click)="toggleSelect()"
-       [ngClass]="{'dropdown-open active-selection': selectOpen }"
-       (mouseover)="isHovered = true"
-       (mouseout)="isHovered = false">
-    <div [ngClass]="icon"></div>
+      [ngClass]="{'dropdown-open active-selection': selectOpen}"
+      (mouseover)="isHovered = true"
+      (mouseout)="isHovered = false"
+      [style.color]="isHovered? 'black': ''">
+    <div class="text">
+      <span class="p-r-10" *ngIf="!_.isEmpty(selected)">
+        <span>{{ selected[keys.text]}}</span>
+      </span>
+      <span class="p-r-10" *ngIf="_.isEmpty(selected)">{{ placeholder }}</span>
+    </div>
+    <div class="arrow"
+        [ngClass]="{'dropdown-open active-arrow': selectOpen}"
+        [style.color]="isHovered? 'black' : getColorActive(true)">
+      <i class="fa fa-arrow-down"></i>
+    </div>
   </div>  
   <div class="dropdown"
-       [ngClass]="{'dropdown-open active-menu': selectOpen, 'xsmall-list': xsmall}"
-       [hidden]="!selectOpen">
-    <div class="triangle arrow-up"></div>
+      [ngClass]="{'dropdown-open active-menu': selectOpen, 'xsmall-list': xsmall}"
+      [hidden]="!selectOpen">    
     <ng-scrollbar #scrollRef>
       <div class="ul">
         <span class="li" *ngFor="let option of options" 

@@ -1,0 +1,20 @@
+<span class="img-container">
+  <span class="input-container">
+    <input #fileInput class="file" type="file"
+           accept="image/*"
+           (change)="fileSelected($event)"
+           [uploader]="uploader"
+           ng2FileSelect
+           imageUpload
+           (imageSelected)="selected($event)">
+  </span>
+  <div class="image-card" [ngStyle]="{'background-image': getImage()}" [ngClass]="{'img-loaded': src}">
+    <div class="add-new" *ngIf="!src" (click)="selectFile()">
+      <i class="fa fa-plus-circle"></i>    
+      <span>Add new</span>
+    </div>
+    <div class="delete" *ngIf="src" (click)="deselectFile()">
+      <i class="fa fa-times-circle"></i>    
+    </div>
+  </div>
+</span>

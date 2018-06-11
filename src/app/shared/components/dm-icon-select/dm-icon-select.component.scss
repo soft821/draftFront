@@ -1,0 +1,30 @@
+@import "../../../../theme/theme-variables";
+@import "../dm-select-main.scss";
+
+.dropdown {
+    width: 200px !important;
+    top: 62px !important;
+    left: -165px !important;
+    &.xsmall-list {
+      height: 40px !important;
+    }
+    &.small-list {
+      height: 80px !important;   
+      top: 42px !important;   
+      left: -182px !important;
+    }
+}
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;  
+  border-bottom: 15px solid whitesmoke;
+}
+
+.triangle {
+  position: absolute;
+  right: 0;
+  top: -16px;
+  filter: drop-shadow(0 0 1px rgba(gray,.5));
+}

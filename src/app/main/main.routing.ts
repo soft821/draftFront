@@ -3,7 +3,6 @@ import {Routes, RouterModule, CanActivate} from '@angular/router';
 import {AuthGuard} from '../core/auth/auth-guard.service';
 import {AuthorizedCheck} from '../core/auth/authorized-check.service';
 import {MainComponent} from './main.component';
-import {BlogComponent} from './blog/blog.component';
 import {TermsOfUseComponent} from './terms-of-use/terms-of-use.component';
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
 import {ResponsiblePlayComponent} from './responsible-play/responsible-play.component';
@@ -17,7 +16,7 @@ import {CreateContestComponent} from './create-contest/create-contest.component'
 const MAIN_ROUTES: Routes = [
     {
         path: 'main', component: MainComponent,
-      //  canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         children: [
             { path: 'matchups', component: MatchupsComponent },
             { path: 'create-contest', component: CreateContestComponent },
@@ -30,7 +29,6 @@ const MAIN_ROUTES: Routes = [
         path: '',  component: MainComponent,
         canActivate: [AuthorizedCheck],
         children: [
-            { path: 'blog', component: BlogComponent },
             { path: 'terms-of-use', component: TermsOfUseComponent },
             { path: 'privacy-policy', component: PrivacyPolicyComponent },
             { path: 'responsible-play', component: ResponsiblePlayComponent },

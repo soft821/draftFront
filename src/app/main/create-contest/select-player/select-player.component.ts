@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {HelperService} from '../../../core/helper.service';
 
 @Component({
   selector: 'dm-select-player',
@@ -13,11 +14,13 @@ export class SelectPlayerComponent implements OnInit {
 
   @Input() players;
   @Output() getPlayer: EventEmitter<any> = new EventEmitter();
+  @Output() getPlayers: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(private helperService: HelperService) { }
 
   ngOnInit() {
-    this.orderBy(this.direction);
+    this.orderBy(this.direction, 'tier');
+    this.getPlayers.emit();
   }
 
   selectPlayer(option) {
@@ -32,14 +35,18 @@ export class SelectPlayerComponent implements OnInit {
     this.getPlayer.emit(option);
   }
 
-  orderBy(isDescending) {
+  orderBy(isDescending, key) {
     this.sortDesc = isDescending;
-    this.players.sort(function(a, b) {
       if(isDescending) {
-        return b.salary - a.salary
-      } else {        
-        return a.salary - b.salary
-      }
-    })
+        this.players.sort(this.helperService.compareValues(key, 'desc'));
+     } else {        
+      this.players.sort(this.helperService.compareValues(key));
+    } 
   }
+
+  filterRanks(value) {
+  //  this.players = this.players.filter(x => x.tier === 'A')
+    
+  }
+
 }

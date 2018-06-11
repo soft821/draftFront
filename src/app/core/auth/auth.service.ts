@@ -45,6 +45,7 @@ export class AuthService {
     .toPromise()
       .then((response: any) => {
         resolve(response);
+        console.log(response, 'user')
       }, (error) => {
         reject(error);
       });
