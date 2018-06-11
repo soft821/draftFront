@@ -13,7 +13,7 @@ export class BlogComponent implements OnInit {
 
   constructor(private globalState: GlobalStateService,
               private activatedRoute: ActivatedRoute,
-              private responsiveService: ResponsiveService,
+              public responsiveService: ResponsiveService,
               private router: Router) { 
 
     this.globalState.subscribe('menu.toggleSidebar', (data) => {

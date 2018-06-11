@@ -56,7 +56,10 @@
             </div>
             <div class="submit-button">
                 <button *ngIf="steps[activeFormIndex].key !== 'createContest' || !steps[activeFormIndex].current" class="dm-red-btn" (click)="next($event, contest)">Next</button>
-                <button *ngIf="steps[activeFormIndex].key === 'createContest' && steps[activeFormIndex].current" class="dm-red-btn" (click)="createMatchup($event)">Create Matchup</button>
+                <button *ngIf="steps[activeFormIndex].key === 'createContest' && steps[activeFormIndex].current" 
+                        class="dm-red-btn" 
+                        (click)="createMatchup($event)"
+                        [disabled]="createContestInProgress">Create Matchup</button>
             </div>
         </div>
     </div>

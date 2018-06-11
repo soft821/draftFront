@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CreateContestService} from './create-contest.service';
 import {HelperService} from '../../core/helper.service';
 import {LobbyService} from '../lobby/lobby.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dm-create-contest',
@@ -134,11 +135,12 @@ export class CreateContestComponent implements OnInit {
   positionSelected: any;
   matchupSelected: any;
   playerSelected: any;
-
+  createContestInProgress: boolean;
   pageLoaded: boolean;
   constructor(private matchupsService: CreateContestService, 
               private helperService: HelperService,
-              private lobbyService: LobbyService) { }
+              private lobbyService: LobbyService,
+              private route: Router) { }
 
   ngOnInit() {
     this.getSlates();
@@ -291,6 +293,7 @@ export class CreateContestComponent implements OnInit {
   }
 
   createMatchup(event) {
+    this.createContestInProgress = true;
     let body = {
       slate_id: this.slateSelected.id,
       match_type: this.matchupSelected.match_type,
@@ -302,7 +305,8 @@ export class CreateContestComponent implements OnInit {
     this.matchupsService.createContest(body)
     .subscribe(response => {
       console.log(response)
+      this.createContestInProgress = false;
+      this.route.navigate(['/lobby'])
     })
-
   }
 }
