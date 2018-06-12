@@ -306,7 +306,7 @@ export class CreateContestComponent implements OnInit {
     .subscribe(response => {
       console.log(response)
       this.createContestInProgress = false;
-      this.route.navigate(['/lobby'])
+      this.route.navigate(['/main/lobby'])
     })
   }
 }
