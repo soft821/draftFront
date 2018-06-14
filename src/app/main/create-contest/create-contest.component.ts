@@ -348,7 +348,7 @@ export class CreateContestComponent implements OnInit {
       entry_fee: this.entryFeeSelected.value,
       user_player_id: this.playerSelected.id,
       tier: this.playerSelected.tier,
-      opp_player_id: this.opponentPlayerSelected.id
+      opp_player_id: this.opponentPlayerSelected?this.opponentPlayerSelected.id:''
     }   
     this.matchupsService.createContest(body)
     .subscribe(response => {
