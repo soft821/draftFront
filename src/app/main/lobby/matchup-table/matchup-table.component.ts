@@ -51,7 +51,6 @@ export class MatchupTable implements OnInit {
   scaleEntryFee = [ 0, 50000 ];;
 
   ngOnInit() {
-    console.log('tableData', this.tableData)
   }
   
   entryFeeChange() {

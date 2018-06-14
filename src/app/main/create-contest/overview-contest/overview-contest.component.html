@@ -37,7 +37,12 @@
             <div class="border-left helper"></div>
             <div class="flex-column">
               <div class="l-h-20 dm-red">
-                  <span class="p-r-10 f-18"><b>${{entryFeeSelected.value | number}} Entry</b></span> | 
+                  <span class="p-r-10 f-18" *ngIf="entryFeeSelected.id !== 0">
+                    <b>${{entryFeeSelected.value | number}} Entry</b>
+                  </span>
+                  <span class="p-r-10 f-18" *ngIf="entryFeeSelected.id === 0">
+                    <b>Free practice Entry</b>
+                  </span> | 
                   <span class="p-l-10 f-18"><b>${{entryFeeSelected.prize | number}} Prize</b></span>
               </div>
             </div>
@@ -107,7 +112,7 @@
                 <span><b>{{playerSelected.name}}</b></span>
               </div>
               <div class="l-h-20">
-                <span>{{playerSelected.time}}</span>
+                <span>{{playerSelected.game.homeTeam}} @ {{playerSelected.game.awayTeam}}</span>
               </div>
             </div>
           </div>
@@ -118,6 +123,28 @@
             <div class="dm-pencil-icon"></div>
           </div>
         </td> 
+      </tr>      
+      <tr *ngIf="opponentPlayerSelected && matchupSelected.match_type === 'set_opponent'">
+        <td>
+          <div class="capitalize"><b>Select Opponent Player</b></div>
+        </td>   
+        <td>
+          <div class="flex p-l-10">
+            <div class="border-left helper"></div>
+            <div class="player-image">
+              <div class="dm-player"></div>
+            </div>
+            <div class="flex-column">
+              <div class="l-h-20">
+                <span><b>{{opponentPlayerSelected.name}}</b></span>
+              </div>
+              <div class="l-h-20">
+                <span>{{opponentPlayerSelected.game.homeTeam}} @ {{opponentPlayerSelected.game.awayTeam}}</span>
+              </div>
+            </div>
+          </div>
+        </td>      
+        <td></td> 
       </tr>
     </table>
   </div>

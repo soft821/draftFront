@@ -13,7 +13,6 @@ export class HeadlineMatchup implements OnInit {
   @Output() confirmMatchupEvent: EventEmitter<any> = new EventEmitter;
 
   ngOnInit() {
-    console.log(this.match)
   }
   
   confirmMatchup(row) {

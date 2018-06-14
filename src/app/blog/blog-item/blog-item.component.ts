@@ -22,7 +22,6 @@ export class BlogItemComponent implements OnInit {
     {id: 1, name: 'Delete', icon: 'fa fa-times'}
   ]
   ngOnInit() {
-    console.log(this.image)
   }
 
   getUrl() {

@@ -59,9 +59,6 @@ export class SelectImageComponent implements OnInit {
   }
 
   loadSelectedImage(dataUrl) {
-    console.log('data', dataUrl)
-
-
     this.src = dataUrl;
     this.pictureLoaded = true;
   }

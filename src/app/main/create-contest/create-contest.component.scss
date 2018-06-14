@@ -40,10 +40,6 @@
 .dm-red-btn {
     height: 65px;
     font-size: 25px;
-    &:hover {
-        cursor: pointer;
-        background: $dm-red-btn-hover;
-    }
 }
 
 .error {

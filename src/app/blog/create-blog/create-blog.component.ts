@@ -64,7 +64,6 @@ export class CreateBlogComponent implements OnInit {
 
   imageSelected(event) {
     this.files = event;
-    console.log(event, 'imageSelected')
   }
 
 }

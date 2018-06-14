@@ -18,7 +18,7 @@
                         [checked]="fee.selected"
                         (change)="entryFee(fee, $event)">
                     <span *ngIf="!first">${{fee.value | number}} for {{fee.prize | number}} prize</span>
-                    <span *ngIf="first">{{fee.value}}</span>
+                    <span *ngIf="first">Free practice</span>
                 </label>
             </div>               
         </div>

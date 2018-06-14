@@ -17,7 +17,6 @@ export class SlateComponent implements OnInit {
   }
 
   timeSelected(event) {
-    console.log(event)
     this.getGameTime.emit(event);
   }
 }

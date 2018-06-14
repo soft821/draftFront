@@ -3,6 +3,7 @@ import {MatchupsService} from './matchups.service';
 import {HelperService} from '../../core/helper.service';
 import {SimpleModalService} from 'ngx-simple-modal';
 import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation-modal/confirmation-modal.component';
+import {LobbyService} from '../lobby/lobby.service';
 
 @Component({
   selector: 'dm-matchups',
@@ -12,7 +13,8 @@ import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation
 export class MatchupsComponent implements OnInit {
   modalOpened: boolean;
 
-  constructor(private simpleModalService: SimpleModalService) { }
+  constructor(private simpleModalService: SimpleModalService,
+              private lobbyService: LobbyService) { }
 
   titles = [
     {
@@ -85,6 +87,10 @@ export class MatchupsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.lobbyService.getMatchups('MATCHUPS')
+    .subscribe( response => {
+      console.log(response)
+    })
     this.setValuesForUser();
   }
 

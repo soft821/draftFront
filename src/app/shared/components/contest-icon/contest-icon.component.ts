@@ -10,6 +10,7 @@ export class ContestIconComponent implements OnInit {
   @Input() isLastOne;
   @Input() title;
   @Input() id;
+  @Input() visible;
   @Output() selectedIcon: EventEmitter<any> = new EventEmitter;
   constructor() { }
 

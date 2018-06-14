@@ -8,7 +8,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 export class EntryFeeComponent implements OnInit {
   
   fees = [
-    {id: 0, value: 'Free practice', prize: '', selected: false},
+    {id: 0, value: 0, prize: 0, selected: false},
     {id: 1, value: 1, prize: 1.80, selected: false},
     {id: 2, value: 2, prize: 3.60, selected: false},
     {id: 3, value: 5, prize: 9, selected: false},

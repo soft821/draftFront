@@ -81,7 +81,6 @@ export class DmSelectComponent implements OnInit, ControlValueAccessor {
 
   selectItem(option) {
     this.selected = option;
-    console.log('option',  this.selected )
     this.onModelChange(this.selected);
     this.onModelTouched();
     this.optionSelected.emit(option);

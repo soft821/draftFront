@@ -91,11 +91,12 @@ export class LobbyComponent implements OnInit {
   };
 
   getData() {
+    this.helperService.spinner.show();
     Observable.forkJoin([this.lobbyService.getSlates(),
-                        this.lobbyService.getMatchups('LIVE'),
+                        this.lobbyService.getMatchups('LIVE')/* ,
                         this.lobbyService.getMatchups('HISTORY'), 
                         this.lobbyService.getMatchups('MATCHUPS'), 
-                        this.lobbyService.getMatchups('ENTER_MATCHUP'),
+                        this.lobbyService.getMatchups('ENTER_MATCHUP') */,
                         ])
     .subscribe(data => {
       this.temp = data[0];
@@ -105,8 +106,8 @@ export class LobbyComponent implements OnInit {
       }
       this.live = data[1];
       this.liveGames = this.live?this.live.response:[];
-      console.log(this.liveGames, 'liveGames')
       this.pageLoaded = true;
+      this.helperService.spinner.hide();
     }, (error) => {
     });
   };
@@ -135,7 +136,6 @@ export class LobbyComponent implements OnInit {
   }
 
   showConfirmModal(event) {
-    console.log(event)
     this.modalOpened = true;
     let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Confirm Matchup',

@@ -104,10 +104,8 @@ export class DmFilterColumn implements OnInit {
   entryFeeChange() {}
 
   selectPosition(position) {
-    console.log(position)
   }
   selectGameType(gameType) {
-    console.log(gameType)
     this.gameTypes.forEach(element => {
       if(element.id !== gameType.id) {
         element.selected = false;

@@ -8,6 +8,7 @@
                 <dm-contest-icon [isChecked]="step.isChecked"
                                  [isLastOne]="step.isLastOne"
                                  [id]="step.id"
+                                 [visible]="step.defaultVisible"
                                  [title]="step.title"> 
                 </dm-contest-icon>
             </div>
@@ -38,6 +39,11 @@
                                       (getPlayer)="getPlayer($event)"
                                       (getPlayers)="getPlayers($event)">
                     </dm-select-player>
+                </div>                
+                <div *ngIf="step.key === 'selectOpponentPlayer' && step.current">
+                    <dm-select-player [players]="opponentPlayers"
+                                      (getPlayer)="getOpponentPlayer($event)">
+                    </dm-select-player>
                 </div>
                 <div *ngIf="step.key === 'createContest' && step.current">
                     <dm-overview-contest [contestData]="contestData"
@@ -46,6 +52,7 @@
                                          [positionSelected]="positionSelected"
                                          [matchupSelected]="matchupSelected"
                                          [playerSelected]="playerSelected"
+                                         [opponentPlayerSelected]="opponentPlayerSelected"
                                          (selectedRow)="selectRow($event, contest)">
                     </dm-overview-contest>
                 </div>
@@ -55,11 +62,27 @@
                 <span>{{steps[activeFormIndex].errorMsg}}</span>
             </div>
             <div class="submit-button">
-                <button *ngIf="steps[activeFormIndex].key !== 'createContest' || !steps[activeFormIndex].current" class="dm-red-btn" (click)="next($event, contest)">Next</button>
+                <button *ngIf="steps[activeFormIndex].key !== 'createContest' || !steps[activeFormIndex].current" 
+                        class="dm-red-btn" [ngClass]="{'disabled': players.length === 0 && steps[activeFormIndex].key === 'selectPlayer' && steps[activeFormIndex].current || 
+                        opponentPlayers.length === 0 && steps[activeFormIndex].key === 'selectOpponentPlayer' && steps[activeFormIndex].current}"
+                        (click)="next($event, contest)"
+                        [disabled]="players.length === 0 && steps[activeFormIndex].key === 'selectPlayer' && steps[activeFormIndex].current || 
+                            opponentPlayers.length === 0 && steps[activeFormIndex].key === 'selectOpponentPlayer' && steps[activeFormIndex].current">
+                            Next
+                </button>
+                <button *ngIf="(steps[activeFormIndex].key !== 'createContest' || !steps[activeFormIndex].current) && 
+                            players.length === 0 && steps[activeFormIndex].key === 'selectPlayer' && steps[activeFormIndex].current || 
+                            opponentPlayers.length === 0 && steps[activeFormIndex].key === 'selectOpponentPlayer' && steps[activeFormIndex].current" 
+                        class="dm-red-btn m-t-10" 
+                        (click)="back($event, contest)">
+                            Back
+                </button>
                 <button *ngIf="steps[activeFormIndex].key === 'createContest' && steps[activeFormIndex].current" 
                         class="dm-red-btn" 
                         (click)="createMatchup($event)"
-                        [disabled]="createContestInProgress">Create Matchup</button>
+                        [disabled]="createContestInProgress">
+                        Create Matchup
+                </button>
             </div>
         </div>
     </div>

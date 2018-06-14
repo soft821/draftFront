@@ -16,6 +16,7 @@ export class OverviewContestComponent implements OnInit {
   @Input() positionSelected: any;
   @Input() matchupSelected: any;
   @Input() playerSelected: any;
+  @Input() opponentPlayerSelected: any;
   @Output() selectedRow: EventEmitter<any> = new EventEmitter;
 
   ngOnInit() {
