@@ -8,4 +8,6 @@ export const environment = {
   apiBase: 'https://draftmatch-api.com/api/v1'
 };
 
-// 'http://162.243.21.233/api/v1' https://draftmatch-api.com/api/v1
+// 'http://162.243.21.233/api/v1' 
+// 'https://draftmatch-api.com/api/v1'
+// 'http://159.89.229.129/api/v1'

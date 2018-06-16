@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LobbyService} from '../lobby/lobby.service';
 
 @Component({
   selector: 'dm-live',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LiveComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lobbyService: LobbyService) { }
 
   titles = [
     {
@@ -78,6 +79,10 @@ export class LiveComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.lobbyService.getMatchups('LIVE')
+    .subscribe( response => {
+      console.log(response)
+    })
     this.setValuesForUser();
   }
 

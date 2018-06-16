@@ -1,7 +1,83 @@
+@import "../../../theme/theme-variables";
+
 .dm-home {
     min-height: -webkit-calc(100%);
     min-height: -moz-calc(100%);
     min-height: calc(100%);
     position: relative;
-    background-color: #121316;  
+    background-color: rgba(50, 50, 50, 0.5);  
+    color: white;
   }
+
+  .home-content {
+    text-align: center;
+    padding-top: 200px;
+    @media screen and (max-width: $break-small) {      
+      padding-top: 100px;
+    }
+  }
+
+  .home-btn {
+    width: 209px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+  }
+  .signup-container {
+    padding-top: 20px; 
+  }
+
+  .registration-container {    
+    padding-top: 20px; 
+  }
+
+  .signup-btn {
+    background-color: #ff1300;
+    border: none;
+    box-shadow: 0 3px 3px 0 #6d0000;
+    &:hover {
+      background-color: $dm-red;
+    }
+  }
+
+  .registration-btn {
+    background: transparent;
+    border: 1px solid white;
+    &:hover {
+      background-color: $dm-light-gray;
+    }
+  }
+
+  .title {
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    font-weight: bold;
+    padding: 10px 0;
+    &.primary {
+      font-size: 50px;
+      color: #ffffff;
+      @media screen and (max-width: $break-xsmall) {      
+        font-size: 35px;
+      }
+    }
+    &.secundary {
+      font-size: 40px;
+      color: #cc4a4c;
+      @media screen and (max-width: $break-xsmall) {      
+        font-size: 25px;
+      }
+    }
+  }
+
+ 
+
+  
