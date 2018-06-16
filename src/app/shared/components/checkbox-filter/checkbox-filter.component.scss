@@ -1,0 +1,34 @@
+@import "../../../../theme/theme-variables";
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.filter-component {
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    padding: 10px 0 0 10px;
+    box-shadow: 0px 0px 5px $dm-light-gray;
+    width: 145px;
+    left: -8px;
+    top: 30px;
+    text-align: left;
+    height: 200px;
+    overflow-y: hidden;
+    &.rank {
+        height: 180px;
+    }
+    .dm-checkbox-red input[type=checkbox] + span::before {
+        margin-right: 27px;
+    }
+
+    label {
+        display: block;
+        width: 100%;
+    }
+}
+
+

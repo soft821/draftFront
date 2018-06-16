@@ -47,7 +47,8 @@
     padding: 0px 5px 10px 10px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    height: 220px; 
+    min-height: 200px; 
+    height: calc(100%);
     width: 100%;
     top: 28px;
     .ul {

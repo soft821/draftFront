@@ -4,19 +4,38 @@
       <thead>
         <tr>
           <th>
-            <div class="cursor-pointer" (click)="filterRanks('tier')">Rank <i class="fa fa-caret-down"></i></div>
+            <div class="p-relative">
+              <div class="cursor-pointer" (click)="showRankFilter=!showRankFilter">Rank <i class="fa fa-filter"></i></div>
+              <dm-checkbox-filter [items]="rankFilterValues"
+                                  [isRank]="true"
+                                  (optionSelected)="filterOptionSelected($event)"
+                                  *ngIf="showRankFilter">                
+              </dm-checkbox-filter>
+            </div>            
           </th>
           <th>
             <div>Position</div>
           </th>
           <th>
-            <div class="cursor-pointer" (click)="orderBy(!sortDesc, 'name')">Player <i class="fa fa-caret-down"></i></div>
+            <div class="cursor-pointer" (click)="orderBy(!sortDesc, 'name')">Player 
+              <i class="fa fa-caret-down" *ngIf="!sortDesc || sortFilter.fps"></i>
+              <i class="fa fa-caret-up" *ngIf="sortDesc && sortFilter.name"></i>
+            </div>
           </th>
           <th>
-            <div>Game</div>
+            <div class="p-relative">
+                <div class="cursor-pointer" (click)="showGameFilter=!showGameFilter">Game <i class="fa fa-filter"></i></div>
+                <dm-checkbox-filter [items]="gameFilterValues"
+                                    (optionSelected)="filterOptionSelected($event)"
+                                    *ngIf="showGameFilter">                
+                </dm-checkbox-filter>
+            </div>
           </th>
           <th>
-            <div class="cursor-pointer" (click)="orderBy(!sortDesc, 'fps')">FPPG <i class="fa fa-caret-down"></i></div>
+            <div class="cursor-pointer" (click)="orderBy(!sortDesc, 'fps')">FPPG 
+              <i class="fa fa-caret-down" *ngIf="!sortDesc || sortFilter.name"></i>
+              <i class="fa fa-caret-up" *ngIf="sortDesc && sortFilter.fps"></i>
+            </div>
           </th>
         </tr>
       </thead>

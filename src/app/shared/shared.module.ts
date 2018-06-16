@@ -16,7 +16,8 @@ import {MenuComponent} from './components/menu/menu.component';
 import {SelectImageComponent} from './select-image/select-image.component';
 import {ColorPickerComponent} from './components/color-picker/color-picker.component';
 import {ColorPickerService} from './components/color-picker/color-picker.service';
-import { DmIconSelectComponent } from './components/dm-icon-select/dm-icon-select.component';
+import {DmIconSelectComponent} from './components/dm-icon-select/dm-icon-select.component';
+import {CheckboxFilterComponent} from './components/checkbox-filter/checkbox-filter.component';
 /*
  * SharedModule
  * SharedModule is used to hold common components, directives, and pipes and share them with modules that need them.
@@ -49,7 +50,8 @@ import { DmIconSelectComponent } from './components/dm-icon-select/dm-icon-selec
     MenuComponent,
     SelectImageComponent,
     FileUploadModule,
-    ColorPickerComponent
+    ColorPickerComponent,
+    CheckboxFilterComponent
   ],
   declarations: [
     DmSelectComponent,
@@ -61,7 +63,8 @@ import { DmIconSelectComponent } from './components/dm-icon-select/dm-icon-selec
     MenuComponent,
     SelectImageComponent,
     ColorPickerComponent,
-    DmIconSelectComponent
+    DmIconSelectComponent,
+    CheckboxFilterComponent
   ],
   entryComponents: [
     ConfirmationModalComponent

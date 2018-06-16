@@ -9,11 +9,11 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {AuthorizedCheck} from './auth/authorized-check.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from '../core/auth/auth-interceptors';
-// import {FooterComponent} from './footer/footer.component';
 import {HelperService} from './helper.service';
 import {ResponsiveService} from './responsive/responsive.service';
-import { BlogModule } from '../blog/blog.module';
-// import {RoleGuardService} from './auth/role-guard.service';
+import {BlogModule} from '../blog/blog.module';
+import {HandleErrorService} from './handle-error.service';
+
 /*
  * CoreModule
  * CoreModule is used to gather components, services that we only want to initialize once at the start.
@@ -40,6 +40,7 @@ import { BlogModule } from '../blog/blog.module';
     GlobalStateService,
     AuthService,
     HelperService,
+    HandleErrorService,
     AuthGuard,
     AuthorizedCheck,
     TokenInterceptor,

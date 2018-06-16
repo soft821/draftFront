@@ -3,6 +3,9 @@ import {CreateContestService} from './create-contest.service';
 import {HelperService} from '../../core/helper.service';
 import {LobbyService} from '../lobby/lobby.service';
 import {Router} from '@angular/router';
+import {STEPS, OPPONENT_PLAYER} from './const-variables';
+import {SimpleModalService} from 'ngx-simple-modal';
+import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'dm-create-contest',
@@ -11,80 +14,9 @@ import {Router} from '@angular/router';
 })
 export class CreateContestComponent implements OnInit {
   activeFormIndex = 0;
-  opponentPlayer = {
-    id: 5,
-    isChecked: false,
-    title: 'Select Opponent Player', 
-    current: false,
-    stepSubmitted: false,
-    valid: false,
-    key: 'selectOpponentPlayer',
-    errorMsg: 'Please select an opponent player'
-  }
-  steps = [
-    {
-      id: 0,
-      isChecked: true,
-      title: 'Game Slate',
-      current: true,
-      stepSubmitted: false,
-      valid: true,
-      key: 'gameTime',
-      errorMsg: ''
-    },
-    {
-      id: 1,
-      isChecked: false,
-      title: 'Entry Fee',
-      current: false,
-      stepSubmitted: false,
-      valid: false,
-      key: 'entryFee',
-      errorMsg: 'Please select an option'
-    },
-    {
-      id: 2,
-      isChecked: false,
-      title: 'Matchup Type',
-      current: false,
-      stepSubmitted: false,
-      valid: false,
-      key: 'matchupType',
-      errorMsg: 'Please select a matchup type'
-    },
-    {
-      id: 3,
-      isChecked: false,
-      title: 'Player Position',
-      current: false,
-      stepSubmitted: false,
-      valid: false,
-      key: 'playerPosition',
-      errorMsg: 'Please select a position'
-    },
-    {
-      id: 4,
-      isChecked: false,
-      title: 'Select Player', 
-      current: false,
-      stepSubmitted: false,
-      valid: false,
-      key: 'selectPlayer',
-      errorMsg: 'Please select a player'
-    },
-    {
-      id: 6,
-      isChecked: false,
-      isLastOne: true,
-      title: 'Create Contest', 
-      current: false,
-      stepSubmitted: false,
-      valid: true,
-      key: 'createContest',
-      errorMsg: ''
-    }
-  ];
-
+  modalOpened: boolean;
+  opponentPlayer: any;  
+  steps: any[];
   matches = [
     {
       player1: 'Phi',
@@ -129,10 +61,10 @@ export class CreateContestComponent implements OnInit {
   ];
 
   gameTimes: any;
-
   players = [];
+  playersObtained: boolean;
+  gameFilterValues = [];
   opponentPlayers = [];
-
   temp;
 
   filter = {
@@ -150,16 +82,17 @@ export class CreateContestComponent implements OnInit {
   opponentPlayerSelected: any;
   createContestInProgress: boolean;
   pageLoaded: boolean;
-  constructor(private matchupsService: CreateContestService, 
+
+  constructor(private createContestService: CreateContestService, 
               private helperService: HelperService,
               private lobbyService: LobbyService,
-              private route: Router) { }
+              private route: Router,
+              private simpleModalService: SimpleModalService) { }
 
   ngOnInit() {
+    this.steps = STEPS;
+    this.opponentPlayer = OPPONENT_PLAYER;
     this.getSlates();
-   // this.getMatchups();
-  //  this.getUsers();
-
   }
 
   getSlates() {
@@ -184,13 +117,8 @@ export class CreateContestComponent implements OnInit {
     });
   };
 
-  getUsers() {
-    this.matchupsService.getUsers()
-     .subscribe(data => {
-    });
-  }
   getMatchups() {
-    this.matchupsService.getMatchups(this.filter)
+    this.createContestService.getMatchups(this.filter)
      .subscribe(data => {
        this.machups = data;
     });
@@ -259,6 +187,7 @@ export class CreateContestComponent implements OnInit {
   }
 
   back(event, target) {
+    this.playersObtained = false;
     this.helperService.scrollToTarget(target);
     let index = this.steps.findIndex(x => x.current === true);
     if(index !== -1) {
@@ -279,6 +208,7 @@ export class CreateContestComponent implements OnInit {
   }
 
   selectRow(id, target) {
+    this.playersObtained = false;
     this.helperService.scrollToTarget(target);
     this.activeFormIndex = id;
     this.steps.forEach(element => {
@@ -331,13 +261,26 @@ export class CreateContestComponent implements OnInit {
       slateId: this.slateSelected?this.slateSelected.id:'Sun-Mon_2017_1_REG',
       position: this.positionSelected?this.positionSelected.title:'K'
     }
-    this.matchupsService.getFantasyPlayers(params)
-    .subscribe(response => {
-      this.temp = response;
-      this.players = this.temp?this.temp.response:[];
-      this.helperService.spinner.hide();
-    })
-    
+    this.createContestService.getFantasyPlayers(params)
+    .subscribe(
+      response => {
+        this.temp = response;
+        this.players = this.temp?this.temp.response:[];
+        this.helperService.spinner.hide();
+        this.playersObtained = true;
+       this.setGameFilterValues();
+      })    
+  }
+
+  setGameFilterValues() {
+    this.players.forEach(element => {
+      let index = this.gameFilterValues?this.gameFilterValues.findIndex(x => x.id === element.game_id):-1;
+      if(index === -1) {
+        element.game.name = element.game.homeTeam + ' @ ' + element.game.awayTeam;
+        element.game.selected = true;
+        this.gameFilterValues.push(element.game);
+      }
+    });
   }
 
   createMatchup(event) {
@@ -350,10 +293,28 @@ export class CreateContestComponent implements OnInit {
       tier: this.playerSelected.tier,
       opp_player_id: this.opponentPlayerSelected?this.opponentPlayerSelected.id:''
     }   
-    this.matchupsService.createContest(body)
+    this.createContestService.createContest(body)
     .subscribe(response => {
       this.createContestInProgress = false;
-      this.route.navigate(['/main/lobby'])
+      this.showConfirmModal('You have successfully created a contest', 'Thank you');
+    }, 
+    error => {
+      this.showConfirmModal(error, 'Error');
     })
+    
   }
+
+  showConfirmModal(message, title) {
+    this.modalOpened = true;
+    let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
+        title: title,
+        message: message,
+        buttonText: 'OK'
+    })
+    .subscribe((isConfirmed)=> {
+      this.route.navigate(['/main/lobby'])    
+      this.modalOpened = false;
+    });
+  }
+
 }

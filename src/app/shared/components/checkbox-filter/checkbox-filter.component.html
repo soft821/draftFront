@@ -1,0 +1,26 @@
+<div class="filter-component" [ngClass]="{'rank': isRank}">
+  <ng-scrollbar #scrollRef>
+    <ul>
+      <li>
+        <div class="checkbox dm-checkbox-red">
+            <label>
+                <input type="checkbox" 
+                    [checked]="selectAll"
+                    (change)="selectAllOptions()">
+                <span>Select all</span>
+            </label>
+        </div>
+      </li>
+      <li *ngFor="let item of items">
+        <div class="checkbox dm-checkbox-red">
+            <label>
+                <input type="checkbox" 
+                    [checked]="item.selected"
+                    (change)="selectRank(item)">
+                <span>{{item.name}}</span>
+            </label>
+        </div> 
+      </li>
+    </ul>
+  </ng-scrollbar>
+</div>

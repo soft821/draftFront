@@ -6,14 +6,17 @@
             <div class="dm-nfl-icon"></div>
         </div>
     </div>
-    <dm-carousel [list]="liveGames"></dm-carousel>
+    <dm-carousel [list]="liveGames"></dm-carousel> <!-- update - list of all games with live scoring -->
     <div class="lower-part">
         <dm-filter-column class="filter-column"
                           [slates]="slates"
                           [slateSelected]="slateSelected"
                           [gameSelected]="gameSelected"
                           (selectSlateOption)="selectSlate($event)"
-                          (selectGameOption)="selectGame($event)">
+                          (selectGameOption)="selectGame($event)"
+                          (selectGameTypeOption)="selectGameType($event)"
+                          (selectPositionOption)="selectPosition($event)"
+                          (selectEntryFeeOption)="selectEntryFee($event)">
         </dm-filter-column>
         <div class="main-column">
             <div class="lobby-bck">

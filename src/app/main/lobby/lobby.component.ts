@@ -19,6 +19,16 @@ export class LobbyComponent implements OnInit {
   slateSelected = {};
   gameSelected = {};
   liveGames = [];
+  gameSelectedUnfiltered = [];
+  filterForPositions = [];
+  filter = {
+    gameType: '',
+    entryFee: {
+      min: null,
+      max: null
+    },
+    positions: []
+  }
   headlines = [
     {
       id: 0,
@@ -96,7 +106,7 @@ export class LobbyComponent implements OnInit {
                         this.lobbyService.getMatchups('LIVE')/* ,
                         this.lobbyService.getMatchups('HISTORY'), 
                         this.lobbyService.getMatchups('MATCHUPS'), 
-                        this.lobbyService.getMatchups('ENTER_MATCHUP') */,
+                        this.lobbyService.getMatchups('ENTER_MATCHUP') */, //this one is probably called for the table on lobby screen
                         ])
     .subscribe(data => {
       this.temp = data[0];
@@ -128,11 +138,31 @@ export class LobbyComponent implements OnInit {
   selectGame(game) {
     game.selected = true;
     this.gameSelected = game;
+    this.gameSelectedUnfiltered = game;
  /*    this.games.forEach(element => {
       if(element.id !== game.id) {
         element.selected = false;
       }
     }); */
+  }
+
+  selectGameType(event) {
+    this.filter.gameType = event.type;
+  }
+
+  selectEntryFee(entryFee) {
+    this.filter.entryFee.min = entryFee[0];
+    this.filter.entryFee.max = entryFee[1];
+  }
+
+  selectPosition(positions) {
+    this.filter.positions = positions.filter(x => x.selected === true).map(x => x.name);
+    this.filterTableList()
+  }
+
+  filterTableList() {
+    // when table is populated with proper data
+    // filter an array with this.filter options
   }
 
   showConfirmModal(event) {

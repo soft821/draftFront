@@ -75,4 +75,18 @@ export class HelperService {
       );
     };
   }
+
+  filterListBy(filter, sortedList, unsortedList) {
+    return sortedList = unsortedList.filter(function (o) {
+      return Object.keys(filter).every(function (k) {
+        return filter[k].some(function (f) {
+          return o[k] === f;
+        });
+      });
+    });
+  }
+
+  returnOnlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
 }

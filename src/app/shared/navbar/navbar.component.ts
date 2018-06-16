@@ -15,10 +15,10 @@ export class NavComponent implements OnInit {
   sidebarOpen = false;
   sidebarBalanceOpen = false;
   options = [
-    {id: 0, text: 'Contact Support', path: '/home'},
-    {id: 1, text: 'How to Play', path: '/home'},
-    {id: 2, text: 'Rules & Score', path: '/home'},
-    {id: 3, text: 'Training Guide', path: '/home'},
+    {id: 0, text: 'Contact Support', path: '/'},
+    {id: 1, text: 'How to Play', path: '/'},
+    {id: 2, text: 'Rules & Score', path: '/'},
+    {id: 3, text: 'Training Guide', path: '/'},
     {id: 4, text: 'Responsible Play', path: '/responsible-play'},
     {id: 5, text: 'Trust & Safety', path: '/trust-and-safety'},
     {id: 6, text: 'Terms of Use', path: '/terms-of-use'},
@@ -26,7 +26,11 @@ export class NavComponent implements OnInit {
   ];
 
   userOptions = [
-    {id: 0, text: 'Log Out', path: '/login'}
+    {id: 0, text: 'Withdraw', path: '/'},
+    {id: 1, text: 'Transaction History', path: '/'},
+    {id: 2, text: 'My Account', path: '/'},
+    {id: 3, text: 'Refer Friends', path: '/'},
+    {id: 4, text: 'Log Out', path: '/login'}
   ]
   constructor(private router: Router,
               private globalState: GlobalStateService,

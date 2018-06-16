@@ -23,7 +23,11 @@ const MAIN_ROUTES: Routes = [
             { path: 'create-contest', component: CreateContestComponent },
             { path: 'live', component: LiveComponent },
             { path: 'history', component: HistoryComponent },
-            { path: 'lobby', component: LobbyComponent }
+            { 
+                canActivate: [AuthGuard], // to refresh the data on the navbar after create contest
+                path: 'lobby', 
+                component: LobbyComponent 
+            }
         ]
     },
     {   

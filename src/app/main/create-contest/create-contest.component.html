@@ -36,6 +36,8 @@
                 </div>
                 <div *ngIf="step.key === 'selectPlayer' && step.current">
                     <dm-select-player [players]="players"
+                                      [playersUnsorted]="players"
+                                      [gameFilterValues]="gameFilterValues"
                                       (getPlayer)="getPlayer($event)"
                                       (getPlayers)="getPlayers($event)">
                     </dm-select-player>
@@ -70,15 +72,20 @@
                             opponentPlayers.length === 0 && steps[activeFormIndex].key === 'selectOpponentPlayer' && steps[activeFormIndex].current">
                             Next
                 </button>
-                <button *ngIf="(steps[activeFormIndex].key !== 'createContest' || !steps[activeFormIndex].current) && 
-                            players.length === 0 && steps[activeFormIndex].key === 'selectPlayer' && steps[activeFormIndex].current || 
-                            opponentPlayers.length === 0 && steps[activeFormIndex].key === 'selectOpponentPlayer' && steps[activeFormIndex].current" 
+                <button *ngIf="((steps[activeFormIndex].key !== 'createContest' || 
+                                !steps[activeFormIndex].current) && 
+                                players.length === 0 && 
+                                steps[activeFormIndex].key === 'selectPlayer' && 
+                                steps[activeFormIndex].current || 
+                                opponentPlayers.length === 0 && 
+                                steps[activeFormIndex].key === 'selectOpponentPlayer' && 
+                                steps[activeFormIndex].current) && playersObtained" 
                         class="dm-red-btn m-t-10" 
                         (click)="back($event, contest)">
                             Back
                 </button>
                 <button *ngIf="steps[activeFormIndex].key === 'createContest' && steps[activeFormIndex].current" 
-                        class="dm-red-btn" 
+                        class="dm-red-btn" [ngClass]="{'disabled': createContestInProgress}"
                         (click)="createMatchup($event)"
                         [disabled]="createContestInProgress">
                         Create Matchup
@@ -87,3 +94,4 @@
         </div>
     </div>
 </div>
+<div class="modal-background" *ngIf="modalOpened"></div>

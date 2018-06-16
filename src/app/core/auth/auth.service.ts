@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, URLSearchParams} from '@angular/http';
+import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../../environments/environment';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {HelperService} from '../helper.service';
 import {Router} from '@angular/router';
 import {LocalStorageService} from 'angular-2-local-storage';
 import {catchError} from 'rxjs/operators';
-import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import {HandleErrorService} from '../handle-error.service';
 
 /*
  * AuthService
@@ -26,7 +26,8 @@ export class AuthService {
   constructor(private localStorageService: LocalStorageService,
               private httpClient: HttpClient,
               private helperService: HelperService,
-              private router: Router) {
+              private router: Router,
+              private handleError: HandleErrorService) {
   }
 
   getToken() {
@@ -59,7 +60,7 @@ export class AuthService {
     };
     return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/login`, body)
     .pipe(
-      catchError(this.handleError)
+      catchError(this.handleError.handleError)
     );
   }
 
@@ -69,7 +70,7 @@ export class AuthService {
     };
     return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/resetPassword`, body)
     .pipe(
-      catchError(this.handleError)
+      catchError(this.handleError.handleError)
     );
   }
 
@@ -80,22 +81,9 @@ export class AuthService {
       email: form.value.email,
       password: form.value.password
     };
-    return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/register`, body);
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-        // A client-side or network error occurred. Handle it accordingly.
-        console.error('An error occurred:', error.error.message);
-    } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong,
-        console.error(
-          `Backend returned code ${error.status}, ` +
-          `body was: ${error.error}`);
-    }
-    // return an ErrorObservable with a user-facing error message
-    return new ErrorObservable(
-      'Something bad happened; please try again later.');
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/register`, body)
+    .pipe(
+      catchError(this.handleError.handleError)
+    );  
   }
 }

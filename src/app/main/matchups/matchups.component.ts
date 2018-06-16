@@ -14,7 +14,8 @@ export class MatchupsComponent implements OnInit {
   modalOpened: boolean;
 
   constructor(private simpleModalService: SimpleModalService,
-              private lobbyService: LobbyService) { }
+              private lobbyService: LobbyService,
+              private helperService: HelperService) { }
 
   titles = [
     {
@@ -87,11 +88,17 @@ export class MatchupsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getData();
+    this.setValuesForUser();
+  }
+
+  getData() {
+    this.helperService.spinner.show();
     this.lobbyService.getMatchups('MATCHUPS')
     .subscribe( response => {
       console.log(response)
+      this.helperService.spinner.hide();
     })
-    this.setValuesForUser();
   }
 
   setValuesForUser() {

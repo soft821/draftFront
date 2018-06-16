@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LobbyService} from '../lobby/lobby.service';
+import {HelperService} from '../../core/helper.service';
 
 @Component({
   selector: 'dm-live',
@@ -8,7 +9,8 @@ import {LobbyService} from '../lobby/lobby.service';
 })
 export class LiveComponent implements OnInit {
 
-  constructor(private lobbyService: LobbyService) { }
+  constructor(private lobbyService: LobbyService,
+              private helperService: HelperService) { }
 
   titles = [
     {
@@ -38,7 +40,7 @@ export class LiveComponent implements OnInit {
   ]
 
   tableValues = [
-    {
+    /* {
       id: 0,
       position: 'QB',
       slate: 'CLE 27 @ SD 30',
@@ -67,7 +69,7 @@ export class LiveComponent implements OnInit {
       opponentScore: 22.58,
       entry: 2,
       winning: 0
-    }
+    } */
   ]
 
   user = {
@@ -79,11 +81,17 @@ export class LiveComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getData();
+    this.setValuesForUser();
+  }
+
+  getData() {
+    this.helperService.spinner.show();
     this.lobbyService.getMatchups('LIVE')
     .subscribe( response => {
       console.log(response)
+      this.helperService.spinner.hide();
     })
-    this.setValuesForUser();
   }
 
   setValuesForUser() {

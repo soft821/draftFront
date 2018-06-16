@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {Router} from '@angular/router';
+import {GAME_TYPES, POSITIONS} from './filter-values';
 
 @Component({
   selector: 'dm-filter-column',
@@ -11,79 +12,25 @@ export class DmFilterColumn implements OnInit {
   @Input() slates;
   @Input() slateSelected;
   @Input() gameSelected;
+  @Input() gameTypeSelected;
   @Output() selectSlateOption: EventEmitter<any> = new EventEmitter;
   @Output() selectGameOption: EventEmitter<any> = new EventEmitter;
+  @Output() selectGameTypeOption: EventEmitter<any> = new EventEmitter;
+  @Output() selectPositionOption: EventEmitter<any> = new EventEmitter;
+  @Output() selectEntryFeeOption: EventEmitter<any> = new EventEmitter;
 
   constructor(private router: Router) { }
 
-  gameTypes = [
-    {
-      id: 0,
-      selected: false,
-      name: 'Any Challenger'
-    },    
-    {
-      id: 1,
-      selected: false,
-      name: 'Tier Rank A'
-    },    
-    {
-      id: 2,
-      selected: false,
-      name: 'Tier Rank B'
-    },    
-    {
-      id: 3,
-      selected: false,
-      name: 'Tier Rank C'
-    },    
-    {
-      id: 4,
-      selected: false,
-      name: 'Tier Rank D'
-    },    
-    {
-      id:5,
-      selected: false,
-      name: 'Set Opponent'
-    }
-  ];
+  gameTypes: any[];
+  positions: any[];
 
-  positions = [
-    {
-      id: 0,
-      selected: false,
-      name: 'QB'
-    },
-    {
-      id: 1,
-      selected: false,
-      name: 'RB'
-    },
-    {
-      id: 2,
-      selected: false,
-      name: 'WR'
-    },
-    {
-      id: 3,
-      selected: false,
-      name: 'TE'
-    },
-    {
-      id: 4,
-      selected: false,
-      name: 'K'
-    },
-    {
-      id: 5,
-      selected: false,
-      name: 'DST'
-    }
-  ]
-  scaleEntryFee = [ 0, 10600 ];;
+  scaleEntryFee = [ 0, 10000 ];;
   descriptionVisible: boolean;
-  ngOnInit() {}
+  
+  ngOnInit() {
+    this.gameTypes = GAME_TYPES;
+    this.positions = POSITIONS;
+  }
 
   goToCreateContest() {
     this.router.navigate(['main/create-contest']);
@@ -101,17 +48,28 @@ export class DmFilterColumn implements OnInit {
     this.selectGameOption.emit(game);
   }
 
-  entryFeeChange() {}
+  entryFeeChange() {
+    this.selectEntryFeeOption.emit(this.scaleEntryFee);
+  }
 
   selectPosition(position) {
+    this.positions.forEach(element => {
+      if(position.id === element.id) {
+        element.selected = !element.selected;
+      }
+    });
+    this.selectPositionOption.emit(this.positions);
   }
+
   selectGameType(gameType) {
     this.gameTypes.forEach(element => {
       if(element.id !== gameType.id) {
         element.selected = false;
       } else {
         element.selected = true;
+        this.gameTypeSelected = element;
       }
     });
+    this.selectGameTypeOption.emit(this.gameTypeSelected);
   }
 }

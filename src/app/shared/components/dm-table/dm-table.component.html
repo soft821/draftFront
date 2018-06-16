@@ -78,5 +78,10 @@
             <!-- When a user hits edit it should bring it back to the create contest page if they are the creator.  
                 If they are the joining player, it brings it back to the enter contest page -->
         </tr>
+        <tr *ngIf="!values || !values.length">
+            <td colspan="7">
+                <div class="no-data">No data to show yet</div>
+            </td>
+        </tr>
     </tbody>
 </table>
