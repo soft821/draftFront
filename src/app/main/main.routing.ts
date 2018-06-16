@@ -19,6 +19,7 @@ const MAIN_ROUTES: Routes = [
         path: 'main', component: MainComponent,
         canActivate: [AuthGuard],
         children: [
+            { path: '', redirectTo: 'lobby', pathMatch: 'full'},
             { path: 'matchups', component: MatchupsComponent },
             { path: 'create-contest', component: CreateContestComponent },
             { path: 'live', component: LiveComponent },
