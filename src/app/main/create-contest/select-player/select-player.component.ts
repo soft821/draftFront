@@ -8,7 +8,8 @@ import {RANK_FILTER_VALUES} from './const-values';
   styleUrls: ['./select-player.component.scss']
 })
 export class SelectPlayerComponent implements OnInit {
-
+  showRankFilter: boolean;
+  showGameFilter: boolean;
   selectedPlayerId: number;
   sortDesc = false;
   rankFilterValues: any[];
