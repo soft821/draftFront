@@ -1,6 +1,6 @@
   
 
-<div class="modal-content">
+<div class="modal-content" [ngClass]="{'confirm': !setOpponent}">
   <div class="modal-header">
     <span>{{title}}</span>
     <span class="close-sign" (click)="close()">X</span>
