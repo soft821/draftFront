@@ -37,6 +37,17 @@
     background-size: cover;
 }
 
+.dm-home-image {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background: url('./assets/images/dm-header-background.png') no-repeat; //fixed center center
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .lobby-bck {
     width: 100%;
     min-height: -webkit-calc(100%);
