@@ -4,6 +4,7 @@ import {HelperService} from '../../core/helper.service';
 import {SimpleModalService} from 'ngx-simple-modal';
 import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation-modal/confirmation-modal.component';
 import {LobbyService} from '../lobby/lobby.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'dm-matchups',
@@ -15,6 +16,7 @@ export class MatchupsComponent implements OnInit {
 
   constructor(private simpleModalService: SimpleModalService,
               private lobbyService: LobbyService,
+              private authService: AuthService,
               private helperService: HelperService) { }
 
   titles = [
@@ -40,63 +42,46 @@ export class MatchupsComponent implements OnInit {
     }
   ]
 
-  tableValues = [
-    {
-      id: 0,
-      position: 'QB',
-      slate: 'CLE 27 @ SD 30',
-      score: 24.58,
-      p: 'P',
-      team: 'Rivers',
-      match: 'Final',
-      opponentPosition: 'QB',
-      match1: '1st',
-      opponent: 'garfield399',
-      opponentScore: 22.58,
-      entry: 2,
-      winning: 5,
-      editable: true,
-      matchupType: 'Any Challenger',
-      hasOpponent: true
-    },
-    {
-      id: 1,
-      position: 'QB',
-      slate: 'CLE 27 @ SD 30',
-      score: 24.58,
-      p: 'P',
-      team: 'Rivers',
-      match: 'Final',
-      opponentPosition: 'QB',
-      match1: '1st',
-      opponent: 'garfield399',
-      opponentScore: 22.58,
-      entry: 2,
-      winning: 0,
-      editable: false,
-      matchupType: 'Tier Rank A',
-      hasOpponent: false
-    }
-  ]
+  tableValues = [];
 
   user = {
-    username: 'Username',
-    record: 'Record: 1345 - 234 (W-L)',
+    username: this.authService.authenticatedUser.username,
+    record: 'Record: ' + this.authService.authenticatedUser.wins + ' - ' + this.authService.authenticatedUser.loses + ' (W-L)',
     matchups: 0,
     totalEntries: 0,
     totalWinnings: 0
   }
+  temp: any;
 
   ngOnInit() {
     this.getData();
-    this.setValuesForUser();
   }
 
   getData() {
     this.helperService.spinner.show();
     this.lobbyService.getMatchups('MATCHUPS')
     .subscribe( response => {
-      console.log(response)
+      this.temp = response;
+      if(this.temp.response) {
+        this.tableValues = [];
+        this.temp.response.forEach(element => {
+          if(element.contests && element.contests.length) {
+            element.contests.forEach(contest => {
+              contest.name = element.name; // name of the slate 
+              // players name replace with first letter
+              if(contest && contest.entries) {
+                contest.entries.forEach(entry => {                  
+                  let lastName = entry.fantasy_player.name.substr(entry.fantasy_player.name.indexOf(' ')+1);
+                  let firstName = entry.fantasy_player.name.substr(0,1) + '. ';
+                  entry.fantasy_player.name = firstName + lastName;
+                });
+              }
+              this.tableValues.push(contest);
+            });
+          }            
+        });        
+        this.setValuesForUser();
+      }
       this.helperService.spinner.hide();
     })
   }
@@ -104,14 +89,14 @@ export class MatchupsComponent implements OnInit {
   setValuesForUser() {
     this.user.matchups = this.tableValues.length;
     this.tableValues.forEach(element => {
-      this.user.totalEntries += element.entry;
+      this.user.totalEntries += element.entryFee;
       this.user.totalWinnings += element.winning;
     });
   }
 
   showConfirmModal(event) {
     this.modalOpened = true;
-    let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
+    this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Confirm Matchup',
         message: 'Are you sure you want to cancel this matchup?',
         buttonText: 'Yes',

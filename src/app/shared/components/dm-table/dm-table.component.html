@@ -17,14 +17,23 @@
                     <div class="flex-column p-l-5">
                         <div class="flex">                        
                             <span class="position">{{value.position}}</span>
-                            <span class="p-r-10">{{value.p}}</span>
-                            <span class="team">{{value.team}}</span>
+                            <span class="p-r-10" *ngIf="value && value.entries && value.entries.length">
+                                {{value.entries[0].fantasy_player.name}}
+                            </span>
+                        </div>
+                        <div class="flex" *ngIf="value && value.entries && value.entries.length">
+                            <span [ngClass]="{'bold': value.entries[0].game.homeTeam === value.entries[0].fantasy_player.team}">
+                                {{value.entries[0].game.homeTeam}}
+                            </span>
+                            <span *ngIf="!matchups">{{value.entries[0].game.homeScore}}</span>
+                            <span>@</span>
+                            <span [ngClass]="{'bold': value.entries[0].game.awayTeam === value.entries[0].fantasy_player.team}">
+                                {{value.entries[0].game.awayTeam}}
+                            </span>
+                            <span *ngIf="!matchups">{{value.entries[0].game.awayScore}}</span>
                         </div>
                         <div class="flex">
-                            <span>{{value.slate}}</span>
-                        </div>
-                        <div class="flex">
-                            <span class="gray-label">{{value.match}}</span>
+                            <span class="gray-label">{{value.name}}</span>
                         </div>
                     </div>
                 </div>
@@ -33,35 +42,43 @@
                 <div class="score">{{value.score}}</div>
             </td>
             <td>
-                <div class="flex" *ngIf="!matchups || (matchups && value.hasOpponent)">                
+                <div class="flex" *ngIf="!matchups || (matchups && value.matchupType === 'set_opponent')">                
                     <div class="dm-player"></div>
                     <div class="flex-column p-l-5">
                         <div class="flex">                        
                             <span class="position">{{value.position}}</span>
-                            <span class="p-r-10">{{value.p}}</span>
-                            <span class="team">{{value.team}}</span>
+                            <span class="p-r-10" *ngIf="value && value.entries && value.entries.length === 2">
+                                {{value.entries[1].fantasy_player.name}}
+                            </span>
+                        </div>
+                        <div class="flex" *ngIf="value && value.entries && value.entries.length">
+                            <span [ngClass]="{'bold': value.entries[1].game.homeTeam === value.entries[1].fantasy_player.team}">
+                                {{value.entries[1].game.homeTeam}}
+                            </span>
+                            <span *ngIf="!matchups">{{value.entries[1].game.homeScore}}</span>
+                            <span>@</span>
+                            <span [ngClass]="{'bold': value.entries[1].game.awayTeam === value.entries[1].fantasy_player.team}">
+                                {{value.entries[1].game.awayTeam}}
+                            </span>
+                            <span *ngIf="!matchups">{{value.entries[1].game.awayScore}}</span>
                         </div>
                         <div class="flex">
-                            <span>{{value.slate}}</span>
-                        </div>
-                        <div class="flex">
-                            <span class="gray-label">{{value.match1}}</span>
-                        </div>
-                        <div class="flex">
-                            <span class="gray-label">{{value.opponent}}</span>
+                            <span class="gray-label">{{value.name}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="dm-question-mark" *ngIf="matchups && !value.hasOpponent"></div>
+                <div class="dm-question-mark" *ngIf="matchups && value.matchupType !== 'set_opponent'"></div>
             </td>
             <td *ngIf="!matchups">
                 <div class="score">{{value.opponentScore}}</div>
             </td>
             <td *ngIf="matchups">
-                <div class="matchup-type">{{value.matchupType}}</div>
+                <div class="matchup-type" *ngIf="value.matchupType === 'tier_ranking'">Tier Rank {{value.tier}}</div>
+                <div class="matchup-type" *ngIf="value.matchupType === 'any_challenger'">Any Challenger</div>
+                <div class="matchup-type" *ngIf="value.matchupType === 'set_opponent'">Set Opponent</div>
             </td>
             <td>
-                <div class="entry-value">${{value.entry}}</div>
+                <div class="entry-value">${{value.entryFee}}</div>
             </td>
             <td *ngIf="!matchups">
                 <div class="winning-value" [class.green-label]="value.winning > 0">${{value.winning}}</div>

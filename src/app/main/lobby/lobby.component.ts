@@ -103,7 +103,7 @@ export class LobbyComponent implements OnInit {
   getData() {
     this.helperService.spinner.show();
     Observable.forkJoin([this.lobbyService.getSlates(),
-                        this.lobbyService.getMatchups('LIVE')/* ,
+                        this.lobbyService.getMatchups('ENTER_MATCHUP')/* ,
                         this.lobbyService.getMatchups('HISTORY'), 
                         this.lobbyService.getMatchups('MATCHUPS'), 
                         this.lobbyService.getMatchups('ENTER_MATCHUP') */, //this one is probably called for the table on lobby screen

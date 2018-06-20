@@ -43,7 +43,9 @@
                     </dm-select-player>
                 </div>                
                 <div *ngIf="step.key === 'selectOpponentPlayer' && step.current">
-                    <dm-select-player [players]="opponentPlayers"
+                    <dm-select-player [players]="opponentPlayers"     
+                                      [playersUnsorted]="opponentPlayers"                               
+                                      [gameFilterValues]="gameFilterValues"
                                       (getPlayer)="getOpponentPlayer($event)">
                     </dm-select-player>
                 </div>
