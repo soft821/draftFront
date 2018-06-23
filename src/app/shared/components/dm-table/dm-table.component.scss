@@ -63,16 +63,14 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    .fa-pencil-square-o {
-        padding-top: 3px;
+    &.fa-pencil-square-o {
         &:hover {
             color: $dm-light-gray;
         }
     }
-    .close-sign {
+    &.close-sign {
         color: $dm-red;
         font-size: 29px;
-        padding-left: 10px;
         &:hover {
             color: $dm-light-gray;
         }

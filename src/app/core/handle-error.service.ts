@@ -1,13 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import {HttpErrorResponse} from '@angular/common/http';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 
 @Injectable()
 export class HandleErrorService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor() {
   }
 
   handleError(error: HttpErrorResponse) {
@@ -22,7 +20,6 @@ export class HandleErrorService {
           `body was: ${error.error}`);
     }
     // return an ErrorObservable with a user-facing error message
-    return new ErrorObservable(
-      'Something bad happened; please try again later.');
+    return new ErrorObservable(error.error);
   }
 }

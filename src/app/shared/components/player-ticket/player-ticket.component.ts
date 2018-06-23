@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'dm-player-ticket',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerTicketComponent implements OnInit {
 
+  @Input() player;
+  @Input() game;
+  @Input() username;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.player, 'pla')
   }
 
 }

@@ -17,7 +17,8 @@ export class MatchupsComponent implements OnInit {
   constructor(private simpleModalService: SimpleModalService,
               private lobbyService: LobbyService,
               private authService: AuthService,
-              private helperService: HelperService) { }
+              private helperService: HelperService,
+              private matchupService: MatchupsService) { }
 
   titles = [
     {
@@ -51,7 +52,7 @@ export class MatchupsComponent implements OnInit {
     totalEntries: 0,
     totalWinnings: 0
   }
-  temp: any;
+  tempList: any;
 
   ngOnInit() {
     this.getData();
@@ -61,48 +62,71 @@ export class MatchupsComponent implements OnInit {
     this.helperService.spinner.show();
     this.lobbyService.getMatchups('MATCHUPS')
     .subscribe( response => {
-      this.temp = response;
-      if(this.temp.response) {
-        this.tableValues = [];
-        this.temp.response.forEach(element => {
-          if(element.contests && element.contests.length) {
-            element.contests.forEach(contest => {
-              contest.name = element.name; // name of the slate 
-              // players name replace with first letter
-              if(contest && contest.entries) {
-                contest.entries.forEach(entry => {                  
-                  let lastName = entry.fantasy_player.name.substr(entry.fantasy_player.name.indexOf(' ')+1);
-                  let firstName = entry.fantasy_player.name.substr(0,1) + '. ';
-                  entry.fantasy_player.name = firstName + lastName;
-                });
-              }
-              this.tableValues.push(contest);
-            });
-          }            
-        });        
-        this.setValuesForUser();
-      }
+      this.tempList = response;
+      this.tableValues = [];
+      if(this.tempList.response)
+      this.tempList.response.forEach(element => {
+        if(element.contests && element.contests.length) {
+          element.contests.forEach(contest => {
+            contest.name = element.name; // name of the slate 
+            // players name replace with first letter
+            if(contest && contest.entries) {
+              contest.entries.forEach(entry => {
+                entry.fantasy_player.name = this.helperService.getPlayer(entry.fantasy_player.name);
+              });
+            }
+            this.tableValues.push(contest);
+          });
+        }            
+      }); 
+      this.setValuesForUser(this.tempList.userInfo);
       this.helperService.spinner.hide();
     })
   }
 
-  setValuesForUser() {
-    this.user.matchups = this.tableValues.length;
+  setValuesForUser(userInfo) {
+    this.user.matchups = userInfo.entries;
+    this.user.totalEntries = userInfo.totalEntry;
     this.tableValues.forEach(element => {
-      this.user.totalEntries += element.entryFee;
       this.user.totalWinnings += element.winning;
     });
   }
 
-  showConfirmModal(event) {
+  cancelContest(event) {
     this.modalOpened = true;
     this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Confirm Matchup',
         message: 'Are you sure you want to cancel this matchup?',
-        buttonText: 'Yes',
-        setOpponent: false
+        buttonText: 'Yes'
     })
     .subscribe((isConfirmed)=>{
+      if(isConfirmed) {
+        this.matchupService.cancelContest(event.id)
+        .subscribe(response => {
+          let index = this.tableValues.findIndex(x => x.id === event.id);
+          if(index !== -1) {
+            this.tableValues.splice(index, 1);
+          }
+          let msg = 'You have successfully canceled contest';
+          let ttl = 'Thank you'
+          this.showConfirmationMessage(msg, ttl);
+        }, 
+        error => {        
+          this.showConfirmationMessage(error.message, 'Error');
+        });
+      }       
+        this.modalOpened = false;      
+    });
+  }
+
+  showConfirmationMessage(message, title) {
+    this.modalOpened = true;
+    this.simpleModalService.addModal(ConfirmationModalComponent, {
+        title: title,
+        message: message,
+        buttonText: 'OK'
+    })
+    .subscribe((isConfirmed)=> {      
       this.modalOpened = false;
     });
   }

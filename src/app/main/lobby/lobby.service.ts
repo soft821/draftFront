@@ -30,4 +30,15 @@ export class LobbyService {
       catchError(this.handleError.handleError)
     );;
   }
+
+  enterContest(data) {
+    let body = {
+      contest_id: data.contest_id,
+      player_id: data.player_id
+    }   
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/contests/enter`, body)
+    .pipe(
+      catchError(this.handleError.handleError)
+    )  
+  }
 }

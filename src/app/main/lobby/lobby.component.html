@@ -29,8 +29,10 @@
                     </dm-headline-matchup>
                 </div>
                 <!-- here are data from enter matchup contest, filtered locally from left side filters -->
-                <div class="matchup-table" *ngIf="gameSelected">
-                    <dm-matchup-table [tableData]="gameSelected"></dm-matchup-table>
+                <div class="matchup-table">
+                    <dm-matchup-table [tableData]="enterMatchupList"
+                                      (enterMatchupEvent)="showEnterMatchupModal($event)">
+                    </dm-matchup-table>
                 </div>
             </div>
         </div>

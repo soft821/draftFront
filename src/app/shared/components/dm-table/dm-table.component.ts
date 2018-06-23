@@ -10,12 +10,17 @@ export class DmTable implements OnInit {
   @Input() values;
   @Input() historyTable;
   @Input() matchups;
-  @Output() showModal: EventEmitter<any> = new EventEmitter();
+  @Output() cancelContest: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {}
   
-  showConfirmModal() {
-      this.showModal.emit();
+  cancelMatchup(option) {
+    this.cancelContest.emit(option);
+  }
+
+  editContest(value) {
+    console.log(value)
   }
 }

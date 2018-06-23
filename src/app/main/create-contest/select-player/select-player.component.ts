@@ -48,19 +48,8 @@ export class SelectPlayerComponent implements OnInit {
     this.getPlayer.emit(option);
   }
 
-  setSortFilterProperties(sortFilter, key) {
-    Object.keys(sortFilter).forEach(function(k) {
-      if(k === key) {
-        sortFilter[k] = true;
-      } else {
-        sortFilter[k] = false;
-      }
-    })
-    return sortFilter;
-  }
-
   orderBy(isDescending, key) {
-    this.sortFilter = this.setSortFilterProperties(this.sortFilter, key);
+    this.sortFilter = this.helperService.setSortFilterProperties(this.sortFilter, key);
     this.sortDesc = isDescending;
       if(!isDescending) {
         this.players.sort(this.helperService.compareValues(key, 'desc'));
@@ -69,20 +58,8 @@ export class SelectPlayerComponent implements OnInit {
     } 
   }
 
-  filterListBy(filter) {
-    this.players = this.helperService.filterListBy(filter, this.players, this.playersUnsorted);
-    
-  }
-
   filterOptionSelected(value) {
-    this.rankFilterValues.forEach(element => {
-      if(value.id === element.id) {
-        element = value;
-      }
-    });
-    this.filter.game_id = this.gameFilterValues.filter(x => x.selected === true).map(x => x.id); 
-    this.filter.tier = this.rankFilterValues.filter(x => x.selected === true).map(x => x.value);  
-    this.filterListBy(this.filter);
+    this.players =  this.helperService.filterOptionSelected(value, this.rankFilterValues, this.gameFilterValues, this.filter, this.players, this.playersUnsorted);
   }
 
   gameOptionSelected(value) {
@@ -92,7 +69,7 @@ export class SelectPlayerComponent implements OnInit {
       }
     });
     this.filter.game_id = this.gameFilterValues.filter(x => x.selected === true).map(x => x.id);   
-    this.filterListBy(this.filter);
+    this.helperService.filterListBy(this.filter, this.players, this.playersUnsorted);
   }
 
 }

@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let value of values">
             <td *ngIf="historyTable">
-                <div>{{value.date}}</div>
+                <div>{{value.date || '-'}}</div>
             </td>
             <td>
                 <div class="flex" >
@@ -42,16 +42,16 @@
                 <div class="score">{{value.score}}</div>
             </td>
             <td>
-                <div class="flex" *ngIf="!matchups || (matchups && value.matchupType === 'set_opponent')">                
+                <div class="flex" *ngIf="value && value.entries && value.entries.length === 2">                
                     <div class="dm-player"></div>
                     <div class="flex-column p-l-5">
                         <div class="flex">                        
                             <span class="position">{{value.position}}</span>
-                            <span class="p-r-10" *ngIf="value && value.entries && value.entries.length === 2">
+                            <span class="p-r-10">
                                 {{value.entries[1].fantasy_player.name}}
                             </span>
                         </div>
-                        <div class="flex" *ngIf="value && value.entries && value.entries.length">
+                        <div class="flex">
                             <span [ngClass]="{'bold': value.entries[1].game.homeTeam === value.entries[1].fantasy_player.team}">
                                 {{value.entries[1].game.homeTeam}}
                             </span>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dm-question-mark" *ngIf="matchups && value.matchupType !== 'set_opponent'"></div>
+                <div class="dm-question-mark" *ngIf="!value || !value.entries || value.entries.length !== 2"></div>
             </td>
             <td *ngIf="!matchups">
                 <div class="score">{{value.opponentScore}}</div>
@@ -85,11 +85,10 @@
             </td>
             <td *ngIf="matchups">
                 <div class="winning-value">
-                    <div *ngIf="value.editable" class="dm-lock"></div>
-                    <div *ngIf="!value.editable" class="edit-icons">
-                        <span class="fa fa-pencil-square-o"></span>
-                        <span class="close-sign" (click)="showConfirmModal()">X</span>
-                    </div>
+                    <div  *ngIf="value.editStatus === 'locked'" class="dm-lock"></div>
+                    <div class="edit-icons fa fa-pencil-square-o" (click)="editContest(value)" *ngIf="value.editStatus === 'edit'"></div>
+                    <div class="edit-icons close-sign" (click)="cancelMatchup(value)" *ngIf="value.editStatus === 'cancel'">X</div>
+                  
                 </div>
             </td>
             <!-- When a user hits edit it should bring it back to the create contest page if they are the creator.  

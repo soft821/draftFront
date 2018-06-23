@@ -11,24 +11,28 @@
                 <th><div class="entry-prize"><div class="half">Entry</div><div class="half">Prize</div></div></th>
             </tr>
         </thead>
-        <tbody class="" *ngFor="let player of tableData.fantasy_players">
-            <tr>
-                <td><div>{{player.tier}}</div></td>
-                <td><div>{{player.position}}</div></td>
-                <td><div>{{player.name}}</div></td>
+        <tbody class="" *ngFor="let item of tableData" (click)="enterContest(item)">
+            <tr *ngFor="let entry of item.entries" class="cursor-pointer">
+                <td><div>{{entry.fantasy_player.tier}}</div></td>
+                <td><div>{{entry.fantasy_player.position}}</div></td>
+                <td><div>{{entry.fantasy_player.name}}</div></td>
                 <td>
                     <div>
-                        <span [ngClass]="{'bold': tableData.homeTeam === player.team}">{{tableData.homeTeam}}</span>
+                        <span [ngClass]="{'bold': entry.game.homeTeam === entry.fantasy_player.team}">{{entry.game.homeTeam}}</span>
                         <span>@</span>
-                        <span [ngClass]="{'bold': tableData.awayTeam === player.team}">{{tableData.awayTeam}}</span>
+                        <span [ngClass]="{'bold': entry.game.awayTeam === entry.fantasy_player.team}">{{entry.game.awayTeam}}</span>
                     </div>
                 </td>
-                <td><div>{{player.opponent || '-'}}</div></td>
-                <td><div>{{player.fps}}</div></td>
-                <td><div class="entry-prize"><div class="half">${{player.entry}}</div><div class="half">${{player.prize}}</div></div></td>
+                <td><div>{{entry.username || '-'}}</div></td>
+                <td><div>{{entry.fantasy_player.fps}}</div></td>
+                <td><div class="entry-prize"><div class="half">${{item.entryFee}}</div><div class="half">${{item.prize}}</div></div></td>
             </tr>
-            <tr>
-                <td colspan="8"></td>
+            <tr class="cursor-pointer">
+                <td colspan="8">
+                    <div *ngIf="item.matchupType === 'any_challenger'" class="capitalize matchup-description">Select any player</div>
+                    <div *ngIf="item.matchupType === 'tier_ranking'" class="capitalize matchup-description">Select tier {{item.entries[0].fantasy_player.tier}} player</div>
+                    <div *ngIf="item.matchupType === 'set_opponent'" class="capitalize matchup-description">Preset player</div>
+                </td>
             </tr>
         </tbody>
     </table>

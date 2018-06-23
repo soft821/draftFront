@@ -14,4 +14,14 @@ export class MatchupsService {
               private helperService: HelperService,
               private handleError: HandleErrorService) {
   }
+
+  cancelContest(data) {
+    let body = {
+      contest_id: data
+    }   
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/contests/cancel`, body)
+    .pipe(
+      catchError(this.handleError.handleError)
+    )  
+  }
 }

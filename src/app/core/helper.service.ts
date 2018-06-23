@@ -84,6 +84,36 @@ export class HelperService {
         });
       });
     });
+  };
+
+  getPlayer(name) {
+    let lastName = name.substr(name.indexOf(' ')+1);
+    let firstName = name.substr(0,1) + '. ';
+    return firstName + lastName;
+  };
+
+  setSortFilterProperties(sortFilter, key) {
+    Object.keys(sortFilter).forEach(function(k) {
+      if(k === key) {
+        sortFilter[k] = true;
+      } else {
+        sortFilter[k] = false;
+      }
+    })
+    return sortFilter;
+  }
+
+
+  filterOptionSelected(value, rankFilterValues, gameFilterValues, filter, players, playersUnsorted) {
+    rankFilterValues.forEach(element => {
+      if(value.id === element.id) {
+        element = value;
+      }
+    });
+    filter.game_id = gameFilterValues.filter(x => x.selected === true).map(x => x.id); 
+    filter.tier = rankFilterValues.filter(x => x.selected === true).map(x => x.value);  
+    players = this.filterListBy(filter, players, playersUnsorted);  
+    return players;
   }
 
   returnOnlyUnique(value, index, self) {

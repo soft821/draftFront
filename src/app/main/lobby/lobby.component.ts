@@ -4,6 +4,8 @@ import {HelperService} from '../../core/helper.service';
 import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation-modal/confirmation-modal.component';
 import {SimpleModalService} from 'ngx-simple-modal';
 import {Observable} from 'rxjs/Rx';
+import { ENTRY_FEE } from '../create-contest/entry-fee/entryFeeValues';
+import { CreateContestService } from '../create-contest/create-contest.service';
 
 @Component({
   selector: 'dm-lobby',
@@ -13,6 +15,7 @@ import {Observable} from 'rxjs/Rx';
 export class LobbyComponent implements OnInit {
   pageLoaded: boolean;
   modalOpened: boolean;
+  entryFee = ENTRY_FEE;
   slates = [];
   temp: any;
   live: any;
@@ -21,14 +24,10 @@ export class LobbyComponent implements OnInit {
   liveGames = [];
   gameSelectedUnfiltered = [];
   filterForPositions = [];
-  filter = {
-    gameType: '',
-    entryFee: {
-      min: null,
-      max: null
-    },
-    positions: []
-  }
+  gameFilterValues = [];
+  filter = {}
+  enterMatchupList = [];
+  enterMatchupLisUnfiltered = [];
   headlines = [
     {
       id: 0,
@@ -94,7 +93,8 @@ export class LobbyComponent implements OnInit {
   
   constructor(private lobbyService: LobbyService, 
               private helperService: HelperService,
-              private simpleModalService: SimpleModalService) { }
+              private simpleModalService: SimpleModalService,
+              private createContestService: CreateContestService) { }
 
   ngOnInit() {
     this.getData();
@@ -103,6 +103,7 @@ export class LobbyComponent implements OnInit {
   getData() {
     this.helperService.spinner.show();
     Observable.forkJoin([this.lobbyService.getSlates(),
+                        this.lobbyService.getMatchups('LOBBY'),
                         this.lobbyService.getMatchups('ENTER_MATCHUP')/* ,
                         this.lobbyService.getMatchups('HISTORY'), 
                         this.lobbyService.getMatchups('MATCHUPS'), 
@@ -116,12 +117,28 @@ export class LobbyComponent implements OnInit {
       }
       this.live = data[1];
       this.liveGames = this.live?this.live.response:[];
+      this.enterMatchupList = data[2].response;
+      this.enterMatchupList.forEach(element => {
+        this.entryFee.forEach(fee => {
+          if(element.entryFee === fee.value) {
+            element.prize = fee.prize;
+          }
+        });
+      });
+      this.enterMatchupLisUnfiltered = [].concat(this.enterMatchupList);
+      this.filterBySlate()
       this.pageLoaded = true;
       this.helperService.spinner.hide();
     }, (error) => {
+      console.log(error)
     });
   };
   
+  filterBySlate() {   
+    this.enterMatchupList = this.enterMatchupLisUnfiltered.filter(x => x.slate_id === this.slateSelected['id']);
+    console.log(this.enterMatchupList)
+  }
+
   selectSlate(slate) {
     slate.selected = true;
     this.slateSelected = slate;
@@ -130,33 +147,39 @@ export class LobbyComponent implements OnInit {
         element.selected = false;
       }
     });
-    if(slate && slate.games && slate.games.length) {
+   /*  if(slate && slate.games && slate.games.length) {
       this.selectGame(slate.games[0]);
-    }
+    } */
+    this.filterBySlate();
   }
 
   selectGame(game) {
     game.selected = true;
     this.gameSelected = game;
-    this.gameSelectedUnfiltered = game;
- /*    this.games.forEach(element => {
-      if(element.id !== game.id) {
-        element.selected = false;
-      }
+  //  this.gameSelectedUnfiltered = game;
+/*     this.enterMatchupList.forEach(element => {
+     for(let i=0; i< element.entries.length; i++) {
+       if(element.entries[i]) {
+        this.enterMatchupList = this.enterMatchupList.filter(x => x.entries[i] && x.entries[i].game_id === game.id);
+       }
+     }
     }); */
+  //  this.filter['game_id'] = game.id;   
+  //  this.helperService.filterListBy(this.filter, this.enterMatchupList, this.enterMatchupLisUnfiltered);
+    
   }
 
   selectGameType(event) {
-    this.filter.gameType = event.type;
+  //  this.filter.matchType = event.type;
   }
 
   selectEntryFee(entryFee) {
-    this.filter.entryFee.min = entryFee[0];
-    this.filter.entryFee.max = entryFee[1];
+//    this.filter.entryFee.min = entryFee[0];
+//  this.filter.entryFee.max = entryFee[1];
   }
 
   selectPosition(positions) {
-    this.filter.positions = positions.filter(x => x.selected === true).map(x => x.name);
+ //   this.filter.positions = positions.filter(x => x.selected === true).map(x => x.name);
     this.filterTableList()
   }
 
@@ -165,16 +188,79 @@ export class LobbyComponent implements OnInit {
     // filter an array with this.filter options
   }
 
-  showConfirmModal(event) {
+  showConfirmationMessage(message, title) {
     this.modalOpened = true;
-    let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
-        title: 'Confirm Matchup',
-        buttonText: 'Enter',
-        setOpponent: true
+    this.simpleModalService.addModal(ConfirmationModalComponent, {
+        title: title,
+        message: message,
+        buttonText: 'OK'
     })
-    .subscribe((isConfirmed)=>{
+    .subscribe((isConfirmed)=> {      
       this.modalOpened = false;
     });
   }
+
+  showConfirmModal(event) {
+    this.modalOpened = true;
+    this.simpleModalService.addModal(ConfirmationModalComponent, {
+        title: 'Confirm Matchup',
+        buttonText: 'Enter',
+        confirmMatchup: true,
+        confirmMatchupTable: event
+    })
+    .subscribe((isConfirmed) => {
+      if(isConfirmed) {
+        let temp = {
+          contest_id: isConfirmed.id,
+          player_id: isConfirmed.entries?isConfirmed.entries[1].fantasy_player.id:-1
+        }
+        this.lobbyService.enterContest(temp).
+        subscribe(response => {
+          let index = this.enterMatchupList.findIndex(x => x.id === event.id);
+          if(index !== -1) {
+            this.enterMatchupList.splice(index, 1);
+          }
+          let msg = 'You have successfully registered to contest';
+          let ttl = 'Thank you'
+          this.showConfirmationMessage(msg, ttl);
+        }, 
+        error => {
+          if(event.matchupType !== 'set_opponent') {
+            event.entries.splice(1, 1);
+          }          
+          this.showConfirmationMessage(error.message, 'Error');
+        });
+      }
+      this.modalOpened = false;
+    });
+  };
+
+  showEnterMatchupModal(event) {
+    this.modalOpened = true;
+    // if it is set opponent -> confirm
+    if(event.matchupType === 'set_opponent') {
+      this.showConfirmModal(event);
+    } else { // else -> choose a player than confirm
+      this.simpleModalService.addModal(ConfirmationModalComponent, {
+        title: 'Select Player',
+        buttonText: 'Select',
+        showTable: true,
+        tableValues: event
+    })
+    .subscribe((isConfirmed)=> {
+      if(isConfirmed) {
+        // event is contest, has id 
+        if(event && event.entries) {
+          event.entries.push({});
+          event.entries[1].fantasy_player = isConfirmed;
+          event.entries[1].game = isConfirmed.game;
+        }
+        this.showConfirmModal(event);
+      } else {
+        this.modalOpened = false;
+      }      
+    });
+  }
+}
 
 }

@@ -47,11 +47,24 @@ export class CreateContestService {
     let params: HttpParams = new HttpParams();
     params = params.append('slate_id', param.slateId?param.slateId:'Sun-Mon_2017_1_REG');
     params = params.append('position', param.position?param.position:'K');
-  //  params = params.append('tier', param.tier);
+    if(param.tier) {
+      params = params.append('tier', param.tier);
+    }
     return this.httpClient.get(`${this.helperService.resolveAPI()}/fantasyPlayers`, { params: params })
     .pipe(
       catchError(this.handleError.handleError)
     )  
+  }
+
+  setGameFilterValues(players, gameFilterValues) {
+    players.forEach(element => {
+      let index = gameFilterValues?gameFilterValues.findIndex(x => x.id === element.game_id):-1;
+      if(index === -1) {
+        element.game.name = element.game.homeTeam + ' @ ' + element.game.awayTeam;
+        element.game.selected = true;
+        gameFilterValues.push(element.game);
+      }
+    });
   }
 
 }

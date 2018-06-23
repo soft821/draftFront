@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {CreateContestService} from '../../create-contest/create-contest.service';
 
 @Component({
   selector: 'dm-matchup-table',
@@ -9,48 +10,16 @@ export class MatchupTable implements OnInit {
 
   constructor() { }
   @Input() tableData;
-  players = [
-    {
-      id: 0,
-      position: 'RB',
-      name: 'David Johnson',
-      team1: 'Ari',
-      team2: 'Dal',
-      opponent: 'Protocol81',
-      fppg: 24.5,
-      entry: 5,
-      prize: 9,
-      ranking: 'A'
-    },
-    {
-      id: 1,
-      position: 'RB',
-      name: 'Ezekiel Elliot',
-      team1: 'Ari',
-      team2: 'Dal',
-      opponent: 'Protocol81',
-      fppg: 24.5,
-      entry: 5,
-      prize: 9,
-      ranking: 'A'
-    },
-    {
-      id: 1,
-      position: 'RB',
-      name: 'Ezekiel Elliot',
-      team1: 'Ari',
-      team2: 'Dal',
-      opponent: 'Protocol81',
-      fppg: 24.5,
-      entry: 5,
-      prize: 9,
-      ranking: 'A'
-    }
-  ]
+  @Output() enterMatchupEvent: EventEmitter<any> = new EventEmitter;
 
-  scaleEntryFee = [ 0, 50000 ];;
+  scaleEntryFee = [ 0, 50000 ];
 
   ngOnInit() {
+  }
+
+  enterContest(item) {
+    console.log(item)
+    this.enterMatchupEvent.emit(item);
   }
   
   entryFeeChange() {

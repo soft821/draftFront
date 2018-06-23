@@ -20,11 +20,11 @@ export class EnterMatchupComponent implements OnInit {
 
   showConfirmModal(event) {
     this.modalOpened = true;
-    let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
+    this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Confirm Matchup',
         message: 'Are you sure you want to cancel this matchup?',
         buttonText: 'Yes',
-        setOpponent: false
+        showTable: false
     })
     .subscribe((isConfirmed)=>{
       this.modalOpened = false;

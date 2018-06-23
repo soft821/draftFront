@@ -17,49 +17,6 @@ export class CreateContestComponent implements OnInit {
   modalOpened: boolean;
   opponentPlayer: any;  
   steps: any[];
-  matches = [
-    {
-      player1: 'Phi',
-      player2: 'Was',
-      date: 'SUN 1:00 PM' 
-    },
-    {
-      player1: 'Car',
-      player2: 'No',
-      date: 'SUN 1:00 PM' 
-    },
-    {
-      player1: 'Bal',
-      player2: 'Ten',
-      date: 'SUN 1:00 PM' 
-    },
-    {
-      player1: 'Car',
-      player2: 'No',
-      date: 'SUN 1:00 PM' 
-    },
-    {
-      player1: 'Jak',
-      player2: 'Chi',
-      date: 'SUN 1:00 PM' 
-    },
-    {
-      player1: 'Jak',
-      player2: 'Chi',
-      date: 'SUN 1:00 PM' 
-    },
-    {
-      player1: 'Jak',
-      player2: 'Chi',
-      date: 'SUN 1:00 PM' 
-    },
-    {
-      player1: 'Jak',
-      player2: 'Chi',
-      date: 'SUN 1:00 PM' 
-    }
-  ];
-
   gameTimes: any;
   players = [];
   playersObtained: boolean;
@@ -90,7 +47,7 @@ export class CreateContestComponent implements OnInit {
               private simpleModalService: SimpleModalService) { }
 
   ngOnInit() {
-    this.steps = STEPS;
+    this.steps = [].concat(STEPS);
     this.opponentPlayer = OPPONENT_PLAYER;
     this.getSlates();
   }
@@ -273,14 +230,7 @@ export class CreateContestComponent implements OnInit {
   }
 
   setGameFilterValues() {
-    this.players.forEach(element => {
-      let index = this.gameFilterValues?this.gameFilterValues.findIndex(x => x.id === element.game_id):-1;
-      if(index === -1) {
-        element.game.name = element.game.homeTeam + ' @ ' + element.game.awayTeam;
-        element.game.selected = true;
-        this.gameFilterValues.push(element.game);
-      }
-    });
+    this.createContestService.setGameFilterValues(this.players, this.gameFilterValues)
   }
 
   createMatchup(event) {
@@ -296,22 +246,39 @@ export class CreateContestComponent implements OnInit {
     this.createContestService.createContest(body)
     .subscribe(response => {
       this.createContestInProgress = false;
-      this.showConfirmModal('You have successfully created a contest', 'Thank you');
+      this.showConfirmationMessage('You have successfully created a contest', 'Thank you');
     }, 
     error => {
-      this.showConfirmModal(error, 'Error');
-    })
-    
+      this.showConfirmationMessage(error, 'Error');
+    })    
   }
 
-  showConfirmModal(message, title) {
+  resetSteps() {
+    this.steps.forEach(step => {
+      if(step.id === 0) {
+        step.isChecked = true;
+        step.current = true;
+        step.stepSubmitted = false;
+        step.valid = true;
+      } else {
+        step.isChecked = false;
+        step.current = false;
+        step.stepSubmitted = false;
+        step.valid = false;
+      }        
+    });
+    this.activeFormIndex = 0;
+  }
+
+  showConfirmationMessage(message, title) {
     this.modalOpened = true;
-    let disposable = this.simpleModalService.addModal(ConfirmationModalComponent, {
+    this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: title,
         message: message,
         buttonText: 'OK'
     })
     .subscribe((isConfirmed)=> {
+      this.resetSteps();
       this.route.navigate(['/main/lobby'])    
       this.modalOpened = false;
     });

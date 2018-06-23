@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LobbyService} from '../lobby/lobby.service';
 import {HelperService} from '../../core/helper.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'dm-history',
@@ -10,7 +11,8 @@ import {HelperService} from '../../core/helper.service';
 export class HistoryComponent implements OnInit {
 
   constructor(private lobbyService: LobbyService,
-              private helperService: HelperService) { }
+              private helperService: HelperService,
+              private authService: AuthService) { }
 
   titles = [
     {
@@ -43,68 +45,19 @@ export class HistoryComponent implements OnInit {
     }
   ]
 
-  tableValues = [
-    {
-      id: 0,
-      position: 'QB',
-      slate: 'CLE 27 @ SD 30',
-      score: 24.58,
-      p: 'P',
-      team: 'Rivers',
-      match: 'Final',
-      opponentPosition: 'QB',
-      match1: '1st',
-      opponent: 'garfield399',
-      opponentScore: 22.58,
-      entry: 2,
-      winning: 5,
-      date: '05/05'
-    },
-    {
-      id: 1,
-      position: 'QB',
-      slate: 'CLE 27 @ SD 30',
-      score: 24.58,
-      p: 'P',
-      team: 'Rivers',
-      match: 'Final',
-      opponentPosition: 'QB',
-      match1: '1st',
-      opponent: 'garfield399',
-      opponentScore: 22.58,
-      entry: 3,
-      winning: 9,
-      date: '05/05'
-    },
-    {
-      id: 2,
-      position: 'QB',
-      slate: 'CLE 27 @ SD 30',
-      score: 24.58,
-      p: 'P',
-      team: 'Rivers',
-      match: 'Final',
-      opponentPosition: 'QB',
-      match1: '1st',
-      opponent: 'garfield399',
-      opponentScore: 27.58,
-      entry: 10,
-      winning: 0,
-      date: '05/04'
-    }
-  ];
+  tableValues = [];
 
   user = {
-    username: 'Username',
-    record: 'Record: 1345 - 234 (W-L)',
+    username: this.authService.authenticatedUser.username,
+    record: 'Record: ' + this.authService.authenticatedUser.wins + ' - ' + this.authService.authenticatedUser.loses + ' (W-L)',
     matchups: 0,
     totalEntries: 0,
     totalWinnings: 0
   }
+  tempList: any;
 
   ngOnInit() {
     this.getData();
-    this.setValuesForUser();
   }
 
   getData() {
@@ -112,14 +65,33 @@ export class HistoryComponent implements OnInit {
     this.lobbyService.getMatchups('HISTORY')
     .subscribe( response => {
       console.log(response)
+      this.tempList = response;
+      this.tableValues = [];
+      if(this.tempList.response)
+      this.tempList.response.forEach(element => {
+        if(element.contests && element.contests.length) {
+          element.contests.forEach(contest => {
+            contest.name = element.name; // name of the slate 
+            // players name replace with first letter
+            if(contest && contest.entries) {
+              contest.entries.forEach(entry => {
+                entry.fantasy_player.name = this.helperService.getPlayer(entry.fantasy_player.name);
+              });
+            }
+            this.tableValues.push(contest);
+          });
+        }            
+      }); 
+      this.setValuesForUser(this.tempList.userInfo);
       this.helperService.spinner.hide();
     })
   }
 
-  setValuesForUser() {
-    this.user.matchups = this.tableValues.length;
+  setValuesForUser(userInfo) {
+    this.user.matchups = userInfo.entries;
+    this.user.totalEntries = userInfo.totalEntry;
+    // get this from user info on response???
     this.tableValues.forEach(element => {
-      this.user.totalEntries += element.entry;
       this.user.totalWinnings += element.winning;
     });
   }
