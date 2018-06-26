@@ -60,7 +60,7 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
-  showResetForm() {
+  showResetForm(event) {
     this.showReset = true;
     this.showSignupForm = false;
     this.showSupportForm = false;
