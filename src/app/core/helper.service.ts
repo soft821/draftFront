@@ -1,18 +1,12 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {LocalStorageService} from 'angular-2-local-storage';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Router, NavigationEnd} from '@angular/router';
-import {DomSanitizer} from '@angular/platform-browser';
 import {NgxSpinnerService} from 'ngx-spinner';
-// import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class HelperService {
-  emailPattern = '';
-  constructor(private localStorageService: LocalStorageService,
-              private router: Router,
-              private sanitization: DomSanitizer,
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  constructor(private router: Router,
               public spinner: NgxSpinnerService) {}
 
   resolveAPI() {

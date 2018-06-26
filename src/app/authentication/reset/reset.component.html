@@ -3,19 +3,22 @@
       <div class="dm-logo-icons logo-section" routerLink="/"></div>
       <div class="reset input-section">
         <div class="title">Reset Password</div>
-        <form [formGroup]="resetForm" novalidate>
+        <form [formGroup]="resetForm" novalidate *ngIf="!emailSent">
           <div class="input-section-row">
             <div class="auth-label">
               <span>Email Address</span>
             </div>            
             <div>
-              <input class="auth-input" type="text" formControlName="email">
+              <input class="auth-input" type="email" formControlName="email">
             </div>
             <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.required" class="error-msg">
               <span>Email address is required</span>
             </div>        
             <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.pattern" class="error-msg">
               <span>Email address is not valid</span>
+            </div>
+            <div *ngIf="resetFormSubmitted && errorMessage" class="error-msg">
+              <span>{{errorMessage}}</span>
             </div>
           </div>
           <div class="auth-agree reset">
@@ -34,6 +37,16 @@
             </div> 
           </div>
         </form>
+        <div *ngIf="emailSent">
+          <div class="p-30">
+            Your password reset request is being processed. Please check your email. 
+            For further assistance contact your administrator.
+          </div>
+          <div class="login-button">
+            <button class="btn dm-red-btn" 
+                routerLink="/login">Go to login</button>
+          </div>
+        </div>
       </div>
     </div>      
 </div>

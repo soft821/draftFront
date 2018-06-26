@@ -5,15 +5,19 @@
     min-height: -moz-calc(100%);
     min-height: calc(100%);
     position: relative;
-    background-color: rgba(50, 50, 50, 0.5);  
+    // background-color: rgba(50, 50, 50, 0.5);  
     color: white;
   }
 
   .home-content {
     text-align: center;
-    padding-top: 200px;
-    @media screen and (max-width: $break-small) {      
-      padding-top: 100px;
+    justify-content: center;
+    padding-top: 40px;
+    &.top-distance {
+      padding-top: 200px;
+      @media screen and (max-width: $break-small) {      
+        padding-top: 100px;
+      }
     }
   }
 
@@ -78,6 +82,7 @@
     }
   }
 
- 
-
+ .form-container {
+   margin: 40px auto 60px auto;
+ }
   

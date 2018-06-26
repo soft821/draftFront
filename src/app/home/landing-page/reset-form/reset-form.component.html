@@ -1,0 +1,37 @@
+<div class="support-form-container">
+    <div class="sp-header">
+      <span>Reset Password</span>
+    </div>
+    <div class="sp-content" *ngIf="!emailSent">
+      <form [formGroup]="resetForm" novalidate *ngIf="!emailSent">
+        <div class="sp-body">
+          <p>We will send you an email containing a link to complete this process and reset your password.</p>
+          <div class="form flex-column p-t-20">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" placeholder="johnnyappleseed@gmail.com">
+          </div>
+          <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.required" class="error-msg">
+            <span>Email address is required</span>
+          </div>        
+          <div *ngIf="resetFormSubmitted && resetForm.get('email').errors?.pattern" class="error-msg">
+            <span>Email address is not valid</span>
+          </div>
+          <div *ngIf="resetFormSubmitted && errorMessage" class="error-msg">
+            <span>{{errorMessage}}</span>
+          </div>
+        </div>
+        <div class="sp-footer">
+          <button class="reset" (click)="resetPassword(resetForm)">Submit</button>
+        </div>  
+      </form>    
+    </div>
+
+    <div class="sp-content" *ngIf="emailSent">
+      <div *ngIf="emailSent">
+        <div class="p-75">
+          Your password reset request is being processed. Please check your email. 
+          For further assistance contact your administrator.
+        </div>
+      </div>
+    </div>
+  </div>

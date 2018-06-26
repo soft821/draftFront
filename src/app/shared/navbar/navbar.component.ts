@@ -19,10 +19,10 @@ export class NavComponent implements OnInit {
     {id: 1, text: 'How to Play', path: '/'},
     {id: 2, text: 'Rules & Score', path: '/'},
     {id: 3, text: 'Training Guide', path: '/'},
-    {id: 4, text: 'Responsible Play', path: '/responsible-play'},
-    {id: 5, text: 'Trust & Safety', path: '/trust-and-safety'},
-    {id: 6, text: 'Terms of Use', path: '/terms-of-use'},
-    {id: 7, text: 'Privacy Policy', path: '/privacy-policy'}
+    {id: 4, text: 'Responsible Play', path: '/dm/responsible-play'},
+    {id: 5, text: 'Trust & Safety', path: '/dm/trust-and-safety'},
+    {id: 6, text: 'Terms of Use', path: '/dm/terms-of-use'},
+    {id: 7, text: 'Privacy Policy', path: '/dm/privacy-policy'}
   ];
 
   userOptions = [

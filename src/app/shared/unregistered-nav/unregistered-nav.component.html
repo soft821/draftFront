@@ -1,0 +1,44 @@
+<div class="navbar-header">
+  <div class="nav-container">
+    <div class="logo-container column">
+      <div class="dm-logo" routerLink="/main/lobby"></div>
+    </div>  
+    <div class="buttons-container flex">
+      <form [formGroup]="loginForm" novalidate>
+        <div class="flex">
+          <div class="flex-column m-r-15">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email">
+            <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.required" class="error-msg h-20">
+                <span>Email address is required</span>
+            </div>
+            <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.pattern" class="error-msg h-20">
+                <span>Email address is not valid</span>
+            </div>
+            <div class="h-20"></div>
+          </div>
+          <div class="flex-column m-r-15">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password">
+            <div *ngIf="loginFormSubmitted && loginForm.get('password').errors?.required" class="error-msg h-20">
+                <span>Password is required</span>
+            </div>          
+            <div class="error-msg h-20"
+                [translate]="'LOGIN_COMP.ERRORS.INVALID_USER_PASS'"
+                *ngIf="showErrorInvalidCredentials && 
+                      (!loginForm.get('email').errors?.required) && 
+                      (!loginForm.get('password').errors?.required) && 
+                      (!loginForm.get('email').errors?.pattern)">
+                Invalid credentials
+            </div>
+            <div class="capitalize h-20 forgot" (click)="goToReset()">Forgot password?</div>
+          </div>
+        </div>
+      </form>
+      <div class="p-t-5">
+        <button class="login-white-btn" (click)="login(loginForm)" [disabled]="isClickedOnce" type="submit">Log In</button>
+        <div class="h-20" *ngIf="loginFormSubmitted && (loginForm.get('password').errors?.required || loginForm.get('email').errors?.required || loginForm.get('email').errors?.pattern) || showErrorInvalidCredentials"></div>
+      </div>
+    </div>
+  </div>    
+</div>

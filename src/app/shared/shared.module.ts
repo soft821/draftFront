@@ -18,6 +18,8 @@ import {ColorPickerComponent} from './components/color-picker/color-picker.compo
 import {ColorPickerService} from './components/color-picker/color-picker.service';
 import {DmIconSelectComponent} from './components/dm-icon-select/dm-icon-select.component';
 import {CheckboxFilterComponent} from './components/checkbox-filter/checkbox-filter.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { UnregisteredNavComponent } from './unregistered-nav/unregistered-nav.component';
 /*
  * SharedModule
  * SharedModule is used to hold common components, directives, and pipes and share them with modules that need them.
@@ -51,7 +53,9 @@ import {CheckboxFilterComponent} from './components/checkbox-filter/checkbox-fil
     SelectImageComponent,
     FileUploadModule,
     ColorPickerComponent,
-    CheckboxFilterComponent
+    CheckboxFilterComponent,
+    SignupFormComponent,
+    UnregisteredNavComponent
   ],
   declarations: [
     DmSelectComponent,
@@ -64,7 +68,9 @@ import {CheckboxFilterComponent} from './components/checkbox-filter/checkbox-fil
     SelectImageComponent,
     ColorPickerComponent,
     DmIconSelectComponent,
-    CheckboxFilterComponent
+    CheckboxFilterComponent,
+    SignupFormComponent,
+    UnregisteredNavComponent
   ],
   entryComponents: [
     ConfirmationModalComponent

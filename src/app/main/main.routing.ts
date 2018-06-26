@@ -12,7 +12,6 @@ import {LobbyComponent} from './lobby/lobby.component';
 import {LiveComponent} from './live/live.component';
 import {HistoryComponent} from './history/history.component';
 import {CreateContestComponent} from './create-contest/create-contest.component';
-import {HomeComponent} from './home/home.component';
 
 const MAIN_ROUTES: Routes = [
     {
@@ -32,14 +31,13 @@ const MAIN_ROUTES: Routes = [
         ]
     },
     {   
-        path: '',  component: MainComponent,
+        path: 'dm',  component: MainComponent,
         canActivate: [AuthorizedCheck],
         children: [
             { path: 'terms-of-use', component: TermsOfUseComponent },
             { path: 'privacy-policy', component: PrivacyPolicyComponent },
             { path: 'responsible-play', component: ResponsiblePlayComponent },
-            { path: 'trust-and-safety', component: TrustAndSafetyComponent },
-            { path: '', component: HomeComponent },
+            { path: 'trust-and-safety', component: TrustAndSafetyComponent }
         ]
     }
     

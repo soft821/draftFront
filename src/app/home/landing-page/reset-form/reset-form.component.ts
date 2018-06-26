@@ -1,28 +1,28 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../core/auth/auth.service';
-import {LocalStorageService} from 'angular-2-local-storage';
-import {HelperService} from '../../core/helper.service';
+import { AuthService } from '../../../core/auth/auth.service';
+import { HelperService } from '../../../core/helper.service';
 
 @Component({
-  selector: 'dm-reset',
-  templateUrl: './reset.component.html',
-  styleUrls: ['./reset.component.scss']
+  selector: 'dm-reset-form',
+  templateUrl: './reset-form.component.html',
+  styleUrls: ['./reset-form.component.scss']
 })
-export class ResetComponent implements OnInit {
+export class ResetFormComponent implements OnInit {
+
   resetForm: FormGroup;
   resetFormSubmitted: boolean;
   resetFormSubmitInProgress: boolean;
   isClickedOnce = false;
   emailSent = false;
   errorMessage = '';
+  
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private helperService: HelperService,
-              private localStorageService: LocalStorageService) { }
+              private helperService: HelperService) { }
+
 
   ngOnInit() {
-    this.localStorageService.remove('auth_token');
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.helperService.emailPattern)]]
     });
@@ -44,4 +44,5 @@ export class ResetComponent implements OnInit {
       });
     }
   }
+
 }

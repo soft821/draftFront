@@ -4,7 +4,6 @@ import {NouisliderModule} from 'ng2-nouislider';
 import {SharedModule} from '../shared/shared.module';
 import {MainComponent} from './main.component';
 import {MainRoutingModule} from './main.routing';
-import {HomeComponent} from './home/home.component';
 import {TermsOfUseComponent} from './terms-of-use/terms-of-use.component';
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
 import {ResponsiblePlayComponent} from './responsible-play/responsible-play.component';
@@ -44,7 +43,6 @@ import {NgxSpinnerModule} from 'ngx-spinner';
   ],
   declarations: [
     MainComponent,
-    HomeComponent,
     TermsOfUseComponent,
     PrivacyPolicyComponent,
     ResponsiblePlayComponent,

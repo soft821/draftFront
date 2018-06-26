@@ -4,8 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {LocalStorageModule} from 'angular-2-local-storage';
 import {JwtModule} from '@auth0/angular-jwt';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AppRoutingModule} from './app.routing';
 import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';

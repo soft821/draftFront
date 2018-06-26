@@ -1,0 +1,66 @@
+
+@import "../../../theme/theme-variables";
+
+.navbar-header {
+    background: #ffffff;
+    height: 127px;
+    border-bottom: 1px solid $dm-light-gray;
+    border-radius: 5px;
+    padding: 15px 0px 0px 0px;
+    @media screen and (max-width: $break-xsmall) {
+        padding: 5px 0px 0px 0px;
+        height: 95px;
+    }
+    .nav-container {
+        display: flex;
+        position: relative;
+        padding: 0px 2vw 0px 4vw;
+        @media screen and (max-width: $break-large - 1) {
+            padding: 0px 2vw 0px 3vw;
+        }
+        @media screen and (max-width: $break-small) {
+            padding: 0px 2vw 0px 0px;
+        }
+        @media screen and (max-width: $break-xsmall) {
+            justify-content: center;
+            padding: 0px;
+        }
+        .logo-container {
+            width: 13%;
+            @media screen and (max-width: $break-xsmall) {
+                width: unset;
+            }
+        }
+        .buttons-container {
+           width: 87%;
+           justify-content: flex-end;
+           align-items: center;
+           input {
+               height: 30px;
+           }
+        }
+    }
+}
+.login-white-btn {
+    width: 97px;
+    background: transparent;
+    height: 30px;
+    border-radius: 8px;
+    border: solid 1px #000000;
+}
+
+.h-20 {
+    height: 20px;
+}
+
+.forgot {
+    color: rgba(8, 42, 94, 0.8);
+    &:hover {
+        cursor: pointer;
+        color: $dm-red;
+    }
+}
+
+.error-msg {
+    width: 100%;
+}

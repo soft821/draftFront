@@ -4,8 +4,7 @@ import {HelperService} from '../../core/helper.service';
 import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation-modal/confirmation-modal.component';
 import {SimpleModalService} from 'ngx-simple-modal';
 import {Observable} from 'rxjs/Rx';
-import { ENTRY_FEE } from '../create-contest/entry-fee/entryFeeValues';
-import { CreateContestService } from '../create-contest/create-contest.service';
+import {ENTRY_FEE} from '../create-contest/entry-fee/entryFeeValues';
 
 @Component({
   selector: 'dm-lobby',
@@ -93,8 +92,7 @@ export class LobbyComponent implements OnInit {
   
   constructor(private lobbyService: LobbyService, 
               private helperService: HelperService,
-              private simpleModalService: SimpleModalService,
-              private createContestService: CreateContestService) { }
+              private simpleModalService: SimpleModalService) { }
 
   ngOnInit() {
     this.getData();
@@ -130,6 +128,7 @@ export class LobbyComponent implements OnInit {
       this.pageLoaded = true;
       this.helperService.spinner.hide();
     }, (error) => {
+      this.helperService.spinner.hide();
       console.log(error)
     });
   };

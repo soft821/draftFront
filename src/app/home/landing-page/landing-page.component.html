@@ -1,0 +1,33 @@
+
+<dm-unregistered-nav (showResetForm)="showResetForm($event)"></dm-unregistered-nav>
+<div class="dm-home">
+    <div class="dm-home-image">
+        <div class="flex-column container home-content" [ngClass]="{'top-distance': !showSupportForm && !showSignupForm && !showReset}">
+            <div class="primary title">THE FASTEST WAY TO PLAY</div>
+            <div class="secundary title">DAILY FANTASY SPORTS</div>
+            <div class="signup-container" *ngIf="!showSupportForm && !showSignupForm && !showReset">
+                <button class="signup-btn home-btn" (click)="showSupportForm = true">Sign up</button>
+            </div>
+           <!--  <div class="registration-container" *ngIf="!showSupportForm || !showSignupForm">
+                <button class="registration-btn home-btn">Get registration code</button>
+            </div> -->
+            <div *ngIf="showSupportForm" class="flex-center form-container">
+                <dm-support-form (showSignupForm)="showSignup($event)"></dm-support-form>
+            </div>            
+            <div *ngIf="showSignupForm" class="form-container">
+                <div class="auth-container p-t-0">
+                    <dm-signup-form [signupForm]="signupForm"
+                                    [signupFormSubmitted]="signupFormSubmitted"
+                                    [landingPage]="true"
+                                    [isClickedOnce]="isClickedOnce"
+                                    (signUpEvent)="signUp($event)"
+                                    (cancelSignUpEvent)="cancelSignup($event)">
+                    </dm-signup-form>
+                </div>
+            </div>
+            <div *ngIf="showReset" class="flex-center form-container">
+                <dm-reset-form (showSignupForm)="showSignup($event)"></dm-reset-form>
+            </div>
+        </div>
+    </div>   
+</div>

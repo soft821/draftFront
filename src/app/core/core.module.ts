@@ -1,18 +1,18 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {EnsureModuleLoadedOnceGuard} from './module-loaded-once-guard';
 import {AuthenticationModule} from '../authentication/authentication.module';
 import {GlobalStateService} from './global-state/global-state.service';
 import {MainModule} from '../main/main.module';
 import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
-import {AuthorizedCheck} from './auth/authorized-check.service';
+import {AuthorizedCheck, IsUserLogged} from './auth/authorized-check.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from '../core/auth/auth-interceptors';
 import {HelperService} from './helper.service';
 import {ResponsiveService} from './responsive/responsive.service';
 import {BlogModule} from '../blog/blog.module';
 import {HandleErrorService} from './handle-error.service';
+import {HomeModule} from '../home/home.module';
 
 /*
  * CoreModule
@@ -27,7 +27,8 @@ import {HandleErrorService} from './handle-error.service';
     // Modules
     AuthenticationModule,
     MainModule,
-    BlogModule
+    BlogModule,
+    HomeModule
     // Components
   ],
   declarations: [
@@ -44,7 +45,8 @@ import {HandleErrorService} from './handle-error.service';
     AuthGuard,
     AuthorizedCheck,
     TokenInterceptor,
-    ResponsiveService
+    ResponsiveService,
+    IsUserLogged
   ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
