@@ -18,7 +18,6 @@ export class CheckboxFilterComponent implements OnInit {
 
   selectAllOptions() {
     this.selectAll = !this.selectAll;
-    console.log(this.selectAll)
     this.items.forEach(item => {
       item.selected = this.selectAll;
       this.optionSelected.emit(item);

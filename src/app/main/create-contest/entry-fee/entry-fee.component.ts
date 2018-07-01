@@ -20,6 +20,9 @@ export class EntryFeeComponent implements OnInit {
 
   ngOnInit() {
     this.fees = ENTRY_FEE;
+    this.fees.forEach(fee => {
+      fee.selected = false;
+    });
     if(this.feeSelected && this.feeSelected.id && this.feeSelected.id !== -1) {
       let temp = this.fees.find(x => x.id === this.feeSelected.id);
       if(temp)

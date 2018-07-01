@@ -15,9 +15,10 @@
             <dm-table [theads]="titles"
                       [values]="tableValues"
                       [matchups]="true"
-                      (cancelContest)="cancelContest($event)">
+                      (cancelContest)="cancelContest($event)"
+                      (editContest)="editContest($event)">
             </dm-table>
         </div>
     </div>
 </div>
-<div class="modal-background" *ngIf="modalOpened"></div>
+<div class="modal-background" *ngIf="modalOpened || modalHelperService.modalOpened"></div>

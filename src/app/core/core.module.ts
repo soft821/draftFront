@@ -13,6 +13,7 @@ import {ResponsiveService} from './responsive/responsive.service';
 import {BlogModule} from '../blog/blog.module';
 import {HandleErrorService} from './handle-error.service';
 import {HomeModule} from '../home/home.module';
+import {ModalHelperService} from './modal-helper.service';
 
 /*
  * CoreModule
@@ -46,7 +47,8 @@ import {HomeModule} from '../home/home.module';
     AuthorizedCheck,
     TokenInterceptor,
     ResponsiveService,
-    IsUserLogged
+    IsUserLogged,
+    ModalHelperService
   ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {

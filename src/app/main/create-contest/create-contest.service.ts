@@ -45,8 +45,8 @@ export class CreateContestService {
 
   getFantasyPlayers(param) {
     let params: HttpParams = new HttpParams();
-    params = params.append('slate_id', param.slateId?param.slateId:'Sun-Mon_2017_1_REG');
-    params = params.append('position', param.position?param.position:'K');
+    params = params.append('slate_id', param.slateId?param.slateId:'Sun-Mon_2018_6_1');
+    params = params.append('position', param.position?param.position:'QB');
     if(param.tier) {
       params = params.append('tier', param.tier);
     }

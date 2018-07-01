@@ -24,4 +24,15 @@ export class MatchupsService {
       catchError(this.handleError.handleError)
     )  
   }
+
+  editEntry(data) {
+    let body = {
+      player_id: data.player_id, 
+      entry_id: data.entry_id
+    }
+    return this.httpClient.patch(`${this.helperService.resolveAPI()}/contests/entry`, body)
+    .pipe(
+      catchError(this.handleError.handleError)
+    ) 
+  }
 }

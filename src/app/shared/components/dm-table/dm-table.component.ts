@@ -11,6 +11,7 @@ export class DmTable implements OnInit {
   @Input() historyTable;
   @Input() matchups;
   @Output() cancelContest: EventEmitter<any> = new EventEmitter();
+  @Output() editContest: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -20,7 +21,7 @@ export class DmTable implements OnInit {
     this.cancelContest.emit(option);
   }
 
-  editContest(value) {
-    console.log(value)
+  editMatchup(option) {
+    this.editContest.emit(option);
   }
 }

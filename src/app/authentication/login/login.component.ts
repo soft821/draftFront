@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
         this.isClickedOnce = false;
         this.showErrorInvalidCredentials = false;
         this.router.navigate(['/main/lobby']);
+        this.helperService.scrollToTop();
       },
       error => {
         this.showErrorInvalidCredentials = true;

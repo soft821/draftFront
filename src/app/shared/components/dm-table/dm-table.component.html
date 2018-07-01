@@ -86,7 +86,7 @@
             <td *ngIf="matchups">
                 <div class="winning-value">
                     <div  *ngIf="value.editStatus === 'locked'" class="dm-lock"></div>
-                    <div class="edit-icons fa fa-pencil-square-o" (click)="editContest(value)" *ngIf="value.editStatus === 'edit'"></div>
+                    <div class="edit-icons fa fa-pencil-square-o" (click)="editMatchup(value)" *ngIf="value.editStatus === 'edit'"></div>
                     <div class="edit-icons close-sign" (click)="cancelMatchup(value)" *ngIf="value.editStatus === 'cancel'">X</div>
                   
                 </div>

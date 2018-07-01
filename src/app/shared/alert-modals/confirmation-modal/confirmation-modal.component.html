@@ -7,12 +7,15 @@
   </div>
   <div class="modal-body">
     <p *ngIf="message">{{message}}</p>
+    <p class="f-16" *ngIf="description">{{description}}</p>
     <!-- Confirm modal from LOBBY HEADLINE DRAFT button and after player is selected on enter matchup modal -->
     <div *ngIf="confirmMatchup && confirmMatchupTable">
       <div class="flex match-time">
-        <span class="p-10">{{confirmMatchupTable.entries[0].game.date | date: 'shortDate'}}</span>
-        <span class="p-10">{{confirmMatchupTable.slate.name}}</span>
-        <span class="p-10">{{confirmMatchupTable.entries[0].game.date | date: 'shortTime'}}</span>
+        <span class="p-10" *ngIf="confirmMatchupTable.entries[0].game.date">{{confirmMatchupTable.entries[0].game.date | date: 'shortDate'}}</span>
+        <span class="p-10" *ngIf="confirmMatchupTable.entries[1].game.date">{{confirmMatchupTable.entries[1].game.date | date: 'shortDate'}}</span>
+        <span class="p-10">{{confirmMatchupTable.slate?.name || confirmMatchupTable.name}}</span>
+        <span class="p-10" *ngIf="confirmMatchupTable.entries[0].game.date">{{confirmMatchupTable.entries[0].game.date | date: 'shortTime'}}</span>
+        <span class="p-10" *ngIf="confirmMatchupTable.entries[1].game.date">{{confirmMatchupTable.entries[1].game.date | date: 'shortTime'}}</span>
       </div>
       <div>
         <dm-player-ticket [player]="confirmMatchupTable.entries[0].fantasy_player"
@@ -21,7 +24,7 @@
         </dm-player-ticket>        
         <div class="border-between"></div>
         <dm-player-ticket [player]="confirmMatchupTable.entries[1].fantasy_player"
-                          [username]="authService.authenticatedUser.username"
+                          [username]="confirmMatchupTable.entries[1].username || authService.authenticatedUser.username"
                           [game]="confirmMatchupTable.entries[1].game">        
         </dm-player-ticket> 
       </div>
@@ -42,19 +45,19 @@
               <div class="flex player-data">
                 <div class="dm-player"></div>
                 <div class="flex-column name">
-                  <span>{{tableValues.entries[0].fantasy_player.name}}</span>
+                  <span>{{tableValues.fantasy_player.name}}</span>
                   <div>
-                    <span [ngClass]="{'bold': tableValues.entries[0].game.homeTeam === tableValues.entries[0].fantasy_player.team}">
-                      {{tableValues.entries[0].game.homeTeam}}
+                    <span [ngClass]="{'bold': tableValues.game.homeTeam === tableValues.fantasy_player.team}">
+                      {{tableValues.game.homeTeam}}
                     </span>@
-                    <span [ngClass]="{'bold': tableValues.entries[0].game.awayTeam === tableValues.entries[0].fantasy_player.team}">
-                      {{tableValues.entries[0].game.awayTeam}}
+                    <span [ngClass]="{'bold': tableValues.game.awayTeam === tableValues.fantasy_player.team}">
+                      {{tableValues.game.awayTeam}}
                     </span>
                   </div>
                 </div>
               </div>
             </td>
-            <td><div>{{tableValues.entries[0].fantasy_player.fps}}</div></td>
+            <td><div>{{tableValues.fantasy_player.fps}}</div></td>
             <td>
               <div class="flex">
                 <span class="flex-column p-r-10">${{tableValues.entryFee}} <span class="f-14">Entry</span></span> | 

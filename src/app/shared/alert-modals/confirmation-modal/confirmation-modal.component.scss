@@ -111,3 +111,9 @@
 .modal-content.confirm {
     margin: 10% auto !important;
 }
+
+/deep/ simple-modal-wrapper {
+    .modal {
+        z-index: 100000;
+    }
+}

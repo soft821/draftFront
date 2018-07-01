@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../core/auth/auth.service';
-import {HelperService} from '../../core/helper.service';
 import {ResponsiveService} from '../../core/responsive/responsive.service';
 import {GlobalStateService} from '../../core/global-state/global-state.service';
+import {LocalStorageService} from 'angular-2-local-storage';
 
 @Component({
     selector: 'dm-navi-bar',
@@ -30,12 +30,12 @@ export class NavComponent implements OnInit {
     {id: 1, text: 'Transaction History', path: '/'},
     {id: 2, text: 'My Account', path: '/'},
     {id: 3, text: 'Refer Friends', path: '/'},
-    {id: 4, text: 'Log Out', path: '/login'}
+    {id: 4, text: 'Log Out', path: '/logout'}
   ]
   constructor(private router: Router,
               private globalState: GlobalStateService,
               public auth: AuthService,
-              private helperService: HelperService,
+              private localStorageService: LocalStorageService,
               public responsiveService: ResponsiveService) {
                 this.globalState.subscribe('menu.closed', (data) => {
                   this.sidebarOpen = data.value;
@@ -68,6 +68,12 @@ export class NavComponent implements OnInit {
   }
 
   goToRoute(option) {
+    // since logout should lead to the landing page, the only way to user gets there is to lose auth token 
+    if(option.path === '/logout') {
+      this.localStorageService.remove('auth_token');
+      this.auth.isAuthenticated = false;
+      option.path = '/';
+    }
     this.router.navigate([option.path]);
   }
 }

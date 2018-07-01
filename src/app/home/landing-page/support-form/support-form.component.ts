@@ -16,4 +16,8 @@ export class SupportFormComponent implements OnInit {
   showSignup() {
     this.showSignupForm.emit(true);
   }
+
+  goToIndiegogo() {
+    window.open('https://igg.me/at/draftmatch/x/18671044', '_blank');
+  }
 }

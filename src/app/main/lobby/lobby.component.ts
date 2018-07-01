@@ -5,6 +5,7 @@ import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation
 import {SimpleModalService} from 'ngx-simple-modal';
 import {Observable} from 'rxjs/Rx';
 import {ENTRY_FEE} from '../create-contest/entry-fee/entryFeeValues';
+import {ModalHelperService} from '../../core/modal-helper.service';
 
 @Component({
   selector: 'dm-lobby',
@@ -92,7 +93,8 @@ export class LobbyComponent implements OnInit {
   
   constructor(private lobbyService: LobbyService, 
               private helperService: HelperService,
-              private simpleModalService: SimpleModalService) { }
+              private simpleModalService: SimpleModalService,
+              public modalHelperService: ModalHelperService) { }
 
   ngOnInit() {
     this.getData();
@@ -187,18 +189,6 @@ export class LobbyComponent implements OnInit {
     // filter an array with this.filter options
   }
 
-  showConfirmationMessage(message, title) {
-    this.modalOpened = true;
-    this.simpleModalService.addModal(ConfirmationModalComponent, {
-        title: title,
-        message: message,
-        buttonText: 'OK'
-    })
-    .subscribe((isConfirmed)=> {      
-      this.modalOpened = false;
-    });
-  }
-
   showConfirmModal(event) {
     this.modalOpened = true;
     this.simpleModalService.addModal(ConfirmationModalComponent, {
@@ -221,16 +211,18 @@ export class LobbyComponent implements OnInit {
           }
           let msg = 'You have successfully registered to contest';
           let ttl = 'Thank you'
-          this.showConfirmationMessage(msg, ttl);
+          this.modalHelperService.showConfirmationMessage(msg, ttl);
         }, 
         error => {
           if(event.matchupType !== 'set_opponent') {
             event.entries.splice(1, 1);
           }          
-          this.showConfirmationMessage(error.message, 'Error');
+          this.modalHelperService.showConfirmationMessage(error.message, 'Error', error.debug?error.debug[0]:'');
+          this.getData();
         });
       }
       this.modalOpened = false;
+      this.helperService.scrollToTopSamePage();
     });
   };
 
@@ -240,11 +232,13 @@ export class LobbyComponent implements OnInit {
     if(event.matchupType === 'set_opponent') {
       this.showConfirmModal(event);
     } else { // else -> choose a player than confirm
+      event.entries[0].entryFee = event.entryFee;
+      event.entries[0].prize = event.prize;
       this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Select Player',
         buttonText: 'Select',
         showTable: true,
-        tableValues: event
+        tableValues: event.entries[0]
     })
     .subscribe((isConfirmed)=> {
       if(isConfirmed) {

@@ -18,7 +18,6 @@ export class MatchupTable implements OnInit {
   }
 
   enterContest(item) {
-    console.log(item)
     this.enterMatchupEvent.emit(item);
   }
   

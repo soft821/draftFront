@@ -6,9 +6,9 @@
     <div class="buttons-container flex">
       <form [formGroup]="loginForm" novalidate>
         <div class="flex">
-          <div class="flex-column m-r-15">
+          <div class="flex-column m-r-15 l-input">
             <label for="email">Email</label>
-            <input type="email" formControlName="email">
+            <input type="email" class="form-control" formControlName="email">
             <div *ngIf="loginFormSubmitted && loginForm.get('email').errors?.required" class="error-msg h-20">
                 <span>Email address is required</span>
             </div>
@@ -17,9 +17,9 @@
             </div>
             <div class="h-20"></div>
           </div>
-          <div class="flex-column m-r-15">
+          <div class="flex-column m-r-15 l-input">
             <label for="password">Password</label>
-            <input type="password" formControlName="password">
+            <input type="password" class="form-control" formControlName="password">
             <div *ngIf="loginFormSubmitted && loginForm.get('password').errors?.required" class="error-msg h-20">
                 <span>Password is required</span>
             </div>          
@@ -31,14 +31,14 @@
                       (!loginForm.get('email').errors?.pattern)">
                 Invalid credentials
             </div>
-            <div class="capitalize h-20 forgot" (click)="goToReset()">Forgot password?</div>
+            <div class="capitalize h-20 forgot f-13" (click)="goToReset()">Forgot password?</div>
+          </div>
+          <div class="p-t-5 as-c">
+            <button class="login-white-btn" (click)="login(loginForm)" [disabled]="isClickedOnce" type="submit">Log In</button>
+            <div class="h-20" *ngIf="loginFormSubmitted && (loginForm.get('password').errors?.required || loginForm.get('email').errors?.required || loginForm.get('email').errors?.pattern) || showErrorInvalidCredentials"></div>
           </div>
         </div>
       </form>
-      <div class="p-t-5">
-        <button class="login-white-btn" (click)="login(loginForm)" [disabled]="isClickedOnce" type="submit">Log In</button>
-        <div class="h-20" *ngIf="loginFormSubmitted && (loginForm.get('password').errors?.required || loginForm.get('email').errors?.required || loginForm.get('email').errors?.pattern) || showErrorInvalidCredentials"></div>
-      </div>
     </div>
   </div>    
 </div>

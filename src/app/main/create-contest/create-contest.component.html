@@ -65,6 +65,9 @@
             <div class="error" *ngIf="!steps[activeFormIndex].valid && steps[activeFormIndex].stepSubmitted">
                 <span>{{steps[activeFormIndex].errorMsg}}</span>
             </div>
+            <div class="error" *ngIf="steps[activeFormIndex].showBalanceError && steps[activeFormIndex].stepSubmitted">
+                <span> Available balance is less than selected entry fee. Please choose lower option. </span>
+            </div>
             <div class="submit-button">
                 <button *ngIf="steps[activeFormIndex].key !== 'createContest' || !steps[activeFormIndex].current" 
                         class="dm-red-btn" [ngClass]="{'disabled': players.length === 0 && steps[activeFormIndex].key === 'selectPlayer' && steps[activeFormIndex].current || 
@@ -96,4 +99,4 @@
         </div>
     </div>
 </div>
-<div class="modal-background" *ngIf="modalOpened"></div>
+<div class="modal-background" *ngIf="modalOpened || modalHelperService.modalOpened"></div>

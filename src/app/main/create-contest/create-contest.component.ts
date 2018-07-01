@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 import {STEPS, OPPONENT_PLAYER} from './const-variables';
 import {SimpleModalService} from 'ngx-simple-modal';
 import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation-modal/confirmation-modal.component';
+import {AuthService} from '../../core/auth/auth.service';
+import { ModalHelperService } from '../../core/modal-helper.service';
 
 @Component({
   selector: 'dm-create-contest',
@@ -44,10 +46,12 @@ export class CreateContestComponent implements OnInit {
               private helperService: HelperService,
               private lobbyService: LobbyService,
               private route: Router,
-              private simpleModalService: SimpleModalService) { }
+              private auth: AuthService,
+              private modalHelperService: ModalHelperService) { }
 
   ngOnInit() {
     this.steps = [].concat(STEPS);
+    this.resetSteps(); // in case user left in the middle of create 
     this.opponentPlayer = OPPONENT_PLAYER;
     this.getSlates();
   }
@@ -98,6 +102,7 @@ export class CreateContestComponent implements OnInit {
   getEntryFee(event) {
     this.entryFeeSelected = event;
     this.validateForm(event.selected, 1);
+    this.validateUsersBalance(event, 1)
   }
 
   getMatchupType(event) {
@@ -121,6 +126,14 @@ export class CreateContestComponent implements OnInit {
   getOpponentPlayer(event) {
     this.opponentPlayerSelected = event;
     this.validateForm(event.selected, 5);   
+  }
+
+  validateUsersBalance(event, id) {
+    if(event.value > this.auth.authenticatedUser.balance && event.selected) {
+      this.steps[id].showBalanceError = true;
+    } else {
+      this.steps[id].showBalanceError = false;
+    }
   }
 
   next(event, target) {
@@ -158,7 +171,7 @@ export class CreateContestComponent implements OnInit {
   }
 
   isFormValid() {
-    if(this.steps[this.activeFormIndex].valid) {
+    if(this.steps[this.activeFormIndex].valid && !this.steps[this.activeFormIndex].showBalanceError) {
       return true;
     }
     return false;
@@ -249,7 +262,7 @@ export class CreateContestComponent implements OnInit {
       this.showConfirmationMessage('You have successfully created a contest', 'Thank you');
     }, 
     error => {
-      this.showConfirmationMessage(error, 'Error');
+      this.showConfirmationMessage(error, 'Error', error.debug?error.debug[0]:'');
     })    
   }
 
@@ -270,18 +283,11 @@ export class CreateContestComponent implements OnInit {
     this.activeFormIndex = 0;
   }
 
-  showConfirmationMessage(message, title) {
-    this.modalOpened = true;
-    this.simpleModalService.addModal(ConfirmationModalComponent, {
-        title: title,
-        message: message,
-        buttonText: 'OK'
-    })
-    .subscribe((isConfirmed)=> {
-      this.resetSteps();
-      this.route.navigate(['/main/lobby'])    
-      this.modalOpened = false;
-    });
+  showConfirmationMessage(message, title, description?) {
+    this.modalHelperService.showConfirmationMessage(message, title, description);
+    this.resetSteps();
+    this.route.navigate(['/main/lobby']);
+    this.helperService.scrollToTop(); 
+    this.modalOpened = false;
   }
-
 }

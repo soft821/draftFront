@@ -7,7 +7,8 @@ export const  STEPS = [
         stepSubmitted: false,
         valid: true,
         key: 'gameTime',
-        errorMsg: ''
+        errorMsg: '',
+        showBalanceError: false
     },
     {
         id: 1,
@@ -17,7 +18,8 @@ export const  STEPS = [
         stepSubmitted: false,
         valid: false,
         key: 'entryFee',
-        errorMsg: 'Please select an option'
+        errorMsg: 'Please select an option',
+        showBalanceError: false
     },
     {
         id: 2,
@@ -27,7 +29,8 @@ export const  STEPS = [
         stepSubmitted: false,
         valid: false,
         key: 'matchupType',
-        errorMsg: 'Please select a matchup type'
+        errorMsg: 'Please select a matchup type',
+        showBalanceError: false
     },
     {
         id: 3,
@@ -37,7 +40,8 @@ export const  STEPS = [
         stepSubmitted: false,
         valid: false,
         key: 'playerPosition',
-        errorMsg: 'Please select a position'
+        errorMsg: 'Please select a position',
+        showBalanceError: false
     },
     {
         id: 4,
@@ -47,7 +51,8 @@ export const  STEPS = [
         stepSubmitted: false,
         valid: false,
         key: 'selectPlayer',
-        errorMsg: 'Please select a player'
+        errorMsg: 'Please select a player',
+        showBalanceError: false
     },
     {
         id: 6,
@@ -58,7 +63,8 @@ export const  STEPS = [
         stepSubmitted: false,
         valid: true,
         key: 'createContest',
-        errorMsg: ''
+        errorMsg: '',
+        showBalanceError: false
     }
 ];
 

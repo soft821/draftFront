@@ -10,6 +10,7 @@ import { AuthService } from '../../../core/auth/auth.service';
 export interface ConfirmModel {
   title:string;
   message:string;
+  description: string;
   showTable: boolean;
   confirmMatchup: boolean;
   confirmMatchupTable: any;
@@ -26,6 +27,7 @@ export interface ConfirmModel {
 export class ConfirmationModalComponent extends SimpleModalComponent<ConfirmModel, any> implements OnInit, ConfirmModel {
   title: string;
   message:string;
+  description: string;
   showTable: boolean;
   confirmMatchup: boolean;
   confirmMatchupTable: any;
@@ -63,17 +65,17 @@ export class ConfirmationModalComponent extends SimpleModalComponent<ConfirmMode
     if(this.tableValues) { 
       let params = {
         slateId: this.tableValues.slate_id,
-        position: this.tableValues.entries[0].fantasy_player.position
+        position: this.tableValues.fantasy_player.position
       }
       if(this.tableValues.matchupType === 'tier_ranking') {
-        params['tier'] = this.tableValues.entries[0].fantasy_player.tier;
+        params['tier'] = this.tableValues.fantasy_player.tier;
       }
       Observable.forkJoin([this.createContestService.getFantasyPlayers(params)])
       .subscribe(data => {
         this.players = data[0].response;
-        if(this.players && this.tableValues && this.tableValues.entries && this.tableValues.entries[0] && this.tableValues.entries[0].fantasy_player) {
+        if(this.players && this.tableValues && this.tableValues.fantasy_player) {
           // remove opponent from the list
-          this.players = this.players.filter(x => x.id !== this.tableValues.entries[0].fantasy_player.id)
+          this.players = this.players.filter(x => x.id !== this.tableValues.fantasy_player.id)
           this.playersUnsorted = [].concat(this.players);
         }        
         this.createContestService.setGameFilterValues(this.players, this.gameFilterValues);        

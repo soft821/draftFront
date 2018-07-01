@@ -14,7 +14,7 @@
     justify-content: center;
     padding-top: 40px;
     &.top-distance {
-      padding-top: 200px;
+      padding-top: 140px;
       @media screen and (max-width: $break-small) {      
         padding-top: 100px;
       }
@@ -67,14 +67,14 @@
     font-weight: bold;
     padding: 10px 0;
     &.primary {
-      font-size: 50px;
+      font-size: 35px;
       color: #ffffff;
       @media screen and (max-width: $break-xsmall) {      
         font-size: 35px;
       }
     }
     &.secundary {
-      font-size: 40px;
+      font-size: 50px;
       color: #cc4a4c;
       @media screen and (max-width: $break-xsmall) {      
         font-size: 25px;

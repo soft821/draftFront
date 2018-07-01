@@ -4,7 +4,9 @@ import {HelperService} from '../../core/helper.service';
 import {SimpleModalService} from 'ngx-simple-modal';
 import {ConfirmationModalComponent} from '../../shared/alert-modals/confirmation-modal/confirmation-modal.component';
 import {LobbyService} from '../lobby/lobby.service';
-import { AuthService } from '../../core/auth/auth.service';
+import {AuthService} from '../../core/auth/auth.service';
+import {ModalHelperService} from '../../core/modal-helper.service';
+import { ENTRY_FEE } from '../create-contest/entry-fee/entryFeeValues';
 
 @Component({
   selector: 'dm-matchups',
@@ -13,12 +15,14 @@ import { AuthService } from '../../core/auth/auth.service';
 })
 export class MatchupsComponent implements OnInit {
   modalOpened: boolean;
+  entryFee = [];
 
   constructor(private simpleModalService: SimpleModalService,
               private lobbyService: LobbyService,
               private authService: AuthService,
               private helperService: HelperService,
-              private matchupService: MatchupsService) { }
+              private matchupService: MatchupsService,
+              public modalHelperService: ModalHelperService) { }
 
   titles = [
     {
@@ -55,6 +59,7 @@ export class MatchupsComponent implements OnInit {
   tempList: any;
 
   ngOnInit() {
+    this.entryFee = ENTRY_FEE;
     this.getData();
   }
 
@@ -75,6 +80,11 @@ export class MatchupsComponent implements OnInit {
                 entry.fantasy_player.name = this.helperService.getPlayer(entry.fantasy_player.name);
               });
             }
+            this.entryFee.forEach(fee => {
+              if(contest.entryFee === fee.value) {
+                contest.prize = fee.prize;
+              }
+            });
             this.tableValues.push(contest);
           });
         }            
@@ -109,25 +119,75 @@ export class MatchupsComponent implements OnInit {
           }
           let msg = 'You have successfully canceled contest';
           let ttl = 'Thank you'
-          this.showConfirmationMessage(msg, ttl);
+          this.modalHelperService.showConfirmationMessage(msg, ttl);
         }, 
         error => {        
-          this.showConfirmationMessage(error.message, 'Error');
+          this.modalHelperService.showConfirmationMessage(error.message, 'Error', error.debug?error.debug[0]:'');
         });
       }       
         this.modalOpened = false;      
     });
   }
 
-  showConfirmationMessage(message, title) {
+  showConfirmModal(event) {
     this.modalOpened = true;
     this.simpleModalService.addModal(ConfirmationModalComponent, {
-        title: title,
-        message: message,
-        buttonText: 'OK'
+        title: 'Confirm Matchup',
+        buttonText: 'Enter',
+        confirmMatchup: true,
+        confirmMatchupTable: event
     })
-    .subscribe((isConfirmed)=> {      
+    .subscribe((isConfirmed) => {
+      if(isConfirmed) {
+        let temp = {
+          entry_id: isConfirmed.entries[0].id,
+          player_id: isConfirmed.entries?isConfirmed.entries[0].fantasy_player.id:-1
+        }
+        this.matchupService.editEntry(temp)
+        .subscribe(response => {
+         /*  let index = this.enterMatchupList.findIndex(x => x.id === event.id);
+          if(index !== -1) {
+            this.enterMatchupList.splice(index, 1);
+          } */
+          console.log(response)
+          let msg = 'You have successfully updated the contest';
+          let ttl = 'Thank you'
+          this.modalHelperService.showConfirmationMessage(msg, ttl);
+        //  this.getData(); 
+        }, 
+        error => {      
+          this.modalHelperService.showConfirmationMessage(error.message, 'Error', error.debug?error.debug[0]:'');
+        //  this.getData();
+        });
+      }
       this.modalOpened = false;
+      this.helperService.scrollToTopSamePage();
     });
+  };
+
+  editContest(event) {
+    this.modalOpened = true;
+    event.entries[1].entryFee = event.entryFee;
+    event.entries[1].prize = event.prize;
+    this.simpleModalService.addModal(ConfirmationModalComponent, {
+      title: 'Edit Matchup',
+      buttonText: 'Select',
+      showTable: true,
+      tableValues: event.entries[1] // opponent is on index 1
+    })
+    .subscribe((isConfirmed)=> {
+      if(isConfirmed) {
+        // event is contest, has id 
+        if(event && event.entries) {
+          event.entries[0].fantasy_player = isConfirmed;
+          event.entries[0].game = isConfirmed.game;
+        }
+        this.showConfirmModal(event);
+      } else {
+        this.modalOpened = false;
+      }      
+    }); 
   }
+
+
 }

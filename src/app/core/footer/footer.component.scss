@@ -2,9 +2,9 @@
 
 .footer {
   display: block;
-  height: 340px;
+  height: 170px;
   background-color: black;
-  padding: 30px 0 18px;
+  padding: 15px 0 18px;
   @media screen and (max-width: $break-small) {
     height: 888px;
   }
@@ -63,9 +63,9 @@
   &.ig {    
     background: url("../../../assets/images/instagram.png");
   }
-  background-size: 80px 80px !important;
-  width: 80px;
-  height: 80px;
+  background-size: 65px 65px !important;
+  width: 65px;
+  height: 65px;
   background-repeat: no-repeat !important; 
   &:hover {
       cursor: pointer;
@@ -99,5 +99,18 @@
   }
   @media screen and (max-width: $break-xxsmall) {
     font-size: 12px;
+  }
+}
+
+// new small footer 
+
+.section {
+  padding: 0 15px;
+}
+
+.right {
+  text-align: right;
+  .social-networks {
+    justify-content: flex-end;
   }
 }
