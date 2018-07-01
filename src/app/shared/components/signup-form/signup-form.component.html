@@ -56,13 +56,13 @@
         <input class="auth-input" type="text"  formControlName="promoCode">
       </div>
     </div>
-    <div class="auth-agree">
+    <div class="auth-agree" *ngIf="!landingPage">
       <span>Tapping “Play Now” confirms you’re age 18+ (21+in state of MA)
           and agree to our Privacy Policy & Terms. You’ll also get offers
           and messages from DraftMatch companies.
           Learn more in Trust and Safety.</span>
     </div>
-    <div class="play-button">
+    <div class="play-button" [ngClass]="{'p-t-20': landingPage}">
       <button class="btn dm-red-btn" [ngClass]="{'landing-btn': landingPage}"
               type="submit"
               [disabled]="isClickedOnce">Play Now</button>

@@ -53,8 +53,7 @@ export class MatchupsComponent implements OnInit {
     username: this.authService.authenticatedUser.username,
     record: 'Record: ' + this.authService.authenticatedUser.wins + ' - ' + this.authService.authenticatedUser.loses + ' (W-L)',
     matchups: 0,
-    totalEntries: 0,
-    totalWinnings: 0
+    totalEntries: 0
   }
   tempList: any;
 
@@ -69,26 +68,27 @@ export class MatchupsComponent implements OnInit {
     .subscribe( response => {
       this.tempList = response;
       this.tableValues = [];
-      if(this.tempList.response)
-      this.tempList.response.forEach(element => {
-        if(element.contests && element.contests.length) {
-          element.contests.forEach(contest => {
-            contest.name = element.name; // name of the slate 
-            // players name replace with first letter
-            if(contest && contest.entries) {
-              contest.entries.forEach(entry => {
-                entry.fantasy_player.name = this.helperService.getPlayer(entry.fantasy_player.name);
-              });
-            }
-            this.entryFee.forEach(fee => {
-              if(contest.entryFee === fee.value) {
-                contest.prize = fee.prize;
+      if(this.tempList.response) {
+        this.tempList.response.forEach(element => {
+          if(element.contests && element.contests.length) {
+            element.contests.forEach(contest => {
+              contest.name = element.name; // name of the slate 
+              // players name replace with first letter
+              if(contest && contest.entries) {
+                contest.entries.forEach(entry => {
+                  entry.fantasy_player.name = this.helperService.getPlayer(entry.fantasy_player.name);
+                });
               }
+              this.entryFee.forEach(fee => {
+                if(contest.entryFee === fee.value) {
+                  contest.prize = fee.prize;
+                }
+              });
+              this.tableValues.push(contest);
             });
-            this.tableValues.push(contest);
-          });
-        }            
-      }); 
+          }            
+        }); 
+      }
       this.setValuesForUser(this.tempList.userInfo);
       this.helperService.spinner.hide();
     })
@@ -97,9 +97,6 @@ export class MatchupsComponent implements OnInit {
   setValuesForUser(userInfo) {
     this.user.matchups = userInfo.entries;
     this.user.totalEntries = userInfo.totalEntry;
-    this.tableValues.forEach(element => {
-      this.user.totalWinnings += element.winning;
-    });
   }
 
   cancelContest(event) {

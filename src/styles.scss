@@ -43,7 +43,10 @@
     height: auto;
     position: relative;
     background: url('./assets/images/dm-header-background.png') no-repeat; //fixed center center
-    background-size: 100% auto;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-position-x: center;
 }
 
