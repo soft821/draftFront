@@ -47,7 +47,7 @@ export class CreateContestComponent implements OnInit {
               private lobbyService: LobbyService,
               private route: Router,
               private auth: AuthService,
-              private modalHelperService: ModalHelperService) { }
+              public modalHelperService: ModalHelperService) { }
 
   ngOnInit() {
     this.steps = [].concat(STEPS);
