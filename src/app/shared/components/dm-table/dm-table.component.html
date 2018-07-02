@@ -25,12 +25,12 @@
                             <span [ngClass]="{'bold': value.entries[0].game.homeTeam === value.entries[0].fantasy_player.team}">
                                 {{value.entries[0].game.homeTeam}}
                             </span>
-                            <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[0].game.homeScore}}</span>
+                            <!-- <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[0].game.homeScore}}</span> -->
                             <span>@</span>
                             <span [ngClass]="{'bold': value.entries[0].game.awayTeam === value.entries[0].fantasy_player.team}">
                                 {{value.entries[0].game.awayTeam}}
                             </span>
-                            <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[0].game.awayScore}}</span>
+                      <!--       <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[0].game.awayScore}}</span> -->
                         </div>
                         <div class="flex">
                             <span class="gray-label">{{value.name}}</span>
@@ -39,7 +39,7 @@
                 </div>
             </td>
             <td *ngIf="!matchups">
-                <div class="score">{{value.entries[0].fantasy_player.fps}}</div>
+                <div class="score">{{value.entries[0].fantasy_player.fps_live}}</div>
             </td>
             <td>
                 <div class="flex" *ngIf="value && value.entries && value.entries.length === 2">                
@@ -70,7 +70,7 @@
                 <div class="dm-question-mark" *ngIf="!value || !value.entries || value.entries.length !== 2"></div>
             </td>
             <td *ngIf="!matchups">
-                <div class="score"> {{value.entries[1].fantasy_player.fps}}</div>
+                <div class="score"> {{value.entries[1].fantasy_player.fps_live}}</div>
             </td>
             <td *ngIf="matchups">
                 <div class="matchup-type" *ngIf="value.matchupType === 'tier_ranking'">Tier Rank {{value.tier}}</div>
