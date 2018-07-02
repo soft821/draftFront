@@ -2,7 +2,12 @@
     <thead>
         <tr>
             <th *ngFor="let thead of theads">
-                <div>{{thead.title}}</div>
+                <div *ngIf="!responsiveService.media.visibleXs">
+                    {{thead.title}}
+                </div>
+                <div *ngIf="responsiveService.media.visibleXs && thead.visibleXs">
+                    {{thead.titleXs}}
+                </div>
             </th>
         </tr>
     </thead>
@@ -13,15 +18,15 @@
             </td>
             <td>
                 <div class="flex" >
-                    <div class="dm-player"></div>
-                    <div class="flex-column p-l-5">
+                    <div class="dm-player" *ngIf="!responsiveService.media.visibleXs"></div>
+                    <div class="flex-column p-l-5" *ngIf="value && value.entries && value.entries.length">
                         <div class="flex">                        
-                            <span class="position">{{value.position}}</span>
-                            <span class="p-r-10" *ngIf="value && value.entries && value.entries.length">
+                            <span class="position">{{value.entries[0].fantasy_player.position}}</span>
+                            <span class="p-r-10">
                                 {{value.entries[0].fantasy_player.name}}
                             </span>
                         </div>
-                        <div class="flex" *ngIf="value && value.entries && value.entries.length">
+                        <div class="flex" *ngIf="!responsiveService.media.visibleXs">
                             <span [ngClass]="{'bold': value.entries[0].game.homeTeam === value.entries[0].fantasy_player.team}">
                                 {{value.entries[0].game.homeTeam}}
                             </span>
@@ -32,7 +37,7 @@
                             </span>
                       <!--       <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[0].game.awayScore}}</span> -->
                         </div>
-                        <div class="flex">
+                        <div class="flex" *ngIf="!responsiveService.media.visibleXs">
                             <span class="gray-label">{{value.name}}</span>
                         </div>
                     </div>
@@ -43,26 +48,26 @@
             </td>
             <td>
                 <div class="flex" *ngIf="value && value.entries && value.entries.length === 2">                
-                    <div class="dm-player"></div>
+                    <div class="dm-player" *ngIf="!responsiveService.media.visibleXs"></div>
                     <div class="flex-column p-l-5">
                         <div class="flex">                        
-                            <span class="position">{{value.position}}</span>
+                            <span class="position">{{value.entries[1].fantasy_player.position}}</span>
                             <span class="p-r-10">
                                 {{value.entries[1].fantasy_player.name}}
                             </span>
                         </div>
-                        <div class="flex">
+                        <div class="flex" *ngIf="!responsiveService.media.visibleXs">
                             <span [ngClass]="{'bold': value.entries[1].game.homeTeam === value.entries[1].fantasy_player.team}">
                                 {{value.entries[1].game.homeTeam}}
                             </span>
-                            <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[1].game.homeScore}}</span>
+                            <!-- <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[1].game.homeScore}}</span> -->
                             <span>@</span>
                             <span [ngClass]="{'bold': value.entries[1].game.awayTeam === value.entries[1].fantasy_player.team}">
                                 {{value.entries[1].game.awayTeam}}
                             </span>
-                            <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[1].game.awayScore}}</span>
+                            <!-- <span class="p-l-5 p-r-5" *ngIf="!matchups">{{value.entries[1].game.awayScore}}</span> -->
                         </div>
-                        <div class="flex">
+                        <div class="flex" *ngIf="!responsiveService.media.visibleXs">
                             <span class="gray-label">{{value.name}}</span>
                         </div>
                     </div>
@@ -78,9 +83,12 @@
                 <div class="matchup-type" *ngIf="value.matchupType === 'set_opponent'">Set Opponent</div>
             </td>
             <td>
-                <div class="entry-value">${{value.entryFee}}</div>
+                <div [ngClass]="{'flex-center': responsiveService.media.visibleXs}">
+                    <div class="entry-value">${{value.entryFee}}</div>
+                    <div class="winning-value" [class.green-label]="value.prize > 0" *ngIf="!matchups && responsiveService.media.visibleXs">/${{value.prize}}</div>
+                </div>
             </td>
-            <td *ngIf="!matchups">
+            <td *ngIf="!matchups && !responsiveService.media.visibleXs">
                 <div class="winning-value" [class.green-label]="value.prize > 0">${{value.prize}}</div>
             </td>
             <td *ngIf="matchups">
@@ -88,7 +96,6 @@
                     <div  *ngIf="value.editStatus === 'locked'" class="dm-lock"></div>
                     <div class="edit-icons fa fa-pencil-square-o" (click)="editMatchup(value)" *ngIf="value.editStatus === 'edit'"></div>
                     <div class="edit-icons close-sign" (click)="cancelMatchup(value)" *ngIf="value.editStatus === 'cancel'">X</div>
-                  
                 </div>
             </td>
             <!-- When a user hits edit it should bring it back to the create contest page if they are the creator.  

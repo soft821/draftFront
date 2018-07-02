@@ -18,34 +18,48 @@ export class HistoryComponent implements OnInit {
   titles = [
     {
       id: 0,
-      title: 'Date'
+      title: 'Date',
+      titleXs: 'Date',
+      visibleXs: true
     },
     {
       id: 0,
-      title: 'Your Player'
+      title: 'Your Player',
+      titleXs: 'Your Player',
+      visibleXs: true
     },
     {
       id: 1,
-      title: 'Score'
+      title: 'Score',
+      titleXs: 'Score',
+      visibleXs: true
     },
     {
       id: 2,
-      title: 'Opponent'
+      title: 'Opponent',
+      titleXs: 'Opponent',
+      visibleXs: true
     },
     {
       id: 3,
-      title: 'Score'
+      title: 'Score',
+      titleXs: 'Score',
+      visibleXs: true
     },
     {
       id: 4,
-      title: 'Entry'
+      title: 'Entry',
+      titleXs: 'E/W',
+      visibleXs: true
     },
     {
       id: 5,
-      title: 'Winning'
+      title: 'Winning',
+      titleXs: '',
+      visibleXs: false
     }
   ]
-
+                      
   tableValues = [];
 
   user = {

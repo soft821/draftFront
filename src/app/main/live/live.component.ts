@@ -18,62 +18,43 @@ export class LiveComponent implements OnInit {
   titles = [
     {
       id: 0,
-      title: 'Your Player'
+      title: 'Your Player',
+      titleXs: 'Your Player',
+      visibleXs: true
     },
     {
       id: 1,
-      title: 'Score'
+      title: 'Score',
+      titleXs: 'Score',
+      visibleXs: true
     },
     {
       id: 2,
-      title: 'Opponent'
+      title: 'Opponent',
+      titleXs: 'Opponent',
+      visibleXs: true
     },
     {
       id: 3,
-      title: 'Score'
+      title: 'Score',
+      titleXs: 'Score',
+      visibleXs: true
     },
     {
       id: 4,
-      title: 'Entry'
+      title: 'Entry',
+      titleXs: 'E/W',
+      visibleXs: true
     },
     {
       id: 5,
-      title: 'Winning'
+      title: 'Winning',
+      titleXs: '',
+      visibleXs: false
     }
   ]
 
-  tableValues = [
-    /* {
-      id: 0,
-      position: 'QB',
-      slate: 'CLE 27 @ SD 30',
-      score: 24.58,
-      p: 'P',
-      team: 'Rivers',
-      match: 'Final',
-      opponentPosition: 'QB',
-      match1: '1st',
-      opponent: 'garfield399',
-      opponentScore: 22.58,
-      entry: 2,
-      winning: 5
-    },
-    {
-      id: 1,
-      position: 'QB',
-      slate: 'CLE 27 @ SD 30',
-      score: 24.58,
-      p: 'P',
-      team: 'Rivers',
-      match: 'Final',
-      opponentPosition: 'QB',
-      match1: '1st',
-      opponent: 'garfield399',
-      opponentScore: 22.58,
-      entry: 2,
-      winning: 0
-    } */
-  ]
+  tableValues = []
 
   user = {
     username: this.authService.authenticatedUser.username,
@@ -86,6 +67,7 @@ export class LiveComponent implements OnInit {
   entryFee = [];
 
   ngOnInit() {
+    this.helperService.scrollToTop();
     this.getData();
     this.entryFee = ENTRY_FEE;
   }

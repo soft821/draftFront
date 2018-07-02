@@ -27,26 +27,36 @@ export class MatchupsComponent implements OnInit {
   titles = [
     {
       id: 0,
-      title: 'Your Player'
+      title: 'Your Player',
+      titleXs: 'Your Player',
+      visibleXs: true
     },
     {
       id: 1,
-      title: 'Opponent'
+      title: 'Opponent',
+      titleXs: 'Opponent',
+      visibleXs: true
     },
     {
       id: 2,
-      title: 'Matchup Type'
+      title: 'Matchup Type',
+      titleXs: 'Matchup Type',
+      visibleXs: true
     },
     {
       id: 3,
-      title: 'Entry'
+      title: 'Entry',
+      titleXs: 'Entry',
+      visibleXs: true
     },
     {
       id: 4,
-      title: 'Edit'
+      title: 'Edit',
+      titleXs: 'Edit',
+      visibleXs: true
     }
   ]
-
+            
   tableValues = [];
 
   user = {

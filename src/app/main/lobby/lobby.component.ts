@@ -130,6 +130,7 @@ export class LobbyComponent implements OnInit {
       this.pageLoaded = true;
       this.helperService.spinner.hide();
     }, (error) => {
+      this.pageLoaded = true;
       this.helperService.spinner.hide();
       console.log(error)
     });

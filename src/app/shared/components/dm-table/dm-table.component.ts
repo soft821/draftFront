@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import { ResponsiveService } from '../../../core/responsive/responsive.service';
 
 @Component({
   selector: 'dm-table',
@@ -13,7 +14,7 @@ export class DmTable implements OnInit {
   @Output() cancelContest: EventEmitter<any> = new EventEmitter();
   @Output() editContest: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(public responsiveService: ResponsiveService) { }
 
   ngOnInit() {}
   

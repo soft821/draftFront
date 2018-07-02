@@ -39,15 +39,19 @@
 
 .dm-home-image {
     width: 100%;
-    min-height: 52rem;
-    height: auto;
+    height: 100%;
+    min-height: 40rem;
     position: relative;
     background: url('./assets/images/dm-header-background.png') no-repeat; //fixed center center
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
+    -o-background-size: cover; 
     background-position-x: center;
+    @media screen and (min-width: $break-medium) {
+        min-height: 1009px;
+    }
+
 }
 
 .lobby-bck {

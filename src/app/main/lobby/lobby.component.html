@@ -1,38 +1,40 @@
 
-<div class="dm-lobby"> <!--  *ngIf="pageLoaded" -->
-    <dm-banner> </dm-banner>
-    <div class="nfl-tab-container">
-        <div class="nfl-tab">
-            <div class="dm-nfl-icon"></div>
+<div class="dm-lobby"> 
+    <div *ngIf="pageLoaded">
+        <dm-banner> </dm-banner>
+        <div class="nfl-tab-container">
+            <div class="nfl-tab">
+                <div class="dm-nfl-icon"></div>
+            </div>
         </div>
-    </div>
-    <dm-carousel [list]="liveGames"></dm-carousel> <!-- update - list of all games with live scoring -->
-    <div class="lower-part">
-        <dm-filter-column class="filter-column"
-                          [slates]="slates"
-                          [slateSelected]="slateSelected"
-                          [gameSelected]="gameSelected"
-                          (selectSlateOption)="selectSlate($event)"
-                          (selectGameOption)="selectGame($event)"
-                          (selectGameTypeOption)="selectGameType($event)"
-                          (selectPositionOption)="selectPosition($event)"
-                          (selectEntryFeeOption)="selectEntryFee($event)">
-        </dm-filter-column>
-        <div class="main-column">
-            <div class="lobby-bck">
-                <div class="flex headlines">
-                    <dm-headline-matchup [players]="headline.players"
-                                         [match]="headline"
-                                         (confirmMatchupEvent)="showConfirmModal($event)"
-                                         class="headline"
-                                         *ngFor="let headline of headlines">
-                    </dm-headline-matchup>
-                </div>
-                <!-- here are data from enter matchup contest, filtered locally from left side filters -->
-                <div class="matchup-table">
-                    <dm-matchup-table [tableData]="enterMatchupList"
-                                      (enterMatchupEvent)="showEnterMatchupModal($event)">
-                    </dm-matchup-table>
+        <dm-carousel [list]="liveGames"></dm-carousel> <!-- update - list of all games with live scoring -->
+        <div class="lower-part">
+            <dm-filter-column class="filter-column"
+                            [slates]="slates"
+                            [slateSelected]="slateSelected"
+                            [gameSelected]="gameSelected"
+                            (selectSlateOption)="selectSlate($event)"
+                            (selectGameOption)="selectGame($event)"
+                            (selectGameTypeOption)="selectGameType($event)"
+                            (selectPositionOption)="selectPosition($event)"
+                            (selectEntryFeeOption)="selectEntryFee($event)">
+            </dm-filter-column>
+            <div class="main-column">
+                <div class="lobby-bck">
+                    <div class="flex headlines">
+                        <dm-headline-matchup [players]="headline.players"
+                                            [match]="headline"
+                                            (confirmMatchupEvent)="showConfirmModal($event)"
+                                            class="headline"
+                                            *ngFor="let headline of headlines">
+                        </dm-headline-matchup>
+                    </div>
+                    <!-- here are data from enter matchup contest, filtered locally from left side filters -->
+                    <div class="matchup-table">
+                        <dm-matchup-table [tableData]="enterMatchupList"
+                                        (enterMatchupEvent)="showEnterMatchupModal($event)">
+                        </dm-matchup-table>
+                    </div>
                 </div>
             </div>
         </div>
