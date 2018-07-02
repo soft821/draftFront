@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LobbyService} from '../lobby/lobby.service';
 import {HelperService} from '../../core/helper.service';
-import { AuthService } from '../../core/auth/auth.service';
+import {AuthService} from '../../core/auth/auth.service';
+import {ENTRY_FEE} from '../create-contest/entry-fee/entryFeeValues';
 
 @Component({
   selector: 'dm-history',
@@ -55,33 +56,37 @@ export class HistoryComponent implements OnInit {
     totalWinnings: 0
   }
   tempList: any;
+  entryFee = [];
 
   ngOnInit() {
     this.getData();
+    this.entryFee = ENTRY_FEE;
   }
 
   getData() {
     this.helperService.spinner.show();
     this.lobbyService.getMatchups('HISTORY')
     .subscribe( response => {
-      console.log(response)
       this.tempList = response;
       this.tableValues = [];
-      if(this.tempList.response)
-      this.tempList.response.forEach(element => {
-        if(element.contests && element.contests.length) {
-          element.contests.forEach(contest => {
-            contest.name = element.name; // name of the slate 
-            // players name replace with first letter
-            if(contest && contest.entries) {
-              contest.entries.forEach(entry => {
-                entry.fantasy_player.name = this.helperService.getPlayer(entry.fantasy_player.name);
-              });
+      if(this.tempList.response) { // different structure 
+        this.tempList.response.forEach(element => {        
+          element.name = element.slate.name; // name of the slate 
+          // players name replace with first letter
+          if(element.entries) {
+            element.entries.forEach(entry => {
+              entry.fantasy_player.name = this.helperService.getPlayer(entry.fantasy_player.name);
+            });
+          }
+          this.entryFee.forEach(fee => {
+            if(element.entryFee === fee.value) {
+              element.prize = fee.prize;
             }
-            this.tableValues.push(contest);
           });
-        }            
-      }); 
+          this.tableValues.push(element);    
+        }); 
+      }   
+      console.log(this.tableValues)     
       this.setValuesForUser(this.tempList.userInfo);
       this.helperService.spinner.hide();
     })
@@ -90,9 +95,8 @@ export class HistoryComponent implements OnInit {
   setValuesForUser(userInfo) {
     this.user.matchups = userInfo.entries;
     this.user.totalEntries = userInfo.totalEntry;
-    // get this from user info on response???
     this.tableValues.forEach(element => {
-      this.user.totalWinnings += element.winning;
+      this.user.totalWinnings += element.prize;
     });
   }
 }

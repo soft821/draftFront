@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let value of values">
             <td *ngIf="historyTable">
-                <div>{{value.date || '-'}}</div>
+                <div>{{value.start | date: 'shortDate'}}</div>
             </td>
             <td>
                 <div class="flex" >
