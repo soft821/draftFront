@@ -24,7 +24,7 @@ export class AddFundsComponent implements OnInit {
     {id: 3, value: 75, name: '$75'},
     {id: 4, value: 100, name: '$100'}
   ]
-  selectedItem = {};
+  selectedItem: any;
   direction = Direction;
   type = TransformationType;
   myLocation: any;
@@ -96,7 +96,7 @@ export class AddFundsComponent implements OnInit {
     })  
   }
 
-  showConfirmModal(event) {
+  showConfirmModal() {
     if(this.selectedItem && this.selectedItem['value'] && this.myLocation) {
       this.modalOpened = true;
       this.simpleModalService.addModal(ConfirmationModalComponent, {
