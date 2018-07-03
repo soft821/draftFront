@@ -14,7 +14,7 @@
           <div class="item" *ngFor="let item of items">
             <button class="fee-btn" 
                    (click)="selectedItem = item; customAmount=''"
-                   [ngClass]="{'active-btn': item.id === selectedItem.id}">
+                   [ngClass]="{'active-btn': item.id === selectedItem?.id}">
                    ${{item.value}}
             </button>
           </div>
@@ -28,8 +28,8 @@
                  [(ngModel)]="customAmount"
                  (keydown)="removeCharacters($event)"
                  (keyup)="setCustomValue()"
-                 placeholder="Deposit amount {{selectedItem.name}}">
-          <div *ngIf="showError && !this.selectedItem.value" class="error-msg m-l-0">Please select an option or enter custom amount</div>
+                 placeholder="Deposit amount {{selectedItem?.name}}">
+          <div *ngIf="showError && !this.selectedItem?.value" class="error-msg m-l-0">Please select an option or enter custom amount</div>
         </div>
         <div class="payment-section">
           <span class="subtitle">Choose a payment method</span>
