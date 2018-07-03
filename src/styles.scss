@@ -195,7 +195,23 @@
     background: url("./assets/images/question.png");
     background-size: 60px 60px;
     width: 60px;
-    height: 62px;
+    height: 75px;
+    background-repeat: no-repeat; 
+}
+
+.dm-coinbase {
+    background: url("./assets/images/coinbase.png");
+    background-size: 100%;
+    width: 200px;
+    height: 75px;
+    background-repeat: no-repeat; 
+}
+
+.dm-bitcoin {
+    background: url("./assets/images/bitcoin.png");
+    background-size: 100%;
+    width: 200px;
+    height: 75px;
     background-repeat: no-repeat; 
 }
 

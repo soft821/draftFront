@@ -25,7 +25,11 @@ export class LobbyComponent implements OnInit {
   gameSelectedUnfiltered = [];
   filterForPositions = [];
   gameFilterValues = [];
-  filter = {}
+  filter = {
+    slate_id: null,
+    games: [],
+    matchupType: ''
+  }
   enterMatchupList = [];
   enterMatchupLisUnfiltered = [];
   headlines = [
@@ -126,7 +130,7 @@ export class LobbyComponent implements OnInit {
         });
       });
       this.enterMatchupLisUnfiltered = [].concat(this.enterMatchupList);
-      this.filterBySlate()
+      this.filterList()
       this.pageLoaded = true;
       this.helperService.spinner.hide();
     }, (error) => {
@@ -136,14 +140,26 @@ export class LobbyComponent implements OnInit {
     });
   };
   
-  filterBySlate() {   
-    this.enterMatchupList = this.enterMatchupLisUnfiltered.filter(x => x.slate_id === this.slateSelected['id']);
-    console.log(this.enterMatchupList)
+  filterList() {   
+ //   this.enterMatchupList = this.enterMatchupLisUnfiltered.filter(x => x.slate_id === this.filter.slate_id);
+ /*  this.enterMatchupList =  this.helperService.filterListBy(this.filter, this.enterMatchupList, this.enterMatchupLisUnfiltered);
+ console.log(this.enterMatchupList) */
+    if(this.filter.slate_id || this.filter.matchupType || this.filter.games.length) {
+      this.enterMatchupList = [];
+    } else {
+      this.enterMatchupList = this.enterMatchupLisUnfiltered;
+    }
+    this.enterMatchupLisUnfiltered.forEach(element => {
+      if(element.matchupType === this.filter.matchupType || element.slate_id === this.filter.slate_id) {
+        this.enterMatchupList.push(element);
+      }
+    });
   }
 
   selectSlate(slate) {
     slate.selected = true;
     this.slateSelected = slate;
+    this.filter.slate_id = this.slateSelected['id'];
     this.slates.forEach(element => {
       if(element.id !== slate.id) {
         element.selected = false;
@@ -152,7 +168,7 @@ export class LobbyComponent implements OnInit {
    /*  if(slate && slate.games && slate.games.length) {
       this.selectGame(slate.games[0]);
     } */
-    this.filterBySlate();
+    this.filterList();
   }
 
   selectGame(game) {
@@ -173,6 +189,7 @@ export class LobbyComponent implements OnInit {
 
   selectGameType(event) {
   //  this.filter.matchType = event.type;
+  console.log(event, 'game type')
   }
 
   selectEntryFee(entryFee) {
@@ -235,6 +252,7 @@ export class LobbyComponent implements OnInit {
     } else { // else -> choose a player than confirm
       event.entries[0].entryFee = event.entryFee;
       event.entries[0].prize = event.prize;
+      event.entries[0].matchupType = event.matchupType;
       this.simpleModalService.addModal(ConfirmationModalComponent, {
         title: 'Select Player',
         buttonText: 'Select',

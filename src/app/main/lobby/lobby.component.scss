@@ -13,22 +13,6 @@
     background: #f1f2f3;
 }
 
-.nfl-tab-container {
-    height: 80px;
-    background: $dm-banner;
-    padding-top: 20px;
-    .nfl-tab {
-        background: white;
-        width: 350px;
-        height: 60px;
-        margin-left: 4%;
-        padding-top: 10px;
-        div {
-            margin: auto;
-        }
-    }
-}
-
 .lower-part {
     width: 100%;
     display: flex;

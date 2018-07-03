@@ -283,3 +283,19 @@ tr.highlighted td:last-child {
     color: $dm-red;
   }
 }
+
+.nfl-tab-container {
+  height: 80px;
+  background: $dm-banner;
+  padding-top: 20px;
+  .nfl-tab {
+      background: white;
+      width: 350px;
+      height: 60px;
+      margin-left: 4%;
+      padding-top: 10px;
+      div {
+          margin: auto;
+      }
+  }
+}

@@ -32,6 +32,8 @@ import {DmSummary} from '../shared/components/dm-summary/dm-summary.component';
 import {SlateFilterComponent} from './lobby/slate-filter/slate-filter.component';
 import {EnterMatchupComponent} from './enter-matchup/enter-matchup.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import {AddFundsComponent} from './add-funds/add-funds.component';
+import {AddFundsService} from './add-funds/add-funds.service';
 
 @NgModule({
   imports: [
@@ -66,14 +68,16 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     DmTable,
     DmSummary,
     SlateFilterComponent,
-    EnterMatchupComponent
+    EnterMatchupComponent,
+    AddFundsComponent
   ],
   exports: [
   ],
   providers: [
     MatchupsService,
     LobbyService,
-    CreateContestService
+    CreateContestService,
+    AddFundsService
   ],
   entryComponents: [
   ]

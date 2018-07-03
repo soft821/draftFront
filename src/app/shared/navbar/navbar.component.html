@@ -58,7 +58,7 @@
                     <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
                     <span>Balance</span>
                 </div>
-                <div><button class="green-btn" >Add Funds</button></div>
+                <div><button class="green-btn" routerLink="/main/add-funds">Add Funds</button></div>
             </div>
             
         </div>
@@ -67,7 +67,7 @@
                 <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
                 <span>Balance</span>
             </div>
-            <button class="green-btn" >Add Funds</button>
+            <button class="green-btn" routerLink="/main/add-funds">Add Funds</button>
         </div>
         <div class="hamburger-menu-container" *ngIf="responsiveService.media.visibleXs">
             <a id="sidebar-bars" class="navbar-balance" (click)="toggleSidebar()">

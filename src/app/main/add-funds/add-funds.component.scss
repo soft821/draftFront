@@ -1,0 +1,91 @@
+@import "../../../theme/theme-variables";
+
+.dm-add-funds {
+    background: #f1f2f3;
+    /deep/ dm-banner {
+       .dm-banner {
+            background: $dm-banner;
+       } 
+    }
+}
+
+
+.lower-part {
+   padding-bottom: 100px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 60px;
+}
+
+.subtitle {
+    font-size: 25px;
+}
+
+.funds-section {
+    justify-content: center;
+    padding-top: 35px;
+}
+
+.fee-btn {
+    width: 150px;
+    height: 40px;
+    background: transparent;
+    border: #9a0909 solid 1px;
+    color: #9a0909;
+    border-radius: 0;
+    &:hover, &:focus, &:active, &.active-btn {
+        background: #9a0909;
+        color: white;
+    }
+}
+
+.item {
+    margin: 0 10px;
+}
+
+.input-section {
+    padding: 40px 55px;
+    input {
+        margin-top: 10px;
+        border: none;
+        border-bottom: 1px solid $dm-light-gray;
+        background-color: transparent;
+        height: 50px;
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        &:focus {
+            outline: none !important;
+        }
+    }
+}
+
+.payment-section {
+    text-align: center;
+    .payment-type {
+        font-size: 10px;
+        width: 50%;
+        padding: 20px 80px;
+    }
+
+    .dm-bitcoin, .dm-coinbase {
+        margin: auto;
+    }
+}
+
+.pay-btn {
+    background: transparent;
+    &.disabled {
+        cursor: not-allowed;
+    }
+}
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}

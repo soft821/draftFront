@@ -12,6 +12,7 @@ import {LobbyComponent} from './lobby/lobby.component';
 import {LiveComponent} from './live/live.component';
 import {HistoryComponent} from './history/history.component';
 import {CreateContestComponent} from './create-contest/create-contest.component';
+import {AddFundsComponent} from './add-funds/add-funds.component';
 
 const MAIN_ROUTES: Routes = [
     {
@@ -23,6 +24,7 @@ const MAIN_ROUTES: Routes = [
             { path: 'create-contest', component: CreateContestComponent },
             { path: 'live', component: LiveComponent },
             { path: 'history', component: HistoryComponent },
+            { path: 'add-funds', component: AddFundsComponent },
             { 
                 canActivate: [AuthGuard], // to refresh the data on the navbar after create contest
                 path: 'lobby', 
