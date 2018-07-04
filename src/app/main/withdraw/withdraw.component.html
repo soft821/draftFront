@@ -9,13 +9,10 @@
     </div>
     <dm-carousel [list]="liveGames"></dm-carousel> <!-- update - list of all games with live scoring -->
     <div class="lower-part container">
-      <dm-funds [items]="items"
-                [type]="'withdraw'"
-                [customAmount]="customAmount"
+      <dm-funds [type]="'withdraw'"
                 [title]="'Withdraw funds'"
                 [paymentSubmitted]="paymentSubmitted"
                 [subtitle]="'Enter the amount you would like to withdraw'"
-                [myLocation]="myLocation"
                 (addWithdrawFunds)="withdrawFundsCoinbase($event)">
       </dm-funds>       
     </div>
