@@ -5,7 +5,9 @@ import {NgxSpinnerService} from 'ngx-spinner';
 
 @Injectable()
 export class HelperService {
+  public locationData: any;
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+
   constructor(private router: Router,
               public spinner: NgxSpinnerService) {}
 
@@ -112,5 +114,12 @@ export class HelperService {
 
   returnOnlyUnique(value, index, self) {
     return self.indexOf(value) === index;
+  }
+
+  removeCharacters(event) {
+    if (event.key === 'e' || event.key === '.' || 
+        event.key === '-' || event.key === '+') {
+      event.preventDefault();
+    }   
   }
 }

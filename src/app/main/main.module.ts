@@ -34,6 +34,9 @@ import {EnterMatchupComponent} from './enter-matchup/enter-matchup.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {AddFundsComponent} from './add-funds/add-funds.component';
 import {AddFundsService} from './add-funds/add-funds.service';
+import {WithdrawComponent} from './withdraw/withdraw.component';
+import {WithdrawService} from './withdraw/withdraw.service';
+import { FundsComponent } from './funds/funds.component';
 
 @NgModule({
   imports: [
@@ -69,7 +72,9 @@ import {AddFundsService} from './add-funds/add-funds.service';
     DmSummary,
     SlateFilterComponent,
     EnterMatchupComponent,
-    AddFundsComponent
+    AddFundsComponent,
+    WithdrawComponent,
+    FundsComponent
   ],
   exports: [
   ],
@@ -77,7 +82,8 @@ import {AddFundsService} from './add-funds/add-funds.service';
     MatchupsService,
     LobbyService,
     CreateContestService,
-    AddFundsService
+    AddFundsService,
+    WithdrawService
   ],
   entryComponents: [
   ]

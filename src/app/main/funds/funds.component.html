@@ -1,0 +1,52 @@
+<div class="funds">
+  <div class="title capitalize">{{title}}</div>
+  <div class="funds-section flex" *ngIf="items && items.length">
+    <div class="item" *ngFor="let item of items">
+      <button class="fee-btn" 
+             (click)="selectedItem = item; customAmount=''"
+             [ngClass]="{'active-btn': item.id === selectedItem?.id}">
+             ${{item.value}}
+      </button>
+    </div>
+  </div>
+  <div class="input-section">
+    <span class="subtitle p-l-10">{{subtitle}}</span>
+    <input type="number" 
+           class="amount" 
+           *ngIf="type === 'addFunds'"
+           autocomplete="off" 
+           min="1"
+           [(ngModel)]="customAmount"
+           (keydown)="removeCharacters($event)"
+           (keyup)="setCustomValue()"
+           placeholder="Deposit amount {{selectedItem?.name}}">
+    <input type="number" 
+           class="amount" 
+           *ngIf="type === 'withdraw'"
+           autocomplete="off" 
+           min="1"
+           [(ngModel)]="customAmount"
+           (keydown)="removeCharacters($event)"
+           (keyup)="setCustomValue()"
+           placeholder="$1.00">
+    <div *ngIf="showError && !this.selectedItem?.value" class="error-msg m-l-0">Please select an option or enter custom amount</div>
+  </div>
+  <div class="payment-section">
+    <span class="subtitle">Choose a payment method</span>
+    <div class="flex">
+      <div class="payment-type">
+        <button class="pay-btn btn cursor-pointer" 
+                (click)="showConfirmModal()"
+                [ngClass]="{'disabled': paymentSubmitted}"
+                [disabled]="paymentSubmitted">
+          <div class="dm-coinbase"></div>
+        </button>
+        <div class="ta-l p-t-5">Please make sure your DraftMatch account email is the same as your Coinbase account. There will be zero transaction fees.</div>
+      </div>
+      <div class="payment-type" *ngIf="type === 'addFunds'">
+        <div class="dm-bitcoin"></div>
+        <div class="ta-l p-t-5">Use any bitcoin wallet to deposit funds, but please note there are miner fees associated with each transaction.</div>
+      </div>
+    </div>
+  </div>
+</div>

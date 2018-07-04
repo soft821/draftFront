@@ -9,7 +9,6 @@ import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';
 import {FooterComponent} from './core/footer/footer.component';
 import {SimpleModalModule} from 'ngx-simple-modal';
-import {CoordinatesModule} from 'angular-coordinates';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -18,7 +17,6 @@ export function tokenGetter() {
 @NgModule({
   imports: [
     BrowserModule,
-    CoordinatesModule,
     AppRoutingModule,
     HttpClientModule,
     CoreModule,

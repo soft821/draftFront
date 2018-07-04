@@ -26,7 +26,7 @@ export class NavComponent implements OnInit {
   ];
 
   userOptions = [
-    {id: 0, text: 'Withdraw', path: '/'},
+    {id: 0, text: 'Withdraw', path: '/main/withdraw'},
     {id: 1, text: 'Transaction History', path: '/'},
     {id: 2, text: 'My Account', path: '/'},
     {id: 3, text: 'Refer Friends', path: '/'},

@@ -6,7 +6,7 @@
     <span class="close-sign" (click)="close()">X</span>
   </div>
   <div class="modal-body">
-    <p *ngIf="message">{{message}}</p>
+    <p *ngIf="message">{{message}}{{amount | number}}</p>
     <p class="f-16" *ngIf="description">{{description}}</p>
     <!-- Confirm modal from LOBBY HEADLINE DRAFT button and after player is selected on enter matchup modal -->
     <div *ngIf="confirmMatchup && confirmMatchupTable">

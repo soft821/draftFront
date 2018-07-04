@@ -1,6 +1,6 @@
 @import "../../../theme/theme-variables";
 
-.dm-add-funds {
+.dm-withdraw {
     background: #f1f2f3;
     /deep/ dm-banner {
        .dm-banner {
@@ -8,7 +8,6 @@
        } 
     }
 }
-
 
 .lower-part {
    padding-bottom: 100px;

@@ -1,0 +1,24 @@
+
+<div class="dm-withdraw"> 
+  <div><!--  *ngIf="pageLoaded" -->
+    <dm-banner> </dm-banner>
+    <div class="nfl-tab-container">
+        <div class="nfl-tab">
+            <div class="dm-nfl-icon"></div>
+        </div>
+    </div>
+    <dm-carousel [list]="liveGames"></dm-carousel> <!-- update - list of all games with live scoring -->
+    <div class="lower-part container">
+      <dm-funds [items]="items"
+                [type]="'withdraw'"
+                [customAmount]="customAmount"
+                [title]="'Withdraw funds'"
+                [paymentSubmitted]="paymentSubmitted"
+                [subtitle]="'Enter the amount you would like to withdraw'"
+                [myLocation]="myLocation"
+                (addWithdrawFunds)="withdrawFundsCoinbase($event)">
+      </dm-funds>       
+    </div>
+  </div>
+</div>
+<div class="modal-background" *ngIf="modalHelperService.modalOpened"></div>

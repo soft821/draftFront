@@ -17,6 +17,7 @@ export interface ConfirmModel {
   buttonText: string;
   tableValues: any;
   money: any;
+  amount: number;
 }
 
 @Component({
@@ -34,6 +35,7 @@ export class ConfirmationModalComponent extends SimpleModalComponent<ConfirmMode
   buttonText = 'Yes';
   tableValues: any;
   money: any;
+  amount: number;
   loadPlayersTable: boolean;
   showRankFilter: boolean;
   showGameFilter: boolean;

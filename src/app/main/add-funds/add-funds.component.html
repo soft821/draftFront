@@ -9,47 +9,16 @@
       </div>
       <dm-carousel [list]="liveGames"></dm-carousel> <!-- update - list of all games with live scoring -->
       <div class="lower-part container">
-        <div class="title capitalize">Add funds</div>
-        <div class="funds-section flex">
-          <div class="item" *ngFor="let item of items">
-            <button class="fee-btn" 
-                   (click)="selectedItem = item; customAmount=''"
-                   [ngClass]="{'active-btn': item.id === selectedItem?.id}">
-                   ${{item.value}}
-            </button>
-          </div>
-        </div>
-        <div class="input-section">
-          <span class="subtitle p-l-10">Or enter a custom amount</span>
-          <input type="number" 
-                 class="amount" 
-                 autocomplete="off" 
-                 min="1"
-                 [(ngModel)]="customAmount"
-                 (keydown)="removeCharacters($event)"
-                 (keyup)="setCustomValue()"
-                 placeholder="Deposit amount {{selectedItem?.name}}">
-          <div *ngIf="showError && !this.selectedItem?.value" class="error-msg m-l-0">Please select an option or enter custom amount</div>
-        </div>
-        <div class="payment-section">
-          <span class="subtitle">Choose a payment method</span>
-          <div class="flex">
-            <div class="payment-type">
-              <button class="pay-btn btn cursor-pointer" 
-                      (click)="showConfirmModal()"
-                      [ngClass]="{'disabled': paymentSubmitted}"
-                      [disabled]="paymentSubmitted">
-                <div class="dm-coinbase"></div>
-              </button>
-              <div class="ta-l p-t-5">Please make sure your DraftMatch account email is the same as your Coinbase account. There will be zero transaction fees.</div>
-            </div>
-            <div class="payment-type">
-              <div class="dm-bitcoin"></div>
-              <div class="ta-l p-t-5">Use any bitcoin wallet to deposit funds, but please note there are miner fees associated with each transaction.</div>
-            </div>
-          </div>
-        </div>
+        <dm-funds [items]="items"
+                  [myLocation]="myLocation"
+                  [type]="'addFunds'"
+                  [title]="'Add funds'"
+                  [customAmount]="customAmount"
+                  [paymentSubmitted]="paymentSubmitted"
+                  [subtitle]="'Or enter a custom amount'"
+                  (addWithdrawFunds)="addFundsCoinbase($event)">
+        </dm-funds>
       </div>
   </div>
 </div>
-<div class="modal-background" *ngIf="modalOpened || modalHelperService.modalOpened"></div>
+<div class="modal-background" *ngIf="modalHelperService.modalOpened"></div>
