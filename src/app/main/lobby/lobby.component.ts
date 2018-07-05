@@ -21,17 +21,20 @@ export class LobbyComponent implements OnInit {
   live: any;
   slateSelected = {};
   gameSelected = {};
+  matchupSelected: any;
   liveGames = [];
   gameSelectedUnfiltered = [];
   filterForPositions = [];
   gameFilterValues = [];
   filter = {
-    slate_id: null,
-    games: [],
-    matchupType: ''
+    slate_id: [],
+    matchupType: [],
+    game_id: [],
+    position: []
   }
+  selectedFeeRange: any;
   enterMatchupList = [];
-  enterMatchupLisUnfiltered = [];
+  enterMatchupListUnfiltered = [];
   headlines = [
     {
       id: 0,
@@ -128,9 +131,17 @@ export class LobbyComponent implements OnInit {
             element.prize = fee.prize;
           }
         });
+        // because of filter
+        element.position = element.entries[0].fantasy_player.position;
+        if(element.matchupType === 'tier_ranking') {
+          element.type = 'tier_ranking' + '_' + element.entries[0].fantasy_player.tier;
+        } else {
+          element.type = element.matchupType;
+        }
+        element.game_id = element.entries[0].game_id; // not good solution because ignores game id from entries[1]
       });
-      this.enterMatchupLisUnfiltered = [].concat(this.enterMatchupList);
-      this.filterList()
+      this.enterMatchupListUnfiltered = [].concat(this.enterMatchupList);
+      this.filterLobbyOptions()
       this.pageLoaded = true;
       this.helperService.spinner.hide();
     }, (error) => {
@@ -139,72 +150,79 @@ export class LobbyComponent implements OnInit {
       console.log(error)
     });
   };
+
   
-  filterList() {   
- //   this.enterMatchupList = this.enterMatchupLisUnfiltered.filter(x => x.slate_id === this.filter.slate_id);
- /*  this.enterMatchupList =  this.helperService.filterListBy(this.filter, this.enterMatchupList, this.enterMatchupLisUnfiltered);
- console.log(this.enterMatchupList) */
-    if(this.filter.slate_id || this.filter.matchupType || this.filter.games.length) {
-      this.enterMatchupList = [];
-    } else {
-      this.enterMatchupList = this.enterMatchupLisUnfiltered;
+  filterLobbyOptions(entryFee?) {
+    let f = {};
+    if(this.filter.slate_id && this.filter.slate_id.length) {
+      f['slate_id'] = this.filter.slate_id;
     }
-    this.enterMatchupLisUnfiltered.forEach(element => {
-      if(element.matchupType === this.filter.matchupType || element.slate_id === this.filter.slate_id) {
-        this.enterMatchupList.push(element);
-      }
-    });
+    if(this.filter.matchupType && this.filter.matchupType.length) {
+      f['type'] = this.filter.matchupType;
+    }
+    if(this.filter.game_id && this.filter.game_id.length) {
+      f['game_id'] = this.filter.game_id;
+    }
+    if(this.filter.position && this.filter.position.length) {
+      f['position'] = this.filter.position;
+    }
+    this.enterMatchupList = this.helperService.filterListBy(f, this.enterMatchupList, this.enterMatchupListUnfiltered);  
+
+    if(entryFee) {
+      this.selectedFeeRange = entryFee;
+      let temp = [];
+      this.enterMatchupList.forEach(element => {
+        if(element.entryFee >= entryFee[0] && element.entryFee <= entryFee[1]) {
+          temp.push(element);
+        }
+      });
+      this.enterMatchupList = temp;
+    }
+  }
+
+  selectEntryFee(entryFee) {
+    this.filterLobbyOptions(entryFee);    
   }
 
   selectSlate(slate) {
     slate.selected = true;
     this.slateSelected = slate;
-    this.filter.slate_id = this.slateSelected['id'];
+    if(this.filter.slate_id.length === 0) {
+      this.filter.slate_id.push({});
+    }
+    this.filter.slate_id[0] = this.slateSelected['id'];
     this.slates.forEach(element => {
       if(element.id !== slate.id) {
         element.selected = false;
       }
     });
-   /*  if(slate && slate.games && slate.games.length) {
-      this.selectGame(slate.games[0]);
-    } */
-    this.filterList();
+    this.filterLobbyOptions();
   }
 
   selectGame(game) {
-    game.selected = true;
-    this.gameSelected = game;
-  //  this.gameSelectedUnfiltered = game;
-/*     this.enterMatchupList.forEach(element => {
-     for(let i=0; i< element.entries.length; i++) {
-       if(element.entries[i]) {
-        this.enterMatchupList = this.enterMatchupList.filter(x => x.entries[i] && x.entries[i].game_id === game.id);
-       }
-     }
-    }); */
-  //  this.filter['game_id'] = game.id;   
-  //  this.helperService.filterListBy(this.filter, this.enterMatchupList, this.enterMatchupLisUnfiltered);
-    
+    game.selected = !game.selected;
+    if(game.selected) {
+      this.filter.game_id.push(game.id);
+    } else {
+      let index = this.filter.game_id.findIndex(x => x === game.id);
+      if(index !== -1) {
+        this.filter.game_id.splice(index, 1);
+      }
+    }
+   this.filterLobbyOptions();
   }
 
   selectGameType(event) {
-  //  this.filter.matchType = event.type;
-  console.log(event, 'game type')
+    if(this.filter.matchupType.length === 0) {
+      this.filter.matchupType.push({});  
+    }
+    this.filter.matchupType[0] = event.type;
+    this.filterLobbyOptions();
   }
 
-  selectEntryFee(entryFee) {
-//    this.filter.entryFee.min = entryFee[0];
-//  this.filter.entryFee.max = entryFee[1];
-  }
-
-  selectPosition(positions) {
- //   this.filter.positions = positions.filter(x => x.selected === true).map(x => x.name);
-    this.filterTableList()
-  }
-
-  filterTableList() {
-    // when table is populated with proper data
-    // filter an array with this.filter options
+  selectPosition(positions) {   
+    this.filter.position = positions.filter(x => x.selected === true).map(x => x.name);
+    this.filterLobbyOptions()
   }
 
   showConfirmModal(event) {

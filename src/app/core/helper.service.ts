@@ -73,9 +73,11 @@ export class HelperService {
   }
 
   filterListBy(filter, sortedList, unsortedList) {
-    return sortedList = unsortedList.filter(function (o) {
+    return sortedList = unsortedList.filter(function (o) {     
       return Object.keys(filter).every(function (k) {
         return filter[k].some(function (f) {
+         /*  console.log(o[k], 'o[k]')
+          console.log(f, 'f') */
           return o[k] === f;
         });
       });
@@ -99,8 +101,7 @@ export class HelperService {
     return sortFilter;
   }
 
-
-  filterOptionSelected(value, rankFilterValues, gameFilterValues, filter, players, playersUnsorted) {
+  filterOptionSelected (value, rankFilterValues, gameFilterValues, filter, players, playersUnsorted) {
     rankFilterValues.forEach(element => {
       if(value.id === element.id) {
         element = value;

@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
             long: position.coords.longitude
           }
           this.helperService.locationData = myLocation;
-          console.log('app', this.helperService.locationData)
         }, (error) => {
           console.log('Geolocation error: '+ error.message);
         });

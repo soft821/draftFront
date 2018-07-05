@@ -48,16 +48,25 @@
         &:focus {
             outline: none !important;
         }
-        &::before {
-            content: "$ "
-        }
     }
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 16pt;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    font-size: 16pt;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    font-size: 16pt;
+}
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 16pt;
 }
 
 .payment-section {
     text-align: center;
     .payment-type {
-        font-size: 10px;
+        font-size: 12pt;
         width: 50%;
         padding: 20px 80px;
     }
@@ -67,12 +76,22 @@
     }
 }
 
-.pay-btn {
+.coinbase-btn {
+    background: white;
+    border: 1px solid $dm-light-gray;
+    border-radius: 10px;
+    margin-bottom: 8px;
+} 
+
+.bitcoin-btn {
+    border: none;
     background: transparent;
-    &.disabled {
-        cursor: not-allowed;
-    }
 }
+
+.disabled {
+    cursor: not-allowed;
+}
+
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     appearance: none;

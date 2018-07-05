@@ -117,3 +117,14 @@
     min-width: 20px;
     min-height: 20px;
  }
+
+ input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.fee-input {
+    width: 120px;
+    margin: auto;
+}

@@ -45,22 +45,21 @@
             <span class="f-18"><b>Entry Fee</b></span>
             <div class="flex">
                 <div class="fee min flex-column">
-                    <span>${{scaleEntryFee[0] | number}}</span>
+                    <span>${{minFee}}</span>
                     <span>Min</span>
                 </div>
                 <div class="fee max flex-column">
-                    <span>${{scaleEntryFee[1] | number}}</span>
+                    <span>${{maxFee}}</span>
                     <span>Max</span>
                 </div>
             </div>
             <div class="scale">
                 <nouislider [connect]="true" 
                             [min]="0" 
-                            [max]="10600"
-                            [step]="1" 
+                            [max]="11"
+                            [config]="sliderConfig"
                             [(ngModel)]="scaleEntryFee"
-                            (ngModelChange)="entryFeeChange()"
-                            > <!-- [tooltips]="[ true, true ]" -->
+                            (ngModelChange)="entryFeeChange()"> 
                 </nouislider>
             </div>
         </div>

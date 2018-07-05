@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {GAME_TYPES, POSITIONS} from './filter-values';
+import { ENTRY_FEE } from '../../create-contest/entry-fee/entryFeeValues';
 
 @Component({
   selector: 'dm-filter-column',
@@ -24,12 +25,27 @@ export class DmFilterColumn implements OnInit {
   gameTypes: any[];
   positions: any[];
 
-  scaleEntryFee = [ 0, 10000 ];;
+  scaleEntryFee = [ 0, 11 ];
+  fees = [];
+
+  minFee: any;
+  maxFee: any;
   descriptionVisible: boolean;
-  
+
+  sliderConfig: any = {
+    step: 1
+  }
+
   ngOnInit() {
     this.gameTypes = GAME_TYPES;
     this.positions = POSITIONS;
+    this.fees = ENTRY_FEE;
+    this.filterValuesForGUI();
+  }
+
+  filterValuesForGUI() {
+    this.minFee = this.fees.filter(x => x.id === this.scaleEntryFee[0]).map(x => x.value);
+    this.maxFee = this.fees.filter(x => x.id === this.scaleEntryFee[1]).map(x => x.value);
   }
 
   goToCreateContest() {
@@ -49,7 +65,9 @@ export class DmFilterColumn implements OnInit {
   }
 
   entryFeeChange() {
-    this.selectEntryFeeOption.emit(this.scaleEntryFee);
+    this.filterValuesForGUI();
+    let option = [this.minFee, this.maxFee];
+    this.selectEntryFeeOption.emit(option);
   }
 
   selectPosition(position) {

@@ -34,7 +34,7 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:4300']
       }
-    }),
+    })
   ],
   declarations: [
     AppComponent,

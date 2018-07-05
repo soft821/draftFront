@@ -18,8 +18,9 @@ import {ColorPickerComponent} from './components/color-picker/color-picker.compo
 import {ColorPickerService} from './components/color-picker/color-picker.service';
 import {DmIconSelectComponent} from './components/dm-icon-select/dm-icon-select.component';
 import {CheckboxFilterComponent} from './components/checkbox-filter/checkbox-filter.component';
-import { SignupFormComponent } from './components/signup-form/signup-form.component';
-import { UnregisteredNavComponent } from './unregistered-nav/unregistered-nav.component';
+import {SignupFormComponent} from './components/signup-form/signup-form.component';
+import {UnregisteredNavComponent} from './unregistered-nav/unregistered-nav.component';
+import {AdsenseModule} from 'ng2-adsense';
 /*
  * SharedModule
  * SharedModule is used to hold common components, directives, and pipes and share them with modules that need them.
@@ -36,7 +37,11 @@ import { UnregisteredNavComponent } from './unregistered-nav/unregistered-nav.co
     ScrollbarModule,
     RouterModule,
     ImageUploadModule,
-    FileUploadModule
+    FileUploadModule,
+    AdsenseModule.forRoot({
+    //  adClient: 'ca-pub-7640562161899788',
+    //  adSlot: 7259870550,
+    }),
   ],
   exports: [
     CommonModule,

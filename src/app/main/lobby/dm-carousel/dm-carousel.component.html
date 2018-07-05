@@ -7,7 +7,8 @@
             [scrollbar-hidden]="true" 
             (reachesLeftBound)="leftBoundStat($event)"
             (reachesRightBound)="rightBoundStat($event)"
-            #nav>
+            #nav
+            *ngIf="list && list.length">
             <div class="item" *ngFor="let item of list; let last = last" [ngClass]="{'last-item-right': last}">
                 <div class="p-b-5">{{item.name}}</div>
                 <span class="flex">

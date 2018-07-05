@@ -36,7 +36,7 @@ import {AddFundsComponent} from './add-funds/add-funds.component';
 import {AddFundsService} from './add-funds/add-funds.service';
 import {WithdrawComponent} from './withdraw/withdraw.component';
 import {WithdrawService} from './withdraw/withdraw.service';
-import { FundsComponent } from './funds/funds.component';
+import {FundsComponent} from './funds/funds.component';
 
 @NgModule({
   imports: [

@@ -55,16 +55,9 @@
 }
 
 .lobby-bck {
-    width: 100%;
-    min-height: -webkit-calc(100%);
-    min-height: -moz-calc(100%);
-    min-height: calc(100%);
-    position: relative;
-    background: url('./assets/images/lobby-bck.png') no-repeat; //fixed center center
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    height: 100%;
+    background: url('./assets/images/lobby-bck.jpg') no-repeat; //fixed center center
+    background-size: 100% auto;
 }
 
 .dm-logo {
@@ -203,7 +196,7 @@
     background: url("./assets/images/coinbase.png");
     background-size: 100%;
     width: 200px;
-    height: 75px;
+    height: 68px;
     background-repeat: no-repeat; 
 }
 
@@ -211,7 +204,7 @@
     background: url("./assets/images/bitcoin.png");
     background-size: 100%;
     width: 200px;
-    height: 75px;
+    height: 76px;
     background-repeat: no-repeat; 
 }
 
