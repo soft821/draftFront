@@ -34,7 +34,12 @@
             <div class="capitalize h-20 forgot f-13" (click)="goToReset()">Forgot password?</div>
           </div>
           <div class="p-t-5 as-c">
-            <button class="login-white-btn" (click)="login(loginForm)" [disabled]="isClickedOnce" type="submit">Log In</button>
+            <button class="login-white-btn" 
+                   (click)="login(loginForm)" 
+                   [ngClass]="{'disabled': isClickedOnce}"
+                   [disabled]="isClickedOnce" 
+                   type="submit">Log In
+            </button>
             <div class="h-20" *ngIf="loginFormSubmitted && (loginForm.get('password').errors?.required || loginForm.get('email').errors?.required || loginForm.get('email').errors?.pattern) || showErrorInvalidCredentials"></div>
           </div>
         </div>

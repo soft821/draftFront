@@ -47,6 +47,13 @@
     height: 30px;
     border-radius: 8px;
     border: solid 1px #000000;
+    &:hover {
+        color: $dm-light-gray;
+    }
+    &.disabled {
+        cursor: not-allowed;
+        color: $dm-light-gray;
+    }
 }
 
 .h-20 {
