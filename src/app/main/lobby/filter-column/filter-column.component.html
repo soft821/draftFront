@@ -17,7 +17,7 @@
     
     <div class="game-type flex-column section">
         <div class="p-10 p-relative">
-            <div *ngFor="let gameType of gameTypes; let i = index" class="flex">                
+            <div *ngFor="let gameType of gameTypes; let i = index; let first = first" class="flex" [ngClass]="{'g-type-margin': first}">                
                 <div class="radio-button type">
                     <div class="radio dm-radio-red" (change)="selectGameType(gameType)">
                         <label>
