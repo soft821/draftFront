@@ -30,7 +30,7 @@
            (keyup)="setCustomValue()"
            placeholder="$1.00">
     <div *ngIf="showError && !this.selectedItem?.value" class="error-msg m-l-0">Please select an option or enter custom amount</div>
-    <div *ngIf="showError && this.selectedItem?.value && this.selectedItem.value < 10" class="error-msg m-l-0">Please enter minimum amount of $10</div>
+    <div *ngIf="showError && type==='addFunds' && this.selectedItem?.value && this.selectedItem.value < 10" class="error-msg m-l-0">Please enter minimum amount of $10</div>
   </div>
   <div class="payment-section">
     <span class="subtitle">Choose a payment method</span>

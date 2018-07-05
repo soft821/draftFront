@@ -50,7 +50,8 @@ export class FundsComponent implements OnInit {
 
   showConfirmModal() {
     this.myLocation = this.helperService.locationData; 
-    if(this.selectedItem && this.selectedItem['value'] && this.selectedItem['value'] >= 10 && this.myLocation) {
+    if(this.selectedItem && this.selectedItem['value'] && this.myLocation || 
+      (this.type === 'addFunds' && this.selectedItem && this.selectedItem['value'] && this.selectedItem['value'] >= 10)) {
       this.modalHelperService.modalOpened = true;
       let ttl = this.type === 'addFunds'?'Confirm Add Funds':'Confirm Withdrawal Funds'
       let msg = this.type === 'addFunds'?'Please confirm the deposit amount of $':'Please confirm the withdrawal amount of $'
