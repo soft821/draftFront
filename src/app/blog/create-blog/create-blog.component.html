@@ -4,7 +4,7 @@
       <div class="flex category">
         <div class="form-group grow-1">
           <label>Choose category</label>
-          <dm-select formControlName="type"
+          <dm-select formControlName="category"
                       class="select-component"
                       [placeholder]="'Select a category'"
                       [options]="blogTypes"
@@ -37,13 +37,16 @@
       </div>
 
       <div class="form-group">
-          <label>Description</label>
-          <input type="text" class="form-control"
-                formControlName="description">
-        </div>
+        <label>Description</label>
+        <input type="text" class="form-control"
+              formControlName="description">
+      </div>
 
-        <div class="new-section" *ngIf="addMoreSectionsForm">
-            <form [formGroup]="sectionsForm" novalidate class="form-horizontal">
+      <div formArrayName="sections">
+        <div *ngFor="let section of blogForm.get('sections').controls; let i = index" class="new-section">
+          <div formGroupName="{{i}}">
+            <div [formGroup]="blogForm.controls.sections.controls[i]">  
+              <div class="title">Section {{i+1}}</div>            
               <div class="form-group">
                 <label>Title of the section</label>
                 <input  type="text"
@@ -65,13 +68,26 @@
                           class="form-control profile-input description"
                           autocomplete="off">
                 </textarea>
-              </div>
-            </form>
+              </div>    
+              <div class="form-group">
+                <label>Select section photo</label>
+                <dm-select-image [form]="blogForm.controls.sections.controls[i]" 
+                                  [showMediaIcon]="true" 
+                                  (imageSelected)="imageSelected($event)">
+                </dm-select-image>
+              </div>                    
+            </div>
           </div>
+        </div>
+      </div>   
 
-      <div>
-        <button class="add-section-btn" (click)="addMore()">Add new section</button>  
+      <div class="p-l-30">
+        <button class="add-section-btn" (click)="addNewItem()">Add new section</button>  
       </div>
     </form>
+    <div class="form-button p-t-15 ta-r">
+      <button class="cancel-save-btn" (click)="cancel()">Cancel</button>
+      <button class="save-blog-btn" (click)="submitBlog(blogForm)">Save blog</button>
+    </div>
   </div>
 </div>

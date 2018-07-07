@@ -4,8 +4,8 @@ import {BlogRoutingModule} from './blog-routing';
 import {BlogListComponent} from './blog-list/blog-list.component';
 import {BlogComponent} from './blog.component';
 import {BlogItemComponent} from './blog-item/blog-item.component';
-import { CreateBlogComponent } from './create-blog/create-blog.component';
-
+import {CreateBlogComponent} from './create-blog/create-blog.component';
+import {CreateBlogService} from './create-blog/create-blog.service';
 
 @NgModule({
   imports: [
@@ -19,6 +19,9 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
     CreateBlogComponent
   ],
   exports: [
+  ],
+  providers: [
+    CreateBlogService
   ]
 })
 export class BlogModule {

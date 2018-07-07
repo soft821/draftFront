@@ -14,15 +14,15 @@ import {LocalStorageService} from 'angular-2-local-storage';
 export class NavComponent implements OnInit {
   sidebarOpen = false;
   sidebarBalanceOpen = false;
-  options = [
-    {id: 0, text: 'Contact Support', path: '/'},
-    {id: 1, text: 'How to Play', path: '/'},
-    {id: 2, text: 'Rules & Score', path: '/'},
-    {id: 3, text: 'Training Guide', path: '/'},
-    {id: 4, text: 'Responsible Play', path: '/dm/responsible-play'},
-    {id: 5, text: 'Trust & Safety', path: '/dm/trust-and-safety'},
-    {id: 6, text: 'Terms of Use', path: '/dm/terms-of-use'},
-    {id: 7, text: 'Privacy Policy', path: '/dm/privacy-policy'}
+  options = [    
+    {id: 0, text: 'How to Play', path: '/'},
+    {id: 1, text: 'Rules & Score', path: '/'},
+    {id: 2, text: 'Training Guide', path: '/'},
+    {id: 3, text: 'Responsible Play', path: '/dm/responsible-play'},
+    {id: 4, text: 'Trust & Safety', path: '/dm/trust-and-safety'},
+    {id: 5, text: 'Terms of Use', path: '/dm/terms-of-use'},
+    {id: 6, text: 'Privacy Policy', path: '/dm/privacy-policy'},
+    {id: 7, text: 'Contact Support', path: '/'},
   ];
 
   userOptions = [

@@ -3,4 +3,13 @@
 .dm-banner {
     height: 130px;
     background: $dm-banner-gray;
+    padding-top: 10px;
+
+    /deep/ ng-adsense {
+        .adsbygoogle {
+            width: 90%;
+            height: 120px !important;
+            margin: auto;
+        }
+    }
 }

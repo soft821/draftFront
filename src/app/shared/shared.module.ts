@@ -39,8 +39,8 @@ import {AdsenseModule} from 'ng2-adsense';
     ImageUploadModule,
     FileUploadModule,
     AdsenseModule.forRoot({
-    //  adClient: 'ca-pub-7640562161899788',
-    //  adSlot: 7259870550,
+      adClient: 'ca-pub-2173766795435813',
+      adSlot: 8280455095,
     }),
   ],
   exports: [

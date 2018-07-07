@@ -9,6 +9,7 @@ import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';
 import {FooterComponent} from './core/footer/footer.component';
 import {SimpleModalModule} from 'ngx-simple-modal';
+import {AdsenseModule} from 'ng2-adsense';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -34,7 +35,11 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:4300']
       }
-    })
+    }),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-2173766795435813',
+      adSlot: 8280455095,
+    }),
   ],
   declarations: [
     AppComponent,
@@ -42,6 +47,9 @@ export function tokenGetter() {
   ],
   providers: [
     HttpClient
+  ],
+  exports: [
+    AdsenseModule
   ],
   bootstrap: [AppComponent]
 })

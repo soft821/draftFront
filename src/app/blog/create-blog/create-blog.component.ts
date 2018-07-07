@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormArray} from '@angular/forms';
+import {CreateBlogService} from './create-blog.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'dm-create-blog',
@@ -8,22 +10,19 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class CreateBlogComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private createBlogService: CreateBlogService,
+              private router: Router) { }
 
   blogForm: FormGroup;
   sectionsForm: FormGroup;
+  sectionsFormSubmitted: boolean;
   files: any;
-  
-  addMoreSectionsForm = false;
 
-  colors = [
-    {id: 0, name: 'Red', value: 'red'},
-    {id: 1, name: 'Green', value: 'green'},
-    {id: 2, name: 'Blue', value: 'blue'},
-    {id: 3, name: 'Purple', value: 'purple'},
-    {id: 4, name: 'Red', value: 'red'},
-    {id: 5, name: 'Red', value: 'red'},
-  ];
+  sectionInputs = [];
+  sections = [];
+  newItemVisible = false;
+  addMoreSectionsForm = false;
 
   blogTypes = [
     {id: 0, name: 'headline_matchup', value: 'Headline Matchup'},
@@ -36,34 +35,56 @@ export class CreateBlogComponent implements OnInit {
     {id: 7, name: 'news', value: 'News'},
     {id: 8, name: 'post-season', value: 'Post season'}
   ];
-
+  
   ngOnInit() {
-
     this.blogForm = this.fb.group({
-      type: ['', [Validators.required]],
       title: ['', Validators.required],
       description: ['', [Validators.required]],
       image: [''],
       color: '',
-      trackVersions: '',
-      requireApproval: '',
-      recordAudio: '',
+      category: '',
+      url: '',
       sections: this.fb.array([]),
     });
-    this.sectionsForm = this.fb.group({
-      title: ['', [Validators.required]],
-      from: [new Date(), [Validators.required]],
-      to: [new Date(), [Validators.required]],
-      description: ['', Validators.required]
+    this.addNewItem();
+  };
+
+  addNewItem() {
+    const control = <FormArray>this.blogForm.controls['sections'];
+    control.push(this.initObject());
+    /*  this.sectionsFormSubmitted = false;
+      this.resetForm(); */
+  };
+
+  initObject() {
+    return this.fb.group({
+      title: [''],
+      subtitle: [''],
+      description: [''],
+      image: ['']
     });
   };
 
-  addMore() {
-   this.addMoreSectionsForm = true;
+  resetForm() {
+    this.sectionsForm.reset();   
   };
 
+  
   imageSelected(event) {
     this.files = event;
   }
 
+  submitBlog(form) {
+    console.log(form);
+    let url = this.createBlogService.convertToSlug(this.blogForm.get('title').value);
+    this.blogForm.get('url').setValue(url);
+    if(form.valid) {
+      this.createBlogService.createBlog(form.value)
+      console.log(form.value)
+    }
+  }
+
+  cancel() {
+    this.router.navigate(['/blog']);
+  }
 }
