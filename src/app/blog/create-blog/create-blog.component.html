@@ -43,9 +43,9 @@
       </div>
 
       <div formArrayName="sections">
-        <div *ngFor="let section of blogForm.get('sections').controls; let i = index" class="new-section">
+        <div *ngFor="let section of blogForm.get('sections')['controls']; let i = index" class="new-section">
           <div formGroupName="{{i}}">
-            <div [formGroup]="blogForm.controls.sections.controls[i]">  
+            <div [formGroup]="blogForm['controls'].sections.controls[i]">  
               <div class="title">Section {{i+1}}</div>            
               <div class="form-group">
                 <label>Title of the section</label>
@@ -71,7 +71,7 @@
               </div>    
               <div class="form-group">
                 <label>Select section photo</label>
-                <dm-select-image [form]="blogForm.controls.sections.controls[i]" 
+                <dm-select-image [form]="blogForm" 
                                   [showMediaIcon]="true" 
                                   (imageSelected)="imageSelected($event)">
                 </dm-select-image>
