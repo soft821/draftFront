@@ -55,9 +55,9 @@
                         autocomplete="off">
               </div>
               <div class="form-group">
-                  <label>Subitle of the section</label>
+                  <label>Subtitle of the section</label>
                   <input  type="text"
-                          formControlName="title"
+                          formControlName="subtitle"
                           class="form-control profile-input title"
                           autocomplete="off">
                 </div>
@@ -71,7 +71,7 @@
               </div>    
               <div class="form-group">
                 <label>Select section photo</label>
-                <dm-select-image [form]="blogForm" 
+                <dm-select-image [form]="blogForm['controls'].sections.controls[i]" 
                                   [showMediaIcon]="true" 
                                   (imageSelected)="imageSelected($event)">
                 </dm-select-image>

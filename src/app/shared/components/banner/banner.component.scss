@@ -4,7 +4,7 @@
     height: 130px;
     background: $dm-banner-gray;
     padding-top: 10px;
-
+    display: flex;
     /deep/ ng-adsense {
         .adsbygoogle {
             width: 90%;
@@ -12,4 +12,7 @@
             margin: auto;
         }
     }
+}
+.ad-item {
+    max-width: 400px;
 }

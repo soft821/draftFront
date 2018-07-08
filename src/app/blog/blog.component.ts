@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GlobalStateService} from '../core/global-state/global-state.service';
 import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 import {ResponsiveService} from '../core/responsive/responsive.service';
+import {HelperService} from '../core/helper.service';
 
 @Component({
   selector: 'dm-blog',
@@ -14,7 +15,8 @@ export class BlogComponent implements OnInit {
   constructor(private globalState: GlobalStateService,
               private activatedRoute: ActivatedRoute,
               public responsiveService: ResponsiveService,
-              private router: Router) { 
+              private router: Router,
+              private helperService: HelperService) { 
 
     this.globalState.subscribe('menu.toggleSidebar', (data) => {
       if (!data.value) {
@@ -48,6 +50,7 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.helperService.scrollToTopSamePage();
   }
 
 }

@@ -75,12 +75,10 @@ export class CreateBlogComponent implements OnInit {
   }
 
   submitBlog(form) {
-    console.log(form);
     let url = this.createBlogService.convertToSlug(this.blogForm.get('title').value);
     this.blogForm.get('url').setValue(url);
     if(form.valid) {
       this.createBlogService.createBlog(form.value)
-      console.log(form.value)
     }
   }
 
