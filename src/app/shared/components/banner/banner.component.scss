@@ -5,6 +5,7 @@
     background: $dm-banner-gray;
     padding-top: 10px;
     display: flex;
+    justify-content: space-evenly;
     /deep/ ng-adsense {
         .adsbygoogle {
             width: 90%;
