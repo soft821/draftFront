@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {LocalStorageModule} from 'angular-2-local-storage';
 import {JwtModule} from '@auth0/angular-jwt';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClientModule, HttpClient, HttpClientJsonpModule} from '@angular/common/http';
 import {AppRoutingModule} from './app.routing';
 import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';
@@ -39,7 +39,8 @@ export function tokenGetter() {
     AdsenseModule.forRoot({
       adClient: 'ca-pub-2173766795435813',
       adSlot: 8280455095,
-    }),
+    })
+    
   ],
   declarations: [
     AppComponent,

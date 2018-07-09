@@ -1,0 +1,35 @@
+<div class="terms-of-use">
+        <div class="wrapper">
+          <div class="header-title">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                  <h1 class="terms-title">Rules & Scoring</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="main">
+        <div class="blog-post">
+            <div class="container">
+                <article class="section section-text">
+                    <div class="row p-b-100">
+                        <div class="col-md-8 col-md-offset-2 page-content-wrap">
+                           <table>
+                               <tr *ngFor="let first of itemsFirst; let i = index">
+                                   <td>
+                                       <div>{{first.name}}</div>
+                                    </td>
+                                   <td>
+                                       <div *ngIf="itemsSecond[i]">{{itemsSecond[i].name}}</div>
+                                    </td>
+                               </tr>
+                           </table>                          
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>

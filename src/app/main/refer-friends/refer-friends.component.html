@@ -1,0 +1,89 @@
+<div class="refer-friends refer-bck">
+  <div class="content-main">
+    <div class="title">Refer Friends</div>
+    <div class="subtitle">Share the fun and refer a Friend to DraftMatch</div>
+    <div class="social-container">
+      <div class="flex-column buttons">
+        <share-button [theme]="'modern-dark'"
+                      [button]="'email'"
+                      [description]="description"
+                      [showText]="true"
+                      [autoSetMeta]="false"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'facebook'"
+                      [autoSetMeta]="false"
+                      [description]="description"
+                      [showText]="true"
+                      [size]="2"
+                      [icon]="['fab', 'facebook-square']">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'twitter'"
+                      [description]="description"
+                      [showText]="true"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'reddit'"
+                      [description]="description"
+                      [showText]="true"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'google'"
+                      [description]="description"
+                      [showText]="true"
+                      *ngIf="showOther"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'linkedin'"
+                      [description]="description"
+                      [showText]="true"
+                      *ngIf="showOther"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'pinterest'"
+                      [description]="description"
+                      [showText]="true"
+                      *ngIf="showOther"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'whatsapp'"
+                      [description]="description"
+                      [showText]="true"
+                      *ngIf="showOther"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
+                      [button]="'copy'"
+                      [description]="description"
+                      [showText]="true"
+                      [url]="'https://draftmatch.com/'"
+                      *ngIf="showOther"
+                      [size]="2">
+        </share-button>
+        <button class="other-btn" (click)="showOther = true" *ngIf="!showOther">
+          <div class="b-inner">
+            <div class="b-content">
+              <div class="b-icon"><i class="fa fa-ellipsis-h"></i></div>
+              <div class="b-text">Other</div>
+            </div>
+          </div>
+        </button>
+        <button class="other-btn" (click)="showOther = false" *ngIf="showOther">
+          <div class="b-inner">
+            <div class="b-content">
+              <div class="b-icon"><i class="fa fa-ellipsis-h"></i></div>
+              <div class="b-text">Hide other</div>
+            </div>
+          </div>
+        </button>        
+      </div>
+    </div>
+  </div>
+</div>

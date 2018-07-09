@@ -29,7 +29,7 @@ export const SIDEBAR_MENU_1 = [
 export const SIDEBAR_MENU_2 = [
   {
     name: 'Contact Support',
-    path: '/home',
+    path: '/main/contact-support',
     icon: 'fa fa-th-large',
     order: 1
   },
@@ -40,8 +40,8 @@ export const SIDEBAR_MENU_2 = [
     order: 2
   },
   {
-    name: 'Rules & Score',
-    path: '/home',
+    name: 'Rules & Scoring',
+    path: '/dm/rules-and-scoring',
     icon: 'fa fa-tv',
     order: 3
   },
@@ -74,5 +74,17 @@ export const SIDEBAR_MENU_2 = [
     path: '/privacy-policy',
     icon: '',
     order: 8
+  },
+  {
+    name: 'Transaction History',
+    path: '/main/transactions',
+    icon: '',
+    order: 9
+  },
+  {
+    name: 'Refer Friends',
+    path: '/dm/refer-friends',
+    icon: '',
+    order: 10
   }
 ];

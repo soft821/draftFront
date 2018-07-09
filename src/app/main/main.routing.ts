@@ -14,6 +14,10 @@ import {HistoryComponent} from './history/history.component';
 import {CreateContestComponent} from './create-contest/create-contest.component';
 import {AddFundsComponent} from './add-funds/add-funds.component';
 import {WithdrawComponent} from './withdraw/withdraw.component';
+import {ReferFriendsComponent} from './refer-friends/refer-friends.component';
+import {ContactSupportComponent} from './contact-support/contact-support.component';
+import {TransactionsComponent} from './transactions/transactions.component';
+import {RulesAndScoringComponent} from './rules-and-scoring/rules-and-scoring.component';
 
 const MAIN_ROUTES: Routes = [
     {
@@ -27,6 +31,8 @@ const MAIN_ROUTES: Routes = [
             { path: 'history', component: HistoryComponent },
             { path: 'add-funds', component: AddFundsComponent },
             { path: 'withdraw', component: WithdrawComponent },
+            { path: 'contact-support', component: ContactSupportComponent },
+            { path: 'transactions', component: TransactionsComponent },
             { 
                 canActivate: [AuthGuard], // to refresh the data on the navbar after create contest
                 path: 'lobby', 
@@ -41,7 +47,9 @@ const MAIN_ROUTES: Routes = [
             { path: 'terms-of-use', component: TermsOfUseComponent },
             { path: 'privacy-policy', component: PrivacyPolicyComponent },
             { path: 'responsible-play', component: ResponsiblePlayComponent },
-            { path: 'trust-and-safety', component: TrustAndSafetyComponent }
+            { path: 'trust-and-safety', component: TrustAndSafetyComponent },
+            { path: 'refer-friends', component: ReferFriendsComponent },
+            { path: 'rules-and-scoring', component: RulesAndScoringComponent }
         ]
     }
     

@@ -1,0 +1,21 @@
+
+<div class="dm-add-funds"> 
+    <div><!--  *ngIf="pageLoaded" -->
+        <dm-banner> </dm-banner>
+        <div class="nfl-tab-container">
+            <div class="nfl-tab">
+                <div class="dm-nfl-icon"></div>
+            </div>
+        </div>
+        <dm-carousel [list]="liveGames"></dm-carousel> <!-- update - list of all games with live scoring -->
+        <div class="lower-part container">
+          <div class="main-section">
+            <div class="title f-18 p-t-10 p-b-5 bold">Contact Support</div>
+            <div class="f-14 p-t-10 p-b-15">Please submit any questions you have using the form below. We will get back to you within 48 hours</div>
+            <textarea name="" id="" rows="10" [(ngModel)]="description"></textarea>
+          </div>
+          <div><button class="green-btn" (click)="submit()">Submit</button></div>
+        </div>
+    </div>
+  </div>
+  <div class="modal-background" *ngIf="modalHelperService.modalOpened"></div>

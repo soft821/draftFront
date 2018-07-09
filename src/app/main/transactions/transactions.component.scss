@@ -1,0 +1,59 @@
+
+@import "../../../theme/theme-variables";
+
+.dm-add-funds {
+    background: #f1f2f3;
+    /deep/ dm-banner {
+       .dm-banner {
+            background: $dm-banner;
+       } 
+    }
+}
+
+.lower-part {
+   padding-bottom: 200px;
+}
+
+.amount {
+    font-size: 23px;
+    &.positive {
+        color: $dm-green;
+    }
+
+    &.negative {
+        color: $dm-red;
+    }
+}
+
+.invoice {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.description {
+    color: $dm-light-gray;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.transaction-table {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 
+                0 4px 25px 0 rgba(0, 0, 0, 0.12), 
+                0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    table {
+        width: 70%;
+        margin: auto;
+        max-width: 900px;
+        tr {
+            border-bottom: 1px solid $dm-light-gray;
+            td {
+                padding: 10px;                
+            }
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+}

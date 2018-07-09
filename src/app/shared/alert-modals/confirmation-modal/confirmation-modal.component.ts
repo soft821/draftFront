@@ -74,7 +74,7 @@ export class ConfirmationModalComponent extends SimpleModalComponent<ConfirmMode
       }
       Observable.forkJoin([this.createContestService.getFantasyPlayers(params)])
       .subscribe(data => {
-        this.players = data[0].response;
+        this.players = data[0]['response'];
         if(this.players && this.tableValues && this.tableValues.fantasy_player) {
           // remove opponent from the list
           this.players = this.players.filter(x => x.id !== this.tableValues.fantasy_player.id)

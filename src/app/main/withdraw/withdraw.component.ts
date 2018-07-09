@@ -45,7 +45,7 @@ export class WithdrawComponent implements OnInit {
     this.paymentSubmitted = true;
     this.withdrawService.withdrawFundsCoinbase(event)
     .subscribe(response => {
-      let msg = response.message?response.message:'You successfully withdraw money to your coinbase account';
+      let msg = response['message']?response['message']:'You successfully withdraw money to your coinbase account';
       let ttl = 'Thank you'
       this.modalHelperService.showConfirmationMessage(msg, ttl);
       this.paymentSubmitted = false;

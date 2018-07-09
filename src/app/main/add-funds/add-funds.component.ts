@@ -51,7 +51,7 @@ export class AddFundsComponent implements OnInit {
     this.paymentSubmitted = true;
      this.addFundsService.addFundsCoinbase(event)
     .subscribe(response => {
-      let msg = response.message?response.message:'Payment request has been sent to your coinbase account';
+      let msg = response['message']?response['message']:'Payment request has been sent to your coinbase account';
       let ttl = 'Thank you'
       this.modalHelperService.showConfirmationMessage(msg, ttl);
       this.paymentSubmitted = false;
@@ -64,11 +64,5 @@ export class AddFundsComponent implements OnInit {
       let desc = error.debug && error.debug[0] && error.debug[0] !== error.message?error.debug[0]:''
       this.modalHelperService.showConfirmationMessage(error.message, ttl, desc);
     })   
-  }
-
-
-
-  
-
-  
+  }  
 }

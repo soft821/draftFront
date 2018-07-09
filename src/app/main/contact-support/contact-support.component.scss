@@ -1,0 +1,32 @@
+@import "../../../theme/theme-variables";
+
+.dm-add-funds {
+    background: #f1f2f3;
+    /deep/ dm-banner {
+       .dm-banner {
+            background: $dm-banner;
+       } 
+    }
+}
+
+textarea {
+    width: 100%;
+}
+
+.green-btn {
+    width: 260px;
+    border: 1px solid white;
+    color: white;
+    padding: 5px;
+    height: 45px;
+    border-radius: 5px;
+    background: #06c906;
+    font-size: 16px;
+    &:hover {
+        background: #0db80d;
+    }
+}
+
+.lower-part {
+   padding-bottom: 200px;
+}

@@ -16,20 +16,20 @@ export class NavComponent implements OnInit {
   sidebarBalanceOpen = false;
   options = [    
     {id: 0, text: 'How to Play', path: '/'},
-    {id: 1, text: 'Rules & Score', path: '/'},
+    {id: 1, text: 'Rules & Scoring', path: '/dm/rules-and-scoring'},
     {id: 2, text: 'Training Guide', path: '/'},
     {id: 3, text: 'Responsible Play', path: '/dm/responsible-play'},
     {id: 4, text: 'Trust & Safety', path: '/dm/trust-and-safety'},
     {id: 5, text: 'Terms of Use', path: '/dm/terms-of-use'},
     {id: 6, text: 'Privacy Policy', path: '/dm/privacy-policy'},
-    {id: 7, text: 'Contact Support', path: '/'},
+    {id: 7, text: 'Contact Support', path: '/main/contact-support'},
   ];
 
   userOptions = [
     {id: 0, text: 'Withdraw', path: '/main/withdraw'},
-    {id: 1, text: 'Transaction History', path: '/'},
+    {id: 1, text: 'Transaction History', path: '/main/transactions'},
     {id: 2, text: 'My Account', path: '/'},
-    {id: 3, text: 'Refer Friends', path: '/'},
+    {id: 3, text: 'Refer Friends', path: '/dm/refer-friends'},
     {id: 4, text: 'Log Out', path: '/logout'}
   ]
   constructor(private router: Router,

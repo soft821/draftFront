@@ -37,6 +37,14 @@ import {AddFundsService} from './add-funds/add-funds.service';
 import {WithdrawComponent} from './withdraw/withdraw.component';
 import {WithdrawService} from './withdraw/withdraw.service';
 import {FundsComponent} from './funds/funds.component';
+import {ReferFriendsComponent} from './refer-friends/refer-friends.component';
+import {ShareButtonModule} from '@ngx-share/button';
+import {HttpClientModule, HttpClientJsonpModule} from '@angular/common/http';
+import {ContactSupportComponent} from './contact-support/contact-support.component';
+import {ContactSupportService} from './contact-support/contact-support.service';
+import {TransactionsComponent} from './transactions/transactions.component';
+import {TransactionsService} from './transactions/transactions.service';
+import {RulesAndScoringComponent} from './rules-and-scoring/rules-and-scoring.component';
 
 @NgModule({
   imports: [
@@ -44,7 +52,10 @@ import {FundsComponent} from './funds/funds.component';
     SharedModule.forRoot(),
     DragScrollModule,
     NouisliderModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    HttpClientModule, // (Required) for share counts
+    HttpClientJsonpModule, // (Optional) For linkedIn & Tumblr counts
+    ShareButtonModule.forRoot()
   ],
   declarations: [
     MainComponent,
@@ -74,7 +85,11 @@ import {FundsComponent} from './funds/funds.component';
     EnterMatchupComponent,
     AddFundsComponent,
     WithdrawComponent,
-    FundsComponent
+    FundsComponent,
+    ReferFriendsComponent,
+    ContactSupportComponent,
+    TransactionsComponent,
+    RulesAndScoringComponent
   ],
   exports: [
   ],
@@ -83,7 +98,9 @@ import {FundsComponent} from './funds/funds.component';
     LobbyService,
     CreateContestService,
     AddFundsService,
-    WithdrawService
+    WithdrawService,
+    ContactSupportService,
+    TransactionsService
   ],
   entryComponents: [
   ]
