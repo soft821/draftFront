@@ -26,9 +26,17 @@
                       [size]="2">
         </share-button>
         <share-button [theme]="'modern-dark'"
+                      [button]="'copy'"
+                      [description]="description"
+                      [showText]="true"
+                      [url]="'https://draftmatch.com/'"
+                      [size]="2">
+        </share-button>
+        <share-button [theme]="'modern-dark'"
                       [button]="'reddit'"
                       [description]="description"
                       [showText]="true"
+                      *ngIf="showOther"
                       [size]="2">
         </share-button>
         <share-button [theme]="'modern-dark'"
@@ -56,14 +64,6 @@
                       [button]="'whatsapp'"
                       [description]="description"
                       [showText]="true"
-                      *ngIf="showOther"
-                      [size]="2">
-        </share-button>
-        <share-button [theme]="'modern-dark'"
-                      [button]="'copy'"
-                      [description]="description"
-                      [showText]="true"
-                      [url]="'https://draftmatch.com/'"
                       *ngIf="showOther"
                       [size]="2">
         </share-button>
