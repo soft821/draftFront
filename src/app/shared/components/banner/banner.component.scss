@@ -1,7 +1,7 @@
 @import "../../../../theme/theme-variables";
 
 .dm-banner {
-    height: 150px;
+    height: 130px;
     background: $dm-banner-gray;
     padding-top: 10px;
     display: flex;
@@ -15,7 +15,8 @@
     }
 }
 .ad-item {
-    max-width: 300px;
-    width: 300px;
-    height: 125px;
+    height: 110px;
+    img {
+        height: 100%;
+    }
 }

@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class BannerComponent implements OnInit {
 
   constructor() { }
+  imgUrl = 'https://static.shareasale.com/image/52555/5156_On_The_Move_com_Ads_728x90.jpg';
 
   ngOnInit() {
   }
