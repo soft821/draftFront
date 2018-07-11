@@ -31,6 +31,7 @@ export class ResponsiveService {
       selected = 'visibleXs';
     }
     this.clearUnselected(selected);
+    console.log(selected)
   }
 
   clearUnselected(selected) {

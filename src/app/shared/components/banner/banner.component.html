@@ -39,8 +39,24 @@
                     [width]="160"
                     [adFormat]="'rectangle, horizontal'">
         </ng-adsense>
-    </div> -->
+    </div> 
+    -->
     <div class="ad-item">
+        <a target="_blank" href="https://shareasale.com/r.cfm?b=981766&amp;u=1273330&amp;m=52555&amp;urllink=&amp;afftrack=">
+            <img [src]="imgUrl" border="0" />
+        </a>        
+    </div>
+    <div class="ad-item" *ngIf="!responsiveService.media.visibleXs">
+        <a target="_blank" href="https://shareasale.com/r.cfm?b=981766&amp;u=1273330&amp;m=52555&amp;urllink=&amp;afftrack=">
+            <img [src]="imgUrl" border="0" />
+        </a>        
+    </div>
+    <div class="ad-item" *ngIf="responsiveService.media.visibleLg || responsiveService.media.visibleMd">
+        <a target="_blank" href="https://shareasale.com/r.cfm?b=981766&amp;u=1273330&amp;m=52555&amp;urllink=&amp;afftrack=">
+            <img [src]="imgUrl" border="0" />
+        </a>        
+    </div>
+    <div class="ad-item" *ngIf="responsiveService.media.visibleLg">
         <a target="_blank" href="https://shareasale.com/r.cfm?b=981766&amp;u=1273330&amp;m=52555&amp;urllink=&amp;afftrack=">
             <img [src]="imgUrl" border="0" />
         </a>        
