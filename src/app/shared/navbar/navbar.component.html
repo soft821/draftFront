@@ -54,13 +54,20 @@
                 </span>
             </div>
             <div class="balance">
+                <!-- <div class="flex-column" [ngClass]="{'p-r-20': !responsiveService.media.visibleSm}" >
+                    <span><b>${{auth?.authenticatedUser?.contest_worth}}</b></span>
+                    <span>Deposit</span>
+                </div> -->
+                <div class="flex-column text-center" [ngClass]="{'p-r-20': !responsiveService.media.visibleSm}" >
+                    <span><b>${{auth?.authenticatedUser?.credit}}</b></span>
+                    <span>Credit</span>
+                </div>
                 <div class="flex-column" [ngClass]="{'p-r-20': !responsiveService.media.visibleSm}" >
                     <span><b>${{auth?.authenticatedUser?.balance}}</b></span>
                     <span>Balance</span>
                 </div>
                 <div><button class="green-btn" routerLink="/main/add-funds">Add Funds</button></div>
             </div>
-            
         </div>
         <div class="balance-container" *ngIf="auth.isAuthenticated && responsiveService.media.visibleXs">
             <div class="balance">

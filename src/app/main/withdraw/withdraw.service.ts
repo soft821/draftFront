@@ -12,8 +12,6 @@ export class WithdrawService {
               private helperService: HelperService) { }
 
   withdrawFundsCoinbase(data) {
-    // data.lat = '38.561457';
-    // data.lang = '-121.5829971';
     let params: HttpParams = new HttpParams();
     params = params.append('amount', data.amount);
     params = params.append('lat', data.lang);
@@ -22,5 +20,16 @@ export class WithdrawService {
     .pipe(
       catchError(this.handleError.handleError)
     )  
+  }
+
+  withdrawFundsCheckbook(data) {
+    let params: HttpParams = new HttpParams();
+    params = params.append('amount', data.amount);
+    params = params.append('lat', data.lang);
+    params = params.append('lang', data.lat);
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/user/withdrawFunds/checkbook`, params)
+    .pipe(
+      catchError(this.handleError.handleError)
+    )
   }
 }

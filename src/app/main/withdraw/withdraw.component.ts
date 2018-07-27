@@ -4,6 +4,7 @@ import {LobbyService} from '../lobby/lobby.service';
 import {HelperService} from '../../core/helper.service';
 import {ModalHelperService} from '../../core/modal-helper.service';
 import {WithdrawService} from './withdraw.service';
+import {AuthService} from '../../core/auth/auth.service';
 
 @Component({
   selector: 'dm-withdraw',
@@ -22,6 +23,7 @@ export class WithdrawComponent implements OnInit {
   constructor(private lobbyService: LobbyService,
               private helperService: HelperService,
               public modalHelperService: ModalHelperService,
+              private authService: AuthService,
               private withdrawService: WithdrawService) { }
   
   ngOnInit() {}
@@ -45,6 +47,7 @@ export class WithdrawComponent implements OnInit {
     this.paymentSubmitted = true;
     this.withdrawService.withdrawFundsCoinbase(event)
     .subscribe(response => {
+      this.authService.authenticatedUser.balance = response['userInfo'];
       let msg = response['message']?response['message']:'You successfully withdraw money to your coinbase account';
       let ttl = 'Thank you'
       this.modalHelperService.showConfirmationMessage(msg, ttl);
@@ -58,5 +61,25 @@ export class WithdrawComponent implements OnInit {
       let desc = error.debug && error.debug[0] && error.debug[0] !== error.message?error.debug[0]:''
       this.modalHelperService.showConfirmationMessage(error.message, ttl, desc);
     })  
+  }
+
+  withdrawFundsCheckbook(event) {
+    this.paymentSubmitted = true;
+    this.withdrawService.withdrawFundsCheckbook(event)
+    .subscribe(response => {
+      this.authService.authenticatedUser.balance = response['userInfo'];
+      let msg = 'You successfully withdraw money to your checkbook account.';
+      let ttl = 'Thank you'
+      this.modalHelperService.showConfirmationMessage(msg, ttl);
+      this.paymentSubmitted = false;
+      this.helperService.spinner.hide();
+    },
+    error => {
+      this.paymentSubmitted = false;
+      this.helperService.spinner.hide();
+      let ttl = 'Error'
+      let desc = error.debug && error.debug[0] && error.debug[0] !== error.message?error.debug[0]:''
+      this.modalHelperService.showConfirmationMessage(error.message, ttl, desc);
+    }) 
   }
 }

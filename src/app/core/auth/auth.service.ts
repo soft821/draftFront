@@ -34,10 +34,26 @@ export class AuthService {
     return this.localStorageService.get('draftmatch.auth_token');
   }
 
+  getCheckbookToken() {
+    return this.localStorageService.get('checkbook_token');
+  }
+
+  setCheckbookToken(flag: boolean){
+    console.log(flag);
+    this.localStorageService.set('checkbook_token', flag);
+  }
+
+  getUserId() {
+    return this.localStorageService.get('user_id');
+  }
+
   setDataAfterLogin(authData, remember?) {
     this.isAuthenticated = true;
     this.authenticatedUser = authData.response;
     this.localStorageService.set('auth_token', authData.response.token);
+    this.localStorageService.set('user_id', authData.response.id);
+    this.localStorageService.set('checkbook_token', authData.response.hasToken);
+    
   }
 
   checkIsAuthenticated() {
@@ -78,11 +94,22 @@ export class AuthService {
       name: form.value.name,
       username: form.value.username,
       email: form.value.email,
-      password: form.value.password
+      password: form.value.password,
+      promocode: form.value.promoCode
     };
     return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/register`, body)
     .pipe(
       catchError(this.handleError.handleError)
     );  
+  }
+
+  checkUserHasCheckbookToken(token){
+    const body = {
+      time: token,
+    };
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/auth/checkbook`, body)
+    .pipe(
+        catchError(this.handleError.handleError)
+      );
   }
 }

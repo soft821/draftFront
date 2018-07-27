@@ -14,7 +14,8 @@
                   [title]="'Add funds'"
                   [paymentSubmitted]="paymentSubmitted"
                   [subtitle]="'Or enter a custom amount ($10 minimum)'"
-                  (addWithdrawFunds)="addFundsCoinbase($event)">
+                  (addWithdrawFunds)="addFundsCoinbase($event)"
+                  (addWithdrawFundsCheckbook)="addFundsCheckbook($event)">
         </dm-funds>
       </div>
   </div>

@@ -23,4 +23,17 @@ export class AddFundsService {
       catchError(this.handleError.handleError)
     )  
   } 
+
+  addFundsCheckbook(data){
+
+    let params: HttpParams = new HttpParams();
+    params = params.append('amount', data.amount);
+    params = params.append('lat', data.lang);
+    params = params.append('lang', data.lat);
+    return this.httpClient.post(`${this.helperService.resolveAPI()}/user/addFunds/checkbook`, params)
+    .pipe(
+      catchError(this.handleError.handleError)
+    ) 
+
+  }
 }
