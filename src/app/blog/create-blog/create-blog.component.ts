@@ -79,6 +79,9 @@ export class CreateBlogComponent implements OnInit {
     this.blogForm.get('url').setValue(url);
     if(form.valid) {
       this.createBlogService.createBlog(form.value)
+      .subscribe(response => {
+        console.log(response)
+      })
     }
   }
 
