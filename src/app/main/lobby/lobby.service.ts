@@ -39,4 +39,15 @@ export class LobbyService {
       catchError(this.handleError.handleError)
     )  
   }
+
+  prepareLobbyData(list) {
+    let resultList = [];
+    list.forEach(element => {
+      element.entries.forEach(entry => {
+        entry.slate_name = element.slate.name;
+        resultList.push(entry);
+      });
+    });
+    return resultList;
+  }
 }

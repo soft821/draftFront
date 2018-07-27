@@ -53,13 +53,16 @@
         </div>
       </div>
       <div class="payment-type">
-        <button class="btn bitcoin-btn cursor-pointer" 
+        <button class="btn coinbase-btn cursor-pointer" 
                 (click)="fundByCheckbook()"
                 [ngClass]="{'disabled': paymentSubmitted}"
                 [disabled]="paymentSubmitted">
           <div class="dm-bitcoin"></div>
         </button>
-        <div *ngIf="type === 'addFunds'" class="ta-l p-t-5" >Use Checkbook digital check to deposit funds, will be processed within 48 hours of the the next business day with each transaction.</div>
+        <div *ngIf="type === 'addFunds'" class="ta-l p-t-5" >
+            Use Checkbook digital check to deposit funds, will be processed within 48 hours
+            of the the next business day with each transaction.
+        </div>
         <div *ngIf="type === 'withdraw'" class="ta-l p-t-5">
             All withdrawal amounts will be sent back to the same Checkbook account  used
             to deposit funds. Withdrawal requests will be processed within 48 hours of

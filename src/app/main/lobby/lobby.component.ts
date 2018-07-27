@@ -122,8 +122,8 @@ export class LobbyComponent implements OnInit {
       if(this.slates && this.slates[0]) {
         this.selectSlate(this.slates[0]);
       }
-      this.live = data[1];
-      this.liveGames = this.live?this.live.response:[];
+      this.live = data[1]?data[1]['response']:[];
+      this.liveGames = this.lobbyService.prepareLobbyData(this.live);
       this.enterMatchupList = data[2]['response'];
       this.enterMatchupList.forEach(element => {
         this.entryFee.forEach(fee => {

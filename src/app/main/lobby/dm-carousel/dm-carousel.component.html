@@ -10,25 +10,20 @@
             #nav
             *ngIf="list && list.length">
             <div class="item" *ngFor="let item of list; let last = last" [ngClass]="{'last-item-right': last}">
-                <div class="p-b-5">{{item.name}}</div>
+                <div class="p-b-5 f-14">{{item.slate_name}}</div>
                 <span class="flex">
                     <div class="w-75">
                         <img *ngIf="item.img" class="item-img" [src]="item.img" alt="item.homeTeam">
-                        <span class=""> {{item.homeTeam}}</span>  
+                        <span class=""> {{item.game.homeTeam}}</span>  
                     </div>
-                   <span class="">  {{item.points1}}</span>       
+                   <span class="">  {{item.game.homeScore}}</span>       
                 </span>
                 <span class="flex">
                     <div class="w-75">
                         <img *ngIf="item.img" class="item-img" [src]="item.img" alt="item.awayTeam">
-                        <span class=""> @{{item.awayTeam}}</span> 
+                        <span class=""> {{item.game.awayTeam}}</span> 
                     </div>                  
-                    <span class=""> {{item.points2}}</span>                   
-                </span>
-                <span class="flex">
-                    <div class="w-75">
-                        <span class=""> {{item.time | date : 'EEE'}}</span> 
-                    </div>                
+                    <span class=""> {{item.game.awayScore}}</span>                   
                 </span>
             </div>
         </div>
