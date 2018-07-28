@@ -14,7 +14,7 @@ export class CreateBlogService {
               private authService: AuthService) {
   }
 
-  createBlog(image, data) {
+  createBlog(data) {
   //  console.log(data, 'data')
     let formData: FormData = new FormData();
     let tempUser = this.authService.authenticatedUser;
@@ -34,7 +34,7 @@ export class CreateBlogService {
     formData.append('description', data.description);
     formData.append('category', data.category.id);
     formData.append('color', data.color._id);
-    formData.append('cover_image', image);
+    formData.append('cover_image', data.image.file.rawFile);
     formData.append('creator', user);
 
     formData.append('sections', JSON.stringify(toSend));   
@@ -62,7 +62,7 @@ export class CreateBlogService {
         sectionToSend.push(temp);
       }
       if(sections[i].image && sections[i].image.file) {
-        sectionImages.push({id: i, image: sections[i].image.file});
+        sectionImages.push({id: i, image: sections[i].image.file.rawFile});
       }
     }
     return sectionImages; 

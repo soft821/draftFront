@@ -40,7 +40,7 @@ export class SelectImageComponent implements OnInit {
   }
 
   selectFile() {
-    this.fileInput.nativeElement.click()
+    this.fileInput.nativeElement.click();
   }
 
   fileSelected(e: any) {
