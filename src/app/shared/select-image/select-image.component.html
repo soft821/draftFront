@@ -13,8 +13,11 @@
       <i class="fa fa-plus-circle"></i>    
       <span>Add new</span>
     </div>
-    <div class="delete" *ngIf="src" (click)="deselectFile()">
+    <div class="delete" *ngIf="src" (click)="deselectFile(uploader)">
       <i class="fa fa-times-circle"></i>    
     </div>
+  </div>
+  <div class="progress m-t-10" >
+    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
   </div>
 </span>

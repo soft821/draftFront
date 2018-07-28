@@ -63,7 +63,7 @@ export class SelectImageComponent implements OnInit {
     this.pictureLoaded = true;
   }
 
-  deselectFile() {
+  deselectFile(uploader) {
     this.pictureLoaded = false;
     this.src = '';
     this.form.get('image').setValue('');
@@ -73,6 +73,7 @@ export class SelectImageComponent implements OnInit {
       this.fileInput.nativeElement.value = '';
       this.uploader.queue[lastIdx].remove();
     } 
+    uploader.clearQueue();
   }
 
   getImage() {
