@@ -38,8 +38,11 @@
 
       <div class="form-group">
         <label>Description</label>
-        <input type="text" class="form-control"
-              formControlName="description">
+        <textarea type="text"
+                formControlName="description"
+                class="form-control profile-input description"
+                autocomplete="off">
+        </textarea>
       </div>
 
       <div formArrayName="sections">
@@ -86,7 +89,7 @@
       </div>
     </form>
     <div class="form-button p-t-15 ta-r">
-      <button class="cancel-save-btn" (click)="cancel()">Cancel</button>
+      <button class="cancel-save-btn m-r-10" (click)="cancel()">Cancel</button>
       <button class="save-blog-btn" (click)="submitBlog(blogForm)">Save blog</button>
     </div>
   </div>

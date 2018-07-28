@@ -1,0 +1,22 @@
+
+
+.cover-section {
+    height: 300px;
+    .cover-image {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    position: relative;
+    .title {
+        color: white;
+        text-align: center;
+        padding: 30px;
+        width: 80%;
+        h1 {
+            font-size: 56.8px !important;
+            font-weight: bold;
+        }
+    }
+}

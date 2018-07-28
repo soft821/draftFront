@@ -34,7 +34,7 @@ export class CreateBlogService {
     formData.append('description', data.description);
     formData.append('category', data.category.id);
     formData.append('color', data.color._id);
-    formData.append('cover_image', data.image);
+    formData.append('cover_image', data.image.file);
     formData.append('creator', user);
 
     formData.append('sections', JSON.stringify(toSend));   
@@ -62,16 +62,9 @@ export class CreateBlogService {
         sectionToSend.push(temp);
       }
       if(sections[i].image && sections[i].image.file) {
-        sectionImages.push({id: i, image: sections[i].image.file.rawFile});
+        sectionImages.push({id: i, image: sections[i].image.file});
       }
     }
     return sectionImages; 
   }
-
-  convertToSlug(text) {
-    return text
-        .toLowerCase()
-        .replace(/[^\w ]+/g,'')
-        .replace(/ +/g,'-')
-        ;  }
 }

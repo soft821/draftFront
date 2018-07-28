@@ -10,13 +10,15 @@
             <div class="list">
                 <div class="item" *ngFor="let article of articles">
                     <dm-blog-item [subtitle]="article.subtitle"
-                                    [title]="article.title"
-                                    [description]="article.description"
-                                    [author]="article.author"
-                                    [time]="article.time"
-                                    [image]="article.image"
-                                    [subtitleColor]="article.subtitleColor"
-                                    class="article">
+                                  [title]="article.title"
+                                  [description]="article.description"
+                                  [author]="article.author"
+                                  [time]="article.time"
+                                  [image]="article.image"
+                                  [subtitleColor]="article.subtitleColor"
+                                  (getBlogDetails)="getBlogDetails($event, article.id)"
+                                  (getUserDetails)="getUserDetails($event)"
+                                  class="article">
                     </dm-blog-item>
                 </div>
             </div>

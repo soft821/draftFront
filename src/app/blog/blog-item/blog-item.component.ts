@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'dm-blog-item',
@@ -16,7 +16,9 @@ export class BlogItemComponent implements OnInit {
   @Input() author;
   @Input() time;
   @Input() subtitleColor;
-  
+  @Output() getBlogDetails: EventEmitter<any> = new EventEmitter;
+  @Output() getUserDetails: EventEmitter<any> = new EventEmitter;
+
   dotOptions = [
     {id: 0, name: 'Edit', icon: 'fa fa-pencil-square-o'},
     {id: 1, name: 'Delete', icon: 'fa fa-times'}
@@ -30,6 +32,14 @@ export class BlogItemComponent implements OnInit {
 
   optionSelected(event) {
     console.log(event)
+  }
+
+  goToDetails() {
+    this.getBlogDetails.emit(this.title);
+  }
+
+  goToUser() {
+    this.getUserDetails.emit(this.author);
   }
 
 }

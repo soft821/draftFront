@@ -7,9 +7,11 @@
     left: -165px !important;
     &.xsmall-list {
       height: 40px !important;
+      min-height: 40px !important;
     }
     &.small-list {
       height: 80px !important;   
+      min-height: 80px !important;
       top: 42px !important;   
       left: -182px !important;
     }

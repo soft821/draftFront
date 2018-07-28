@@ -26,7 +26,7 @@ export class LobbyService {
     return this.httpClient.get(`${this.helperService.resolveAPI()}/contests`, { params: params })
     .pipe(
       catchError(this.handleError.handleError)
-    );;
+    );
   }
 
   enterContest(data) {

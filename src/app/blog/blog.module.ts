@@ -6,6 +6,7 @@ import {BlogComponent} from './blog.component';
 import {BlogItemComponent} from './blog-item/blog-item.component';
 import {CreateBlogComponent} from './create-blog/create-blog.component';
 import {CreateBlogService} from './create-blog/create-blog.service';
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {CreateBlogService} from './create-blog/create-blog.service';
     BlogListComponent,
     BlogComponent,
     BlogItemComponent,
-    CreateBlogComponent
+    CreateBlogComponent,
+    BlogDetailsComponent
   ],
   exports: [
   ],

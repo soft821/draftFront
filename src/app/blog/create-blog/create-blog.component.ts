@@ -24,7 +24,7 @@ export class CreateBlogComponent implements OnInit {
   newItemVisible = false;
   addMoreSectionsForm = false;
 
-  blogTypes = [
+  blogTypes = [ // get from api
     {id: 0, name: 'headline_matchup', value: 'Headline Matchup'},
     {id: 1, name: 'preview', value: 'Preview'},
     {id: 2, name: 'android', value: 'Android'},
@@ -43,7 +43,6 @@ export class CreateBlogComponent implements OnInit {
       image: [''],
       color: '',
       category: '',
-      url: '',
       sections: this.fb.array([]),
     });
     this.addNewItem();
@@ -75,8 +74,6 @@ export class CreateBlogComponent implements OnInit {
   }
 
   submitBlog(form) {
-    let url = this.createBlogService.convertToSlug(this.blogForm.get('title').value);
-    this.blogForm.get('url').setValue(url);
     if(form.valid) {
       this.createBlogService.createBlog(form.value)
       .subscribe(response => {
