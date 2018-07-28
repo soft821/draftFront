@@ -74,8 +74,8 @@ export class CreateBlogComponent implements OnInit {
   }
 
   submitBlog(form) {
-    if(form.valid) {
-      this.createBlogService.createBlog(form.value)
+    if(form.valid && this.files) {
+      this.createBlogService.createBlog(this.files[0], form.value)
       .subscribe(response => {
         console.log(response)
       })

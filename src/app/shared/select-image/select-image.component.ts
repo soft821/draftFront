@@ -25,7 +25,8 @@ export class SelectImageComponent implements OnInit {
   pictureLoaded = false;
   src = '';
   uploader: FileUploader = new FileUploader({
-    allowedFileType: ['image']
+    allowedFileType: ['image'],
+    autoUpload: true
   });
   files: any;
   @ViewChild('fileInput') fileInput;
@@ -51,7 +52,6 @@ export class SelectImageComponent implements OnInit {
       this.imageSelected.emit(this.files);
     }
   }
-
   
   // show image preview
   selected(imageResult: ImageResult) {
